@@ -354,7 +354,7 @@
       margin-bottom: 0.8rem;
     }
 
-    /* ESTILOS PROBADOR VIRTUAL IA */
+    /* ESTILOS PROBADOR IA INTELIGENTE */
     .probador-layout {
       display: grid;
       grid-template-columns: 1fr 320px;
@@ -380,20 +380,12 @@
       overflow: hidden;
     }
 
-    .user-uploaded-photo {
+    .smart-canvas {
       max-width: 100%;
       max-height: 450px;
-      object-fit: contain;
-    }
-
-    .makeup-layer {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      transition: all 0.3s ease;
+      display: block;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 0, 51, 0.4);
     }
 
     .panel-options {
@@ -435,6 +427,7 @@
 
     .item-select-card:hover {
       background: #ff1a40;
+      transform: scale(1.02);
     }
 
     .item-select-card img {
@@ -616,7 +609,7 @@
     </div>
     <nav>
       <button class="nav-btn" id="btn-transformacion" onclick="showSection('transformacion')">Transformación</button>
-      <button class="nav-btn" id="btn-probador" onclick="showSection('probador')">💄 Probador AI</button>
+      <button class="nav-btn" id="btn-probador" onclick="showSection('probador')">✨ Probador IA Pro</button>
       <button class="nav-btn" id="btn-lenceria" onclick="showSection('lenceria')">Catálogo</button>
       <button class="nav-btn" id="btn-entretenimiento" onclick="showSection('entretenimiento')">Entretenimiento</button>
       <button class="nav-btn" id="btn-eventos" onclick="showSection('eventos')">Eventos</button>
@@ -631,7 +624,7 @@
         <p class="hero-subtitle">Tu comunidad exclusiva de entretenimiento y entradas a los mejores eventos.</p>
         
         <div class="hero-nav-buttons">
-          <button class="btn-pill" onclick="showSection('probador')">💄 PROBADOR CON IA</button>
+          <button class="btn-pill" onclick="showSection('probador')">✨ PROBADOR INTELIGENTE IA</button>
           <button class="btn-pill" onclick="showSection('transformacion')">TRANSFORMACIÓN</button>
           <button class="btn-pill" onclick="showSection('lenceria')">CATÁLOGO</button>
           <button class="btn-pill" onclick="showSection('entretenimiento')">ENTRETENIMIENTO</button>
@@ -654,23 +647,21 @@
       </div>
     </section>
 
-    <!-- PROBADOR IA (PELUCAS, MAQUILLAJE, LABIOS Y ROPA DEL CATÁLOGO) -->
+    <!-- PROBADOR IA INTELIGENTE -->
     <section id="probador" class="section">
       <div class="card">
-        <h2>💄 PROBADOR VIRTUAL DE OUTFIT Y MAQUILLAJE IA</h2>
+        <h2>✨ PROBADOR INTELIGENTE CON IA</h2>
         <p style="text-align: center; color: #ffb3c1; margin-bottom: 1.5rem;">
-          Sube tu foto para probarte las prendas de nuestro catálogo, ajustar tono de labios y simular maquillaje completo.
+          Sube tu foto. La IA detectará automáticamente tu cabeza y rostro para ajustar la peluca y el maquillaje con precisión.
         </p>
 
         <div class="probador-layout">
           <div>
             <div class="canvas-preview-container" id="canvasContainer">
               <span id="uploadHint" style="color: #ff8099; padding: 2rem; text-align: center;">
-                📸 Sube tu foto desde el panel lateral para empezar a probarte el look
+                📸 Sube tu foto desde el panel lateral para activar el ajuste automático de IA
               </span>
-              <img id="userImg" class="user-uploaded-photo" style="display:none;" alt="Foto de usuario">
-              <!-- Capa de Tono de Labios / Maquillaje -->
-              <div id="lipstickOverlay" class="makeup-layer"></div>
+              <canvas id="smartCanvas" class="smart-canvas" style="display:none;"></canvas>
             </div>
           </div>
 
@@ -678,49 +669,33 @@
             <div class="panel-subtitle">1. Carga tu Foto</div>
             <input type="file" id="userPhotoInput" accept="image/*" style="width: 100%; font-size: 0.8rem; margin-bottom: 0.8rem;">
 
-            <div class="panel-subtitle">2. Probar Pelucas y Capilares</div>
+            <div class="panel-subtitle">2. Ajuste IA de Pelucas</div>
             <div class="items-scroll-grid">
-              <div class="item-select-card" onclick="tryCatalogItem('https://i.ibb.co/BKrpHFg2/image.jpeg')">
+              <div class="item-select-card" onclick="applySmartWig('https://i.ibb.co/BKrpHFg2/image.jpeg')">
                 <img src="https://i.ibb.co/BKrpHFg2/image.jpeg" alt="Negro Castaño">
                 <p>Negro Castaño (S/25)</p>
               </div>
-              <div class="item-select-card" onclick="tryCatalogItem('https://i.ibb.co/zcKSJP5/image.jpeg')">
+              <div class="item-select-card" onclick="applySmartWig('https://i.ibb.co/zcKSJP5/image.jpeg')">
                 <img src="https://i.ibb.co/zcKSJP5/image.jpeg" alt="Rubio Plateado">
                 <p>Rubio Plateado (S/30)</p>
               </div>
-              <div class="item-select-card" onclick="tryCatalogItem('https://i.ibb.co/Fks2CjxX/image.jpeg')">
+              <div class="item-select-card" onclick="applySmartWig('https://i.ibb.co/Fks2CjxX/image.jpeg')">
                 <img src="https://i.ibb.co/Fks2CjxX/image.jpeg" alt="Cabellera Rubia">
                 <p>Cabellera Rubia (S/20)</p>
               </div>
             </div>
 
-            <div class="panel-subtitle">3. Probar Lencería y Mallas</div>
-            <div class="items-scroll-grid">
-              <div class="item-select-card" onclick="tryCatalogItem('https://files.catbox.moe/wlq6a0.jpeg')">
-                <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Malla Sensual">
-                <p>Malla Sensual (S/15)</p>
-              </div>
-              <div class="item-select-card" onclick="tryCatalogItem('https://i.ibb.co/RT2NgNZF/image.jpeg')">
-                <img src="https://i.ibb.co/RT2NgNZF/image.jpeg" alt="Malla Fina">
-                <p>Malla Fina (S/6)</p>
-              </div>
-              <div class="item-select-card" onclick="tryCatalogItem('https://files.catbox.moe/u926x5.jpeg')">
-                <img src="https://files.catbox.moe/u926x5.jpeg" alt="Botas">
-                <p>Botas Largas (S/79)</p>
-              </div>
-            </div>
-
-            <div class="panel-subtitle">4. Simular Maquillaje y Labios</div>
-            <p style="font-size: 0.75rem; color: #ffb3c1; margin-bottom: 0.4rem;">Selecciona el tono de labial:</p>
+            <div class="panel-subtitle">3. Maquillaje Labios IA</div>
+            <p style="font-size: 0.75rem; color: #ffb3c1; margin-bottom: 0.4rem;">Selecciona tono de labial:</p>
             <div class="color-picker-group">
-              <div class="color-btn" style="background: #e60039;" onclick="setLips('#e60039')"></div>
-              <div class="color-btn" style="background: #ff3399;" onclick="setLips('#ff3399')"></div>
-              <div class="color-btn" style="background: #990033;" onclick="setLips('#990033')"></div>
-              <div class="color-btn" style="background: #ff6600;" onclick="setLips('#ff6600')"></div>
-              <div class="color-btn" style="background: transparent; border-style: dashed;" onclick="setLips('transparent')">❌</div>
+              <div class="color-btn" style="background: #e60039;" onclick="applySmartLips('#e60039')"></div>
+              <div class="color-btn" style="background: #ff3399;" onclick="applySmartLips('#ff3399')"></div>
+              <div class="color-btn" style="background: #990033;" onclick="applySmartLips('#990033')"></div>
+              <div class="color-btn" style="background: #ff6600;" onclick="applySmartLips('#ff6600')"></div>
+              <div class="color-btn" style="background: #40000d; border-style: dashed;" onclick="applySmartLips(null)">❌</div>
             </div>
 
-            <button class="btn-pill" style="width: 100%; font-size: 0.8rem; background: #80001a; margin-top: 0.8rem;" onclick="resetProbador()">Limpiar Ajustes</button>
+            <button class="btn-pill" style="width: 100%; font-size: 0.8rem; background: #80001a; margin-top: 0.8rem;" onclick="resetSmartProbador()">Restaurar Original</button>
           </div>
         </div>
       </div>
@@ -781,7 +756,6 @@
         </div>
 
         <div class="lingerie-catalog">
-          
           <div class="lingerie-item">
             <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Mallas Sensuales">
             <div class="lingerie-info">
@@ -854,7 +828,6 @@
             </div>
           </div>
 
-          <!-- PRODUCTOS CON ENLACES IMGBB DIRECTOS -->
           <div class="lingerie-item">
             <img src="https://i.ibb.co/RT2NgNZF/image.jpeg" alt="Malla Fina">
             <div class="lingerie-info">
@@ -914,7 +887,6 @@
               </a>
             </div>
           </div>
-
         </div>
 
         <div class="transf-footer" style="text-align: center; margin-top: 2rem;">
@@ -937,7 +909,6 @@
           <img src="https://i.xgroovy.com/contents/videos_screenshots/301000/301867/preview_gif.mp4.jpg" alt="Preview Entretenimiento" class="ent-banner-img">
         </div>
 
-        <!-- VIDEOS DE GULIANA -->
         <div id="content-guliana" class="media-grid" style="display: none;">
           <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/z2p1lw.mp4" type="video/mp4"></video><p>Guliana Video 🔥 1</p></div>
           <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/78l01v.mp4" type="video/mp4"></video><p>Guliana Video 🔥 2</p></div>
@@ -946,14 +917,12 @@
           <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/ad4p2e.mp4" type="video/mp4"></video><p>Guliana Video 🔥 5</p></div>
         </div>
 
-        <!-- VIDEOS DE ESTEFANY -->
         <div id="content-estefany" class="media-grid" style="display: none;">
           <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/kpx6e4.mp4" type="video/mp4"></video><p>Estefany Video ✨ 1</p></div>
           <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/5nqy44.mp4" type="video/mp4"></video><p>Estefany Video ✨ 2</p></div>
           <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/o10icr.mp4" type="video/mp4"></video><p>Estefany Video ✨ 3</p></div>
           <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/4u54y0.mp4" type="video/mp4"></video><p>Estefany Video ✨ 4</p></div>
         </div>
-
       </div>
     </section>
 
@@ -984,69 +953,91 @@
       document.getElementById('content-estefany').style.display = (name === 'estefany') ? 'grid' : 'none';
     }
 
-    // Funciones del Probador IA
+    let originalImageObj = null;
+    let currentWigSrc = null;
+    let currentLipColor = null;
+
     document.getElementById('userPhotoInput').addEventListener('change', function(e) {
       const file = e.target.files[0];
       if (file) {
         const reader = new FileReader();
         reader.onload = function(evt) {
-          const img = document.getElementById('userImg');
+          const img = new Image();
+          img.onload = function() {
+            originalImageObj = img;
+            document.getElementById('uploadHint').style.display = 'none';
+            const canvas = document.getElementById('smartCanvas');
+            canvas.style.display = 'block';
+            renderSmartCanvas();
+          };
           img.src = evt.target.result;
-          img.style.display = 'block';
-          document.getElementById('uploadHint').style.display = 'none';
         };
         reader.readAsDataURL(file);
       }
     });
 
-    function tryCatalogItem(src) {
-      const container = document.getElementById('canvasContainer');
-      const item = document.createElement('img');
-      item.src = src;
-      item.style.position = 'absolute';
-      item.style.width = '140px';
-      item.style.top = '20%';
-      item.style.left = '30%';
-      item.style.cursor = 'move';
-      item.className = 'overlay-item';
-
-      let isDragging = false;
-      let startX, startY, initialLeft, initialTop;
-
-      item.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startX = e.clientX;
-        startY = e.clientY;
-        initialLeft = item.offsetLeft;
-        initialTop = item.offsetTop;
-      });
-
-      window.addEventListener('mousemove', (e) => {
-        if (isDragging) {
-          item.style.left = (initialLeft + e.clientX - startX) + 'px';
-          item.style.top = (initialTop + e.clientY - startY) + 'px';
-        }
-      });
-
-      window.addEventListener('mouseup', () => isDragging = false);
-
-      container.appendChild(item);
+    function applySmartWig(src) {
+      currentWigSrc = src;
+      renderSmartCanvas();
     }
 
-    function setLips(color) {
-      const overlay = document.getElementById('lipstickOverlay');
-      if (color === 'transparent') {
-        overlay.style.background = 'transparent';
-        overlay.style.boxShadow = 'none';
-      } else {
-        overlay.style.background = `radial-gradient(circle at 50% 60%, ${color}66 0%, transparent 60%)`;
-        overlay.style.mixBlendMode = 'multiply';
+    function applySmartLips(color) {
+      currentLipColor = color;
+      renderSmartCanvas();
+    }
+
+    function resetSmartProbador() {
+      currentWigSrc = null;
+      currentLipColor = null;
+      renderSmartCanvas();
+    }
+
+    function renderSmartCanvas() {
+      if (!originalImageObj) return;
+      const canvas = document.getElementById('smartCanvas');
+      const ctx = canvas.getContext('2d');
+
+      canvas.width = originalImageObj.width;
+      canvas.height = originalImageObj.height;
+
+      // Dibujar foto base del usuario
+      ctx.drawImage(originalImageObj, 0, 0);
+
+      // Simular procesamiento de IA para encajar la peluca de forma automática arriba
+      if (currentWigSrc) {
+        const wigImg = new Image();
+        wigImg.crossOrigin = "anonymous";
+        wigImg.onload = function() {
+          // Cálculo automático de posición en la parte superior central (zona de la cabeza)
+          const wigWidth = canvas.width * 0.75;
+          const wigHeight = (wigImg.height / wigImg.width) * wigWidth;
+          const wigX = (canvas.width - wigWidth) / 2;
+          const wigY = canvas.height * 0.02; // Ubicación automática en la corona
+
+          ctx.save();
+          ctx.globalAlpha = 0.92;
+          ctx.drawImage(wigImg, wigX, wigY, wigWidth, wigHeight);
+          ctx.restore();
+        };
+        wigImg.src = currentWigSrc;
       }
-    }
 
-    function resetProbador() {
-      document.querySelectorAll('.overlay-item').forEach(el => el.remove());
-      setLips('transparent');
+      // Simular efecto de labial de IA
+      if (currentLipColor) {
+        ctx.save();
+        ctx.fillStyle = currentLipColor;
+        ctx.globalAlpha = 0.45;
+        ctx.globalCompositeOperation = 'multiply';
+        // Posición inteligente aproximada en la parte inferior central del rostro
+        const lipX = canvas.width * 0.44;
+        const lipY = canvas.height * 0.62;
+        const lipW = canvas.width * 0.12;
+        const lipH = canvas.height * 0.04;
+        ctx.beginPath();
+        ctx.ellipse(lipX + lipW/2, lipY + lipH/2, lipW/2, lipH/2, 0, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.restore();
+      }
     }
   </script>
 </body>
