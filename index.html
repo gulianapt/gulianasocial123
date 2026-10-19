@@ -354,6 +354,116 @@
       margin-bottom: 0.8rem;
     }
 
+    /* ESTILOS PROBADOR VIRTUAL IA */
+    .probador-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 850px) {
+      .probador-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .canvas-preview-container {
+      position: relative;
+      background: #0d0004;
+      border: 2px dashed #ff1a40;
+      border-radius: 15px;
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .user-uploaded-photo {
+      max-width: 100%;
+      max-height: 450px;
+      object-fit: contain;
+    }
+
+    .makeup-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .panel-options {
+      background: #150007;
+      border: 1px solid #ff1a40;
+      border-radius: 15px;
+      padding: 1.2rem;
+    }
+
+    .panel-subtitle {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #ff3366;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 26, 64, 0.3);
+      padding-bottom: 0.3rem;
+    }
+
+    .items-scroll-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+      max-height: 200px;
+      overflow-y: auto;
+      margin-bottom: 0.8rem;
+    }
+
+    .item-select-card {
+      background: #20000a;
+      border: 1px solid #ff1a40;
+      border-radius: 8px;
+      padding: 0.4rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .item-select-card:hover {
+      background: #ff1a40;
+    }
+
+    .item-select-card img {
+      width: 100%;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .item-select-card p {
+      font-size: 0.7rem;
+      margin-top: 0.2rem;
+      font-weight: 600;
+    }
+
+    .color-picker-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .color-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      cursor: pointer;
+    }
+
     .ent-layout {
       display: flex;
       gap: 1.5rem;
@@ -458,47 +568,6 @@
       font-size: 1rem;
     }
 
-    .tickets-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.2rem;
-      margin-top: 0.5rem;
-    }
-
-    .ticket-option {
-      background: #180007;
-      border: 2px solid #80001a;
-      border-radius: 15px;
-      padding: 1.2rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .ticket-option.selected {
-      border-color: #ff0033;
-      background: rgba(255, 0, 51, 0.15);
-      box-shadow: 0 0 15px rgba(255, 0, 51, 0.5);
-    }
-
-    .ticket-option input[type="radio"] {
-      display: none;
-    }
-
-    .ticket-title {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #ffffff;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-
-    .ticket-price {
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: #ff3366;
-    }
-
     .yape-box {
       background: rgba(116, 23, 186, 0.2);
       border: 2px solid #7417ba;
@@ -512,131 +581,6 @@
       color: #d175ff;
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
-    }
-
-    .attendees-box {
-      background: rgba(255, 26, 64, 0.1);
-      border: 1.5px solid #ff1a40;
-      border-radius: 15px;
-      padding: 1.2rem;
-      margin-top: 1.5rem;
-    }
-
-    .attendees-title {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #ff6680;
-      text-transform: uppercase;
-      margin-bottom: 0.8rem;
-      text-align: center;
-    }
-
-    .attendee-item {
-      background: #180007;
-      border-left: 4px solid #00ff66;
-      padding: 0.8rem 1rem;
-      border-radius: 8px;
-      margin-bottom: 0.6rem;
-      font-size: 0.95rem;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .fullscreen-success {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(20, 0, 5, 0.98);
-      z-index: 5000;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .fullscreen-success-box {
-      background: #1a0007;
-      border: 3px solid #00ff66;
-      box-shadow: 0 0 40px rgba(0, 255, 102, 0.6);
-      border-radius: 25px;
-      padding: 3rem 2rem;
-      max-width: 500px;
-      width: 90%;
-    }
-
-    .fullscreen-success h2 {
-      font-size: 2.2rem;
-      color: #00ff66;
-      margin-bottom: 1rem;
-    }
-
-    .fullscreen-success p {
-      font-size: 1.1rem;
-      color: #ffffff;
-      margin-bottom: 1.5rem;
-    }
-
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      z-index: 2000;
-      justify-content: center;
-      align-items: center;
-      backdrop-filter: blur(5px);
-    }
-
-    .modal-box {
-      background: #1a0007;
-      border: 2px solid #ff0033;
-      box-shadow: 0 0 30px rgba(255, 0, 51, 0.8);
-      border-radius: 20px;
-      padding: 2rem;
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-    }
-
-    .modal-box h3 {
-      color: #ff3366;
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
-    }
-
-    .modal-box input {
-      width: 100%;
-      padding: 0.8rem;
-      border-radius: 10px;
-      border: 1px solid #ff1a40;
-      background: #0d0004;
-      color: #fff;
-      font-size: 1.2rem;
-      text-align: center;
-      margin-bottom: 1rem;
-      letter-spacing: 3px;
-    }
-
-    .modal-box .error-msg {
-      color: #ff3333;
-      font-size: 0.85rem;
-      margin-bottom: 1rem;
-      display: none;
-    }
-
-    .modal-actions {
-      display: flex;
-      gap: 0.8rem;
-      justify-content: center;
     }
 
     @media (max-width: 600px) {
@@ -672,6 +616,7 @@
     </div>
     <nav>
       <button class="nav-btn" id="btn-transformacion" onclick="showSection('transformacion')">Transformación</button>
+      <button class="nav-btn" id="btn-probador" onclick="showSection('probador')">💄 Probador AI</button>
       <button class="nav-btn" id="btn-lenceria" onclick="showSection('lenceria')">Catálogo</button>
       <button class="nav-btn" id="btn-entretenimiento" onclick="showSection('entretenimiento')">Entretenimiento</button>
       <button class="nav-btn" id="btn-eventos" onclick="showSection('eventos')">Eventos</button>
@@ -686,6 +631,7 @@
         <p class="hero-subtitle">Tu comunidad exclusiva de entretenimiento y entradas a los mejores eventos.</p>
         
         <div class="hero-nav-buttons">
+          <button class="btn-pill" onclick="showSection('probador')">💄 PROBADOR CON IA</button>
           <button class="btn-pill" onclick="showSection('transformacion')">TRANSFORMACIÓN</button>
           <button class="btn-pill" onclick="showSection('lenceria')">CATÁLOGO</button>
           <button class="btn-pill" onclick="showSection('entretenimiento')">ENTRETENIMIENTO</button>
@@ -703,6 +649,78 @@
           <div class="transformation-card" onclick="showSection('lenceria')">
             <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Lencería y Catálogo">
             <div class="card-banner-btn">CATÁLOGO Y LENCERÍA 🔥</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBADOR IA (PELUCAS, MAQUILLAJE, LABIOS Y ROPA DEL CATÁLOGO) -->
+    <section id="probador" class="section">
+      <div class="card">
+        <h2>💄 PROBADOR VIRTUAL DE OUTFIT Y MAQUILLAJE IA</h2>
+        <p style="text-align: center; color: #ffb3c1; margin-bottom: 1.5rem;">
+          Sube tu foto para probarte las prendas de nuestro catálogo, ajustar tono de labios y simular maquillaje completo.
+        </p>
+
+        <div class="probador-layout">
+          <div>
+            <div class="canvas-preview-container" id="canvasContainer">
+              <span id="uploadHint" style="color: #ff8099; padding: 2rem; text-align: center;">
+                📸 Sube tu foto desde el panel lateral para empezar a probarte el look
+              </span>
+              <img id="userImg" class="user-uploaded-photo" style="display:none;" alt="Foto de usuario">
+              <!-- Capa de Tono de Labios / Maquillaje -->
+              <div id="lipstickOverlay" class="makeup-layer"></div>
+            </div>
+          </div>
+
+          <div class="panel-options">
+            <div class="panel-subtitle">1. Carga tu Foto</div>
+            <input type="file" id="userPhotoInput" accept="image/*" style="width: 100%; font-size: 0.8rem; margin-bottom: 0.8rem;">
+
+            <div class="panel-subtitle">2. Probar Pelucas y Capilares</div>
+            <div class="items-scroll-grid">
+              <div class="item-select-card" onclick="tryCatalogItem('https://i.ibb.co/BKrpHFg2/image.jpeg')">
+                <img src="https://i.ibb.co/BKrpHFg2/image.jpeg" alt="Negro Castaño">
+                <p>Negro Castaño (S/25)</p>
+              </div>
+              <div class="item-select-card" onclick="tryCatalogItem('https://i.ibb.co/zcKSJP5/image.jpeg')">
+                <img src="https://i.ibb.co/zcKSJP5/image.jpeg" alt="Rubio Plateado">
+                <p>Rubio Plateado (S/30)</p>
+              </div>
+              <div class="item-select-card" onclick="tryCatalogItem('https://i.ibb.co/Fks2CjxX/image.jpeg')">
+                <img src="https://i.ibb.co/Fks2CjxX/image.jpeg" alt="Cabellera Rubia">
+                <p>Cabellera Rubia (S/20)</p>
+              </div>
+            </div>
+
+            <div class="panel-subtitle">3. Probar Lencería y Mallas</div>
+            <div class="items-scroll-grid">
+              <div class="item-select-card" onclick="tryCatalogItem('https://files.catbox.moe/wlq6a0.jpeg')">
+                <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Malla Sensual">
+                <p>Malla Sensual (S/15)</p>
+              </div>
+              <div class="item-select-card" onclick="tryCatalogItem('https://i.ibb.co/RT2NgNZF/image.jpeg')">
+                <img src="https://i.ibb.co/RT2NgNZF/image.jpeg" alt="Malla Fina">
+                <p>Malla Fina (S/6)</p>
+              </div>
+              <div class="item-select-card" onclick="tryCatalogItem('https://files.catbox.moe/u926x5.jpeg')">
+                <img src="https://files.catbox.moe/u926x5.jpeg" alt="Botas">
+                <p>Botas Largas (S/79)</p>
+              </div>
+            </div>
+
+            <div class="panel-subtitle">4. Simular Maquillaje y Labios</div>
+            <p style="font-size: 0.75rem; color: #ffb3c1; margin-bottom: 0.4rem;">Selecciona el tono de labial:</p>
+            <div class="color-picker-group">
+              <div class="color-btn" style="background: #e60039;" onclick="setLips('#e60039')"></div>
+              <div class="color-btn" style="background: #ff3399;" onclick="setLips('#ff3399')"></div>
+              <div class="color-btn" style="background: #990033;" onclick="setLips('#990033')"></div>
+              <div class="color-btn" style="background: #ff6600;" onclick="setLips('#ff6600')"></div>
+              <div class="color-btn" style="background: transparent; border-style: dashed;" onclick="setLips('transparent')">❌</div>
+            </div>
+
+            <button class="btn-pill" style="width: 100%; font-size: 0.8rem; background: #80001a; margin-top: 0.8rem;" onclick="resetProbador()">Limpiar Ajustes</button>
           </div>
         </div>
       </div>
@@ -764,7 +782,6 @@
 
         <div class="lingerie-catalog">
           
-          <!-- PRODUCTOS EXISTENTES -->
           <div class="lingerie-item">
             <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Mallas Sensuales">
             <div class="lingerie-info">
@@ -837,7 +854,7 @@
             </div>
           </div>
 
-          <!-- NUEVOS PRODUCTOS CON ENLACES IMGBB DIRECTOS -->
+          <!-- PRODUCTOS CON ENLACES IMGBB DIRECTOS -->
           <div class="lingerie-item">
             <img src="https://i.ibb.co/RT2NgNZF/image.jpeg" alt="Malla Fina">
             <div class="lingerie-info">
@@ -913,8 +930,8 @@
 
         <div class="ent-layout">
           <div class="ent-buttons-container">
-            <button class="profile-btn" id="btn-profile-guliana" onclick="requestAccess('guliana')">GULIANA 🔥</button>
-            <button class="profile-btn" id="btn-profile-estefany" onclick="requestAccess('estefany')">ESTEFANY ✨</button>
+            <button class="profile-btn" id="btn-profile-guliana" onclick="toggleProfile('guliana')">GULIANA 🔥</button>
+            <button class="profile-btn" id="btn-profile-estefany" onclick="toggleProfile('estefany')">ESTEFANY ✨</button>
           </div>
 
           <img src="https://i.xgroovy.com/contents/videos_screenshots/301000/301867/preview_gif.mp4.jpg" alt="Preview Entretenimiento" class="ent-banner-img">
@@ -938,261 +955,98 @@
         </div>
 
       </div>
-
-      <div class="card">
-        <h2>Publicar Video en Entretenimiento</h2>
-        <form class="custom-form" onsubmit="handleVideoUpload(event, 'content-guliana')">
-          <div class="input-group">
-            <label for="mediaFileEnt">Seleccionar Archivo de Video:</label>
-            <input type="file" id="mediaFileEnt" accept="video/*" required>
-          </div>
-          <div class="input-group">
-            <label for="captionEnt">Descripción del Video:</label>
-            <input type="text" id="captionEnt" placeholder="Escribe un título o descripción..." required>
-          </div>
-          <button type="submit" class="btn-pill" style="width: 100%;">Publicar Video en Guliana</button>
-        </form>
-      </div>
     </section>
 
-    <!-- EVENTOS / REGISTRO COMPLETO -->
+    <!-- EVENTOS -->
     <section id="eventos" class="section">
       <div class="card">
         <h2>Entradas y Eventos</h2>
         <p style="text-align: center; color: #ffb3c1; margin-bottom: 1.5rem;">
-          Ingresa tu Nombre / Nickname para registrar tu entrada.
+          Ingresa tu Nombre / Nickname para registrar tu entrada a los eventos exclusivos.
         </p>
 
         <div class="yape-box">
           <h3>📱 PAGO CON YAPE</h3>
-          <p>Realiza tu pago por Yape antes de confirmar tu registro.</p>
+          <p>Realiza tu pago por Yape antes de confirmar tu registro de entrada.</p>
         </div>
-
-        <div id="formSection">
-          <form onsubmit="submitCustomForm(event)" class="custom-form" style="margin-top: 1.5rem;">
-            
-            <div class="input-group">
-              <label for="nicknameUsuario">Nombre / Nickname:</label>
-              <input type="text" id="nicknameUsuario" placeholder="Ingresa tu nombre..." required>
-            </div>
-
-            <div class="input-group">
-              <label>Selecciona tu Entrada:</label>
-              <div class="tickets-container">
-                
-                <label class="ticket-option selected" id="opt-general" onclick="selectTicket('opt-general')">
-                  <input type="radio" name="ticketType" value="Entrada General - 10 Soles" checked>
-                  <div class="ticket-title">Entrada General</div>
-                  <div class="ticket-price">S/ 10.00</div>
-                </label>
-
-                <label class="ticket-option" id="opt-vip" onclick="selectTicket('opt-vip')">
-                  <input type="radio" name="ticketType" value="Entrada VIP">
-                  <div class="ticket-title">Entrada VIP</div>
-                  <div class="ticket-price">VIP ⚡</div>
-                </label>
-
-              </div>
-            </div>
-
-            <button type="submit" id="btnSubmitForm" class="btn-pill" style="width: 100%; margin-top: 1rem;">Confirmar y Enviar Registro</button>
-          </form>
-        </div>
-
-        <!-- LISTA DINÁMICA DE CONFIRMADOS AL EVENTO EN VIVO -->
-        <div class="attendees-box">
-          <div class="attendees-title">🎉 ASISTENTES CONFIRMADOS AL EVENTO 🎉</div>
-          <div id="attendeesList">
-            <!-- Se irán agregando los nombres aquí -->
-          </div>
-        </div>
-
       </div>
     </section>
   </main>
 
-  <!-- PANTALLA COMPLETA DE CONFIRMACIÓN -->
-  <div id="fullscreenSuccess" class="fullscreen-success">
-    <div class="fullscreen-success-box">
-      <h2>¡REGISTRADO! 🎉</h2>
-      <p>Tu registro ha sido enviado correctamente.</p>
-      <p style="font-size: 0.9rem; color: #ffb3c1;">Gracias por ser parte de Guliana Social.</p>
-      <button class="btn-pill" style="margin-top: 1.5rem; background: #00ff66; color: #000;" onclick="closeFullscreenSuccess()">Aceptar y Volver</button>
-    </div>
-  </div>
-
-  <!-- MODAL DE CONTRASEÑA -->
-  <div class="modal-overlay" id="passwordModal">
-    <div class="modal-box">
-      <h3 id="modalTitle">Ingrese Contraseña</h3>
-      <input type="password" id="passInput" placeholder="****" maxlength="10">
-      <div class="error-msg" id="passError">Contraseña incorrecta. Inténtelo de nuevo.</div>
-      <div class="modal-actions">
-        <button class="btn-pill" onclick="verifyPassword()">Ingresar</button>
-        <button class="btn-pill" style="background: #444;" onclick="closeModal()">Cancelar</button>
-      </div>
-    </div>
-  </div>
-
   <script>
-    var currentTargetProfile = '';
-    var unlockedProfiles = { guliana: false, estefany: false };
+    function showSection(id) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
 
-    // CONTRASEÑAS ACTUALIZADAS: Guliana -> 1999, Estefany -> 1998
-    const PASSWORDS = { guliana: '1999', estefany: '1998' };
+    function toggleProfile(name) {
+      document.getElementById('content-guliana').style.display = (name === 'guliana') ? 'grid' : 'none';
+      document.getElementById('content-estefany').style.display = (name === 'estefany') ? 'grid' : 'none';
+    }
 
-    document.addEventListener("DOMContentLoaded", function() {
-      loadAttendees();
+    // Funciones del Probador IA
+    document.getElementById('userPhotoInput').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          const img = document.getElementById('userImg');
+          img.src = evt.target.result;
+          img.style.display = 'block';
+          document.getElementById('uploadHint').style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+      }
     });
 
-    function showSection(sectionId) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+    function tryCatalogItem(src) {
+      const container = document.getElementById('canvasContainer');
+      const item = document.createElement('img');
+      item.src = src;
+      item.style.position = 'absolute';
+      item.style.width = '140px';
+      item.style.top = '20%';
+      item.style.left = '30%';
+      item.style.cursor = 'move';
+      item.className = 'overlay-item';
 
-      const targetSection = document.getElementById(sectionId);
-      if (targetSection) targetSection.classList.add('active');
+      let isDragging = false;
+      let startX, startY, initialLeft, initialTop;
 
-      const activeBtn = document.getElementById('btn-' + sectionId);
-      if (activeBtn) activeBtn.classList.add('active');
-      
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function requestAccess(profile) {
-      if (unlockedProfiles[profile]) {
-        toggleProfile(profile);
-      } else {
-        currentTargetProfile = profile;
-        document.getElementById('modalTitle').innerText = 'Contraseña para ' + profile.toUpperCase();
-        document.getElementById('passInput').value = '';
-        document.getElementById('passError').style.display = 'none';
-        document.getElementById('passwordModal').style.display = 'flex';
-        document.getElementById('passInput').focus();
-      }
-    }
-
-    function verifyPassword() {
-      const inputVal = document.getElementById('passInput').value;
-      if (inputVal === PASSWORDS[currentTargetProfile]) {
-        unlockedProfiles[currentTargetProfile] = true;
-        closeModal();
-        toggleProfile(currentTargetProfile);
-      } else {
-        document.getElementById('passError').style.display = 'block';
-      }
-    }
-
-    function closeModal() {
-      document.getElementById('passwordModal').style.display = 'none';
-    }
-
-    function toggleProfile(profile) {
-      const gulianaContent = document.getElementById('content-guliana');
-      const estefanyContent = document.getElementById('content-estefany');
-      const btnGuliana = document.getElementById('btn-profile-guliana');
-      const btnEstefany = document.getElementById('btn-profile-estefany');
-
-      if (profile === 'guliana') {
-        gulianaContent.style.display = 'grid';
-        estefanyContent.style.display = 'none';
-        btnGuliana.classList.add('active-profile');
-        btnEstefany.classList.remove('active-profile');
-      } else if (profile === 'estefany') {
-        gulianaContent.style.display = 'none';
-        estefanyContent.style.display = 'grid';
-        btnGuliana.classList.remove('active-profile');
-        btnEstefany.classList.add('active-profile');
-      }
-    }
-
-    function selectTicket(optionId) {
-      document.querySelectorAll('.ticket-option').forEach(opt => opt.classList.remove('selected'));
-      const selected = document.getElementById(optionId);
-      selected.classList.add('selected');
-      selected.querySelector('input[type="radio"]').checked = true;
-    }
-
-    function handleVideoUpload(event, gridId) {
-      event.preventDefault();
-      const form = event.target;
-      const fileInput = form.querySelector('input[type="file"]');
-      const captionInput = form.querySelector('input[type="text"]');
-      const grid = document.getElementById(gridId);
-
-      if (fileInput.files && fileInput.files[0]) {
-        const file = fileInput.files[0];
-        const fileURL = URL.createObjectURL(file);
-
-        const mediaCard = document.createElement('div');
-        mediaCard.className = 'media-item';
-
-        mediaCard.innerHTML = `
-          <video src="${fileURL}" controls></video>
-          <p>${captionInput.value}</p>
-        `;
-
-        grid.prepend(mediaCard);
-
-        fileInput.value = '';
-        captionInput.value = '';
-      }
-    }
-
-    function loadAttendees() {
-      var savedList = JSON.parse(localStorage.getItem("guliana_attendees_list")) || [];
-      var container = document.getElementById("attendeesList");
-      container.innerHTML = "";
-
-      if (savedList.length === 0) {
-        container.innerHTML = "<p style='text-align: center; color: #aaa; font-size: 0.85rem;'>Aún no hay registros guardados.</p>";
-        return;
-      }
-
-      savedList.forEach(function(item) {
-        var div = document.createElement("div");
-        div.className = "attendee-item";
-        div.innerHTML = "<span>✨</span> <strong>" + item + "</strong> asistirá al evento del 8 de octubre en guliana point";
-        container.appendChild(div);
+      item.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        startY = e.clientY;
+        initialLeft = item.offsetLeft;
+        initialTop = item.offsetTop;
       });
-    }
 
-    function submitCustomForm(e) {
-      e.preventDefault();
-      var nickname = document.getElementById("nicknameUsuario").value.trim();
-      var entrada = document.querySelector('input[name="ticketType"]:checked').value;
-
-      if (!nickname) return;
-
-      var btn = document.getElementById("btnSubmitForm");
-      btn.disabled = true;
-      btn.innerText = "Enviando registro...";
-
-      var formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfqzYy8ufLWXZK0JXm8Z-XLTA7bW8cPqx-VwGLquPXNap6AXQ/formResponse";
-      
-      var formData = new FormData();
-      formData.append("entry.1000001", nickname);
-      formData.append("entry.1000004", entrada);
-
-      fetch(formUrl, {
-        method: "POST",
-        mode: "no-cors",
-        body: formData
-      }).finally(function() {
-        var savedList = JSON.parse(localStorage.getItem("guliana_attendees_list")) || [];
-        savedList.push(nickname);
-        localStorage.setItem("guliana_attendees_list", JSON.stringify(savedList));
-
-        loadAttendees();
-
-        document.getElementById("fullscreenSuccess").style.display = "flex";
-        document.getElementById("nicknameUsuario").value = "";
-        btn.disabled = false;
-        btn.innerText = "Confirmar y Enviar Registro";
+      window.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+          item.style.left = (initialLeft + e.clientX - startX) + 'px';
+          item.style.top = (initialTop + e.clientY - startY) + 'px';
+        }
       });
+
+      window.addEventListener('mouseup', () => isDragging = false);
+
+      container.appendChild(item);
     }
 
-    function closeFullscreenSuccess() {
-      document.getElementById("fullscreenSuccess").style.display = "none";
+    function setLips(color) {
+      const overlay = document.getElementById('lipstickOverlay');
+      if (color === 'transparent') {
+        overlay.style.background = 'transparent';
+        overlay.style.boxShadow = 'none';
+      } else {
+        overlay.style.background = `radial-gradient(circle at 50% 60%, ${color}66 0%, transparent 60%)`;
+        overlay.style.mixBlendMode = 'multiply';
+      }
+    }
+
+    function resetProbador() {
+      document.querySelectorAll('.overlay-item').forEach(el => el.remove());
+      setLips('transparent');
     }
   </script>
 </body>
