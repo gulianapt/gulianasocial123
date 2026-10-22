@@ -25,6 +25,13 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    /* Cambio de fondo a Beige exclusivo para la sección Catálogo */
+    body.beige-theme {
+      background: #f5ede0 !important;
+      color: #2b1810 !important;
     }
 
     header {
@@ -38,6 +45,13 @@
       top: 0;
       z-index: 1000;
       box-shadow: 0 4px 20px rgba(255, 0, 50, 0.4);
+      transition: background 0.4s ease;
+    }
+
+    body.beige-theme header {
+      background: #3a151e;
+      border-bottom: 2px solid #80001a;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .logo {
@@ -226,12 +240,24 @@
       margin-bottom: 2rem;
     }
 
+    /* Estilo Beige para tarjetas en Catálogo */
+    body.beige-theme .card {
+      background: #ffffff;
+      border: 2px solid #d4a373;
+      box-shadow: 0 8px 25px rgba(100, 50, 20, 0.15);
+      color: #2b1810;
+    }
+
     .card h2 {
       color: #ff3366;
       margin-bottom: 1.5rem;
       text-align: center;
       font-size: 1.8rem;
       text-transform: uppercase;
+    }
+
+    body.beige-theme .card h2 {
+      color: #80001a;
     }
 
     .transf-detail-box {
@@ -295,6 +321,11 @@
       color: #ffe6eb;
     }
 
+    body.beige-theme .transf-footer {
+      background: rgba(128, 0, 26, 0.1);
+      color: #4a1521;
+    }
+
     .lingerie-catalog {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -313,6 +344,12 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+    }
+
+    body.beige-theme .lingerie-item {
+      background: #fdfaf6;
+      border: 1px solid #d4a373;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
     }
 
     .lingerie-item:hover {
@@ -341,10 +378,18 @@
       margin-bottom: 0.3rem;
     }
 
+    body.beige-theme .lingerie-title {
+      color: #3a151e;
+    }
+
     .lingerie-desc {
       font-size: 0.85rem;
       color: #ffb3c1;
       margin-bottom: 0.8rem;
+    }
+
+    body.beige-theme .lingerie-desc {
+      color: #6b4d3e;
     }
 
     .lingerie-price {
@@ -354,7 +399,11 @@
       margin-bottom: 0.8rem;
     }
 
-    /* ESTILOS PROBADOR IA INTELIGENTE */
+    body.beige-theme .lingerie-price {
+      color: #80001a;
+    }
+
+    /* ESTILOS PROBADOR IA CON CANVAS MEJORADO */
     .probador-layout {
       display: grid;
       grid-template-columns: 1fr 320px;
@@ -380,12 +429,11 @@
       overflow: hidden;
     }
 
-    .smart-canvas {
+    .main-canvas {
       max-width: 100%;
-      max-height: 450px;
+      max-height: 460px;
       display: block;
       border-radius: 10px;
-      box-shadow: 0 0 20px rgba(255, 0, 51, 0.4);
     }
 
     .panel-options {
@@ -410,7 +458,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 0.6rem;
-      max-height: 200px;
+      max-height: 180px;
       overflow-y: auto;
       margin-bottom: 0.8rem;
     }
@@ -455,6 +503,25 @@
       border-radius: 50%;
       border: 2px solid #fff;
       cursor: pointer;
+    }
+
+    .controls-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      background: rgba(0,0,0,0.3);
+      padding: 0.8rem;
+      border-radius: 10px;
+      margin-bottom: 0.8rem;
+    }
+
+    .controls-box label {
+      font-size: 0.75rem;
+      color: #ffb3c1;
+    }
+
+    .controls-box input[type="range"] {
+      width: 100%;
     }
 
     .ent-layout {
@@ -533,34 +600,6 @@
       font-weight: 600;
     }
 
-    .custom-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .input-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .input-group label {
-      color: #ff8099;
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .input-group input {
-      background: #120005;
-      border: 1.5px solid #ff1a40;
-      color: #fff;
-      padding: 0.9rem 1.2rem;
-      border-radius: 12px;
-      outline: none;
-      font-size: 1rem;
-    }
-
     .yape-box {
       background: rgba(116, 23, 186, 0.2);
       border: 2px solid #7417ba;
@@ -609,7 +648,7 @@
     </div>
     <nav>
       <button class="nav-btn" id="btn-transformacion" onclick="showSection('transformacion')">Transformación</button>
-      <button class="nav-btn" id="btn-probador" onclick="showSection('probador')">✨ Probador IA Pro</button>
+      <button class="nav-btn" id="btn-probador" onclick="showSection('probador')">✨ Probador IA</button>
       <button class="nav-btn" id="btn-lenceria" onclick="showSection('lenceria')">Catálogo</button>
       <button class="nav-btn" id="btn-entretenimiento" onclick="showSection('entretenimiento')">Entretenimiento</button>
       <button class="nav-btn" id="btn-eventos" onclick="showSection('eventos')">Eventos</button>
@@ -624,7 +663,7 @@
         <p class="hero-subtitle">Tu comunidad exclusiva de entretenimiento y entradas a los mejores eventos.</p>
         
         <div class="hero-nav-buttons">
-          <button class="btn-pill" onclick="showSection('probador')">✨ PROBADOR INTELIGENTE IA</button>
+          <button class="btn-pill" onclick="showSection('probador')">✨ PROBADOR CON IA</button>
           <button class="btn-pill" onclick="showSection('transformacion')">TRANSFORMACIÓN</button>
           <button class="btn-pill" onclick="showSection('lenceria')">CATÁLOGO</button>
           <button class="btn-pill" onclick="showSection('entretenimiento')">ENTRETENIMIENTO</button>
@@ -647,21 +686,21 @@
       </div>
     </section>
 
-    <!-- PROBADOR IA INTELIGENTE -->
+    <!-- PROBADOR CON IA OPTIMIZADO -->
     <section id="probador" class="section">
       <div class="card">
-        <h2>✨ PROBADOR INTELIGENTE CON IA</h2>
+        <h2>✨ PROBADOR VIRTUAL Y SIMULADOR IA</h2>
         <p style="text-align: center; color: #ffb3c1; margin-bottom: 1.5rem;">
-          Sube tu foto. La IA detectará automáticamente tu cabeza y rostro para ajustar la peluca y el maquillaje con precisión.
+          Sube tu foto, selecciona la peluca o prenda del catálogo y presiona <strong>"APLICAR FUSIÓN E ILUMINACIÓN IA"</strong> para que se ajuste perfectamente a tu rostro y cuerpo.
         </p>
 
         <div class="probador-layout">
           <div>
             <div class="canvas-preview-container" id="canvasContainer">
               <span id="uploadHint" style="color: #ff8099; padding: 2rem; text-align: center;">
-                📸 Sube tu foto desde el panel lateral para activar el ajuste automático de IA
+                📸 Sube tu foto desde el panel lateral para iniciar la prueba
               </span>
-              <canvas id="smartCanvas" class="smart-canvas" style="display:none;"></canvas>
+              <canvas id="probadorCanvas" class="main-canvas" style="display:none;"></canvas>
             </div>
           </div>
 
@@ -669,33 +708,47 @@
             <div class="panel-subtitle">1. Carga tu Foto</div>
             <input type="file" id="userPhotoInput" accept="image/*" style="width: 100%; font-size: 0.8rem; margin-bottom: 0.8rem;">
 
-            <div class="panel-subtitle">2. Ajuste IA de Pelucas</div>
+            <div class="panel-subtitle">2. Elige Pelucas / Prendas</div>
             <div class="items-scroll-grid">
-              <div class="item-select-card" onclick="applySmartWig('https://i.ibb.co/BKrpHFg2/image.jpeg')">
+              <div class="item-select-card" onclick="setWig('https://i.ibb.co/BKrpHFg2/image.jpeg')">
                 <img src="https://i.ibb.co/BKrpHFg2/image.jpeg" alt="Negro Castaño">
                 <p>Negro Castaño (S/25)</p>
               </div>
-              <div class="item-select-card" onclick="applySmartWig('https://i.ibb.co/zcKSJP5/image.jpeg')">
+              <div class="item-select-card" onclick="setWig('https://i.ibb.co/zcKSJP5/image.jpeg')">
                 <img src="https://i.ibb.co/zcKSJP5/image.jpeg" alt="Rubio Plateado">
                 <p>Rubio Plateado (S/30)</p>
               </div>
-              <div class="item-select-card" onclick="applySmartWig('https://i.ibb.co/Fks2CjxX/image.jpeg')">
+              <div class="item-select-card" onclick="setWig('https://i.ibb.co/Fks2CjxX/image.jpeg')">
                 <img src="https://i.ibb.co/Fks2CjxX/image.jpeg" alt="Cabellera Rubia">
                 <p>Cabellera Rubia (S/20)</p>
               </div>
+              <div class="item-select-card" onclick="setWig('https://files.catbox.moe/wlq6a0.jpeg')">
+                <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Malla Sensual">
+                <p>Malla Sensual (S/15)</p>
+              </div>
             </div>
 
-            <div class="panel-subtitle">3. Maquillaje Labios IA</div>
-            <p style="font-size: 0.75rem; color: #ffb3c1; margin-bottom: 0.4rem;">Selecciona tono de labial:</p>
+            <div class="panel-subtitle">3. Ajuste de Posición</div>
+            <div class="controls-box">
+              <label>Posición Vertical (Y):</label>
+              <input type="range" id="posYSlider" min="0" max="100" value="10" oninput="renderCanvas()">
+              <label>Posición Horizontal (X):</label>
+              <input type="range" id="posXSlider" min="0" max="100" value="50" oninput="renderCanvas()">
+              <label>Tamaño / Escala:</label>
+              <input type="range" id="scaleSlider" min="30" max="150" value="70" oninput="renderCanvas()">
+            </div>
+
+            <div class="panel-subtitle">4. Tono de Labial IA</div>
             <div class="color-picker-group">
-              <div class="color-btn" style="background: #e60039;" onclick="applySmartLips('#e60039')"></div>
-              <div class="color-btn" style="background: #ff3399;" onclick="applySmartLips('#ff3399')"></div>
-              <div class="color-btn" style="background: #990033;" onclick="applySmartLips('#990033')"></div>
-              <div class="color-btn" style="background: #ff6600;" onclick="applySmartLips('#ff6600')"></div>
-              <div class="color-btn" style="background: #40000d; border-style: dashed;" onclick="applySmartLips(null)">❌</div>
+              <div class="color-btn" style="background: #e60039;" onclick="setLips('#e60039')"></div>
+              <div class="color-btn" style="background: #ff3399;" onclick="setLips('#ff3399')"></div>
+              <div class="color-btn" style="background: #990033;" onclick="setLips('#990033')"></div>
+              <div class="color-btn" style="background: #ff6600;" onclick="setLips('#ff6600')"></div>
+              <div class="color-btn" style="background: transparent; border-style: dashed;" onclick="setLips(null)">❌</div>
             </div>
 
-            <button class="btn-pill" style="width: 100%; font-size: 0.8rem; background: #80001a; margin-top: 0.8rem;" onclick="resetSmartProbador()">Restaurar Original</button>
+            <button class="btn-pill" style="width: 100%; font-size: 0.85rem; background: linear-gradient(90deg, #ff0033, #ff6600); margin-bottom: 0.5rem;" onclick="applyAIFusion()">✨ APLICAR FUSIÓN E ILUMINACIÓN IA</button>
+            <button class="btn-pill" style="width: 100%; font-size: 0.8rem; background: #80001a;" onclick="resetProbador()">Restaurar Original</button>
           </div>
         </div>
       </div>
@@ -739,11 +792,11 @@
       </div>
     </section>
 
-    <!-- CATÁLOGO EXCLUSIVO -->
+    <!-- CATÁLOGO EXCLUSIVO (FONDO BEIGE) -->
     <section id="lenceria" class="section">
       <div class="card">
         <h2 style="text-align: center;">🔥 CATÁLOGO EXCLUSIVO DE LENCERÍA Y PRENDAS 🔥</h2>
-        <p style="text-align: center; color: #ffb3c1; margin-bottom: 1.5rem;">
+        <p style="text-align: center; margin-bottom: 1.5rem;">
           Explora nuestros productos disponibles. Escríbenos directamente por WhatsApp para realizar tu pedido con envío discreto.
         </p>
 
@@ -774,271 +827,4 @@
               <div class="lingerie-title">Pantimedias Abertura Centro</div>
               <div class="lingerie-desc">Diseño sexy con abertura frontal para máxima comodidad.</div>
               <div class="lingerie-price">S/ 10.00</div>
-              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Pantimedias%20Abertura%20Centro%20(S/%2010.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
-              </a>
-            </div>
-          </div>
-
-          <div class="lingerie-item">
-            <img src="https://files.catbox.moe/8rtvtj.jpeg" alt="Lencería Enteriza">
-            <div class="lingerie-info">
-              <div class="lingerie-title">Lencería Enteriza</div>
-              <div class="lingerie-desc">Lencería completa ajustada que resalta tus curvas.</div>
-              <div class="lingerie-price">S/ 12.00</div>
-              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Lencer%C3%ADa%20Enteriza%20(S/%2012.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
-              </a>
-            </div>
-          </div>
-
-          <div class="lingerie-item">
-            <img src="https://files.catbox.moe/uso0qx.jpeg" alt="Malla Enteriza">
-            <div class="lingerie-info">
-              <div class="lingerie-title">Malla Enteriza Atrevida</div>
-              <div class="lingerie-desc">Estilo enterizo en red fina para un look impactante.</div>
-              <div class="lingerie-price">S/ 12.00</div>
-              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Enteriza%20(S/%2012.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
-              </a>
-            </div>
-          </div>
-
-          <div class="lingerie-item">
-            <img src="https://files.catbox.moe/fvfzh0.jpeg" alt="Mallas Finas">
-            <div class="lingerie-info">
-              <div class="lingerie-title">Mallas Finas Clásicas</div>
-              <div class="lingerie-desc">Prenda delicada y femenina para cualquier ocasión.</div>
-              <div class="lingerie-price">S/ 10.00</div>
-              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Mallas%20Finas%20Cl%C3%A1sicas%20(S/%2010.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
-              </a>
-            </div>
-          </div>
-
-          <div class="lingerie-item">
-            <img src="https://files.catbox.moe/u926x5.jpeg" alt="Botas Largas">
-            <div class="lingerie-info">
-              <div class="lingerie-title">Botas Largas Elegantes</div>
-              <div class="lingerie-desc">Botas altas en Talla 39, material de alta calidad.</div>
-              <div class="lingerie-price">S/ 79.00</div>
-              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Botas%20Largas%20Talla%2039%20(S/%2079.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
-              </a>
-            </div>
-          </div>
-
-          <div class="lingerie-item">
-            <img src="https://i.ibb.co/RT2NgNZF/image.jpeg" alt="Malla Fina">
-            <div class="lingerie-info">
-              <div class="lingerie-title">Malla Fina</div>
-              <div class="lingerie-desc">Diseño delicado y cómodo.</div>
-              <div class="lingerie-price">S/ 6.00</div>
-              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Fina%20(S/%206.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
-              </a>
-            </div>
-          </div>
-
-          <div class="lingerie-item">
-            <img src="https://i.ibb.co/XvpT4R3/image.jpeg" alt="Malla de Lencería Extra Fina">
-            <div class="lingerie-info">
-              <div class="lingerie-title">Malla Lencería Extra Fina</div>
-              <div class="lingerie-desc">Acabado suave y ajustado.</div>
-              <div class="lingerie-price">S/ 6.00</div>
-              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Lencer%C3%ADa%20Extra%20Fina%20(S/%206.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
-              </a>
-            </div>
-          </div>
-
-          <div class="lingerie-item">
-            <img src="https://i.ibb.co/BKrpHFg2/image.jpeg" alt="Cabellera de Dama Negro Castaño">
-            <div class="lingerie-info">
-              <div class="lingerie-title">Cabellera Negro Castaño</div>
-              <div class="lingerie-desc">Cabellera de dama en tono negro castaño natural.</div>
-              <div class="lingerie-price">S/ 25.00</div>
-              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Negro%20Casta%C3%B1o%20(S/%2025.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
-              </a>
-            </div>
-          </div>
-
-          <div class="lingerie-item">
-            <img src="https://i.ibb.co/zcKSJP5/image.jpeg" alt="Cabellera Fina Rubio Plateado">
-            <div class="lingerie-info">
-              <div class="lingerie-title">Cabellera Rubio Plateado</div>
-              <div class="lingerie-desc">Cabellera de dama fina en tono rubio platinado.</div>
-              <div class="lingerie-price">S/ 30.00</div>
-              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Rubio%20Plateado%20(S/%2030.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
-              </a>
-            </div>
-          </div>
-
-          <div class="lingerie-item">
-            <img src="https://i.ibb.co/Fks2CjxX/image.jpeg" alt="Cabellera Rubia">
-            <div class="lingerie-info">
-              <div class="lingerie-title">Cabellera Rubia</div>
-              <div class="lingerie-desc">Cabellera rubia radiante para cambio de look.</div>
-              <div class="lingerie-price">S/ 20.00</div>
-              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Rubia%20(S/%2020.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="transf-footer" style="text-align: center; margin-top: 2rem;">
-          <strong>📦 Entregas discretas y empaques reservados en todas tus compras. 🔥</strong>
-        </div>
-      </div>
-    </section>
-
-    <!-- ENTRETENIMIENTO -->
-    <section id="entretenimiento" class="section">
-      <div class="card">
-        <h2>Galería de Entretenimiento</h2>
-
-        <div class="ent-layout">
-          <div class="ent-buttons-container">
-            <button class="profile-btn" id="btn-profile-guliana" onclick="toggleProfile('guliana')">GULIANA 🔥</button>
-            <button class="profile-btn" id="btn-profile-estefany" onclick="toggleProfile('estefany')">ESTEFANY ✨</button>
-          </div>
-
-          <img src="https://i.xgroovy.com/contents/videos_screenshots/301000/301867/preview_gif.mp4.jpg" alt="Preview Entretenimiento" class="ent-banner-img">
-        </div>
-
-        <div id="content-guliana" class="media-grid" style="display: none;">
-          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/z2p1lw.mp4" type="video/mp4"></video><p>Guliana Video 🔥 1</p></div>
-          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/78l01v.mp4" type="video/mp4"></video><p>Guliana Video 🔥 2</p></div>
-          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/xlbhaz.mp4" type="video/mp4"></video><p>Guliana Video 🔥 3</p></div>
-          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/40nnxu.mp4" type="video/mp4"></video><p>Guliana Video 🔥 4</p></div>
-          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/ad4p2e.mp4" type="video/mp4"></video><p>Guliana Video 🔥 5</p></div>
-        </div>
-
-        <div id="content-estefany" class="media-grid" style="display: none;">
-          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/kpx6e4.mp4" type="video/mp4"></video><p>Estefany Video ✨ 1</p></div>
-          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/5nqy44.mp4" type="video/mp4"></video><p>Estefany Video ✨ 2</p></div>
-          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/o10icr.mp4" type="video/mp4"></video><p>Estefany Video ✨ 3</p></div>
-          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/4u54y0.mp4" type="video/mp4"></video><p>Estefany Video ✨ 4</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EVENTOS -->
-    <section id="eventos" class="section">
-      <div class="card">
-        <h2>Entradas y Eventos</h2>
-        <p style="text-align: center; color: #ffb3c1; margin-bottom: 1.5rem;">
-          Ingresa tu Nombre / Nickname para registrar tu entrada a los eventos exclusivos.
-        </p>
-
-        <div class="yape-box">
-          <h3>📱 PAGO CON YAPE</h3>
-          <p>Realiza tu pago por Yape antes de confirmar tu registro de entrada.</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    function showSection(id) {
-      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
-
-    function toggleProfile(name) {
-      document.getElementById('content-guliana').style.display = (name === 'guliana') ? 'grid' : 'none';
-      document.getElementById('content-estefany').style.display = (name === 'estefany') ? 'grid' : 'none';
-    }
-
-    let originalImageObj = null;
-    let currentWigSrc = null;
-    let currentLipColor = null;
-
-    document.getElementById('userPhotoInput').addEventListener('change', function(e) {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(evt) {
-          const img = new Image();
-          img.onload = function() {
-            originalImageObj = img;
-            document.getElementById('uploadHint').style.display = 'none';
-            const canvas = document.getElementById('smartCanvas');
-            canvas.style.display = 'block';
-            renderSmartCanvas();
-          };
-          img.src = evt.target.result;
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
-    function applySmartWig(src) {
-      currentWigSrc = src;
-      renderSmartCanvas();
-    }
-
-    function applySmartLips(color) {
-      currentLipColor = color;
-      renderSmartCanvas();
-    }
-
-    function resetSmartProbador() {
-      currentWigSrc = null;
-      currentLipColor = null;
-      renderSmartCanvas();
-    }
-
-    function renderSmartCanvas() {
-      if (!originalImageObj) return;
-      const canvas = document.getElementById('smartCanvas');
-      const ctx = canvas.getContext('2d');
-
-      canvas.width = originalImageObj.width;
-      canvas.height = originalImageObj.height;
-
-      // Dibujar foto base del usuario
-      ctx.drawImage(originalImageObj, 0, 0);
-
-      // Simular procesamiento de IA para encajar la peluca de forma automática arriba
-      if (currentWigSrc) {
-        const wigImg = new Image();
-        wigImg.crossOrigin = "anonymous";
-        wigImg.onload = function() {
-          // Cálculo automático de posición en la parte superior central (zona de la cabeza)
-          const wigWidth = canvas.width * 0.75;
-          const wigHeight = (wigImg.height / wigImg.width) * wigWidth;
-          const wigX = (canvas.width - wigWidth) / 2;
-          const wigY = canvas.height * 0.02; // Ubicación automática en la corona
-
-          ctx.save();
-          ctx.globalAlpha = 0.92;
-          ctx.drawImage(wigImg, wigX, wigY, wigWidth, wigHeight);
-          ctx.restore();
-        };
-        wigImg.src = currentWigSrc;
-      }
-
-      // Simular efecto de labial de IA
-      if (currentLipColor) {
-        ctx.save();
-        ctx.fillStyle = currentLipColor;
-        ctx.globalAlpha = 0.45;
-        ctx.globalCompositeOperation = 'multiply';
-        // Posición inteligente aproximada en la parte inferior central del rostro
-        const lipX = canvas.width * 0.44;
-        const lipY = canvas.height * 0.62;
-        const lipW = canvas.width * 0.12;
-        const lipH = canvas.height * 0.04;
-        ctx.beginPath();
-        ctx.ellipse(lipX + lipW/2, lipY + lipH/2, lipW/2, lipH/2, 0, 0, 2 * Math.PI);
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-  </script>
-</body>
-</html>
+              <a href="
