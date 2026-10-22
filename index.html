@@ -165,58 +165,6 @@
       background: #ff1a40;
     }
 
-    .expert-title {
-      font-size: 1.6rem;
-      font-weight: 900;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 1.8rem;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-    }
-
-    .transformation-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .transformation-card {
-      background: #110005;
-      border-radius: 15px;
-      overflow: hidden;
-      border: 1px solid #ff1a40;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .transformation-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(255, 0, 51, 0.8);
-    }
-
-    .transformation-card img {
-      width: 100%;
-      height: 380px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .card-banner-btn {
-      background: linear-gradient(90deg, #ff0033, #e6002e);
-      color: white;
-      padding: 0.7rem;
-      font-weight: 800;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-    }
-
     .card {
       background: rgba(20, 0, 5, 0.9);
       border-radius: 20px;
@@ -234,67 +182,7 @@
       text-transform: uppercase;
     }
 
-    .transf-detail-box {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .transf-detail-img {
-      width: 100%;
-      max-width: 320px;
-      border-radius: 15px;
-      border: 3px solid #ff0055;
-      box-shadow: 0 0 25px rgba(255, 0, 85, 0.6);
-      margin: 0 auto;
-    }
-
-    .transf-detail-content {
-      flex: 1;
-      min-width: 280px;
-    }
-
-    .transf-main-title {
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: #ff3366;
-      text-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
-      margin-bottom: 0.5rem;
-    }
-
-    .transf-subtitle {
-      font-size: 1.1rem;
-      color: #ffd1dc;
-      font-weight: 600;
-      margin-bottom: 1.2rem;
-    }
-
-    .transf-list {
-      list-style: none;
-      margin: 1.2rem 0;
-    }
-
-    .transf-list li {
-      padding: 0.4rem 0;
-      font-size: 0.98rem;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      border-bottom: 1px dotted rgba(255, 26, 64, 0.3);
-    }
-
-    .transf-footer {
-      background: rgba(255, 0, 51, 0.2);
-      border-left: 4px solid #ff0033;
-      padding: 0.8rem 1rem;
-      border-radius: 8px;
-      margin-top: 1rem;
-      font-weight: 600;
-      color: #ffe6eb;
-    }
-
+    /* CATÁLOGO CON FONDO BEIGE */
     .lingerie-catalog {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
@@ -303,12 +191,12 @@
     }
 
     .lingerie-item {
-      background: #110005;
-      border: 1px solid #ff1a40;
+      background: #f0e6d2; /* Fondo Beige */
+      border: 2px solid #d4a373;
       border-radius: 15px;
       overflow: hidden;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
       transition: transform 0.3s;
       display: flex;
       flex-direction: column;
@@ -317,7 +205,7 @@
 
     .lingerie-item:hover {
       transform: translateY(-5px);
-      box-shadow: 0 0 25px rgba(255, 0, 85, 0.7);
+      box-shadow: 0 0 20px rgba(212, 163, 115, 0.8);
     }
 
     .lingerie-item img {
@@ -336,144 +224,70 @@
 
     .lingerie-title {
       font-weight: 800;
-      color: #ffffff;
+      color: #33000a;
       font-size: 1rem;
       margin-bottom: 0.3rem;
     }
 
     .lingerie-desc {
       font-size: 0.85rem;
-      color: #ffb3c1;
+      color: #553311;
       margin-bottom: 0.8rem;
     }
 
     .lingerie-price {
       font-size: 1.3rem;
       font-weight: 900;
-      color: #ff3366;
+      color: #cc0029;
       margin-bottom: 0.8rem;
     }
 
-    .ent-layout {
+    /* MODAL DE LA RULETA AL INICIO */
+    .roulette-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(10, 0, 3, 0.92);
+      z-index: 9999;
       display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
     }
 
-    .ent-buttons-container {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      min-width: 200px;
-    }
-
-    .profile-btn {
-      background: linear-gradient(135deg, #80001a 0%, #ff0033 100%);
-      color: white;
-      padding: 1.2rem;
-      border-radius: 15px;
-      font-size: 1.3rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      border: 2px solid #ff6680;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(255, 0, 51, 0.4);
-      transition: all 0.3s;
-      text-align: center;
-    }
-
-    .profile-btn:hover, .profile-btn.active-profile {
-      background: linear-gradient(135deg, #ff0033 0%, #ff6680 100%);
-      transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(255, 0, 51, 0.9);
-    }
-
-    .ent-banner-img {
-      width: 100%;
-      max-width: 320px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 15px;
-      border: 2px solid #ff0033;
-      box-shadow: 0 0 15px rgba(255, 0, 51, 0.5);
-      margin: 0 auto;
-    }
-
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .media-item {
+    .roulette-modal-content {
       background: #1a0007;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 1px solid #ff1a40;
-    }
-
-    .media-item video {
+      border: 3px solid #ff0033;
+      box-shadow: 0 0 40px rgba(255, 0, 51, 0.8);
+      border-radius: 25px;
+      padding: 1.8rem;
+      max-width: 450px;
       width: 100%;
-      height: 300px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .media-item p {
-      padding: 0.8rem;
-      font-size: 0.9rem;
-      color: #ffe6eb;
       text-align: center;
-      font-weight: 600;
+      position: relative;
+      max-height: 95vh;
+      overflow-y: auto;
     }
 
-    .custom-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .input-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .input-group label {
-      color: #ff8099;
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .input-group input {
-      background: #120005;
-      border: 1.5px solid #ff1a40;
-      color: #fff;
-      padding: 0.9rem 1.2rem;
-      border-radius: 12px;
-      outline: none;
-      font-size: 1rem;
-    }
-
-    /* ESTILOS DE LA RULETA DE PREMIOS */
-    .roulette-section {
-      text-align: center;
-      background: rgba(30, 0, 10, 0.95);
-      border: 2px solid #ff0033;
-      border-radius: 20px;
-      padding: 2rem 1rem;
-      margin-top: 2rem;
-      box-shadow: 0 0 30px rgba(255, 0, 51, 0.4);
+    .close-modal-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: transparent;
+      border: none;
+      color: #ff3366;
+      font-size: 1.8rem;
+      font-weight: bold;
+      cursor: pointer;
     }
 
     .roulette-container {
       position: relative;
-      width: 320px;
-      height: 320px;
-      margin: 1.5rem auto;
+      width: 280px;
+      height: 280px;
+      margin: 1rem auto;
     }
 
     canvas#rouletteCanvas {
@@ -486,54 +300,105 @@
 
     .roulette-pointer {
       position: absolute;
-      top: -15px;
+      top: -12px;
       left: 50%;
       transform: translateX(-50%);
       width: 0;
       height: 0;
-      border-left: 15px solid transparent;
-      border-right: 15px solid transparent;
-      border-top: 30px solid #ffcc00;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      border-top: 24px solid #ffcc00;
       z-index: 10;
       filter: drop-shadow(0 0 5px #ff0000);
     }
 
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 0.8rem;
+      text-align: left;
+    }
+
+    .input-group label {
+      color: #ff8099;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    .input-group input {
+      background: #0d0004;
+      border: 1.5px solid #ff1a40;
+      color: #fff;
+      padding: 0.7rem 1rem;
+      border-radius: 10px;
+      outline: none;
+      font-size: 0.95rem;
+    }
+
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-      .hero-title-main {
-        font-size: 2rem;
-      }
-      .hero-nav-buttons {
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-      .btn-pill {
-        width: 100%;
-      }
-      .ent-layout {
-        flex-direction: column;
-      }
-      .roulette-container {
-        width: 280px;
-        height: 280px;
-      }
+      header { flex-direction: column; gap: 0.8rem; }
+      .hero-title-main { font-size: 2rem; }
+      .hero-nav-buttons { flex-direction: column; }
+      .btn-pill { width: 100%; }
+      .roulette-container { width: 240px; height: 240px; }
     }
   </style>
 </head>
 <body>
+
+  <!-- MODAL DE LA RULETA (APARECE AL CARGAR LA PÁGINA) -->
+  <div id="rouletteModal" class="roulette-modal-overlay">
+    <div class="roulette-modal-content">
+      <button class="close-modal-btn" onclick="closeRouletteModal()">&times;</button>
+      <h2 style="color: #ff3366; font-size: 1.5rem; margin-bottom: 0.4rem;">🎰 RULETA DE PREMIOS 🎰</h2>
+      <p style="font-size: 0.85rem; color: #ffe6eb; margin-bottom: 1rem;">
+        ¡Ingresa tus datos para probar tu suerte! (Válido 1 intento cada 24 hrs).
+      </p>
+
+      <!-- FORMULARIO DE INGRESO -->
+      <div id="registerForm">
+        <div class="input-group">
+          <label for="userName">Tu Nombre / Nickname:</label>
+          <input type="text" id="userName" placeholder="Ej. Carlos" required>
+        </div>
+        <div class="input-group">
+          <label for="userWhatsApp">Número de WhatsApp:</label>
+          <input type="tel" id="userWhatsApp" placeholder="Ej. 930841255" required>
+        </div>
+        <button class="btn-pill" onclick="validateAndUnlock()" style="width: 100%; margin-top: 0.5rem;">🔓 ACTIVAR RULETA</button>
+      </div>
+
+      <!-- CONTENEDOR DE JUEGO -->
+      <div id="gameBox" style="display: none;">
+        <h4 id="welcomeUser" style="color: #ffcc00; font-size: 1rem;"></h4>
+        <div class="roulette-container">
+          <div class="roulette-pointer"></div>
+          <canvas id="rouletteCanvas" width="300" height="300"></canvas>
+        </div>
+        <button id="spinBtn" class="btn-pill" onclick="spinRoulette()" style="background: #ffcc00; color: #33000a; width: 100%;">🎯 ¡GIRAR RULETA!</button>
+      </div>
+
+      <!-- RESULTADO -->
+      <div id="resultBox" style="display: none; margin-top: 1rem;">
+        <h3 id="prizeText" style="color: #00ff66; font-size: 1.2rem; margin-bottom: 0.8rem;"></h3>
+        <a id="claimBtn" href="#" target="_blank" style="text-decoration: none;">
+          <button class="btn-pill" style="background: #25d366; width: 100%;">📲 RECLAMAR EN WHATSAPP</button>
+        </a>
+      </div>
+
+    </div>
+  </div>
 
   <header>
     <div class="logo" onclick="showSection('home')">
       GULIANA <span class="logo-fire">🔥</span> SOCIAL
     </div>
     <nav>
-      <button class="nav-btn" id="btn-transformacion" onclick="showSection('transformacion')">Transformación</button>
-      <button class="nav-btn" id="btn-lenceria" onclick="showSection('lenceria')">Catálogo</button>
-      <button class="nav-btn" id="btn-entretenimiento" onclick="showSection('entretenimiento')">Entretenimiento</button>
-      <button class="nav-btn" id="btn-eventos" onclick="showSection('eventos')">Ruleta y Eventos</button>
+      <button class="nav-btn" onclick="showSection('transformacion')">Transformación</button>
+      <button class="nav-btn" onclick="showSection('lenceria')">Catálogo</button>
+      <button class="nav-btn" onclick="showSection('entretenimiento')">Entretenimiento</button>
+      <button class="nav-btn" onclick="showSection('eventos')">Eventos</button>
     </nav>
   </header>
 
@@ -548,121 +413,50 @@
           <button class="btn-pill" onclick="showSection('transformacion')">TRANSFORMACIÓN</button>
           <button class="btn-pill" onclick="showSection('lenceria')">CATÁLOGO</button>
           <button class="btn-pill" onclick="showSection('entretenimiento')">ENTRETENIMIENTO</button>
-          <button class="btn-pill" onclick="showSection('eventos')">RULETA Y EVENTOS</button>
-        </div>
-
-        <h2 class="expert-title">NUESTROS SERVICIOS DESTACADOS</h2>
-
-        <div class="transformation-grid">
-          <div class="transformation-card" onclick="showSection('transformacion')">
-            <img src="https://www.xpaja.net/views/albums/2024/07/anime-chichonas-xxx/thumb_9.jpg" alt="Servicio de Transformación">
-            <div class="card-banner-btn">SERVICIO DE TRANSFORMACIÓN ⚡</div>
-          </div>
-
-          <div class="transformation-card" onclick="showSection('lenceria')">
-            <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Lencería y Catálogo">
-            <div class="card-banner-btn">CATÁLOGO Y LENCERÍA 🔥</div>
-          </div>
+          <button class="btn-pill" onclick="showSection('eventos')">EVENTOS</button>
         </div>
       </div>
     </section>
 
-    <!-- TRANSFORMACIÓN FEMENINA -->
+    <!-- TRANSFORMACIÓN -->
     <section id="transformacion" class="section">
       <div class="card">
-        <div class="transf-detail-box">
-          <img src="https://imagex1.sx.cdn.live/images/pinporn/2021/11/16/26249016.jpg?width=300" alt="Transformación Femenina" class="transf-detail-img">
-          
-          <div class="transf-detail-content">
-            <h2 class="transf-main-title">💄 SERVICIO DE TRANSFORMACIÓN FEMENINA</h2>
-            <p class="transf-subtitle">¡Descubre una nueva versión de ti! ✨</p>
-            <p>Transformamos tu imagen de principio a fin para que disfrutes una experiencia completa de cambio de look.</p>
-            
-            <p style="margin-top: 1rem; font-weight: 700; color: #ff6680;">El servicio incluye:</p>
-            <ul class="transf-list">
-              <li>💄 Maquillaje profesional completo</li>
-              <li>👁️ Maquillaje y diseño de ojos</li>
-              <li>👄 Labios y acabado profesional</li>
-              <li>🧔 Corrección y cobertura de barba</li>
-              <li>✨ Contouring e iluminación facial</li>
-              <li>💇‍♀️ Peluca y colocación</li>
-              <li>👗 Elección y colocación del outfit</li>
-              <li>👠 Accesorios y complementos</li>
-              <li>📸 Sesión de fotos del resultado</li>
-              <li>🪞 Asesoría personalizada durante toda la transformación</li>
-            </ul>
-
-            <div class="transf-footer">
-              Experiencia completa: desde el rostro natural hasta el look final.<br>
-              <strong>Reserva tu cita y vive la transformación. 💕</strong>
-            </div>
-
-            <a href="https://wa.me/51930841255?text=Hola,%20deseo%20reservar%20una%20cita%20para%20el%20Servicio%20de%20Transformaci%C3%B3n" target="_blank" style="text-decoration: none;">
-              <button class="btn-pill" style="width: 100%; margin-top: 1.5rem; background: #25d366; box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);">💬 RESERVAR POR WHATSAPP (+51 930841255)</button>
-            </a>
-          </div>
-        </div>
+        <h2>💄 SERVICIO DE TRANSFORMACIÓN FEMENINA</h2>
+        <p style="text-align: center; color: #ffe6eb;">¡Reserva tu cita para una experiencia completa de cambio de look!</p>
       </div>
     </section>
 
-    <!-- CATÁLOGO EXCLUSIVO -->
+    <!-- CATÁLOGO (FONDO BEIGE) -->
     <section id="lenceria" class="section">
       <div class="card">
-        <h2 style="text-align: center;">🔥 CATÁLOGO EXCLUSIVO DE LENCERÍA Y PRENDAS 🔥</h2>
-        <p style="text-align: center; color: #ffb3c1; margin-bottom: 1.5rem;">
-          Explora nuestros productos disponibles. Escríbenos directamente por WhatsApp para realizar tu pedido con envío discreto.
-        </p>
-
-        <div style="text-align: center; margin-bottom: 1.5rem;">
-          <a href="https://wa.me/51930841255?text=Hola,%20deseo%20consultar%20el%20cat%C3%A1logo%20general" target="_blank" style="text-decoration: none;">
-            <button class="btn-pill" style="background: #25d366; box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);">
-              📲 Escríbenos al WhatsApp: +51 930841255
-            </button>
-          </a>
-        </div>
+        <h2>🔥 CATÁLOGO EXCLUSIVO DE PRENDAS 🔥</h2>
 
         <div class="lingerie-catalog">
-          <!-- PRODUCTOS -->
           <div class="lingerie-item">
             <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Mallas Sensuales">
             <div class="lingerie-info">
               <div class="lingerie-title">Mallas Sensuales</div>
-              <div class="lingerie-desc">Diseño calado y atrevido, ideal para un estilo seductor.</div>
+              <div class="lingerie-desc">Diseño calado y atrevido.</div>
               <div class="lingerie-price">S/ 15.00</div>
-              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Mallas%20Sensuales%20(S/%2015.00)" target="_blank" style="text-decoration: none;">
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Mallas%20Sensuales" target="_blank" style="text-decoration: none;">
                 <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
               </a>
             </div>
           </div>
 
           <div class="lingerie-item">
-            <img src="https://files.catbox.moe/4n7l6n.jpeg" alt="Pantimedias Abertura al Centro">
+            <img src="https://files.catbox.moe/4n7l6n.jpeg" alt="Pantimedias">
             <div class="lingerie-info">
-              <div class="lingerie-title">Pantimedias Abertura Centro</div>
-              <div class="lingerie-desc">Diseño sexy con abertura frontal para máxima comodidad.</div>
+              <div class="lingerie-title">Pantimedias Centro</div>
+              <div class="lingerie-desc">Diseño cómodo y sexy.</div>
               <div class="lingerie-price">S/ 10.00</div>
-              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Pantimedias%20Abertura%20Centro%20(S/%2010.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
-              </a>
-            </div>
-          </div>
-
-          <div class="lingerie-item">
-            <img src="https://files.catbox.moe/8rtvtj.jpeg" alt="Lencería Enteriza">
-            <div class="lingerie-info">
-              <div class="lingerie-title">Lencería Enteriza</div>
-              <div class="lingerie-desc">Lencería completa ajustada que resalta tus curvas.</div>
-              <div class="lingerie-price">S/ 12.00</div>
-              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Lencer%C3%ADa%20Enteriza%20(S/%2012.00)" target="_blank" style="text-decoration: none;">
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Pantimedias" target="_blank" style="text-decoration: none;">
                 <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
               </a>
             </div>
           </div>
         </div>
 
-        <div class="transf-footer" style="text-align: center; margin-top: 2rem;">
-          <strong>📦 Entregas discretas y empaques reservados en todas tus compras. 🔥</strong>
-        </div>
       </div>
     </section>
 
@@ -670,67 +464,13 @@
     <section id="entretenimiento" class="section">
       <div class="card">
         <h2>Galería de Entretenimiento</h2>
-
-        <div class="ent-layout">
-          <div class="ent-buttons-container">
-            <button class="profile-btn" id="btn-profile-guliana" onclick="requestAccess('guliana')">GULIANA 🔥</button>
-            <button class="profile-btn" id="btn-profile-estefany" onclick="requestAccess('estefany')">ESTEFANY ✨</button>
-          </div>
-          <img src="https://i.xgroovy.com/contents/videos_screenshots/301000/301867/preview_gif.mp4.jpg" alt="Preview" class="ent-banner-img">
-        </div>
-
-        <div id="content-guliana" class="media-grid" style="display: none;">
-          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/z2p1lw.mp4" type="video/mp4"></video><p>Guliana Video 🔥 1</p></div>
-        </div>
-
-        <div id="content-estefany" class="media-grid" style="display: none;">
-          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/kpx6e4.mp4" type="video/mp4"></video><p>Estefany Video ✨ 1</p></div>
-        </div>
       </div>
     </section>
 
-    <!-- EVENTOS Y RULETA DE PREMIOS -->
+    <!-- EVENTOS -->
     <section id="eventos" class="section">
       <div class="card">
-        <h2>🎉 RULETA DE PREMIOS EXCLUSIVOS 🔥</h2>
-        <p style="text-align: center; color: #ffb3c1; margin-bottom: 1.5rem;">
-          ¡Regístrate con tu número de WhatsApp y gira la ruleta para ganar premios y descuentos increíbles!
-        </p>
-
-        <!-- FORMULARIO DE REGISTRO PREVIO PARA GIRAR -->
-        <div id="register-container" class="custom-form" style="max-width: 400px; margin: 0 auto;">
-          <div class="input-group">
-            <label for="userName">Tu Nombre / Nickname:</label>
-            <input type="text" id="userName" placeholder="Ej. Carlos" required>
-          </div>
-          <div class="input-group">
-            <label for="userWhatsApp">Número de WhatsApp:</label>
-            <input type="tel" id="userWhatsApp" placeholder="Ej. 930841255" required>
-          </div>
-          <button type="button" class="btn-pill" onclick="unlockRoulette()" style="margin-top: 1rem;">🔓 DESBLOQUEAR RULETA</button>
-        </div>
-
-        <!-- CONTENEDOR DE LA RULETA (Oculto hasta registrarse) -->
-        <div id="roulette-section" class="roulette-section" style="display: none;">
-          <h3 id="welcome-user" style="color: #ff3366; margin-bottom: 0.5rem;">¡Es tu turno de girar!</h3>
-          <p style="font-size: 0.9rem; color: #ffe6eb;">¡Haz clic en el botón para probar tu suerte!</p>
-          
-          <div class="roulette-container">
-            <div class="roulette-pointer"></div>
-            <canvas id="rouletteCanvas" width="400" height="400"></canvas>
-          </div>
-
-          <button id="spinBtn" class="btn-pill" onclick="spinRoulette()" style="background: #ffcc00; color: #33000a; font-size: 1.1px; box-shadow: 0 0 20px rgba(255, 204, 0, 0.8);">🎯 ¡GIRAR LA RULETA AHORA!</button>
-          
-          <!-- RESULTADO Y BOTÓN DE WHATSAPP -->
-          <div id="result-box" style="margin-top: 1.5rem; display: none;">
-            <h3 id="prize-text" style="color: #00ff66; font-size: 1.4rem; margin-bottom: 1rem;"></h3>
-            <a id="whatsappClaimBtn" href="#" target="_blank" style="text-decoration: none;">
-              <button class="btn-pill" style="background: #25d366; box-shadow: 0 0 20px rgba(37, 211, 102, 0.8);">📲 RECLAMAR PREMIO POR WHATSAPP</button>
-            </a>
-          </div>
-        </div>
-
+        <h2>Entradas y Eventos</h2>
       </div>
     </section>
 
@@ -744,96 +484,134 @@
       window.scrollTo(0, 0);
     }
 
-    // Toggle de perfiles en entretenimiento
-    function requestAccess(profile) {
-      document.getElementById('content-guliana').style.display = (profile === 'guliana') ? 'grid' : 'none';
-      document.getElementById('content-estefany').style.display = (profile === 'estefany') ? 'grid' : 'none';
+    function closeRouletteModal() {
+      document.getElementById('rouletteModal').style.display = 'none';
     }
 
-    // --- LÓGICA DE LA RULETA DE PREMIOS ---
-    let userData = { name: "", whatsapp: "" };
+    // --- RULETA DE PREMIOS INTERCALADOS ---
     const prizes = [
-      "30% Descuento",
-      "Bebida Gratis",
-      "5% Descuento",
-      "¡Sigue Intentando!",
-      "2x1 en Ingresos",
-      "Entrada VIP Gratis"
+      "1 Lata de Pilsen",
+      "Intentar de nuevo",
+      "1 Lata de Cusqueña",
+      "Para la próxima",
+      "1 Lata de Mike's",
+      "Para la próxima"
     ];
-    const sliceColors = ["#ff0033", "#80001a", "#ff3366", "#40000d", "#ff1a40", "#660014"];
-    
+    const colors = ["#ff0033", "#40000d", "#ffcc00", "#40000d", "#00ccff", "#40000d"];
+
+    let currentName = "";
+    let currentPhone = "";
     let startAngle = 0;
     let arc = Math.PI / (prizes.length / 2);
     let spinTimeout = null;
     let spinAngleStart = 0;
     let spinTime = 0;
     let spinTimeTotal = 0;
-    let canvas, ctx;
 
-    function unlockRoulette() {
+    function validateAndUnlock() {
       const name = document.getElementById('userName').value.trim();
-      const whatsapp = document.getElementById('userWhatsApp').value.trim();
+      const phone = document.getElementById('userWhatsApp').value.trim();
 
-      if (!name || whatsapp.length < 9) {
-        alert("Por favor ingresa un nombre válido y un número de WhatsApp correcto.");
+      if (!name || phone.length < 9) {
+        alert("Por favor ingresa tu nombre y un WhatsApp válido.");
         return;
       }
 
-      userData.name = name;
-      userData.whatsapp = whatsapp;
+      // Control de 24 horas por número de WhatsApp
+      const lastSpin = localStorage.getItem('spin_' + phone);
+      const now = new Date().getTime();
 
-      // Ocultar formulario y mostrar ruleta
-      document.getElementById('register-container').style.display = 'none';
-      document.getElementById('roulette-section').style.display = 'block';
-      document.getElementById('welcome-user').innerText = `¡Bienvenido, ${name}! Gira para ganar:`;
+      if (lastSpin && (now - lastSpin) < 24 * 60 * 60 * 1000) {
+        const remainingHours = Math.ceil((24 * 60 * 60 * 1000 - (now - lastSpin)) / (1000 * 60 * 60));
+        alert(`¡Hola ${name}! Ya giraste la ruleta hoy. Vuelve a intentarlo en ${remainingHours} horas.`);
+        return;
+      }
 
-      initRoulette();
+      currentName = name;
+      currentPhone = phone;
+
+      document.getElementById('registerForm').style.display = 'none';
+      document.getElementById('gameBox').style.display = 'block';
+      document.getElementById('welcomeUser').innerText = `¡Suerte, ${name}!`;
+
+      drawWheel();
     }
 
-    function initRoulette() {
-      canvas = document.getElementById("rouletteCanvas");
-      ctx = canvas.getContext("2d");
-      drawRouletteWheel();
-    }
+    function drawWheel() {
+      const canvas = document.getElementById("rouletteCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, 300, 300);
 
-    function byte2Hex(n) {
-      let nybHexString = "0123456789ABCDEF";
-      return String(nybHexString.substr((n >> 4) & 0x0F,1)) + nybHexString.substr(n & 0x0F,1);
-    }
-
-    function drawRouletteWheel() {
-      if (!canvas.getContext) return;
-
-      canvas.width = 400;
-      canvas.height = 400;
-
-      const outsideRadius = 180;
-      const textRadius = 120;
-      const insideRadius = 40;
-
-      ctx.clearRect(0, 0, 400, 400);
-
-      ctx.strokeStyle = "#ffcc00";
-      ctx.lineWidth = 4;
-
-      for(let i = 0; i < prizes.length; i++) {
+      for (let i = 0; i < prizes.length; i++) {
         let angle = startAngle + i * arc;
-        ctx.fillStyle = sliceColors[i];
+        ctx.fillStyle = colors[i];
 
         ctx.beginPath();
-        ctx.arc(200, 200, outsideRadius, angle, angle + arc, false);
-        ctx.arc(200, 200, insideRadius, angle + arc, angle, true);
-        ctx.stroke();
+        ctx.arc(150, 150, 130, angle, angle + arc, false);
+        ctx.arc(150, 150, 30, angle + arc, angle, true);
         ctx.fill();
+        ctx.stroke();
 
         ctx.save();
-        ctx.shadowOffsetX = -1;
-        ctx.shadowOffsetY = -1;
-        ctx.shadowBlur = 2;
-        ctx.shadowColor = "rgb(0,0,0)";
         ctx.fillStyle = "white";
-        ctx.font = "bold 14px Poppins, sans-serif";
-        ctx.translate(200 + Math.cos(angle + arc / 2) * textRadius, 
-                      200 + Math.sin(angle + arc / 2) * textRadius);
+        ctx.font = "bold 11px Poppins, sans-serif";
+        ctx.translate(150 + Math.cos(angle + arc / 2) * 85, 150 + Math.sin(angle + arc / 2) * 85);
         ctx.rotate(angle + arc / 2 + Math.PI / 2);
         let text = prizes[i];
+        ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+        ctx.restore();
+      }
+    }
+
+    function spinRoulette() {
+      document.getElementById('spinBtn').style.display = 'none';
+      spinAngleStart = Math.random() * 10 + 10;
+      spinTime = 0;
+      spinTimeTotal = Math.random() * 3000 + 4000;
+      rotateWheel();
+    }
+
+    function rotateWheel() {
+      spinTime += 30;
+      if (spinTime >= spinTimeTotal) {
+        stopRotateWheel();
+        return;
+      }
+      let spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
+      startAngle += (spinAngle * Math.PI / 180);
+      drawWheel();
+      spinTimeout = setTimeout(rotateWheel, 30);
+    }
+
+    function stopRotateWheel() {
+      clearTimeout(spinTimeout);
+      let degrees = startAngle * 180 / Math.PI + 90;
+      let arcd = arc * 180 / Math.PI;
+      let index = Math.floor((360 - degrees % 360) / arcd);
+      
+      let prize = prizes[index];
+      
+      // Registrar la fecha del giro en el navegador
+      localStorage.setItem('spin_' + currentPhone, new Date().getTime());
+
+      document.getElementById('prizeText').innerText = `🎉 Resultado: ${prize}`;
+      
+      if (prize.includes("Lata")) {
+        let msg = `Hola, soy ${currentName} (${currentPhone}) y gané: *${prize}* en la ruleta de Guliana Social.`;
+        document.getElementById('claimBtn').href = `https://wa.me/51930841255?text=${encodeURIComponent(msg)}`;
+        document.getElementById('claimBtn').style.display = 'block';
+      } else {
+        document.getElementById('claimBtn').style.display = 'none';
+      }
+
+      document.getElementById('resultBox').style.display = 'block';
+    }
+
+    function easeOut(t, b, c, d) {
+      let ts = (t/=d)*t;
+      let tc = ts*t;
+      return b+c*(tc + -3*ts + 3*t);
+    }
+  </script>
+</body>
+</html>
