@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guliana Social - Probador de Outfits</title>
+  <title>Guliana Social</title>
   
   <meta property="og:title" content="Guliana Social">
-  <meta property="og:description" content="Tu comunidad exclusiva de entretenimiento, eventos y probador de outfits.">
+  <meta property="og:description" content="Tu comunidad exclusiva de entretenimiento y entradas a los mejores eventos.">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <style>
@@ -165,6 +165,58 @@
       background: #ff1a40;
     }
 
+    .expert-title {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.8rem;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .transformation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .transformation-card {
+      background: #110005;
+      border-radius: 15px;
+      overflow: hidden;
+      border: 1px solid #ff1a40;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .transformation-card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(255, 0, 51, 0.8);
+    }
+
+    .transformation-card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-banner-btn {
+      background: linear-gradient(90deg, #ff0033, #e6002e);
+      color: white;
+      padding: 0.7rem;
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
     .card {
       background: rgba(20, 0, 5, 0.9);
       border-radius: 20px;
@@ -182,78 +234,377 @@
       text-transform: uppercase;
     }
 
-    /* ESTILOS PROBADOR VIRTUAL */
-    .probador-grid {
+    .transf-detail-box {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .transf-detail-img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 15px;
+      border: 3px solid #ff0055;
+      box-shadow: 0 0 25px rgba(255, 0, 85, 0.6);
+      margin: 0 auto;
+    }
+
+    .transf-detail-content {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .transf-main-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #ff3366;
+      text-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
+      margin-bottom: 0.5rem;
+    }
+
+    .transf-subtitle {
+      font-size: 1.1rem;
+      color: #ffd1dc;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+
+    .transf-list {
+      list-style: none;
+      margin: 1.2rem 0;
+    }
+
+    .transf-list li {
+      padding: 0.4rem 0;
+      font-size: 0.98rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-bottom: 1px dotted rgba(255, 26, 64, 0.3);
+    }
+
+    .transf-footer {
+      background: rgba(255, 0, 51, 0.2);
+      border-left: 4px solid #ff0033;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+      font-weight: 600;
+      color: #ffe6eb;
+    }
+
+    .lingerie-catalog {
       display: grid;
-      grid-template-columns: 1fr 300px;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .lingerie-item {
+      background: #110005;
+      border: 1px solid #ff1a40;
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .lingerie-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(255, 0, 85, 0.7);
+    }
+
+    .lingerie-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .lingerie-info {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .lingerie-title {
+      font-weight: 800;
+      color: #ffffff;
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .lingerie-desc {
+      font-size: 0.85rem;
+      color: #ffb3c1;
+      margin-bottom: 0.8rem;
+    }
+
+    .lingerie-price {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #ff3366;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ESTILOS PROBADOR VIRTUAL IA */
+    .probador-layout {
+      display: grid;
+      grid-template-columns: 1fr 320px;
       gap: 1.5rem;
     }
 
-    @media (max-width: 800px) {
-      .probador-grid {
+    @media (max-width: 850px) {
+      .probador-layout {
         grid-template-columns: 1fr;
       }
     }
 
-    .canvas-container {
+    .canvas-preview-container {
       position: relative;
       background: #0d0004;
       border: 2px dashed #ff1a40;
       border-radius: 15px;
-      height: 480px;
+      min-height: 480px;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       overflow: hidden;
     }
 
-    .user-photo {
-      max-height: 100%;
+    .user-uploaded-photo {
       max-width: 100%;
+      max-height: 450px;
       object-fit: contain;
     }
 
-    .draggable-item {
+    .makeup-layer {
       position: absolute;
-      cursor: move;
-      user-select: none;
-      touch-action: none;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      transition: all 0.3s ease;
     }
 
-    .controls-panel {
+    .panel-options {
       background: #150007;
       border: 1px solid #ff1a40;
       border-radius: 15px;
-      padding: 1rem;
+      padding: 1.2rem;
     }
 
-    .clothes-selector {
+    .panel-subtitle {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #ff3366;
+      text-transform: uppercase;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(255, 26, 64, 0.3);
+      padding-bottom: 0.3rem;
+    }
+
+    .items-scroll-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.8rem;
-      max-height: 250px;
+      gap: 0.6rem;
+      max-height: 200px;
       overflow-y: auto;
-      margin-bottom: 1rem;
+      margin-bottom: 0.8rem;
     }
 
-    .cloth-thumb {
-      background: #25000a;
-      border: 1px solid #ff3366;
-      border-radius: 10px;
-      padding: 0.5rem;
+    .item-select-card {
+      background: #20000a;
+      border: 1px solid #ff1a40;
+      border-radius: 8px;
+      padding: 0.4rem;
       cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .item-select-card:hover {
+      background: #ff1a40;
+    }
+
+    .item-select-card img {
+      width: 100%;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+    .item-select-card p {
+      font-size: 0.7rem;
+      margin-top: 0.2rem;
+      font-weight: 600;
+    }
+
+    .color-picker-group {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .color-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      cursor: pointer;
+    }
+
+    .ent-layout {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .ent-buttons-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      min-width: 200px;
+    }
+
+    .profile-btn {
+      background: linear-gradient(135deg, #80001a 0%, #ff0033 100%);
+      color: white;
+      padding: 1.2rem;
+      border-radius: 15px;
+      font-size: 1.3rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      border: 2px solid #ff6680;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 0, 51, 0.4);
+      transition: all 0.3s;
       text-align: center;
     }
 
-    .cloth-thumb img {
-      width: 100%;
-      height: 70px;
-      object-fit: contain;
+    .profile-btn:hover, .profile-btn.active-profile {
+      background: linear-gradient(135deg, #ff0033 0%, #ff6680 100%);
+      transform: scale(1.03);
+      box-shadow: 0 0 25px rgba(255, 0, 51, 0.9);
     }
 
-    .cloth-thumb p {
-      font-size: 0.75rem;
-      margin-top: 0.3rem;
+    .ent-banner-img {
+      width: 100%;
+      max-width: 320px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 15px;
+      border: 2px solid #ff0033;
+      box-shadow: 0 0 15px rgba(255, 0, 51, 0.5);
+      margin: 0 auto;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .media-item {
+      background: #1a0007;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #ff1a40;
+    }
+
+    .media-item video {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .media-item p {
+      padding: 0.8rem;
+      font-size: 0.9rem;
+      color: #ffe6eb;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .custom-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .input-group label {
+      color: #ff8099;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .input-group input {
+      background: #120005;
+      border: 1.5px solid #ff1a40;
+      color: #fff;
+      padding: 0.9rem 1.2rem;
+      border-radius: 12px;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .yape-box {
+      background: rgba(116, 23, 186, 0.2);
+      border: 2px solid #7417ba;
+      border-radius: 15px;
+      padding: 1.2rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .yape-box h3 {
+      color: #d175ff;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .hero-title-main {
+        font-size: 2rem;
+      }
+
+      .hero-nav-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .btn-pill {
+        width: 100%;
+      }
+
+      .ent-layout {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -264,11 +615,11 @@
       GULIANA <span class="logo-fire">🔥</span> SOCIAL
     </div>
     <nav>
-      <button class="nav-btn" onclick="showSection('transformacion')">Transformación</button>
-      <button class="nav-btn" onclick="showSection('probador')">👗 Probador AI</button>
-      <button class="nav-btn" onclick="showSection('lenceria')">Catálogo</button>
-      <button class="nav-btn" onclick="showSection('entretenimiento')">Entretenimiento</button>
-      <button class="nav-btn" onclick="showSection('eventos')">Eventos</button>
+      <button class="nav-btn" id="btn-transformacion" onclick="showSection('transformacion')">Transformación</button>
+      <button class="nav-btn" id="btn-probador" onclick="showSection('probador')">💄 Probador AI</button>
+      <button class="nav-btn" id="btn-lenceria" onclick="showSection('lenceria')">Catálogo</button>
+      <button class="nav-btn" id="btn-entretenimiento" onclick="showSection('entretenimiento')">Entretenimiento</button>
+      <button class="nav-btn" id="btn-eventos" onclick="showSection('eventos')">Eventos</button>
     </nav>
   </header>
 
@@ -277,53 +628,99 @@
     <section id="home" class="section active">
       <div class="hero-container">
         <h1 class="hero-title-main">GULIANA 🔥 SOCIAL</h1>
-        <p class="hero-subtitle">Tu comunidad exclusiva de entretenimiento, moda y estilo.</p>
+        <p class="hero-subtitle">Tu comunidad exclusiva de entretenimiento y entradas a los mejores eventos.</p>
         
         <div class="hero-nav-buttons">
-          <button class="btn-pill" onclick="showSection('probador')">👗 PROBADOR DE OUTFITS</button>
+          <button class="btn-pill" onclick="showSection('probador')">💄 PROBADOR CON IA</button>
           <button class="btn-pill" onclick="showSection('transformacion')">TRANSFORMACIÓN</button>
           <button class="btn-pill" onclick="showSection('lenceria')">CATÁLOGO</button>
+          <button class="btn-pill" onclick="showSection('entretenimiento')">ENTRETENIMIENTO</button>
+          <button class="btn-pill" onclick="showSection('eventos')">EVENTOS</button>
+        </div>
+
+        <h2 class="expert-title">NUESTROS SERVICIOS DESTACADOS</h2>
+
+        <div class="transformation-grid">
+          <div class="transformation-card" onclick="showSection('transformacion')">
+            <img src="https://www.xpaja.net/views/albums/2024/07/anime-chichonas-xxx/thumb_9.jpg" alt="Servicio de Transformación">
+            <div class="card-banner-btn">SERVICIO DE TRANSFORMACIÓN ⚡</div>
+          </div>
+
+          <div class="transformation-card" onclick="showSection('lenceria')">
+            <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Lencería y Catálogo">
+            <div class="card-banner-btn">CATÁLOGO Y LENCERÍA 🔥</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- PROBADOR VIRTUAL INTERACTIVO -->
+    <!-- PROBADOR IA (PELUCAS, MAQUILLAJE, LABIOS Y ROPA DEL CATÁLOGO) -->
     <section id="probador" class="section">
       <div class="card">
-        <h2>👗 Probador de Outfits Virtual</h2>
+        <h2>💄 PROBADOR VIRTUAL DE OUTFIT Y MAQUILLAJE IA</h2>
         <p style="text-align: center; color: #ffb3c1; margin-bottom: 1.5rem;">
-          Sube tu foto para probarte prendas y armar tu look perfecto antes de comprar.
+          Sube tu foto para probarte las prendas de nuestro catálogo, ajustar tono de labios y simular maquillaje completo.
         </p>
 
-        <div class="probador-grid">
+        <div class="probador-layout">
           <div>
-            <div class="canvas-container" id="canvasBox">
-              <span id="uploadPrompt" style="color: #ff6680;">📸 Sube tu foto usando el panel derecho</span>
-              <img id="userBaseImg" class="user-photo" style="display:none;" src="" alt="Tu Foto">
+            <div class="canvas-preview-container" id="canvasContainer">
+              <span id="uploadHint" style="color: #ff8099; padding: 2rem; text-align: center;">
+                📸 Sube tu foto desde el panel lateral para empezar a probarte el look
+              </span>
+              <img id="userImg" class="user-uploaded-photo" style="display:none;" alt="Foto de usuario">
+              <!-- Capa de Tono de Labios / Maquillaje -->
+              <div id="lipstickOverlay" class="makeup-layer"></div>
             </div>
           </div>
 
-          <div class="controls-panel">
-            <h3 style="font-size: 1rem; color: #ff3366; margin-bottom: 0.8rem;">1. Cargar Foto</h3>
-            <input type="file" id="photoInput" accept="image/*" style="width:100%; margin-bottom: 1.2rem; font-size: 0.8rem;">
+          <div class="panel-options">
+            <div class="panel-subtitle">1. Carga tu Foto</div>
+            <input type="file" id="userPhotoInput" accept="image/*" style="width: 100%; font-size: 0.8rem; margin-bottom: 0.8rem;">
 
-            <h3 style="font-size: 1rem; color: #ff3366; margin-bottom: 0.8rem;">2. Elige Prendas</h3>
-            <div class="clothes-selector">
-              <div class="cloth-thumb" onclick="addCloth('https://files.catbox.moe/wlq6a0.jpeg')">
-                <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Malla">
-                <p>Malla Sensual</p>
+            <div class="panel-subtitle">2. Probar Pelucas y Capilares</div>
+            <div class="items-scroll-grid">
+              <div class="item-select-card" onclick="tryCatalogItem('https://i.ibb.co/BKrpHFg2/image.jpeg')">
+                <img src="https://i.ibb.co/BKrpHFg2/image.jpeg" alt="Negro Castaño">
+                <p>Negro Castaño (S/25)</p>
               </div>
-              <div class="cloth-thumb" onclick="addCloth('https://i.ibb.co/zcKSJP5/image.jpeg')">
-                <img src="https://i.ibb.co/zcKSJP5/image.jpeg" alt="Cabellera">
-                <p>Peluca Rubio</p>
+              <div class="item-select-card" onclick="tryCatalogItem('https://i.ibb.co/zcKSJP5/image.jpeg')">
+                <img src="https://i.ibb.co/zcKSJP5/image.jpeg" alt="Rubio Plateado">
+                <p>Rubio Plateado (S/30)</p>
               </div>
-              <div class="cloth-thumb" onclick="addCloth('https://files.catbox.moe/u926x5.jpeg')">
-                <img src="https://files.catbox.moe/u926x5.jpeg" alt="Botas">
-                <p>Botas Largas</p>
+              <div class="item-select-card" onclick="tryCatalogItem('https://i.ibb.co/Fks2CjxX/image.jpeg')">
+                <img src="https://i.ibb.co/Fks2CjxX/image.jpeg" alt="Cabellera Rubia">
+                <p>Cabellera Rubia (S/20)</p>
               </div>
             </div>
 
-            <button class="btn-pill" onclick="clearCanvas()" style="width:100%; font-size: 0.8rem; background: #80001a;">Limpiar Todo</button>
+            <div class="panel-subtitle">3. Probar Lencería y Mallas</div>
+            <div class="items-scroll-grid">
+              <div class="item-select-card" onclick="tryCatalogItem('https://files.catbox.moe/wlq6a0.jpeg')">
+                <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Malla Sensual">
+                <p>Malla Sensual (S/15)</p>
+              </div>
+              <div class="item-select-card" onclick="tryCatalogItem('https://i.ibb.co/RT2NgNZF/image.jpeg')">
+                <img src="https://i.ibb.co/RT2NgNZF/image.jpeg" alt="Malla Fina">
+                <p>Malla Fina (S/6)</p>
+              </div>
+              <div class="item-select-card" onclick="tryCatalogItem('https://files.catbox.moe/u926x5.jpeg')">
+                <img src="https://files.catbox.moe/u926x5.jpeg" alt="Botas">
+                <p>Botas Largas (S/79)</p>
+              </div>
+            </div>
+
+            <div class="panel-subtitle">4. Simular Maquillaje y Labios</div>
+            <p style="font-size: 0.75rem; color: #ffb3c1; margin-bottom: 0.4rem;">Selecciona el tono de labial:</p>
+            <div class="color-picker-group">
+              <div class="color-btn" style="background: #e60039;" onclick="setLips('#e60039')"></div>
+              <div class="color-btn" style="background: #ff3399;" onclick="setLips('#ff3399')"></div>
+              <div class="color-btn" style="background: #990033;" onclick="setLips('#990033')"></div>
+              <div class="color-btn" style="background: #ff6600;" onclick="setLips('#ff6600')"></div>
+              <div class="color-btn" style="background: transparent; border-style: dashed;" onclick="setLips('transparent')">❌</div>
+            </div>
+
+            <button class="btn-pill" style="width: 100%; font-size: 0.8rem; background: #80001a; margin-top: 0.8rem;" onclick="resetProbador()">Limpiar Ajustes</button>
           </div>
         </div>
       </div>
@@ -332,19 +729,248 @@
     <!-- TRANSFORMACIÓN FEMENINA -->
     <section id="transformacion" class="section">
       <div class="card">
-        <h2>💄 SERVICIO DE TRANSFORMACIÓN FEMENINA</h2>
-        <p style="text-align: center; color: #ffe6eb;">Transformación de imagen completa y personalizada.</p>
+        <div class="transf-detail-box">
+          <img src="https://imagex1.sx.cdn.live/images/pinporn/2021/11/16/26249016.jpg?width=300" alt="Transformación Femenina" class="transf-detail-img">
+          
+          <div class="transf-detail-content">
+            <h2 class="transf-main-title">💄 SERVICIO DE TRANSFORMACIÓN FEMENINA</h2>
+            <p class="transf-subtitle">¡Descubre una nueva versión de ti! ✨</p>
+            <p>Transformamos tu imagen de principio a fin para que disfrutes una experiencia completa de cambio de look.</p>
+            
+            <p style="margin-top: 1rem; font-weight: 700; color: #ff6680;">El servicio incluye:</p>
+            <ul class="transf-list">
+              <li>💄 Maquillaje profesional completo</li>
+              <li>👁️ Maquillaje y diseño de ojos</li>
+              <li>👄 Labios y acabado profesional</li>
+              <li>🧔 Corrección y cobertura de barba</li>
+              <li>✨ Contouring e iluminación facial</li>
+              <li>💇‍♀️ Peluca y colocación</li>
+              <li>👗 Elección y colocación del outfit</li>
+              <li>👠 Accesorios y complementos</li>
+              <li>📸 Sesión de fotos del resultado</li>
+              <li>🪞 Asesoría personalizada durante toda la transformación</li>
+            </ul>
+
+            <div class="transf-footer">
+              Experiencia completa: desde el rostro natural hasta el look final.<br>
+              <strong>Reserva tu cita y vive la transformación. 💕</strong>
+            </div>
+
+            <a href="https://wa.me/51930841255?text=Hola,%20deseo%20reservar%20una%20cita%20para%20el%20Servicio%20de%20Transformaci%C3%B3n" target="_blank" style="text-decoration: none;">
+              <button class="btn-pill" style="width: 100%; margin-top: 1.5rem; background: #25d366; box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);">💬 RESERVAR POR WHATSAPP (+51 930841255)</button>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- CATÁLOGO EXCLUSIVO -->
     <section id="lenceria" class="section">
       <div class="card">
-        <h2>🔥 CATÁLOGO EXCLUSIVO 🔥</h2>
-        <p style="text-align: center; color: #ffb3c1;">Consulta y realiza tu pedido directo por WhatsApp.</p>
+        <h2 style="text-align: center;">🔥 CATÁLOGO EXCLUSIVO DE LENCERÍA Y PRENDAS 🔥</h2>
+        <p style="text-align: center; color: #ffb3c1; margin-bottom: 1.5rem;">
+          Explora nuestros productos disponibles. Escríbenos directamente por WhatsApp para realizar tu pedido con envío discreto.
+        </p>
+
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <a href="https://wa.me/51930841255?text=Hola,%20deseo%20consultar%20el%20cat%C3%A1logo%20general" target="_blank" style="text-decoration: none;">
+            <button class="btn-pill" style="background: #25d366; box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);">
+              📲 Escríbenos al WhatsApp: +51 930841255
+            </button>
+          </a>
+        </div>
+
+        <div class="lingerie-catalog">
+          
+          <div class="lingerie-item">
+            <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Mallas Sensuales">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Mallas Sensuales</div>
+              <div class="lingerie-desc">Diseño calado y atrevido, ideal para un estilo seductor.</div>
+              <div class="lingerie-price">S/ 15.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Mallas%20Sensuales%20(S/%2015.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://files.catbox.moe/4n7l6n.jpeg" alt="Pantimedias Abertura al Centro">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Pantimedias Abertura Centro</div>
+              <div class="lingerie-desc">Diseño sexy con abertura frontal para máxima comodidad.</div>
+              <div class="lingerie-price">S/ 10.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Pantimedias%20Abertura%20Centro%20(S/%2010.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://files.catbox.moe/8rtvtj.jpeg" alt="Lencería Enteriza">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Lencería Enteriza</div>
+              <div class="lingerie-desc">Lencería completa ajustada que resalta tus curvas.</div>
+              <div class="lingerie-price">S/ 12.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Lencer%C3%ADa%20Enteriza%20(S/%2012.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://files.catbox.moe/uso0qx.jpeg" alt="Malla Enteriza">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Malla Enteriza Atrevida</div>
+              <div class="lingerie-desc">Estilo enterizo en red fina para un look impactante.</div>
+              <div class="lingerie-price">S/ 12.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Enteriza%20(S/%2012.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://files.catbox.moe/fvfzh0.jpeg" alt="Mallas Finas">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Mallas Finas Clásicas</div>
+              <div class="lingerie-desc">Prenda delicada y femenina para cualquier ocasión.</div>
+              <div class="lingerie-price">S/ 10.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Mallas%20Finas%20Cl%C3%A1sicas%20(S/%2010.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://files.catbox.moe/u926x5.jpeg" alt="Botas Largas">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Botas Largas Elegantes</div>
+              <div class="lingerie-desc">Botas altas en Talla 39, material de alta calidad.</div>
+              <div class="lingerie-price">S/ 79.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Botas%20Largas%20Talla%2039%20(S/%2079.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <!-- PRODUCTOS CON ENLACES IMGBB DIRECTOS -->
+          <div class="lingerie-item">
+            <img src="https://i.ibb.co/RT2NgNZF/image.jpeg" alt="Malla Fina">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Malla Fina</div>
+              <div class="lingerie-desc">Diseño delicado y cómodo.</div>
+              <div class="lingerie-price">S/ 6.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Fina%20(S/%206.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://i.ibb.co/XvpT4R3/image.jpeg" alt="Malla de Lencería Extra Fina">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Malla Lencería Extra Fina</div>
+              <div class="lingerie-desc">Acabado suave y ajustado.</div>
+              <div class="lingerie-price">S/ 6.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Lencer%C3%ADa%20Extra%20Fina%20(S/%206.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://i.ibb.co/BKrpHFg2/image.jpeg" alt="Cabellera de Dama Negro Castaño">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Cabellera Negro Castaño</div>
+              <div class="lingerie-desc">Cabellera de dama en tono negro castaño natural.</div>
+              <div class="lingerie-price">S/ 25.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Negro%20Casta%C3%B1o%20(S/%2025.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://i.ibb.co/zcKSJP5/image.jpeg" alt="Cabellera Fina Rubio Plateado">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Cabellera Rubio Plateado</div>
+              <div class="lingerie-desc">Cabellera de dama fina en tono rubio platinado.</div>
+              <div class="lingerie-price">S/ 30.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Rubio%20Plateado%20(S/%2030.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://i.ibb.co/Fks2CjxX/image.jpeg" alt="Cabellera Rubia">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Cabellera Rubia</div>
+              <div class="lingerie-desc">Cabellera rubia radiante para cambio de look.</div>
+              <div class="lingerie-price">S/ 20.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Rubia%20(S/%2020.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="transf-footer" style="text-align: center; margin-top: 2rem;">
+          <strong>📦 Entregas discretas y empaques reservados en todas tus compras. 🔥</strong>
+        </div>
       </div>
     </section>
 
+    <!-- ENTRETENIMIENTO -->
+    <section id="entretenimiento" class="section">
+      <div class="card">
+        <h2>Galería de Entretenimiento</h2>
+
+        <div class="ent-layout">
+          <div class="ent-buttons-container">
+            <button class="profile-btn" id="btn-profile-guliana" onclick="toggleProfile('guliana')">GULIANA 🔥</button>
+            <button class="profile-btn" id="btn-profile-estefany" onclick="toggleProfile('estefany')">ESTEFANY ✨</button>
+          </div>
+
+          <img src="https://i.xgroovy.com/contents/videos_screenshots/301000/301867/preview_gif.mp4.jpg" alt="Preview Entretenimiento" class="ent-banner-img">
+        </div>
+
+        <!-- VIDEOS DE GULIANA -->
+        <div id="content-guliana" class="media-grid" style="display: none;">
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/z2p1lw.mp4" type="video/mp4"></video><p>Guliana Video 🔥 1</p></div>
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/78l01v.mp4" type="video/mp4"></video><p>Guliana Video 🔥 2</p></div>
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/xlbhaz.mp4" type="video/mp4"></video><p>Guliana Video 🔥 3</p></div>
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/40nnxu.mp4" type="video/mp4"></video><p>Guliana Video 🔥 4</p></div>
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/ad4p2e.mp4" type="video/mp4"></video><p>Guliana Video 🔥 5</p></div>
+        </div>
+
+        <!-- VIDEOS DE ESTEFANY -->
+        <div id="content-estefany" class="media-grid" style="display: none;">
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/kpx6e4.mp4" type="video/mp4"></video><p>Estefany Video ✨ 1</p></div>
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/5nqy44.mp4" type="video/mp4"></video><p>Estefany Video ✨ 2</p></div>
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/o10icr.mp4" type="video/mp4"></video><p>Estefany Video ✨ 3</p></div>
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/4u54y0.mp4" type="video/mp4"></video><p>Estefany Video ✨ 4</p></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EVENTOS -->
+    <section id="eventos" class="section">
+      <div class="card">
+        <h2>Entradas y Eventos</h2>
+        <p style="text-align: center; color: #ffb3c1; margin-bottom: 1.5rem;">
+          Ingresa tu Nombre / Nickname para registrar tu entrada a los eventos exclusivos.
+        </p>
+
+        <div class="yape-box">
+          <h3>📱 PAGO CON YAPE</h3>
+          <p>Realiza tu pago por Yape antes de confirmar tu registro de entrada.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script>
@@ -353,55 +979,74 @@
       document.getElementById(id).classList.add('active');
     }
 
-    // Carga de foto del usuario
-    document.getElementById('photoInput').addEventListener('change', function(e) {
+    function toggleProfile(name) {
+      document.getElementById('content-guliana').style.display = (name === 'guliana') ? 'grid' : 'none';
+      document.getElementById('content-estefany').style.display = (name === 'estefany') ? 'grid' : 'none';
+    }
+
+    // Funciones del Probador IA
+    document.getElementById('userPhotoInput').addEventListener('change', function(e) {
       const file = e.target.files[0];
       if (file) {
         const reader = new FileReader();
         reader.onload = function(evt) {
-          const img = document.getElementById('userBaseImg');
+          const img = document.getElementById('userImg');
           img.src = evt.target.result;
           img.style.display = 'block';
-          document.getElementById('uploadPrompt').style.display = 'none';
+          document.getElementById('uploadHint').style.display = 'none';
         };
         reader.readAsDataURL(file);
       }
     });
 
-    // Agregar prendas superpuestas
-    function addCloth(src) {
-      const box = document.getElementById('canvasBox');
+    function tryCatalogItem(src) {
+      const container = document.getElementById('canvasContainer');
       const item = document.createElement('img');
       item.src = src;
-      item.className = 'draggable-item';
-      item.style.width = '120px';
-      item.style.top = '50px';
-      item.style.left = '50px';
+      item.style.position = 'absolute';
+      item.style.width = '140px';
+      item.style.top = '20%';
+      item.style.left = '30%';
+      item.style.cursor = 'move';
+      item.className = 'overlay-item';
 
-      // Función de arrastre
       let isDragging = false;
-      let offsetX, offsetY;
+      let startX, startY, initialLeft, initialTop;
 
       item.addEventListener('mousedown', (e) => {
         isDragging = true;
-        offsetX = e.clientX - item.offsetLeft;
-        offsetY = e.clientY - item.offsetTop;
+        startX = e.clientX;
+        startY = e.clientY;
+        initialLeft = item.offsetLeft;
+        initialTop = item.offsetTop;
       });
 
       window.addEventListener('mousemove', (e) => {
         if (isDragging) {
-          item.style.left = (e.clientX - offsetX) + 'px';
-          item.style.top = (e.clientY - offsetY) + 'px';
+          item.style.left = (initialLeft + e.clientX - startX) + 'px';
+          item.style.top = (initialTop + e.clientY - startY) + 'px';
         }
       });
 
       window.addEventListener('mouseup', () => isDragging = false);
 
-      box.appendChild(item);
+      container.appendChild(item);
     }
 
-    function clearCanvas() {
-      document.querySelectorAll('.draggable-item').forEach(el => el.remove());
+    function setLips(color) {
+      const overlay = document.getElementById('lipstickOverlay');
+      if (color === 'transparent') {
+        overlay.style.background = 'transparent';
+        overlay.style.boxShadow = 'none';
+      } else {
+        overlay.style.background = `radial-gradient(circle at 50% 60%, ${color}66 0%, transparent 60%)`;
+        overlay.style.mixBlendMode = 'multiply';
+      }
+    }
+
+    function resetProbador() {
+      document.querySelectorAll('.overlay-item').forEach(el => el.remove());
+      setLips('transparent');
     }
   </script>
 </body>
