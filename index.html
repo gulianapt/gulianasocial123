@@ -787,7 +787,7 @@
       </div>
     </section>
 
-    <!-- EVENTOS -->
+    <!-- EVENTOS / REGISTRO COMPLETO -->
     <section id="eventos" class="section">
       <div class="card">
         <h2>Entradas y Eventos</h2>
@@ -798,6 +798,10 @@
         <div class="yape-box">
           <h3>📱 PAGO CON YAPE</h3>
           <p>Realiza tu pago por Yape antes de confirmar tu registro.</p>
+        </div>
+
+        <div id="formSection">
+          <!-- Formulario de eventos aquí -->
         </div>
       </div>
     </section>
@@ -817,4 +821,11 @@
 
     function requestAccess(profile) {
       document.getElementById('content-guliana').style.display = (profile === 'guliana') ? 'grid' : 'none';
-      document.getElementById('content-estefany').style.display = (profile
+      document.getElementById('content-estefany').style.display = (profile === 'estefany') ? 'grid' : 'none';
+      
+      document.querySelectorAll('.profile-btn').forEach(btn => btn.classList.remove('active-profile'));
+      document.getElementById('btn-profile-' + profile).classList.add('active-profile');
+    }
+  </script>
+</body>
+</html>
