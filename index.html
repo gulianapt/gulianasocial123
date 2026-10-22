@@ -458,6 +458,47 @@
       font-size: 1rem;
     }
 
+    .tickets-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    .ticket-option {
+      background: #180007;
+      border: 2px solid #80001a;
+      border-radius: 15px;
+      padding: 1.2rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .ticket-option.selected {
+      border-color: #ff0033;
+      background: rgba(255, 0, 51, 0.15);
+      box-shadow: 0 0 15px rgba(255, 0, 51, 0.5);
+    }
+
+    .ticket-option input[type="radio"] {
+      display: none;
+    }
+
+    .ticket-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .ticket-price {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #ff3366;
+    }
+
     .yape-box {
       background: rgba(116, 23, 186, 0.2);
       border: 2px solid #7417ba;
@@ -471,6 +512,131 @@
       color: #d175ff;
       font-size: 1.2rem;
       margin-bottom: 0.5rem;
+    }
+
+    .attendees-box {
+      background: rgba(255, 26, 64, 0.1);
+      border: 1.5px solid #ff1a40;
+      border-radius: 15px;
+      padding: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .attendees-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #ff6680;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+      text-align: center;
+    }
+
+    .attendee-item {
+      background: #180007;
+      border-left: 4px solid #00ff66;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 0.6rem;
+      font-size: 0.95rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .fullscreen-success {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(20, 0, 5, 0.98);
+      z-index: 5000;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .fullscreen-success-box {
+      background: #1a0007;
+      border: 3px solid #00ff66;
+      box-shadow: 0 0 40px rgba(0, 255, 102, 0.6);
+      border-radius: 25px;
+      padding: 3rem 2rem;
+      max-width: 500px;
+      width: 90%;
+    }
+
+    .fullscreen-success h2 {
+      font-size: 2.2rem;
+      color: #00ff66;
+      margin-bottom: 1rem;
+    }
+
+    .fullscreen-success p {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+    }
+
+    .modal-box {
+      background: #1a0007;
+      border: 2px solid #ff0033;
+      box-shadow: 0 0 30px rgba(255, 0, 51, 0.8);
+      border-radius: 20px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .modal-box h3 {
+      color: #ff3366;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .modal-box input {
+      width: 100%;
+      padding: 0.8rem;
+      border-radius: 10px;
+      border: 1px solid #ff1a40;
+      background: #0d0004;
+      color: #fff;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 1rem;
+      letter-spacing: 3px;
+    }
+
+    .modal-box .error-msg {
+      color: #ff3333;
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
     }
 
     @media (max-width: 600px) {
@@ -598,6 +764,7 @@
 
         <div class="lingerie-catalog">
           
+          <!-- PRODUCTOS EXISTENTES -->
           <div class="lingerie-item">
             <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Mallas Sensuales">
             <div class="lingerie-info">
@@ -670,6 +837,7 @@
             </div>
           </div>
 
+          <!-- NUEVOS PRODUCTOS CON ENLACES IMGBB DIRECTOS -->
           <div class="lingerie-item">
             <img src="https://i.ibb.co/RT2NgNZF/image.jpeg" alt="Malla Fina">
             <div class="lingerie-info">
@@ -801,30 +969,230 @@
         </div>
 
         <div id="formSection">
-          <!-- Formulario de eventos aquí -->
+          <form onsubmit="submitCustomForm(event)" class="custom-form" style="margin-top: 1.5rem;">
+            
+            <div class="input-group">
+              <label for="nicknameUsuario">Nombre / Nickname:</label>
+              <input type="text" id="nicknameUsuario" placeholder="Ingresa tu nombre..." required>
+            </div>
+
+            <div class="input-group">
+              <label>Selecciona tu Entrada:</label>
+              <div class="tickets-container">
+                
+                <label class="ticket-option selected" id="opt-general" onclick="selectTicket('opt-general')">
+                  <input type="radio" name="ticketType" value="Entrada General - 10 Soles" checked>
+                  <div class="ticket-title">Entrada General</div>
+                  <div class="ticket-price">S/ 10.00</div>
+                </label>
+
+                <label class="ticket-option" id="opt-vip" onclick="selectTicket('opt-vip')">
+                  <input type="radio" name="ticketType" value="Entrada VIP">
+                  <div class="ticket-title">Entrada VIP</div>
+                  <div class="ticket-price">VIP ⚡</div>
+                </label>
+
+              </div>
+            </div>
+
+            <button type="submit" id="btnSubmitForm" class="btn-pill" style="width: 100%; margin-top: 1rem;">Confirmar y Enviar Registro</button>
+          </form>
         </div>
+
+        <!-- LISTA DINÁMICA DE CONFIRMADOS AL EVENTO EN VIVO -->
+        <div class="attendees-box">
+          <div class="attendees-title">🎉 ASISTENTES CONFIRMADOS AL EVENTO 🎉</div>
+          <div id="attendeesList">
+            <!-- Se irán agregando los nombres aquí -->
+          </div>
+        </div>
+
       </div>
     </section>
   </main>
 
+  <!-- PANTALLA COMPLETA DE CONFIRMACIÓN -->
+  <div id="fullscreenSuccess" class="fullscreen-success">
+    <div class="fullscreen-success-box">
+      <h2>¡REGISTRADO! 🎉</h2>
+      <p>Tu registro ha sido enviado correctamente.</p>
+      <p style="font-size: 0.9rem; color: #ffb3c1;">Gracias por ser parte de Guliana Social.</p>
+      <button class="btn-pill" style="margin-top: 1.5rem; background: #00ff66; color: #000;" onclick="closeFullscreenSuccess()">Aceptar y Volver</button>
+    </div>
+  </div>
+
+  <!-- MODAL DE CONTRASEÑA -->
+  <div class="modal-overlay" id="passwordModal">
+    <div class="modal-box">
+      <h3 id="modalTitle">Ingrese Contraseña</h3>
+      <input type="password" id="passInput" placeholder="****" maxlength="10">
+      <div class="error-msg" id="passError">Contraseña incorrecta. Inténtelo de nuevo.</div>
+      <div class="modal-actions">
+        <button class="btn-pill" onclick="verifyPassword()">Ingresar</button>
+        <button class="btn-pill" style="background: #444;" onclick="closeModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
   <script>
+    var currentTargetProfile = '';
+    var unlockedProfiles = { guliana: false, estefany: false };
+
+    // CONTRASEÑAS ACTUALIZADAS: Guliana -> 1999, Estefany -> 1998
+    const PASSWORDS = { guliana: '1999', estefany: '1998' };
+
+    document.addEventListener("DOMContentLoaded", function() {
+      loadAttendees();
+    });
+
     function showSection(sectionId) {
       document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(sectionId).classList.add('active');
-      
       document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) targetSection.classList.add('active');
+
       const activeBtn = document.getElementById('btn-' + sectionId);
       if (activeBtn) activeBtn.classList.add('active');
       
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function requestAccess(profile) {
-      document.getElementById('content-guliana').style.display = (profile === 'guliana') ? 'grid' : 'none';
-      document.getElementById('content-estefany').style.display = (profile === 'estefany') ? 'grid' : 'none';
+      if (unlockedProfiles[profile]) {
+        toggleProfile(profile);
+      } else {
+        currentTargetProfile = profile;
+        document.getElementById('modalTitle').innerText = 'Contraseña para ' + profile.toUpperCase();
+        document.getElementById('passInput').value = '';
+        document.getElementById('passError').style.display = 'none';
+        document.getElementById('passwordModal').style.display = 'flex';
+        document.getElementById('passInput').focus();
+      }
+    }
+
+    function verifyPassword() {
+      const inputVal = document.getElementById('passInput').value;
+      if (inputVal === PASSWORDS[currentTargetProfile]) {
+        unlockedProfiles[currentTargetProfile] = true;
+        closeModal();
+        toggleProfile(currentTargetProfile);
+      } else {
+        document.getElementById('passError').style.display = 'block';
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('passwordModal').style.display = 'none';
+    }
+
+    function toggleProfile(profile) {
+      const gulianaContent = document.getElementById('content-guliana');
+      const estefanyContent = document.getElementById('content-estefany');
+      const btnGuliana = document.getElementById('btn-profile-guliana');
+      const btnEstefany = document.getElementById('btn-profile-estefany');
+
+      if (profile === 'guliana') {
+        gulianaContent.style.display = 'grid';
+        estefanyContent.style.display = 'none';
+        btnGuliana.classList.add('active-profile');
+        btnEstefany.classList.remove('active-profile');
+      } else if (profile === 'estefany') {
+        gulianaContent.style.display = 'none';
+        estefanyContent.style.display = 'grid';
+        btnGuliana.classList.remove('active-profile');
+        btnEstefany.classList.add('active-profile');
+      }
+    }
+
+    function selectTicket(optionId) {
+      document.querySelectorAll('.ticket-option').forEach(opt => opt.classList.remove('selected'));
+      const selected = document.getElementById(optionId);
+      selected.classList.add('selected');
+      selected.querySelector('input[type="radio"]').checked = true;
+    }
+
+    function handleVideoUpload(event, gridId) {
+      event.preventDefault();
+      const form = event.target;
+      const fileInput = form.querySelector('input[type="file"]');
+      const captionInput = form.querySelector('input[type="text"]');
+      const grid = document.getElementById(gridId);
+
+      if (fileInput.files && fileInput.files[0]) {
+        const file = fileInput.files[0];
+        const fileURL = URL.createObjectURL(file);
+
+        const mediaCard = document.createElement('div');
+        mediaCard.className = 'media-item';
+
+        mediaCard.innerHTML = `
+          <video src="${fileURL}" controls></video>
+          <p>${captionInput.value}</p>
+        `;
+
+        grid.prepend(mediaCard);
+
+        fileInput.value = '';
+        captionInput.value = '';
+      }
+    }
+
+    function loadAttendees() {
+      var savedList = JSON.parse(localStorage.getItem("guliana_attendees_list")) || [];
+      var container = document.getElementById("attendeesList");
+      container.innerHTML = "";
+
+      if (savedList.length === 0) {
+        container.innerHTML = "<p style='text-align: center; color: #aaa; font-size: 0.85rem;'>Aún no hay registros guardados.</p>";
+        return;
+      }
+
+      savedList.forEach(function(item) {
+        var div = document.createElement("div");
+        div.className = "attendee-item";
+        div.innerHTML = "<span>✨</span> <strong>" + item + "</strong> asistirá al evento del 8 de octubre en guliana point";
+        container.appendChild(div);
+      });
+    }
+
+    function submitCustomForm(e) {
+      e.preventDefault();
+      var nickname = document.getElementById("nicknameUsuario").value.trim();
+      var entrada = document.querySelector('input[name="ticketType"]:checked').value;
+
+      if (!nickname) return;
+
+      var btn = document.getElementById("btnSubmitForm");
+      btn.disabled = true;
+      btn.innerText = "Enviando registro...";
+
+      var formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfqzYy8ufLWXZK0JXm8Z-XLTA7bW8cPqx-VwGLquPXNap6AXQ/formResponse";
       
-      document.querySelectorAll('.profile-btn').forEach(btn => btn.classList.remove('active-profile'));
-      document.getElementById('btn-profile-' + profile).classList.add('active-profile');
+      var formData = new FormData();
+      formData.append("entry.1000001", nickname);
+      formData.append("entry.1000004", entrada);
+
+      fetch(formUrl, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      }).finally(function() {
+        var savedList = JSON.parse(localStorage.getItem("guliana_attendees_list")) || [];
+        savedList.push(nickname);
+        localStorage.setItem("guliana_attendees_list", JSON.stringify(savedList));
+
+        loadAttendees();
+
+        document.getElementById("fullscreenSuccess").style.display = "flex";
+        document.getElementById("nicknameUsuario").value = "";
+        btn.disabled = false;
+        btn.innerText = "Confirmar y Enviar Registro";
+      });
+    }
+
+    function closeFullscreenSuccess() {
+      document.getElementById("fullscreenSuccess").style.display = "none";
     }
   </script>
 </body>
