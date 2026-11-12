@@ -8,8 +8,17 @@
   <meta property="og:title" content="Guliana Social">
   <meta property="og:description" content="Tu comunidad exclusiva de entretenimiento y entradas a los mejores eventos.">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg-dark: #14151a;
+      --bg-card: rgba(24, 26, 33, 0.92);
+      --neon-cyan: #00f3ff;
+      --neon-pink: #ff007f;
+      --neon-purple: #bc13fe;
+      --text-white: #ffffff;
+    }
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -17,49 +26,59 @@
       font-family: 'Poppins', sans-serif;
     }
 
+    html {
+      font-size: 18px; /* Letras más grandes en toda la web */
+    }
+
     body {
-      background: #40000d;
-      background: linear-gradient(135deg, #33000a 0%, #660014 50%, #99001f 100%);
+      background: #121318;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(188, 19, 254, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(0, 243, 255, 0.14) 0%, transparent 45%),
+        linear-gradient(135deg, #101116 0%, #1c1e26 50%, #14151b 100%);
       background-attachment: fixed;
-      color: #ffffff;
+      color: var(--text-white);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
+    /* HEADER ESTILO NIGHT CLUB */
     header {
-      background: rgba(30, 0, 8, 0.95);
-      border-bottom: 2px solid #ff1a40;
-      padding: 0.8rem 2rem;
+      background: rgba(16, 17, 22, 0.95);
+      border-bottom: 2px solid var(--neon-cyan);
+      padding: 0.9rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 20px rgba(255, 0, 50, 0.4);
+      box-shadow: 0 4px 25px rgba(0, 243, 255, 0.25);
+      backdrop-filter: blur(8px);
     }
 
     .logo {
-      font-size: 1.6rem;
+      font-size: 1.65rem;
       font-weight: 900;
-      color: #fff;
+      color: #ffffff;
       text-transform: uppercase;
       letter-spacing: 2px;
       display: flex;
       align-items: center;
       gap: 0.4rem;
       cursor: pointer;
+      text-shadow: 0 0 10px var(--neon-pink), 0 0 22px var(--neon-purple);
     }
 
     .logo-fire {
-      font-size: 1.6rem;
+      font-size: 1.65rem;
       animation: flame 1.2s ease-in-out infinite alternate;
     }
 
     @keyframes flame {
-      0% { transform: scale(0.9) rotate(-3deg); filter: drop-shadow(0 0 5px #ff6600); }
-      100% { transform: scale(1.15) rotate(3deg); filter: drop-shadow(0 0 15px #ff0000); }
+      0% { transform: scale(0.92) rotate(-3deg); filter: drop-shadow(0 0 6px var(--neon-pink)); }
+      100% { transform: scale(1.15) rotate(3deg); filter: drop-shadow(0 0 16px var(--neon-cyan)); }
     }
 
     nav {
@@ -69,21 +88,24 @@
     }
 
     .nav-btn {
-      background: #80001a;
+      background: rgba(255, 255, 255, 0.05);
       color: #ffffff;
-      border: 1px solid #ff1a40;
-      padding: 0.5rem 1.2rem;
-      font-size: 0.85rem;
+      border: 1.5px solid var(--neon-cyan);
+      padding: 0.55rem 1.25rem;
+      font-size: 0.9rem;
       font-weight: 700;
-      border-radius: 20px;
+      border-radius: 25px;
       cursor: pointer;
       transition: all 0.3s ease;
       text-transform: uppercase;
+      box-shadow: 0 0 8px rgba(0, 243, 255, 0.2);
     }
 
     .nav-btn:hover, .nav-btn.active {
-      background: #ff1a40;
-      box-shadow: 0 0 15px #ff1a40;
+      background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
+      border-color: #ffffff;
+      color: #ffffff;
+      box-shadow: 0 0 18px var(--neon-pink), 0 0 30px rgba(188, 19, 254, 0.6);
     }
 
     main {
@@ -97,7 +119,7 @@
     .section {
       display: none;
       width: 100%;
-      max-width: 950px;
+      max-width: 1000px;
       animation: fadeIn 0.4s ease;
     }
 
@@ -110,29 +132,30 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* HERO / PORTADA NIGHT CLUB */
     .hero-container {
-      background: rgba(20, 0, 5, 0.85);
-      border: 2px solid #ff0033;
-      border-radius: 20px;
-      padding: 2.5rem 1.5rem;
-      box-shadow: 0 0 30px rgba(255, 0, 50, 0.3);
+      background: var(--bg-card);
+      border: 2px solid var(--neon-purple);
+      border-radius: 24px;
+      padding: 2.8rem 1.8rem;
+      box-shadow: 0 0 35px rgba(188, 19, 254, 0.3), inset 0 0 20px rgba(0, 243, 255, 0.1);
       text-align: center;
     }
 
     .hero-title-main {
-      font-size: 2.8rem;
+      font-size: 3rem;
       font-weight: 900;
       color: #ffffff;
-      text-shadow: 0 0 20px #ff0033, 0 0 40px #ff0000;
-      margin-bottom: 0.5rem;
+      text-shadow: 0 0 12px var(--neon-cyan), 0 0 28px var(--neon-pink), 0 0 45px var(--neon-purple);
+      margin-bottom: 0.6rem;
       letter-spacing: 2px;
       text-transform: uppercase;
     }
 
     .hero-subtitle {
-      font-size: 1.05rem;
-      color: #ffe6eb;
-      margin-bottom: 2rem;
+      font-size: 1.15rem;
+      color: #ffffff;
+      margin-bottom: 2.2rem;
       font-weight: 400;
     }
 
@@ -145,55 +168,56 @@
     }
 
     .btn-pill {
-      background: #ff0033;
-      color: white;
-      padding: 0.8rem 2.2rem;
-      font-size: 0.95rem;
+      background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
+      color: #ffffff;
+      padding: 0.85rem 2.2rem;
+      font-size: 1rem;
       font-weight: 800;
-      border: none;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
       border-radius: 30px;
       cursor: pointer;
       transition: all 0.3s;
-      box-shadow: 0 0 15px rgba(255, 0, 51, 0.6);
+      box-shadow: 0 0 18px rgba(255, 0, 127, 0.6);
       text-transform: uppercase;
       letter-spacing: 1px;
     }
 
     .btn-pill:hover {
       transform: translateY(-3px);
-      box-shadow: 0 0 25px rgba(255, 51, 102, 0.9);
-      background: #ff1a40;
+      box-shadow: 0 0 28px var(--neon-cyan), 0 0 40px var(--neon-pink);
+      border-color: var(--neon-cyan);
     }
 
     .expert-title {
-      font-size: 1.6rem;
+      font-size: 1.7rem;
       font-weight: 900;
       color: #ffffff;
       text-transform: uppercase;
       letter-spacing: 2px;
       margin-bottom: 1.8rem;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+      text-shadow: 0 0 14px var(--neon-cyan);
     }
 
     .transformation-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.8rem;
     }
 
     .transformation-card {
-      background: #110005;
-      border-radius: 15px;
+      background: #1a1c24;
+      border-radius: 18px;
       overflow: hidden;
-      border: 1px solid #ff1a40;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.25);
       cursor: pointer;
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .transformation-card:hover {
       transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(255, 0, 51, 0.8);
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 30px rgba(255, 0, 127, 0.7);
     }
 
     .transformation-card img {
@@ -204,36 +228,42 @@
     }
 
     .card-banner-btn {
-      background: linear-gradient(90deg, #ff0033, #e6002e);
-      color: white;
-      padding: 0.7rem;
+      background: linear-gradient(90deg, #191b24, #281938);
+      border-top: 1.5px solid var(--neon-cyan);
+      color: #ffffff;
+      padding: 0.85rem;
       font-weight: 800;
-      font-size: 0.85rem;
+      font-size: 0.95rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.4rem;
+      text-shadow: 0 0 8px var(--neon-cyan);
     }
 
+    /* TARJETAS GENERALES */
     .card {
-      background: rgba(20, 0, 5, 0.9);
-      border-radius: 20px;
-      padding: 2rem;
-      border: 2px solid #ff1a40;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+      background: var(--bg-card);
+      border-radius: 22px;
+      padding: 2.2rem;
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 0 0 28px rgba(0, 243, 255, 0.2);
       margin-bottom: 2rem;
+      color: #ffffff;
     }
 
     .card h2 {
-      color: #ff3366;
+      color: #ffffff;
+      text-shadow: 0 0 12px var(--neon-pink), 0 0 24px var(--neon-purple);
       margin-bottom: 1.5rem;
       text-align: center;
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       text-transform: uppercase;
     }
 
+    /* TRANSFORMACIÓN */
     .transf-detail-box {
       display: flex;
       gap: 2rem;
@@ -244,9 +274,9 @@
     .transf-detail-img {
       width: 100%;
       max-width: 320px;
-      border-radius: 15px;
-      border: 3px solid #ff0055;
-      box-shadow: 0 0 25px rgba(255, 0, 85, 0.6);
+      border-radius: 16px;
+      border: 3px solid var(--neon-pink);
+      box-shadow: 0 0 28px rgba(255, 0, 127, 0.65);
       margin: 0 auto;
     }
 
@@ -256,17 +286,17 @@
     }
 
     .transf-main-title {
-      font-size: 1.8rem;
+      font-size: 1.85rem;
       font-weight: 900;
-      color: #ff3366;
-      text-shadow: 0 0 10px rgba(255, 51, 102, 0.6);
+      color: #ffffff;
+      text-shadow: 0 0 12px var(--neon-pink);
       margin-bottom: 0.5rem;
     }
 
     .transf-subtitle {
-      font-size: 1.1rem;
-      color: #ffd1dc;
-      font-weight: 600;
+      font-size: 1.15rem;
+      color: var(--neon-cyan);
+      font-weight: 700;
       margin-bottom: 1.2rem;
     }
 
@@ -276,56 +306,74 @@
     }
 
     .transf-list li {
-      padding: 0.4rem 0;
-      font-size: 0.98rem;
+      padding: 0.5rem 0;
+      font-size: 1.05rem;
       color: #ffffff;
       display: flex;
       align-items: center;
       gap: 0.6rem;
-      border-bottom: 1px dotted rgba(255, 26, 64, 0.3);
+      border-bottom: 1px dashed rgba(0, 243, 255, 0.35);
     }
 
     .transf-footer {
-      background: rgba(255, 0, 51, 0.2);
-      border-left: 4px solid #ff0033;
-      padding: 0.8rem 1rem;
-      border-radius: 8px;
-      margin-top: 1rem;
+      background: rgba(188, 19, 254, 0.18);
+      border-left: 4px solid var(--neon-cyan);
+      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      margin-top: 1.2rem;
       font-weight: 600;
-      color: #ffe6eb;
+      color: #ffffff;
+      font-size: 1rem;
     }
 
+    /* CATÁLOGO / TIENDA (MANTENIDO EN FONDO BLANCO COMO PEDISTE) */
+    #lenceria {
+      background: #ffffff;
+      color: #222222;
+      border-radius: 24px;
+      padding: 0.5rem;
+    }
+    #lenceria .card {
+      background: #ffffff;
+      color: #222222;
+      border: 2px solid #e6e6e6;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+      margin-bottom: 0;
+    }
+    #lenceria h2, #lenceria h3 {
+      color: #a71932 !important;
+      text-shadow: none !important;
+    }
+    #lenceria p {
+      color: #4a4a4a !important;
+    }
     .lingerie-catalog {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
       gap: 1.5rem;
       margin-top: 1.5rem;
     }
-
     .lingerie-item {
-      background: #110005;
-      border: 1px solid #ff1a40;
+      background: #ffffff;
+      border: 1.5px solid #ead4d8;
       border-radius: 15px;
       overflow: hidden;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+      box-shadow: 0 7px 20px rgba(0, 0, 0, 0.08);
       transition: transform 0.3s;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
-
     .lingerie-item:hover {
       transform: translateY(-5px);
-      box-shadow: 0 0 25px rgba(255, 0, 85, 0.7);
+      box-shadow: 0 12px 28px rgba(167, 25, 50, 0.18);
     }
-
     .lingerie-item img {
       width: 100%;
       height: 280px;
       object-fit: cover;
     }
-
     .lingerie-info {
       padding: 1rem;
       flex: 1;
@@ -333,27 +381,57 @@
       flex-direction: column;
       justify-content: space-between;
     }
-
     .lingerie-title {
       font-weight: 800;
-      color: #ffffff;
-      font-size: 1rem;
+      color: #222222;
+      font-size: 1.05rem;
       margin-bottom: 0.3rem;
     }
-
     .lingerie-desc {
-      font-size: 0.85rem;
-      color: #ffb3c1;
+      font-size: 0.9rem;
+      color: #555555;
       margin-bottom: 0.8rem;
     }
-
     .lingerie-price {
       font-size: 1.3rem;
       font-weight: 900;
-      color: #ff3366;
+      color: #b31e39;
       margin-bottom: 0.8rem;
     }
+    #lenceria .marketplace-panel {
+      background: #fafafa;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 16px;
+      padding: 1.3rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+    #lenceria .marketplace-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    #lenceria .marketplace-form .full-width { grid-column: 1 / -1; }
+    #lenceria .marketplace-form label { color: #333333; font-weight: 700; }
+    #lenceria .marketplace-form .input-group input,
+    #lenceria .marketplace-form .input-group textarea {
+      width: 100%;
+      background: #ffffff;
+      border: 1.5px solid #cccccc;
+      color: #222222;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+    }
+    #lenceria .marketplace-form textarea { min-height: 90px; resize: vertical; }
+    #lenceria .marketplace-product-card .seller-label { color: #666666; font-size: 0.82rem; margin: 0.4rem 0; }
+    #lenceria .marketplace-empty { color: #666666; text-align: center; padding: 1.2rem; grid-column: 1 / -1; }
+    #lenceria .transf-footer {
+      background: #fff2f4;
+      color: #8c1830;
+      border-left-color: #c51f40;
+    }
 
+    /* ENTRETENIMIENTO */
     .ent-layout {
       display: flex;
       gap: 1.5rem;
@@ -367,28 +445,29 @@
       display: flex;
       flex-direction: column;
       gap: 1.2rem;
-      min-width: 200px;
+      min-width: 220px;
     }
 
     .profile-btn {
-      background: linear-gradient(135deg, #80001a 0%, #ff0033 100%);
-      color: white;
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
       padding: 1.2rem;
-      border-radius: 15px;
+      border-radius: 16px;
       font-size: 1.3rem;
       font-weight: 900;
       text-transform: uppercase;
-      border: 2px solid #ff6680;
+      border: 2px solid var(--neon-pink);
       cursor: pointer;
-      box-shadow: 0 4px 15px rgba(255, 0, 51, 0.4);
+      box-shadow: 0 0 18px rgba(255, 0, 127, 0.35);
       transition: all 0.3s;
       text-align: center;
     }
 
     .profile-btn:hover, .profile-btn.active-profile {
-      background: linear-gradient(135deg, #ff0033 0%, #ff6680 100%);
+      background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-purple) 100%);
+      border-color: var(--neon-cyan);
       transform: scale(1.03);
-      box-shadow: 0 0 25px rgba(255, 0, 51, 0.9);
+      box-shadow: 0 0 28px var(--neon-cyan);
     }
 
     .ent-banner-img {
@@ -396,9 +475,9 @@
       max-width: 320px;
       height: 180px;
       object-fit: cover;
-      border-radius: 15px;
-      border: 2px solid #ff0033;
-      box-shadow: 0 0 15px rgba(255, 0, 51, 0.5);
+      border-radius: 16px;
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.45);
       margin: 0 auto;
     }
 
@@ -409,10 +488,11 @@
     }
 
     .media-item {
-      background: #1a0007;
-      border-radius: 12px;
+      background: #1b1d26;
+      border-radius: 14px;
       overflow: hidden;
-      border: 1px solid #ff1a40;
+      border: 1.5px solid var(--neon-purple);
+      box-shadow: 0 0 15px rgba(188, 19, 254, 0.25);
     }
 
     .media-item video {
@@ -423,13 +503,14 @@
     }
 
     .media-item p {
-      padding: 0.8rem;
-      font-size: 0.9rem;
-      color: #ffe6eb;
+      padding: 0.85rem;
+      font-size: 0.95rem;
+      color: #ffffff;
       text-align: center;
       font-weight: 600;
     }
 
+    /* FORMULARIOS Y EVENTOS */
     .custom-form {
       display: flex;
       flex-direction: column;
@@ -443,15 +524,15 @@
     }
 
     .input-group label {
-      color: #ff8099;
+      color: #ffffff;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
 
     .input-group input {
-      background: #120005;
-      border: 1.5px solid #ff1a40;
-      color: #fff;
+      background: #1a1c24;
+      border: 1.5px solid var(--neon-cyan);
+      color: #ffffff;
       padding: 0.9rem 1.2rem;
       border-radius: 12px;
       outline: none;
@@ -466,19 +547,19 @@
     }
 
     .ticket-option {
-      background: #180007;
-      border: 2px solid #80001a;
-      border-radius: 15px;
-      padding: 1.2rem;
+      background: #1b1d26;
+      border: 2px solid rgba(0, 243, 255, 0.35);
+      border-radius: 16px;
+      padding: 1.3rem;
       text-align: center;
       cursor: pointer;
       transition: all 0.3s ease;
     }
 
     .ticket-option.selected {
-      border-color: #ff0033;
-      background: rgba(255, 0, 51, 0.15);
-      box-shadow: 0 0 15px rgba(255, 0, 51, 0.5);
+      border-color: var(--neon-pink);
+      background: rgba(255, 0, 127, 0.18);
+      box-shadow: 0 0 22px rgba(255, 0, 127, 0.6);
     }
 
     .ticket-option input[type="radio"] {
@@ -486,7 +567,7 @@
     }
 
     .ticket-title {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: #ffffff;
       text-transform: uppercase;
@@ -494,56 +575,61 @@
     }
 
     .ticket-price {
-      font-size: 1.4rem;
+      font-size: 1.45rem;
       font-weight: 900;
-      color: #ff3366;
+      color: var(--neon-cyan);
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
     }
 
     .yape-box {
-      background: rgba(116, 23, 186, 0.2);
-      border: 2px solid #7417ba;
-      border-radius: 15px;
+      background: rgba(188, 19, 254, 0.2);
+      border: 2px solid var(--neon-purple);
+      border-radius: 16px;
       padding: 1.2rem;
       text-align: center;
       margin-top: 1rem;
+      box-shadow: 0 0 20px rgba(188, 19, 254, 0.35);
     }
 
     .yape-box h3 {
-      color: #d175ff;
-      font-size: 1.2rem;
-      margin-bottom: 0.5rem;
+      color: #ffffff;
+      text-shadow: 0 0 10px var(--neon-purple);
+      font-size: 1.25rem;
+      margin-bottom: 0.4rem;
     }
 
     .attendees-box {
-      background: rgba(255, 26, 64, 0.1);
-      border: 1.5px solid #ff1a40;
-      border-radius: 15px;
-      padding: 1.2rem;
+      background: rgba(0, 243, 255, 0.08);
+      border: 1.5px solid var(--neon-cyan);
+      border-radius: 16px;
+      padding: 1.3rem;
       margin-top: 1.5rem;
     }
 
     .attendees-title {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 800;
-      color: #ff6680;
+      color: #ffffff;
+      text-shadow: 0 0 10px var(--neon-cyan);
       text-transform: uppercase;
       margin-bottom: 0.8rem;
       text-align: center;
     }
 
     .attendee-item {
-      background: #180007;
-      border-left: 4px solid #00ff66;
-      padding: 0.8rem 1rem;
+      background: #1b1d26;
+      border-left: 4px solid #00ff88;
+      padding: 0.85rem 1rem;
       border-radius: 8px;
       margin-bottom: 0.6rem;
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: #ffffff;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
 
+    /* MODALES */
     .fullscreen-success {
       display: none;
       position: fixed;
@@ -551,7 +637,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(20, 0, 5, 0.98);
+      background: rgba(14, 15, 20, 0.96);
       z-index: 5000;
       flex-direction: column;
       justify-content: center;
@@ -561,9 +647,9 @@
     }
 
     .fullscreen-success-box {
-      background: #1a0007;
-      border: 3px solid #00ff66;
-      box-shadow: 0 0 40px rgba(0, 255, 102, 0.6);
+      background: #1a1c24;
+      border: 3px solid #00ff88;
+      box-shadow: 0 0 40px rgba(0, 255, 136, 0.6);
       border-radius: 25px;
       padding: 3rem 2rem;
       max-width: 500px;
@@ -572,7 +658,7 @@
 
     .fullscreen-success h2 {
       font-size: 2.2rem;
-      color: #00ff66;
+      color: #00ff88;
       margin-bottom: 1rem;
     }
 
@@ -589,17 +675,17 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.85);
+      background: rgba(10, 11, 15, 0.88);
       z-index: 2000;
       justify-content: center;
       align-items: center;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(6px);
     }
 
     .modal-box {
-      background: #1a0007;
-      border: 2px solid #ff0033;
-      box-shadow: 0 0 30px rgba(255, 0, 51, 0.8);
+      background: #1a1c24;
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 0 0 35px rgba(0, 243, 255, 0.5);
       border-radius: 20px;
       padding: 2rem;
       width: 90%;
@@ -608,7 +694,8 @@
     }
 
     .modal-box h3 {
-      color: #ff3366;
+      color: #ffffff;
+      text-shadow: 0 0 10px var(--neon-pink);
       margin-bottom: 1rem;
       font-size: 1.4rem;
     }
@@ -617,9 +704,9 @@
       width: 100%;
       padding: 0.8rem;
       border-radius: 10px;
-      border: 1px solid #ff1a40;
-      background: #0d0004;
-      color: #fff;
+      border: 1.5px solid var(--neon-pink);
+      background: #111217;
+      color: #ffffff;
       font-size: 1.2rem;
       text-align: center;
       margin-bottom: 1rem;
@@ -627,8 +714,8 @@
     }
 
     .modal-box .error-msg {
-      color: #ff3333;
-      font-size: 0.85rem;
+      color: #ff4d6d;
+      font-size: 0.9rem;
       margin-bottom: 1rem;
       display: none;
     }
@@ -639,101 +726,253 @@
       justify-content: center;
     }
 
+    /* =========================================================
+       RULETA NIGHT CLUB NEÓN (8 SECCIONES DUPLICADAS)
+       ========================================================= */
+    .roulette-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 6000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      background: rgba(10, 11, 16, 0.88);
+      backdrop-filter: blur(8px);
+    }
+    .roulette-overlay.open {
+      display: flex;
+    }
+    .roulette-modal {
+      position: relative;
+      width: min(100%, 480px);
+      max-height: 95vh;
+      overflow-y: auto;
+      text-align: center;
+      padding: 1.6rem 1.4rem;
+      border-radius: 28px;
+      color: #ffffff;
+      background: radial-gradient(circle at top, #27173d 0%, #14151c 75%);
+      border: 2.5px solid var(--neon-cyan);
+      box-shadow: 0 0 40px rgba(0, 243, 255, 0.45), 0 0 75px rgba(255, 0, 127, 0.35);
+    }
+    .roulette-close {
+      position: absolute;
+      right: 14px;
+      top: 12px;
+      border: 1.5px solid var(--neon-pink);
+      background: rgba(255, 0, 127, 0.2);
+      color: #ffffff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(255, 0, 127, 0.5);
+    }
+    .roulette-kicker {
+      color: var(--neon-cyan);
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-shadow: 0 0 8px var(--neon-cyan);
+    }
+    .roulette-modal h2 {
+      color: #ffffff;
+      font-size: 1.65rem;
+      margin: 0.3rem 0;
+      text-shadow: 0 0 12px var(--neon-pink), 0 0 24px var(--neon-purple);
+    }
+    .roulette-modal > p {
+      color: #e6e8f0;
+      font-size: 0.92rem;
+    }
+
+    /* Aro exterior con luces estilo Night Club */
+    .roulette-stage {
+      width: min(82vw, 340px);
+      height: min(82vw, 340px);
+      margin: 1.1rem auto;
+      position: relative;
+      border-radius: 50%;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple));
+      box-shadow: 0 0 28px var(--neon-pink), 0 0 45px rgba(0, 243, 255, 0.5);
+    }
+
+    .roulette-pointer {
+      position: absolute;
+      z-index: 10;
+      left: 50%;
+      top: -10px;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 34px solid #00f3ff;
+      filter: drop-shadow(0 0 10px #00f3ff) drop-shadow(0 3px 4px rgba(0,0,0,0.8));
+    }
+
+    /* 8 secciones iguales de 45 grados cada una */
+    .roulette-wheel {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 4px solid #12131a;
+      background: conic-gradient(
+        from 0deg,
+        #ff007f 0deg 45deg,     /* 1. Lata de Cerveza */
+        #1e2130 45deg 90deg,    /* 2. Será para la próxima */
+        #7b2cbf 90deg 135deg,   /* 3. Lata de Vodka */
+        #161824 135deg 180deg,  /* 4. Gira de nuevo */
+        #e11d74 180deg 225deg,  /* 5. Lata de Cerveza */
+        #1e2130 225deg 270deg,  /* 6. Será para la próxima */
+        #6a00f4 270deg 315deg,  /* 7. Lata de Vodka */
+        #161824 315deg 360deg   /* 8. Gira de nuevo */
+      );
+      transition: transform 4.4s cubic-bezier(0.12, 0.75, 0.08, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Líneas divisorias neón entre las 8 secciones */
+    .roulette-wheel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: repeating-conic-gradient(
+        from -1deg,
+        rgba(0, 243, 255, 0.75) 0deg 2deg,
+        transparent 2deg 45deg
+      );
+      pointer-events: none;
+    }
+
+    /* Botón central GIRAR estilo imagen */
+    .roulette-center-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 8;
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      border: 3px solid var(--neon-cyan);
+      background: radial-gradient(circle, #2a1942 0%, #111219 100%);
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 0 18px var(--neon-cyan), inset 0 0 10px var(--neon-pink);
+      text-shadow: 0 0 8px var(--neon-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s;
+    }
+    .roulette-center-btn:hover:not(:disabled) {
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+    .roulette-center-btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    /* Etiquetas radiales de las 8 secciones */
+    .wheel-slice-label {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 112px;
+      margin-left: -56px;
+      margin-top: -18px;
+      text-align: center;
+      font-size: 0.66rem;
+      line-height: 1.15;
+      font-weight: 900;
+      color: #ffffff;
+      text-shadow: 0 1px 4px #000000, 0 0 8px rgba(0, 243, 255, 0.6);
+      pointer-events: none;
+    }
+    .wheel-slice-label span {
+      display: block;
+      font-size: 1.15rem;
+      margin-bottom: 2px;
+    }
+
+    .s1 { transform: rotate(22.5deg) translateY(-98px); }
+    .s2 { transform: rotate(67.5deg) translateY(-98px); }
+    .s3 { transform: rotate(112.5deg) translateY(-98px); }
+    .s4 { transform: rotate(157.5deg) translateY(-98px); }
+    .s5 { transform: rotate(202.5deg) translateY(-98px); }
+    .s6 { transform: rotate(247.5deg) translateY(-98px); }
+    .s7 { transform: rotate(292.5deg) translateY(-98px); }
+    .s8 { transform: rotate(337.5deg) translateY(-98px); }
+
+    .roulette-result {
+      min-height: 2.5rem;
+      margin: 0.65rem 0;
+      font-weight: 800;
+      font-size: 0.98rem;
+      color: var(--neon-cyan) !important;
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
+    }
+    .roulette-action {
+      width: 100%;
+      border: 1.5px solid #ffffff;
+      border-radius: 999px;
+      padding: 0.85rem 1rem;
+      background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 0.95rem;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+      text-transform: uppercase;
+    }
+    .roulette-action:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+    .roulette-fineprint {
+      margin-top: 0.65rem;
+      font-size: 0.72rem !important;
+      color: #b8bcc8 !important;
+      line-height: 1.35;
+    }
+    .roulette-whatsapp {
+      display: none;
+      margin-top: 0.5rem;
+      text-decoration: none;
+      background: #25d366;
+      box-shadow: 0 0 18px rgba(37, 211, 102, 0.6);
+    }
+    .roulette-whatsapp.show {
+      display: block;
+    }
+
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-
-      .hero-title-main {
-        font-size: 2rem;
-      }
-
-      .hero-nav-buttons {
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-
-      .btn-pill {
-        width: 100%;
-      }
-
-      .ent-layout {
-        flex-direction: column;
-      }
+      html { font-size: 16px; }
+      header { flex-direction: column; gap: 0.8rem; }
+      .hero-title-main { font-size: 2.1rem; }
+      .hero-nav-buttons { flex-direction: column; gap: 0.8rem; }
+      .btn-pill { width: 100%; }
+      .ent-layout { flex-direction: column; }
+      #lenceria .marketplace-form { grid-template-columns: 1fr; }
+      .wheel-slice-label { width: 92px; margin-left: -46px; font-size: 0.58rem; }
+      .s1 { transform: rotate(22.5deg) translateY(-84px); }
+      .s2 { transform: rotate(67.5deg) translateY(-84px); }
+      .s3 { transform: rotate(112.5deg) translateY(-84px); }
+      .s4 { transform: rotate(157.5deg) translateY(-84px); }
+      .s5 { transform: rotate(202.5deg) translateY(-84px); }
+      .s6 { transform: rotate(247.5deg) translateY(-84px); }
+      .s7 { transform: rotate(292.5deg) translateY(-84px); }
+      .s8 { transform: rotate(337.5deg) translateY(-84px); }
     }
-
-    /* MARKETPLACE: publicaciones de vendedores */
-    .marketplace-panel {
-      background: rgba(20, 0, 5, 0.88);
-      border: 2px solid #ff1a40;
-      border-radius: 16px;
-      padding: 1.3rem;
-      margin: 1.5rem 0;
-    }
-    .marketplace-panel h3 { color: #ff6680; margin-bottom: .8rem; }
-    .marketplace-note { color: #ffd1dc; font-size: .88rem; line-height: 1.5; margin-bottom: 1rem; }
-    .marketplace-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
-    .marketplace-form .input-group input,
-    .marketplace-form .input-group textarea {
-      width: 100%; background: #120005; border: 1.5px solid #ff1a40;
-      color: #fff; padding: .85rem 1rem; border-radius: 10px; outline: none;
-    }
-    .marketplace-form .full-width { grid-column: 1 / -1; }
-    .marketplace-form textarea { min-height: 90px; resize: vertical; }
-    .marketplace-status { margin-top: .8rem; color: #ffe6eb; font-size: .9rem; overflow-wrap: anywhere; }
-    .marketplace-product-card { min-width: 0; }
-    .marketplace-product-card .lingerie-info { gap: .4rem; }
-    .marketplace-product-card .seller-label { font-size: .78rem; color: #ffb3c1; margin: .4rem 0; }
-    .marketplace-empty { color: #ffb3c1; text-align: center; padding: 1.2rem; grid-column: 1 / -1; }
-    @media (max-width: 600px) {
-      .marketplace-form { grid-template-columns: 1fr; }
-      .marketplace-form .full-width { grid-column: auto; }
-    }
-
-
-    /* MEJORA VISUAL: catálogo claro, limpio y con acentos rojos */
-    #lenceria { background: #fffaf5; color: #302326; }
-    #lenceria .card { background: linear-gradient(180deg, #fffdfb 0%, #fff6f2 100%); color: #302326; border: 1px solid #f2d8d7; box-shadow: 0 12px 35px rgba(65, 10, 20, .14); }
-    #lenceria h2, #lenceria h3 { color: #a71932 !important; }
-    #lenceria p { color: #655157 !important; }
-    #lenceria .lingerie-item { background: #ffffff; border: 1px solid #f0d4d6; box-shadow: 0 7px 20px rgba(83, 19, 30, .10); }
-    #lenceria .lingerie-item:hover { box-shadow: 0 12px 28px rgba(167, 25, 50, .17); }
-    #lenceria .lingerie-title { color: #3c2027; }
-    #lenceria .lingerie-desc { color: #6d5b60; }
-    #lenceria .lingerie-price { color: #b31e39; }
-    #lenceria .marketplace-panel { background: #fff; border: 1.5px solid #e9b9c1; box-shadow: 0 8px 24px rgba(83, 19, 30, .08); }
-    #lenceria .marketplace-panel h3 { color: #a71932 !important; }
-    #lenceria .marketplace-note, #lenceria .marketplace-status, #lenceria .marketplace-empty { color: #655157 !important; }
-    #lenceria .marketplace-form label { color: #4a3036; }
-    #lenceria .marketplace-form .input-group input, #lenceria .marketplace-form .input-group textarea { background: #fffaf8; border-color: #e7b8c0; color: #302326; }
-    #lenceria .marketplace-product-card .seller-label { color: #80525c; }
-    #lenceria .transf-footer { background: #fff0f2; color: #8c1830; border-left-color: #c51f40; }
-
-    /* Ruleta promocional */
-    .roulette-overlay { position: fixed; inset: 0; z-index: 5000; display: none; align-items: center; justify-content: center; padding: 1rem; background: rgba(20, 0, 5, .78); backdrop-filter: blur(5px); }
-    .roulette-overlay.open { display: flex; }
-    .roulette-modal { position: relative; width: min(100%, 440px); max-height: 94vh; overflow-y: auto; text-align: center; padding: 1.35rem; border-radius: 24px; color: #342329; background: linear-gradient(160deg,#fffdf8,#fff0f0); border: 2px solid #e7b2bb; box-shadow: 0 22px 70px rgba(0,0,0,.4); }
-    .roulette-close { position: absolute; right: 12px; top: 10px; border: 0; background: #f5dfe3; color: #7f1027; width: 34px; height: 34px; border-radius: 50%; font-size: 1.3rem; cursor: pointer; }
-    .roulette-kicker { color: #ae1835; font-size: .78rem; font-weight: 900; letter-spacing: 1.4px; }
-    .roulette-modal h2 { color: #8f142b; font-size: 1.55rem; margin: .35rem 0; }
-    .roulette-modal p { color: #6c5057; font-size: .91rem; }
-    .roulette-stage { width: min(78vw, 300px); height: min(78vw, 300px); max-width: 300px; max-height: 300px; margin: 1rem auto; position: relative; }
-    .roulette-wheel { width: 100%; height: 100%; border-radius: 50%; border: 8px solid #fff; outline: 3px solid #b21b39; box-shadow: 0 8px 22px rgba(80,0,20,.22); background: conic-gradient(from 0deg,#c62846 0deg 120deg,#fff0d7 120deg 240deg,#8e1731 240deg 360deg); transition: transform 4.2s cubic-bezier(.12,.72,.08,1); position: relative; }
-    .roulette-wheel::after { content: '★'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 45px; height: 45px; display: grid; place-items: center; border-radius: 50%; background: #fff; color: #b21b39; border: 3px solid #f2c66d; font-size: 1.4rem; }
-    .wheel-label { position: absolute; left: 50%; top: 50%; width: 88px; margin-left: -44px; margin-top: -14px; font-size: .77rem; line-height: 1.1; font-weight: 900; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.5); pointer-events: none; }
-    .wheel-label.one { transform: rotate(60deg) translateY(-82px) rotate(-60deg); }
-    .wheel-label.two { color: #61212c; text-shadow: none; transform: rotate(180deg) translateY(-82px) rotate(-180deg); }
-    .wheel-label.three { transform: rotate(300deg) translateY(-82px) rotate(-300deg); }
-    .roulette-pointer { position: absolute; z-index: 2; left: 50%; top: -6px; transform: translateX(-50%); width: 0; height: 0; border-left: 17px solid transparent; border-right: 17px solid transparent; border-top: 31px solid #ffd46a; filter: drop-shadow(0 2px 2px rgba(0,0,0,.25)); }
-    .roulette-action { width: 100%; border: 0; border-radius: 999px; padding: .9rem 1rem; background: linear-gradient(90deg,#a81733,#e12c4d); color: #fff; font-weight: 900; cursor: pointer; box-shadow: 0 6px 15px rgba(174,24,53,.22); }
-    .roulette-action:disabled { opacity: .65; cursor: wait; }
-    .roulette-result { min-height: 2.5rem; margin: .75rem 0; font-weight: 800; color: #94162e !important; }
-    .roulette-fineprint { margin-top: .8rem; font-size: .72rem !important; line-height: 1.4; }
-    .roulette-whatsapp { display: none; margin-top: .3rem; text-decoration: none; }
-    .roulette-whatsapp.show { display: block; }
-    @media (prefers-reduced-motion: reduce) { .roulette-wheel { transition-duration: .01ms; } }
-
   </style>
 </head>
 <body>
@@ -744,7 +983,7 @@
     </div>
     <nav>
       <button class="nav-btn" id="btn-transformacion" onclick="showSection('transformacion')">Transformación</button>
-      <button class="nav-btn" id="btn-lenceria" onclick="showSection('lenceria')">Catálogo</button>
+      <button class="nav-btn" id="btn-lenceria" onclick="showSection('lenceria')">Tienda / Catálogo</button>
       <button class="nav-btn" id="btn-entretenimiento" onclick="showSection('entretenimiento')">Entretenimiento</button>
       <button class="nav-btn" id="btn-eventos" onclick="showSection('eventos')">Eventos</button>
     </nav>
@@ -755,11 +994,11 @@
     <section id="home" class="section active">
       <div class="hero-container">
         <h1 class="hero-title-main">GULIANA 🔥 SOCIAL</h1>
-        <p class="hero-subtitle">Tu comunidad exclusiva de entretenimiento y entradas a los mejores eventos.</p>
+        <p class="hero-subtitle">Tu comunidad exclusiva de entretenimiento, noche neón y entradas a los mejores eventos.</p>
         
         <div class="hero-nav-buttons">
           <button class="btn-pill" onclick="showSection('transformacion')">TRANSFORMACIÓN</button>
-          <button class="btn-pill" onclick="showSection('lenceria')">CATÁLOGO</button>
+          <button class="btn-pill" onclick="showSection('lenceria')">TIENDA / CATÁLOGO</button>
           <button class="btn-pill" onclick="showSection('entretenimiento')">ENTRETENIMIENTO</button>
           <button class="btn-pill" onclick="showSection('eventos')">EVENTOS</button>
         </div>
@@ -774,7 +1013,7 @@
 
           <div class="transformation-card" onclick="showSection('lenceria')">
             <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Lencería y Catálogo">
-            <div class="card-banner-btn">CATÁLOGO Y LENCERÍA 🔥</div>
+            <div class="card-banner-btn">TIENDA Y LENCERÍA 🔥</div>
           </div>
         </div>
       </div>
@@ -791,7 +1030,7 @@
             <p class="transf-subtitle">¡Descubre una nueva versión de ti! ✨</p>
             <p>Transformamos tu imagen de principio a fin para que disfrutes una experiencia completa de cambio de look.</p>
             
-            <p style="margin-top: 1rem; font-weight: 700; color: #ff6680;">El servicio incluye:</p>
+            <p style="margin-top: 1rem; font-weight: 700; color: #00f3ff;">El servicio incluye:</p>
             <ul class="transf-list">
               <li>💄 Maquillaje profesional completo</li>
               <li>👁️ Maquillaje y diseño de ojos</li>
@@ -811,32 +1050,30 @@
             </div>
 
             <a href="https://wa.me/51930841255?text=Hola,%20deseo%20reservar%20una%20cita%20para%20el%20Servicio%20de%20Transformaci%C3%B3n" target="_blank" style="text-decoration: none;">
-              <button class="btn-pill" style="width: 100%; margin-top: 1.5rem; background: #25d366; box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);">💬 RESERVAR POR WHATSAPP (+51 930841255)</button>
+              <button class="btn-pill" style="width: 100%; margin-top: 1.5rem; background: #25d366; box-shadow: 0 0 18px rgba(37, 211, 102, 0.6);">💬 RESERVAR POR WHATSAPP (+51 930841255)</button>
             </a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CATÁLOGO EXCLUSIVO -->
+    <!-- TIENDA / CATÁLOGO EXCLUSIVO (FONDO BLANCO) -->
     <section id="lenceria" class="section">
       <div class="card">
         <h2 style="text-align: center;">🔥 CATÁLOGO EXCLUSIVO DE LENCERÍA Y PRENDAS 🔥</h2>
-        <p style="text-align: center; color: #ffb3c1; margin-bottom: 1.5rem;">
+        <p style="text-align: center; margin-bottom: 1.5rem;">
           Explora nuestros productos disponibles. Escríbenos directamente por WhatsApp para realizar tu pedido con envío discreto.
         </p>
 
         <div style="text-align: center; margin-bottom: 1.5rem;">
           <a href="https://wa.me/51930841255?text=Hola,%20deseo%20consultar%20el%20cat%C3%A1logo%20general" target="_blank" style="text-decoration: none;">
-            <button class="btn-pill" style="background: #25d366; box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);">
+            <button class="btn-pill" style="background: #25d366; box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);">
               📲 Escríbenos al WhatsApp: +51 930841255
             </button>
           </a>
         </div>
 
         <div class="lingerie-catalog">
-
-          <!-- PRODUCTOS EXISTENTES -->
           <div class="lingerie-item">
             <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Mallas Sensuales">
             <div class="lingerie-info">
@@ -844,7 +1081,7 @@
               <div class="lingerie-desc">Diseño calado y atrevido, ideal para un estilo seductor.</div>
               <div class="lingerie-price">S/ 15.00</div>
               <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Mallas%20Sensuales%20(S/%2015.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
               </a>
             </div>
           </div>
@@ -856,7 +1093,7 @@
               <div class="lingerie-desc">Diseño sexy con abertura frontal para máxima comodidad.</div>
               <div class="lingerie-price">S/ 10.00</div>
               <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Pantimedias%20Abertura%20Centro%20(S/%2010.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
               </a>
             </div>
           </div>
@@ -868,7 +1105,7 @@
               <div class="lingerie-desc">Lencería completa ajustada que resalta tus curvas.</div>
               <div class="lingerie-price">S/ 12.00</div>
               <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Lencer%C3%ADa%20Enteriza%20(S/%2012.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
               </a>
             </div>
           </div>
@@ -880,7 +1117,7 @@
               <div class="lingerie-desc">Estilo enterizo en red fina para un look impactante.</div>
               <div class="lingerie-price">S/ 12.00</div>
               <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Enteriza%20(S/%2012.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
               </a>
             </div>
           </div>
@@ -892,12 +1129,11 @@
               <div class="lingerie-desc">Prenda delicada y femenina para cualquier ocasión.</div>
               <div class="lingerie-price">S/ 10.00</div>
               <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Mallas%20Finas%20Cl%C3%A1sicas%20(S/%2010.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
               </a>
             </div>
           </div>
 
-          <!-- NUEVOS PRODUCTOS CON ENLACES IMGBB DIRECTOS -->
           <div class="lingerie-item">
             <img src="https://i.ibb.co/RT2NgNZF/image.jpeg" alt="Malla Fina">
             <div class="lingerie-info">
@@ -905,7 +1141,7 @@
               <div class="lingerie-desc">Diseño delicado y cómodo.</div>
               <div class="lingerie-price">S/ 6.00</div>
               <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Fina%20(S/%206.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
               </a>
             </div>
           </div>
@@ -917,7 +1153,7 @@
               <div class="lingerie-desc">Acabado suave y ajustado.</div>
               <div class="lingerie-price">S/ 6.00</div>
               <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Lencer%C3%ADa%20Extra%20Fina%20(S/%206.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
               </a>
             </div>
           </div>
@@ -929,7 +1165,7 @@
               <div class="lingerie-desc">Cabellera de dama en tono negro castaño natural.</div>
               <div class="lingerie-price">S/ 25.00</div>
               <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Negro%20Casta%C3%B1o%20(S/%2025.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
               </a>
             </div>
           </div>
@@ -941,7 +1177,7 @@
               <div class="lingerie-desc">Cabellera de dama fina en tono rubio platinado.</div>
               <div class="lingerie-price">S/ 30.00</div>
               <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Rubio%20Plateado%20(S/%2030.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
               </a>
             </div>
           </div>
@@ -953,17 +1189,16 @@
               <div class="lingerie-desc">Cabellera rubia radiante para cambio de look.</div>
               <div class="lingerie-price">S/ 20.00</div>
               <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Rubia%20(S/%2020.00)" target="_blank" style="text-decoration: none;">
-                <button class="btn-pill" style="width: 100%; font-size: 0.8rem; padding: 0.5rem; background: #25d366;">Pedir por WhatsApp</button>
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
               </a>
             </div>
           </div>
-
         </div>
 
-        <!-- MARKETPLACE: NUEVAS PUBLICACIONES DE USUARIOS -->
+        <!-- MARKETPLACE -->
         <div class="marketplace-panel">
           <h3>🛍️ Publica tu producto en Guliana Social</h3>
-          <p class="marketplace-note">Vendedores: publiquen sus productos con foto, precio y contacto. La publicación se guardará en línea y podrá verla cualquier visitante. Publica solo imágenes propias o con permiso.</p>
+          <p class="marketplace-note">Vendedores: publiquen sus productos con foto, precio y contacto. La publicación se guardará en línea y podrá verla cualquier visitante.</p>
           <form id="marketplaceForm" class="marketplace-form">
             <div class="input-group">
               <label for="mpTitle">Nombre del producto *</label>
@@ -996,11 +1231,10 @@
           </form>
         </div>
 
-        <h3 style="color:#ff6680; text-align:center; margin:1.5rem 0 .5rem;">✨ Productos publicados por la comunidad</h3>
+        <h3 style="text-align:center; margin:1.5rem 0 .5rem;">✨ Productos publicados por la comunidad</h3>
         <div id="marketplaceCatalog" class="lingerie-catalog" aria-live="polite">
           <p class="marketplace-empty">Cargando publicaciones...</p>
         </div>
-
 
         <div class="transf-footer" style="text-align: center; margin-top: 2rem;">
           <strong>📦 Entregas discretas y empaques reservados en todas tus compras. 🔥</strong>
@@ -1022,7 +1256,6 @@
           <img src="https://i.xgroovy.com/contents/videos_screenshots/301000/301867/preview_gif.mp4.jpg" alt="Preview Entretenimiento" class="ent-banner-img">
         </div>
 
-        <!-- VIDEOS DE GULIANA -->
         <div id="content-guliana" class="media-grid" style="display: none;">
           <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/z2p1lw.mp4" type="video/mp4"></video><p>Guliana Video 🔥 1</p></div>
           <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/78l01v.mp4" type="video/mp4"></video><p>Guliana Video 🔥 2</p></div>
@@ -1031,14 +1264,12 @@
           <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/ad4p2e.mp4" type="video/mp4"></video><p>Guliana Video 🔥 5</p></div>
         </div>
 
-        <!-- VIDEOS DE ESTEFANY -->
         <div id="content-estefany" class="media-grid" style="display: none;">
           <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/kpx6e4.mp4" type="video/mp4"></video><p>Estefany Video ✨ 1</p></div>
           <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/5nqy44.mp4" type="video/mp4"></video><p>Estefany Video ✨ 2</p></div>
           <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/o10icr.mp4" type="video/mp4"></video><p>Estefany Video ✨ 3</p></div>
           <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/4u54y0.mp4" type="video/mp4"></video><p>Estefany Video ✨ 4</p></div>
         </div>
-
       </div>
 
       <div class="card">
@@ -1057,11 +1288,11 @@
       </div>
     </section>
 
-    <!-- EVENTOS / REGISTRO COMPLETO -->
+    <!-- EVENTOS -->
     <section id="eventos" class="section">
       <div class="card">
         <h2>Entradas y Eventos</h2>
-        <p style="text-align: center; color: #ffb3c1; margin-bottom: 1.5rem;">
+        <p style="text-align: center; color: #ffffff; margin-bottom: 1.5rem;">
           Ingresa tu Nombre / Nickname para registrar tu entrada.
         </p>
 
@@ -1072,7 +1303,6 @@
 
         <div id="formSection">
           <form onsubmit="submitCustomForm(event)" class="custom-form" style="margin-top: 1.5rem;">
-            
             <div class="input-group">
               <label for="nicknameUsuario">Nombre / Nickname:</label>
               <input type="text" id="nicknameUsuario" placeholder="Ingresa tu nombre..." required>
@@ -1081,7 +1311,6 @@
             <div class="input-group">
               <label>Selecciona tu Entrada:</label>
               <div class="tickets-container">
-                
                 <label class="ticket-option selected" id="opt-general" onclick="selectTicket('opt-general')">
                   <input type="radio" name="ticketType" value="Entrada General - 10 Soles" checked>
                   <div class="ticket-title">Entrada General</div>
@@ -1093,7 +1322,6 @@
                   <div class="ticket-title">Entrada VIP</div>
                   <div class="ticket-price">VIP ⚡</div>
                 </label>
-
               </div>
             </div>
 
@@ -1101,14 +1329,10 @@
           </form>
         </div>
 
-        <!-- LISTA DINÁMICA DE CONFIRMADOS AL EVENTO EN VIVO -->
         <div class="attendees-box">
           <div class="attendees-title">🎉 ASISTENTES CONFIRMADOS AL EVENTO 🎉</div>
-          <div id="attendeesList">
-            <!-- Se irán agregando los nombres aquí -->
-          </div>
+          <div id="attendeesList"></div>
         </div>
-
       </div>
     </section>
   </main>
@@ -1118,8 +1342,8 @@
     <div class="fullscreen-success-box">
       <h2>¡REGISTRADO! 🎉</h2>
       <p>Tu registro ha sido enviado correctamente.</p>
-      <p style="font-size: 0.9rem; color: #ffb3c1;">Gracias por ser parte de Guliana Social.</p>
-      <button class="btn-pill" style="margin-top: 1.5rem; background: #00ff66; color: #000;" onclick="closeFullscreenSuccess()">Aceptar y Volver</button>
+      <p style="font-size: 0.95rem; color: #00f3ff;">Gracias por ser parte de Guliana Social.</p>
+      <button class="btn-pill" style="margin-top: 1.5rem; background: #00ff88; color: #000;" onclick="closeFullscreenSuccess()">Aceptar y Volver</button>
     </div>
   </div>
 
@@ -1136,11 +1360,46 @@
     </div>
   </div>
 
+  <!-- RULETA PROMOCIONAL NIGHT CLUB (8 SECCIONES DUPLICADAS) -->
+  <div class="roulette-overlay" id="rouletteOverlay" role="dialog" aria-modal="true" aria-labelledby="rouletteTitle">
+    <div class="roulette-modal">
+      <button class="roulette-close" id="rouletteClose" type="button" aria-label="Cerrar ruleta">×</button>
+      <div class="roulette-kicker">GULIANA SOCIAL • NIGHT CLUB</div>
+      <h2 id="rouletteTitle">🎡 ¡GIRA Y PRUEBA TU SUERTE!</h2>
+      <p>Gira la ruleta neón al ingresar y descubre tu premio de la noche.</p>
+
+      <div class="roulette-stage">
+        <div class="roulette-pointer"></div>
+        <button class="roulette-center-btn" id="rouletteCenterBtn" type="button" disabled>GIRAR</button>
+        <div class="roulette-wheel" id="rouletteWheel">
+          <div class="wheel-slice-label s1"><span>🍺</span>Lata de<br>Cerveza</div>
+          <div class="wheel-slice-label s2"><span>😅</span>Será para<br>la próxima</div>
+          <div class="wheel-slice-label s3"><span>🍸</span>Lata de<br>Vodka</div>
+          <div class="wheel-slice-label s4"><span>🔄</span>Gira de<br>nuevo</div>
+          <div class="wheel-slice-label s5"><span>🍺</span>Lata de<br>Cerveza</div>
+          <div class="wheel-slice-label s6"><span>😅</span>Será para<br>la próxima</div>
+          <div class="wheel-slice-label s7"><span>🍸</span>Lata de<br>Vodka</div>
+          <div class="wheel-slice-label s8"><span>🔄</span>Gira de<br>nuevo</div>
+        </div>
+      </div>
+
+      <p id="rouletteResult" class="roulette-result" aria-live="polite">Marca la casilla +18 para activar tu giro.</p>
+
+      <label style="display:flex;align-items:center;justify-content:center;gap:.5rem;margin:.4rem 0 .8rem;font-size:.88rem;color:#ffffff;cursor:pointer;">
+        <input id="rouletteAdult" type="checkbox" style="width:19px;height:19px;accent-color:#00f3ff;">
+        Confirmo que tengo 18 años o más
+      </label>
+
+      <button class="roulette-action" id="rouletteSpin" type="button" disabled>🎯 GIRAR RULETA</button>
+      <a id="rouletteWhatsapp" class="roulette-action roulette-whatsapp" href="https://wa.me/51930841255?text=Hola%2C%20gan%C3%A9%20un%20premio%20en%20la%20ruleta%20de%20Guliana%20Social" target="_blank" rel="noopener noreferrer">💬 Reclamar premio por WhatsApp</a>
+
+      <p class="roulette-fineprint">Solo mayores de 18 años. Premios sujetos a disponibilidad y confirmación por WhatsApp. Toma con responsabilidad.</p>
+    </div>
+  </div>
+
   <script>
     var currentTargetProfile = '';
     var unlockedProfiles = { guliana: false, estefany: false };
-
-    // CONTRASEÑAS ACTUALIZADAS: Guliana -> 1999, Estefany -> 1998
     const PASSWORDS = { guliana: '1999', estefany: '1998' };
 
     document.addEventListener("DOMContentLoaded", function() {
@@ -1227,12 +1486,7 @@
 
         const mediaCard = document.createElement('div');
         mediaCard.className = 'media-item';
-
-        mediaCard.innerHTML = `
-          <video src="${fileURL}" controls></video>
-          <p>${captionInput.value}</p>
-        `;
-
+        mediaCard.innerHTML = `<video src="${fileURL}" controls></video><p>${captionInput.value}</p>`;
         grid.prepend(mediaCard);
 
         fileInput.value = '';
@@ -1246,14 +1500,14 @@
       container.innerHTML = "";
 
       if (savedList.length === 0) {
-        container.innerHTML = "<p style='text-align: center; color: #aaa; font-size: 0.85rem;'>Aún no hay registros guardados.</p>";
+        container.innerHTML = "<p style='text-align: center; color: #cccccc; font-size: 0.9rem;'>Aún no hay registros guardados.</p>";
         return;
       }
 
       savedList.forEach(function(item) {
         var div = document.createElement("div");
         div.className = "attendee-item";
-        div.innerHTML = "<span>✨</span> <strong>" + item + "</strong> asistirá al evento del 8 de octubre en guliana point";
+        div.innerHTML = "<span>✨</span> <strong>" + item + "</strong> asistirá al evento en Guliana Point";
         container.appendChild(div);
       });
     }
@@ -1262,7 +1516,6 @@
       e.preventDefault();
       var nickname = document.getElementById("nicknameUsuario").value.trim();
       var entrada = document.querySelector('input[name="ticketType"]:checked').value;
-
       if (!nickname) return;
 
       var btn = document.getElementById("btnSubmitForm");
@@ -1270,22 +1523,16 @@
       btn.innerText = "Enviando registro...";
 
       var formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfqzYy8ufLWXZK0JXm8Z-XLTA7bW8cPqx-VwGLquPXNap6AXQ/formResponse";
-      
       var formData = new FormData();
       formData.append("entry.1000001", nickname);
       formData.append("entry.1000004", entrada);
 
-      fetch(formUrl, {
-        method: "POST",
-        mode: "no-cors",
-        body: formData
-      }).finally(function() {
+      fetch(formUrl, { method: "POST", mode: "no-cors", body: formData }).finally(function() {
         var savedList = JSON.parse(localStorage.getItem("guliana_attendees_list")) || [];
         savedList.push(nickname);
         localStorage.setItem("guliana_attendees_list", JSON.stringify(savedList));
 
         loadAttendees();
-
         document.getElementById("fullscreenSuccess").style.display = "flex";
         document.getElementById("nicknameUsuario").value = "";
         btn.disabled = false;
@@ -1298,12 +1545,10 @@
     }
   </script>
 
-  <!-- Marketplace persistente: requiere configurar las claves públicas de tu proyecto Supabase -->
+  <!-- Marketplace persistente -->
   <script type="module">
     import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-    // PASO OBLIGATORIO: reemplaza estos dos valores por los de tu proyecto Supabase.
-    // Usa la URL del proyecto y la clave publishable/anon; NUNCA pongas la service_role aquí.
     const SUPABASE_URL = 'PEGA_AQUI_LA_URL_DE_TU_PROYECTO';
     const SUPABASE_ANON_KEY = 'PEGA_AQUI_TU_CLAVE_PUBLICA_ANON';
     const mpForm = document.getElementById('marketplaceForm');
@@ -1314,7 +1559,7 @@
 
     function setMpStatus(message, isError = false) {
       mpStatus.textContent = message;
-      mpStatus.style.color = isError ? '#ff9aaa' : '#b7ffd0';
+      mpStatus.style.color = isError ? '#b31e39' : '#1b7a3d';
     }
 
     function makeWhatsAppLink(number, title) {
@@ -1331,8 +1576,6 @@
       img.src = item.image_url;
       img.alt = item.title || 'Producto publicado';
       img.loading = 'lazy';
-      img.referrerPolicy = 'no-referrer';
-      img.onerror = () => { img.alt = 'No se pudo cargar la foto'; };
 
       const info = document.createElement('div');
       info.className = 'lingerie-info';
@@ -1362,7 +1605,7 @@
       const button = document.createElement('button');
       button.type = 'button';
       button.className = 'btn-pill';
-      button.style.cssText = 'width:100%;font-size:.8rem;padding:.5rem;background:#25d366;';
+      button.style.cssText = 'width:100%;font-size:.85rem;padding:.55rem;background:#25d366;';
       button.textContent = 'Consultar por WhatsApp';
       contact.appendChild(button);
 
@@ -1373,11 +1616,7 @@
 
     async function loadMarketplaceProducts() {
       if (!supabase) {
-        mpCatalog.innerHTML = '';
-        const msg = document.createElement('p');
-        msg.className = 'marketplace-empty';
-        msg.textContent = 'Para activar las publicaciones, configura Supabase según las instrucciones incluidas.';
-        mpCatalog.appendChild(msg);
+        mpCatalog.innerHTML = '<p class="marketplace-empty">Para activar las publicaciones, configura Supabase según las instrucciones incluidas.</p>';
         setMpStatus('Falta configurar la URL y la clave pública de Supabase en este archivo.', true);
         return;
       }
@@ -1388,19 +1627,8 @@
         .order('created_at', { ascending: false })
         .limit(100);
 
-      if (error) {
-        const msg = document.createElement('p');
-        msg.className = 'marketplace-empty';
-        msg.textContent = 'No se pudieron cargar los productos. Revisa la configuración de Supabase.';
-        mpCatalog.appendChild(msg);
-        setMpStatus('Error al cargar publicaciones: ' + error.message, true);
-        return;
-      }
-      if (!data || data.length === 0) {
-        const msg = document.createElement('p');
-        msg.className = 'marketplace-empty';
-        msg.textContent = 'Todavía no hay productos de la comunidad. ¡Sé el primero en publicar!';
-        mpCatalog.appendChild(msg);
+      if (error || !data || data.length === 0) {
+        mpCatalog.innerHTML = '<p class="marketplace-empty">Todavía no hay productos de la comunidad. ¡Sé el primero en publicar!</p>';
         return;
       }
       data.forEach(addMarketplaceCard);
@@ -1409,10 +1637,9 @@
     mpForm.addEventListener('submit', async (event) => {
       event.preventDefault();
       if (!supabase) {
-        setMpStatus('Aún no está conectado. Primero completa la configuración de Supabase indicada en las instrucciones.', true);
+        setMpStatus('Aún no está conectado. Primero completa la configuración de Supabase.', true);
         return;
       }
-
       const title = document.getElementById('mpTitle').value.trim();
       const price = Number(document.getElementById('mpPrice').value);
       const seller = document.getElementById('mpSeller').value.trim();
@@ -1420,42 +1647,19 @@
       const description = document.getElementById('mpDescription').value.trim();
       const file = document.getElementById('mpImage').files[0];
 
-      if (!title || !seller || !description || !file || !Number.isFinite(price) || price < 0) {
-        setMpStatus('Completa todos los campos y selecciona una foto.', true);
-        return;
-      }
-      if (!/^\d{8,15}$/.test(whatsapp)) {
-        setMpStatus('Escribe el WhatsApp con código de país y solo números (por ejemplo, 519XXXXXXXX).', true);
-        return;
-      }
-      if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type)) {
-        setMpStatus('La foto debe ser JPG, PNG o WebP.', true);
-        return;
-      }
-      if (file.size > 3 * 1024 * 1024) {
-        setMpStatus('La foto supera los 3 MB. Elige una imagen más pequeña.', true);
-        return;
-      }
+      if (!title || !seller || !description || !file || !Number.isFinite(price) || price < 0) return;
 
       mpSubmit.disabled = true;
       mpSubmit.textContent = 'Subiendo foto y guardando...';
-      setMpStatus('Subiendo foto y guardando producto...');
       try {
         const extension = file.type === 'image/png' ? 'png' : file.type === 'image/webp' ? 'webp' : 'jpg';
         const safeName = crypto.randomUUID() + '.' + extension;
-        const { error: uploadError } = await supabase.storage
-          .from('marketplace-photos')
-          .upload(safeName, file, { contentType: file.type, upsert: false });
+        const { error: uploadError } = await supabase.storage.from('marketplace-photos').upload(safeName, file, { contentType: file.type, upsert: false });
         if (uploadError) throw uploadError;
 
         const { data: urlData } = supabase.storage.from('marketplace-photos').getPublicUrl(safeName);
         const { error: insertError } = await supabase.from('marketplace_products').insert({
-          title,
-          description,
-          price,
-          image_url: urlData.publicUrl,
-          seller_name: seller,
-          whatsapp
+          title, description, price, image_url: urlData.publicUrl, seller_name: seller, whatsapp
         });
         if (insertError) throw insertError;
 
@@ -1463,8 +1667,7 @@
         setMpStatus('¡Producto publicado! Ya aparece en el catálogo.');
         await loadMarketplaceProducts();
       } catch (error) {
-        console.error('Error al publicar producto:', error);
-        setMpStatus('No se pudo publicar. Revisa las instrucciones, la conexión y las políticas de Supabase. Detalle: ' + (error.message || 'error desconocido'), true);
+        setMpStatus('Error al publicar: ' + (error.message || 'error desconocido'), true);
       } finally {
         mpSubmit.disabled = false;
         mpSubmit.textContent = '📤 Publicar producto';
@@ -1478,115 +1681,134 @@
     loadMarketplaceProducts();
   </script>
 
-
-  <!-- RULETA PROMOCIONAL: solo para mayores de 18 años -->
-  <div class="roulette-overlay" id="rouletteOverlay" role="dialog" aria-modal="true" aria-labelledby="rouletteTitle">
-    <div class="roulette-modal">
-      <button class="roulette-close" id="rouletteClose" type="button" aria-label="Cerrar ruleta">×</button>
-      <div class="roulette-kicker">GULIANA SOCIAL • PROMOCIÓN</div>
-      <h2 id="rouletteTitle">🎡 ¡Gira y prueba tu suerte!</h2>
-      <p>Una sorpresa podría esperarte. La ruleta es promocional y no necesitas comprar para participar.</p>
-      <div class="roulette-stage">
-        <div class="roulette-pointer"></div>
-        <div class="roulette-wheel" id="rouletteWheel">
-          <span class="wheel-label one">🍺 Cerveza</span>
-          <span class="wheel-label two">🔄 Inténtalo de nuevo<br>Será para la próxima</span>
-          <span class="wheel-label three">🍸 Vodka</span>
-        </div>
-      </div>
-      <p id="rouletteResult" class="roulette-result" aria-live="polite">Pulsa “GIRAR RULETA” para conocer el resultado.</p>
-      <label style="display:flex;align-items:center;justify-content:center;gap:.5rem;margin:.5rem 0 .8rem;font-size:.82rem;color:#4a3036;"><input id="rouletteAdult" type="checkbox" style="width:18px;height:18px;accent-color:#b21b39;"> Confirmo que tengo 18 años o más</label>
-      <button class="roulette-action" id="rouletteSpin" type="button" disabled>🎯 GIRAR RULETA</button>
-      <a id="rouletteWhatsapp" class="roulette-action roulette-whatsapp" href="https://wa.me/51930841255?text=Hola%2C%20quiero%20consultar%20sobre%20el%20premio%20de%20la%20ruleta%20de%20Guliana%20Social" target="_blank" rel="noopener noreferrer">💬 Consultar premio por WhatsApp</a>
-      <p class="roulette-fineprint">Solo mayores de 18 años. Premios sujetos a disponibilidad y confirmación del organizador; no hay premio garantizado en cada giro. Bebe responsablemente. No conduzcas después de consumir alcohol.</p>
-    </div>
-  </div>
+  <!-- LÓGICA DE LA RULETA DE 8 SECCIONES DUPLICADAS -->
   <script>
     (() => {
       const overlay = document.getElementById('rouletteOverlay');
       const close = document.getElementById('rouletteClose');
       const spin = document.getElementById('rouletteSpin');
+      const centerBtn = document.getElementById('rouletteCenterBtn');
       const adult = document.getElementById('rouletteAdult');
       const wheel = document.getElementById('rouletteWheel');
       const result = document.getElementById('rouletteResult');
       const whatsapp = document.getElementById('rouletteWhatsapp');
-      if (!overlay || !spin || !wheel) return;
+      if (!overlay || !spin || !wheel || !adult || !result) return;
 
-      // Límite local: una participación cada 24 horas por navegador/dispositivo.
-      // Para limitar por cuenta y evitar borrar datos, se requiere validación en servidor.
-      const COOLDOWN_KEY = 'gulianaRouletteLastPlay';
       const COOLDOWN_MS = 24 * 60 * 60 * 1000;
-      const remaining = () => Math.max(0, COOLDOWN_MS - (Date.now() - Number(localStorage.getItem(COOLDOWN_KEY) || 0)));
-      const formatRemaining = (ms) => {
+      const STORAGE_KEY = 'gulianaRouletteLastSpin_v3';
+      let spinning = false;
+      let rotation = 0;
+
+      // 8 secciones (45° cada una). Centro de cada sección: 22.5°, 67.5°, 112.5°, 157.5°, 202.5°, 247.5°, 292.5°, 337.5°
+      const SLICES = [
+        { type: 'cerveza', centerAngle: 22.5,  text: '🎉 ¡GANASTE UNA LATA DE CERVEZA! 🍺 Escríbenos por WhatsApp para reclamarla.', win: true },
+        { type: 'proxima', centerAngle: 67.5,  text: '😅 Será para la próxima. ¡Vuelve mañana por otro giro en Guliana Social!', win: false },
+        { type: 'vodka',   centerAngle: 112.5, text: '🎉 ¡GANASTE UNA LATA DE VODKA! 🍸 Escríbenos por WhatsApp para reclamarla.', win: true },
+        { type: 'nuevo',   centerAngle: 157.5, text: '🔄 ¡GIRA DE NUEVO! Te tocó un tiro extra gratis ahora mismo.', win: false, freeSpin: true },
+        { type: 'cerveza', centerAngle: 202.5, text: '🎉 ¡GANASTE UNA LATA DE CERVEZA! 🍺 Escríbenos por WhatsApp para reclamarla.', win: true },
+        { type: 'proxima', centerAngle: 247.5, text: '😅 Será para la próxima. ¡Vuelve mañana por otro giro en Guliana Social!', win: false },
+        { type: 'vodka',   centerAngle: 292.5, text: '🎉 ¡GANASTE UNA LATA DE VODKA! 🍸 Escríbenos por WhatsApp para reclamarla.', win: true },
+        { type: 'nuevo',   centerAngle: 337.5, text: '🔄 ¡GIRA DE NUEVO! Te tocó un tiro extra gratis ahora mismo.', win: false, freeSpin: true }
+      ];
+
+      function getLastSpin() {
+        try { return Number(localStorage.getItem(STORAGE_KEY) || 0); }
+        catch (_) { return 0; }
+      }
+      function setLastSpin(timestamp) {
+        try { localStorage.setItem(STORAGE_KEY, String(timestamp)); }
+        catch (_) {}
+      }
+      function remainingText(ms) {
         const hours = Math.floor(ms / 3600000);
         const minutes = Math.ceil((ms % 3600000) / 60000);
-        return `${hours} h ${minutes} min`;
-      };
-      const setCooldownView = () => {
-        const ms = remaining();
-        if (ms > 0) {
-          spin.disabled = true;
-          adult.disabled = true;
-          result.textContent = `Ya participaste. La ruleta estará disponible nuevamente en ${formatRemaining(ms)}.`;
-          spin.textContent = '🔒 VUELVE EN 24 HORAS';
-        } else {
-          adult.disabled = false;
-          spin.disabled = !adult.checked;
-          spin.textContent = '🎯 GIRAR RULETA';
-        }
-      };
-
-      try {
-        if (!localStorage.getItem(COOLDOWN_KEY) || remaining() <= 0) {
-          setTimeout(() => overlay.classList.add('open'), 650);
-        }
-      } catch (_) {
-        setTimeout(() => overlay.classList.add('open'), 650);
+        return hours > 0 ? `${hours} h y ${minutes} min` : `${minutes} min`;
       }
 
-      adult.addEventListener('change', () => { spin.disabled = !adult.checked; });
+      function updateButtonsState(enabled, label) {
+        spin.disabled = !enabled;
+        if (centerBtn) centerBtn.disabled = !enabled;
+        spin.textContent = label;
+      }
+
+      function refreshCooldown() {
+        const remaining = COOLDOWN_MS - (Date.now() - getLastSpin());
+        if (remaining > 0) {
+          updateButtonsState(false, '⏳ VUELVE MÁS TARDE');
+          result.textContent = `Ya usaste tu giro. Podrás volver a girar en ${remainingText(remaining)}.`;
+        } else {
+          updateButtonsState(adult.checked, '🎯 GIRAR RULETA');
+          if (!spinning) {
+            result.textContent = adult.checked ? '¡Listo! Presiona GIRAR para probar tu suerte.' : 'Marca la casilla +18 para activar tu giro.';
+          }
+        }
+      }
+
+      // Mostrar ruleta automáticamente al ingresar
+      setTimeout(() => overlay.classList.add('open'), 500);
+
+      adult.addEventListener('change', refreshCooldown);
       close.addEventListener('click', () => overlay.classList.remove('open'));
       overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('open'); });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') overlay.classList.remove('open'); });
+      refreshCooldown();
 
-      let rotation = 0;
-      let spinning = false;
-      spin.addEventListener('click', () => {
-        if (spinning || remaining() > 0 || !adult.checked) return;
+      function triggerSpin() {
+        if (spinning || !adult.checked) return;
+        const remaining = COOLDOWN_MS - (Date.now() - getLastSpin());
+        if (remaining > 0) { refreshCooldown(); return; }
 
-        // Probabilidad total de premio: 8% (4% cerveza y 4% vodka).
-        // 92%: "Inténtalo de nuevo, será para la próxima".
+        // Selección aleatoria entre las 8 secciones (ajustable según probabilidad deseada)
         const roll = Math.random();
-        const outcome = roll < 0.04 ? 0 : roll < 0.08 ? 2 : 1;
-        const labels = [
-          { text: '🎉 ¡Posible premio: una cerveza! Escríbenos para confirmar disponibilidad.', win: true, angle: 300 },
-          { text: '🔄 Inténtalo de nuevo, será para la próxima. ¡Gracias por participar!', win: false, angle: 180 },
-          { text: '🎉 ¡Posible premio: un vodka! Escríbenos para confirmar disponibilidad.', win: true, angle: 60 }
-        ];
+        let chosenIndex;
+        if (roll < 0.05) {
+          chosenIndex = Math.random() < 0.5 ? 0 : 4; // Lata de cerveza (2 secciones)
+        } else if (roll < 0.10) {
+          chosenIndex = Math.random() < 0.5 ? 2 : 6; // Lata de vodka (2 secciones)
+        } else if (roll < 0.45) {
+          chosenIndex = Math.random() < 0.5 ? 3 : 7; // Gira de nuevo (2 secciones)
+        } else {
+          chosenIndex = Math.random() < 0.5 ? 1 : 5; // Será para la próxima (2 secciones)
+        }
 
-        // Registrar al comenzar para que recargar/cerrar no permita otro giro.
-        try { localStorage.setItem(COOLDOWN_KEY, String(Date.now())); } catch (_) {}
+        const chosen = SLICES[chosenIndex];
+
+        // Si no es "Gira de nuevo", bloquea hasta las próximas 24 horas
+        if (!chosen.freeSpin) {
+          setLastSpin(Date.now());
+        }
+
         spinning = true;
-        spin.disabled = true;
-        adult.disabled = true;
+        updateButtonsState(false, '🎡 GIRANDO…');
         whatsapp.classList.remove('show');
         result.textContent = 'La ruleta está girando…';
-        rotation = Math.ceil((rotation + 1800 - labels[outcome].angle) / 360) * 360 + labels[outcome].angle;
+
+        // Calcular rotación para que el puntero superior (0°) apunte al centro de la sección elegida
+        const targetAngle = (360 - chosen.centerAngle) % 360;
+        const currentMod = rotation % 360;
+        const delta = (targetAngle - currentMod + 360) % 360;
+        rotation += 1800 + delta; // 5 vueltas completas + ángulo exacto
+
         wheel.style.transform = `rotate(${rotation}deg)`;
 
         window.setTimeout(() => {
-          result.textContent = labels[outcome].text;
-          if (labels[outcome].win) {
-            const prize = outcome === 0 ? 'una cerveza' : 'un vodka';
-            whatsapp.href = 'https://wa.me/51930841255?text=' + encodeURIComponent('Hola, la ruleta de Guliana Social me dio como resultado posible premio: ' + prize + '. ¿Me confirma la disponibilidad y cómo reclamarlo?');
-            whatsapp.classList.add('show');
-          }
-          spin.textContent = '🔒 VUELVE EN 24 HORAS';
-          result.textContent += ' Podrás volver a participar en 24 horas.';
           spinning = false;
-        }, 4300);
-      });
-      setCooldownView();
+          if (chosen.win) {
+            const prizeName = chosen.type === 'cerveza' ? 'una Lata de Cerveza' : 'una Lata de Vodka';
+            whatsapp.href = 'https://wa.me/51930841255?text=' + encodeURIComponent('Hola, gané ' + prizeName + ' en la ruleta neón de Guliana Social. ¿Cómo lo reclamo?');
+            whatsapp.classList.add('show');
+            refreshCooldown();
+          } else if (chosen.freeSpin) {
+            updateButtonsState(true, '🔄 GIRAR DE NUEVO');
+          } else {
+            refreshCooldown();
+          }
+          result.textContent = chosen.text;
+        }, 4500);
+      }
+
+      spin.addEventListener('click', triggerSpin);
+      if (centerBtn) centerBtn.addEventListener('click', triggerSpin);
     })();
   </script>
 
