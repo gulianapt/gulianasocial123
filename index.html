@@ -1,439 +1,1655 @@
-    <div class="hero-nav-buttons">
-      <button class="btn-pill" onclick="showSection('transformacion')">TRANSFORMACIÓN</button>
-      <button class="btn-pill" onclick="showSection('lenceria')">TIENDA / CATÁLOGO</button>
-      <button class="btn-pill" onclick="showSection('entretenimiento')">ENTRETENIMIENTO</button>
-      <button class="btn-pill" onclick="showSection('eventos')">EVENTOS</button>
-      <button class="btn-pill" onclick="showSection('poker')" style="background: linear-gradient(90deg, #ff007f, #00f3ff); color: #0b0c10;">🂡 CASINO PÓKER</button>
-    </div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guliana Social</title>
+  
+  <meta property="og:title" content="Guliana Social">
+  <meta property="og:description" content="Tu comunidad exclusiva de entretenimiento y entradas a los mejores eventos.">
 
-    <h2 class="expert-title">NUESTROS SERVICIOS DESTACADOS</h2>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Importamos la librería oficial de Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <div class="transformation-grid">
-      <div class="transformation-card" onclick="showSection('transformacion')">
-        <img src="https://www.xpaja.net/views/albums/2024/07/anime-chichonas-xxx/thumb_9.jpg" alt="Servicio de Transformación">
-        <div class="card-banner-btn">SERVICIO DE TRANSFORMACIÓN ⚡</div>
-      </div>
+  <style>
+    :root {
+      --bg-dark: #14151a;
+      --bg-card: rgba(24, 26, 33, 0.92);
+      --neon-cyan: #00f3ff;
+      --neon-pink: #ff007f;
+      --neon-purple: #bc13fe;
+      --text-white: #ffffff;
+    }
 
-      <div class="transformation-card" onclick="showSection('lenceria')">
-        <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Lencería y Catálogo">
-        <div class="card-banner-btn">TIENDA Y LENCERÍA 🔥</div>
-      </div>
-    </div>
-  </div>
-</section>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
 
-<!-- TRANSFORMACIÓN FEMENINA -->
-<section id="transformacion" class="section">
-  <div class="card">
-    <div class="transf-detail-box">
-      <img src="https://imagex1.sx.cdn.live/images/pinporn/2021/11/16/26249016.jpg?width=300" alt="Transformación Femenina" class="transf-detail-img">
-      
-      <div class="transf-detail-content">
-        <h2 class="transf-main-title">💄 SERVICIO DE TRANSFORMACIÓN FEMENINA</h2>
-        <p class="transf-subtitle">¡Descubre una nueva versión de ti! ✨</p>
-        <p>Transformamos tu imagen de principio a fin para que disfrutes una experiencia completa de cambio de look.</p>
-        
-        <p style="margin-top: 1rem; font-weight: 700; color: #00f3ff;">El servicio incluye:</p>
-        <ul class="transf-list">
-          <li>💄 Maquillaje profesional completo</li>
-          <li>👁️ Maquillaje y diseño de ojos</li>
-          <li>👄 Labios y acabado profesional</li>
-          <li>🧔 Corrección y cobertura de barba</li>
-          <li>✨ Contouring e iluminación facial</li>
-          <li>💇‍♀️ Peluca y colocación</li>
-          <li>👗 Elección y colocación del outfit</li>
-          <li>👠 Accesorios y complementos</li>
-          <li>📸 Sesión de fotos del resultado</li>
-          <li>🪞 Asesoría personalizada durante toda la transformación</li>
-        </ul>
+    html {
+      font-size: 18px;
+    }
 
-        <div class="transf-footer">
-          Experiencia completa: desde el rostro natural hasta el look final.<br>
-          <strong>Reserva tu cita y vive la transformación. 💕</strong>
-        </div>
+    body {
+      background: #121318;
+      background-image: 
+        radial-gradient(circle at 15% 20%, rgba(188, 19, 254, 0.16) 0%, transparent 45%),
+        radial-gradient(circle at 85% 80%, rgba(0, 243, 255, 0.14) 0%, transparent 45%),
+        linear-gradient(135deg, #101116 0%, #1c1e26 50%, #14151b 100%);
+      background-attachment: fixed;
+      color: var(--text-white);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-        <a href="https://wa.me/51930841255?text=Hola,%20deseo%20reservar%20una%20cita%20para%20el%20Servicio%20de%20Transformaci%C3%B3n" target="_blank" style="text-decoration: none;">
-          <button class="btn-pill" style="width: 100%; margin-top: 1.5rem; background: #25d366; box-shadow: 0 0 18px rgba(37, 211, 102, 0.6);">💬 RESERVAR POR WHATSAPP (+51 930841255)</button>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
+    /* HEADER ESTILO NIGHT CLUB */
+    header {
+      background: rgba(16, 17, 22, 0.95);
+      border-bottom: 2px solid var(--neon-cyan);
+      padding: 0.9rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 25px rgba(0, 243, 255, 0.25);
+      backdrop-filter: blur(8px);
+    }
 
-<!-- TIENDA / CATÁLOGO EXCLUSIVO -->
-<section id="lenceria" class="section">
-  <div class="card">
-    <h2 style="text-align: center;">🔥 CATÁLOGO EXCLUSIVO DE LENCERÍA Y PRENDAS 🔥</h2>
-    <p style="text-align: center; margin-bottom: 1.5rem;">
-      Explora nuestros productos disponibles. Escríbenos directamente por WhatsApp para realizar tu pedido con envío discreto.
-    </p>
+    .logo {
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      text-shadow: 0 0 10px var(--neon-pink), 0 0 22px var(--neon-purple);
+      font-family: 'Cinzel', serif;
+    }
 
-    <div style="text-align: center; margin-bottom: 1.5rem;">
-      <a href="https://wa.me/51930841255?text=Hola,%20deseo%20consultar%20el%20cat%C3%A1logo%20general" target="_blank" style="text-decoration: none;">
-        <button class="btn-pill" style="background: #25d366; box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);">
-          📲 Escríbenos al WhatsApp: +51 930841255
-        </button>
-      </a>
-    </div>
+    .logo-fire {
+      font-size: 1.65rem;
+      animation: flame 1.2s ease-in-out infinite alternate;
+    }
 
-    <div class="lingerie-catalog">
-      <div class="lingerie-item">
-        <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Mallas Sensuales">
-        <div class="lingerie-info">
-          <div class="lingerie-title">Mallas Sensuales</div>
-          <div class="lingerie-desc">Diseño calado y atrevido, ideal para un estilo seductor.</div>
-          <div class="lingerie-price">S/ 15.00</div>
-          <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Mallas%20Sensuales%20(S/%2015.00)" target="_blank" style="text-decoration: none;">
-            <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
-          </a>
-        </div>
-      </div>
+    @keyframes flame {
+      0% { transform: scale(0.92) rotate(-3deg); filter: drop-shadow(0 0 6px var(--neon-pink)); }
+      100% { transform: scale(1.15) rotate(3deg); filter: drop-shadow(0 0 16px var(--neon-cyan)); }
+    }
 
-      <div class="lingerie-item">
-        <img src="https://files.catbox.moe/4n7l6n.jpeg" alt="Pantimedias Abertura al Centro">
-        <div class="lingerie-info">
-          <div class="lingerie-title">Pantimedias Abertura Centro</div>
-          <div class="lingerie-desc">Diseño sexy con abertura frontal para máxima comodidad.</div>
-          <div class="lingerie-price">S/ 10.00</div>
-          <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Pantimedias%20Abertura%20Centro%20(S/%2010.00)" target="_blank" style="text-decoration: none;">
-            <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
-          </a>
-        </div>
-      </div>
+    nav {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
 
-      <div class="lingerie-item">
-        <img src="https://files.catbox.moe/8rtvtj.jpeg" alt="Lencería Enteriza">
-        <div class="lingerie-info">
-          <div class="lingerie-title">Lencería Enteriza</div>
-          <div class="lingerie-desc">Lencería completa ajustada que resalta tus curvas.</div>
-          <div class="lingerie-price">S/ 12.00</div>
-          <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Lencer%C3%ADa%20Enteriza%20(S/%2012.00)" target="_blank" style="text-decoration: none;">
-            <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
-          </a>
-        </div>
-      </div>
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      border: 1.5px solid var(--neon-cyan);
+      padding: 0.55rem 1.25rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      box-shadow: 0 0 8px rgba(0, 243, 255, 0.2);
+    }
 
-      <div class="lingerie-item">
-        <img src="https://files.catbox.moe/uso0qx.jpeg" alt="Malla Enteriza">
-        <div class="lingerie-info">
-          <div class="lingerie-title">Malla Enteriza Atrevida</div>
-          <div class="lingerie-desc">Estilo enterizo en red fina para un look impactante.</div>
-          <div class="lingerie-price">S/ 12.00</div>
-          <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Enteriza%20(S/%2012.00)" target="_blank" style="text-decoration: none;">
-            <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
-          </a>
-        </div>
-      </div>
+    .nav-btn:hover, .nav-btn.active {
+      background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
+      border-color: #ffffff;
+      color: #ffffff;
+      box-shadow: 0 0 18px var(--neon-pink), 0 0 30px rgba(188, 19, 254, 0.6);
+    }
 
-      <div class="lingerie-item">
-        <img src="https://files.catbox.moe/fvfzh0.jpeg" alt="Mallas Finas">
-        <div class="lingerie-info">
-          <div class="lingerie-title">Mallas Finas Clásicas</div>
-          <div class="lingerie-desc">Prenda delicada y femenina para cualquier ocasión.</div>
-          <div class="lingerie-price">S/ 10.00</div>
-          <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Mallas%20Finas%20Cl%C3%A1sicas%20(S/%2010.00)" target="_blank" style="text-decoration: none;">
-            <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
-          </a>
-        </div>
-      </div>
+    .poker-nav-btn {
+      border-color: var(--neon-pink) !important;
+      background: rgba(255, 0, 127, 0.18) !important;
+    }
 
-      <div class="lingerie-item">
-        <img src="https://i.ibb.co/RT2NgNZF/image.jpeg" alt="Malla Fina">
-        <div class="lingerie-info">
-          <div class="lingerie-title">Malla Fina</div>
-          <div class="lingerie-desc">Diseño delicado y cómodo.</div>
-          <div class="lingerie-price">S/ 6.00</div>
-          <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Fina%20(S/%206.00)" target="_blank" style="text-decoration: none;">
-            <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
-          </a>
-        </div>
-      </div>
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 2rem 1rem;
+    }
 
-      <div class="lingerie-item">
-        <img src="https://i.ibb.co/XvpT4R3/image.jpeg" alt="Malla de Lencería Extra Fina">
-        <div class="lingerie-info">
-          <div class="lingerie-title">Malla Lencería Extra Fina</div>
-          <div class="lingerie-desc">Acabado suave y ajustado.</div>
-          <div class="lingerie-price">S/ 6.00</div>
-          <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Lencer%C3%ADa%20Extra%20Fina%20(S/%206.00)" target="_blank" style="text-decoration: none;">
-            <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
-          </a>
-        </div>
-      </div>
+    .section {
+      display: none;
+      width: 100%;
+      max-width: 1120px;
+      animation: fadeIn 0.4s ease;
+    }
 
-      <div class="lingerie-item">
-        <img src="https://i.ibb.co/BKrpHFg2/image.jpeg" alt="Cabellera de Dama Negro Castaño">
-        <div class="lingerie-info">
-          <div class="lingerie-title">Cabellera Negro Castaño</div>
-          <div class="lingerie-desc">Cabellera de dama en tono negro castaño natural.</div>
-          <div class="lingerie-price">S/ 25.00</div>
-          <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Negro%20Casta%C3%B1o%20(S/%2025.00)" target="_blank" style="text-decoration: none;">
-            <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
-          </a>
-        </div>
-      </div>
+    .section.active {
+      display: block;
+    }
 
-      <div class="lingerie-item">
-        <img src="https://i.ibb.co/zcKSJP5/image.jpeg" alt="Cabellera Fina Rubio Plateado">
-        <div class="lingerie-info">
-          <div class="lingerie-title">Cabellera Rubio Plateado</div>
-          <div class="lingerie-desc">Cabellera de dama fina en tono rubio platinado.</div>
-          <div class="lingerie-price">S/ 30.00</div>
-          <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Rubio%20Plateado%20(S/%2030.00)" target="_blank" style="text-decoration: none;">
-            <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
-          </a>
-        </div>
-      </div>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-      <div class="lingerie-item">
-        <img src="https://i.ibb.co/Fks2CjxX/image.jpeg" alt="Cabellera Rubia">
-        <div class="lingerie-info">
-          <div class="lingerie-title">Cabellera Rubia</div>
-          <div class="lingerie-desc">Cabellera rubia radiante para cambio de look.</div>
-          <div class="lingerie-price">S/ 20.00</div>
-          <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Rubia%20(S/%2020.00)" target="_blank" style="text-decoration: none;">
-            <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
-          </a>
-        </div>
-      </div>
-    </div>
+    /* HERO / PORTADA */
+    .hero-container {
+      background: var(--bg-card);
+      border: 2px solid var(--neon-purple);
+      border-radius: 24px;
+      padding: 2.8rem 1.8rem;
+      box-shadow: 0 0 35px rgba(188, 19, 254, 0.3), inset 0 0 20px rgba(0, 243, 255, 0.1);
+      text-align: center;
+    }
 
-    <!-- MARKETPLACE -->
-    <div class="marketplace-panel">
-      <h3>🛍️ Publica tu producto en Guliana Social</h3>
-      <p class="marketplace-note">Vendedores: publiquen sus productos con foto, precio y contacto.</p>
-      <form id="marketplaceForm" class="marketplace-form">
-        <div class="input-group">
-          <label for="mpTitle">Nombre del producto *</label>
-          <input id="mpTitle" name="title" type="text" maxlength="90" required placeholder="Ej. Vestido negro">
-        </div>
-        <div class="input-group">
-          <label for="mpPrice">Precio en soles (S/) *</label>
-          <input id="mpPrice" name="price" type="number" min="0" max="1000000" step="0.01" required placeholder="25.00">
-        </div>
-        <div class="input-group">
-          <label for="mpSeller">Nombre del vendedor *</label>
-          <input id="mpSeller" name="seller" type="text" maxlength="70" required placeholder="Tu nombre o negocio">
-        </div>
-        <div class="input-group">
-          <label for="mpWhatsapp">WhatsApp con código de país *</label>
-          <input id="mpWhatsapp" name="whatsapp" type="tel" inputmode="numeric" maxlength="15" required placeholder="519XXXXXXXX">
-        </div>
-        <div class="input-group full-width">
-          <label for="mpDescription">Descripción *</label>
-          <textarea id="mpDescription" name="description" maxlength="600" required placeholder="Talla, estado, color, entrega..."></textarea>
-        </div>
-        <div class="input-group full-width">
-          <label for="mpImage">Foto del producto *</label>
-          <input id="mpImage" name="image" type="file" accept="image/jpeg,image/png,image/webp" required>
-        </div>
-        <div class="full-width">
-          <button id="mpSubmit" type="submit" class="btn-pill" style="width:100%">📤 Publicar producto</button>
-          <p id="mpStatus" class="marketplace-status" role="status">Supabase conectado correctamente.</p>
-        </div>
-      </form>
-    </div>
+    .hero-title-main {
+      font-size: 3rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-shadow: 0 0 12px var(--neon-cyan), 0 0 28px var(--neon-pink), 0 0 45px var(--neon-purple);
+      margin-bottom: 0.6rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-family: 'Cinzel', serif;
+    }
 
-    <h3 style="text-align:center; margin:1.5rem 0 .5rem;">✨ Productos publicados por la comunidad</h3>
-    <div id="marketplaceCatalog" class="lingerie-catalog" aria-live="polite">
-      <p class="marketplace-empty">Cargando publicaciones...</p>
-    </div>
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: #ffffff;
+      margin-bottom: 2.2rem;
+      font-weight: 400;
+    }
 
-    <div class="transf-footer" style="text-align: center; margin-top: 2rem;">
-      <strong>📦 Entregas discretas y empaques reservados en todas tus compras. 🔥</strong>
-    </div>
-  </div>
-</section>
+    .hero-nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+      flex-wrap: wrap;
+    }
 
-<!-- ENTRETENIMIENTO Y VIDEOS -->
-<section id="entretenimiento" class="section">
-  <div class="card">
-    <h2>Galería de Entretenimiento</h2>
+    .btn-pill {
+      background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
+      color: #ffffff;
+      padding: 0.85rem 2.2rem;
+      font-size: 1rem;
+      font-weight: 800;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      border-radius: 30px;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 0 18px rgba(255, 0, 127, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
 
-    <div class="ent-layout">
-      <div class="ent-buttons-container">
-        <button class="profile-btn" id="btn-profile-guliana" onclick="requestAccess('guliana')">GULIANA 🔥</button>
-        <button class="profile-btn" id="btn-profile-estefany" onclick="requestAccess('estefany')">ESTEFANY ✨</button>
-      </div>
+    .btn-pill:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 28px var(--neon-cyan), 0 0 40px var(--neon-pink);
+      border-color: var(--neon-cyan);
+    }
 
-      <img src="https://i.xgroovy.com/contents/videos_screenshots/301000/301867/preview_gif.mp4.jpg" alt="Preview Entretenimiento" class="ent-banner-img">
-    </div>
+    .expert-title {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 1.8rem;
+      text-shadow: 0 0 14px var(--neon-cyan);
+    }
 
-    <div id="content-guliana" class="media-grid" style="display: none;">
-      <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/z2p1lw.mp4" type="video/mp4"></video><p>Guliana Video 🔥 1</p></div>
-      <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/78l01v.mp4" type="video/mp4"></video><p>Guliana Video 🔥 2</p></div>
-      <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/xlbhaz.mp4" type="video/mp4"></video><p>Guliana Video 🔥 3</p></div>
-      <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/40nnxu.mp4" type="video/mp4"></video><p>Guliana Video 🔥 4</p></div>
-      <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/ad4p2e.mp4" type="video/mp4"></video><p>Guliana Video 🔥 5</p></div>
-    </div>
+    .transformation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1.8rem;
+    }
 
-    <div id="content-estefany" class="media-grid" style="display: none;">
-      <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/kpx6e4.mp4" type="video/mp4"></video><p>Estefany Video ✨ 1</p></div>
-      <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/5nqy44.mp4" type="video/mp4"></video><p>Estefany Video ✨ 2</p></div>
-      <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/o10icr.mp4" type="video/mp4"></video><p>Estefany Video ✨ 3</p></div>
-      <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/4u54y0.mp4" type="video/mp4"></video><p>Estefany Video ✨ 4</p></div>
-    </div>
-  </div>
+    .transformation-card {
+      background: #1a1c24;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 0 0 20px rgba(0, 243, 255, 0.25);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-  <div class="card">
-    <h2>Publicar Video en Entretenimiento</h2>
-    <form class="custom-form" onsubmit="handleVideoUpload(event, 'content-guliana')">
-      <div class="input-group">
-        <label for="mediaFileEnt">Seleccionar Archivo de Video:</label>
-        <input type="file" id="mediaFileEnt" accept="video/*" required>
-      </div>
-      <div class="input-group">
-        <label for="captionEnt">Descripción del Video:</label>
-        <input type="text" id="captionEnt" placeholder="Escribe un título o descripción..." required>
-      </div>
-      <button type="submit" class="btn-pill" style="width: 100%;">Publicar Video en Guliana</button>
-    </form>
-  </div>
-</section>
+    .transformation-card:hover {
+      transform: scale(1.03);
+      border-color: var(--neon-pink);
+      box-shadow: 0 0 30px rgba(255, 0, 127, 0.7);
+    }
 
-<!-- CASINO PÓKER TEXAS HOLD'EM PRO -->
-<section id="poker" class="section">
-  <div class="poker-wrap">
-    <h2 class="poker-title">♠ Guliana Casino Póker ♣</h2>
-    <p class="poker-lead">Texas Hold'em Real · Baraja de 52 cartas · Fichas virtuales y efectos de sonido</p>
+    .transformation-card img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-banner-btn {
+      background: linear-gradient(90deg, #191b24, #281938);
+      border-top: 1.5px solid var(--neon-cyan);
+      color: #ffffff;
+      padding: 0.85rem;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      text-shadow: 0 0 8px var(--neon-cyan);
+    }
+
+    /* TARJETAS GENERALES */
+    .card {
+      background: var(--bg-card);
+      border-radius: 22px;
+      padding: 2.2rem;
+      border: 2px solid var(--neon-cyan);
+      box-shadow: 0 0 28px rgba(0, 243, 255, 0.2);
+      margin-bottom: 2rem;
+      color: #ffffff;
+    }
+
+    .card h2 {
+      color: #ffffff;
+      text-shadow: 0 0 12px var(--neon-pink), 0 0 24px var(--neon-purple);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      font-size: 1.9rem;
+      text-transform: uppercase;
+    }
+
+    /* TRANSFORMACIÓN */
+    .transf-detail-box {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .transf-detail-img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 16px;
+      border: 3px solid var(--neon-pink);
+      box-shadow: 0 0 28px rgba(255, 0, 127, 0.65);
+      margin: 0 auto;
+    }
+
+    .transf-detail-content {
+      flex: 1;
+      min-width: 280px;
+    }
+
+    .transf-main-title {
+      font-size: 1.85rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-shadow: 0 0 12px var(--neon-pink);
+      margin-bottom: 0.5rem;
+    }
+
+    .transf-subtitle {
+      font-size: 1.15rem;
+      color: var(--neon-cyan);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .transf-list {
+      list-style: none;
+      margin: 1.2rem 0;
+    }
+
+    .transf-list li {
+      padding: 0.5rem 0;
+      font-size: 1.05rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      border-bottom: 1px dashed rgba(0, 243, 255, 0.35);
+    }
+
+    .transf-footer {
+      background: rgba(188, 19, 254, 0.18);
+      border-left: 4px solid var(--neon-cyan);
+      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      margin-top: 1.2rem;
+      font-weight: 600;
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    /* TIENDA / CATÁLOGO (FONDO BLANCO) */
+    #lenceria {
+      background: #ffffff;
+      color: #222222;
+      border-radius: 24px;
+      padding: 0.5rem;
+    }
+    #lenceria .card {
+      background: #ffffff;
+      color: #222222;
+      border: 2px solid #e6e6e6;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+      margin-bottom: 0;
+    }
+    #lenceria h2, #lenceria h3 {
+      color: #a71932 !important;
+      text-shadow: none !important;
+    }
+    #lenceria p {
+      color: #4a4a4a !important;
+    }
+    .lingerie-catalog {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .lingerie-item {
+      background: #ffffff;
+      border: 1.5px solid #ead4d8;
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      box-shadow: 0 7px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .lingerie-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 28px rgba(167, 25, 50, 0.18);
+    }
+    .lingerie-item img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+    .lingerie-info {
+      padding: 1rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .lingerie-title {
+      font-weight: 800;
+      color: #222222;
+      font-size: 1.05rem;
+      margin-bottom: 0.3rem;
+    }
+    .lingerie-desc {
+      font-size: 0.9rem;
+      color: #555555;
+      margin-bottom: 0.8rem;
+    }
+    .lingerie-price {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #b31e39;
+      margin-bottom: 0.8rem;
+    }
+    #lenceria .marketplace-panel {
+      background: #fafafa;
+      border: 1.5px solid #e0e0e0;
+      border-radius: 16px;
+      padding: 1.3rem;
+      margin: 1.5rem 0;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    }
+    #lenceria .marketplace-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    #lenceria .marketplace-form .full-width { grid-column: 1 / -1; }
+    #lenceria .marketplace-form label { color: #333333; font-weight: 700; }
+    #lenceria .marketplace-form .input-group input,
+    #lenceria .marketplace-form .input-group textarea {
+      width: 100%;
+      background: #ffffff;
+      border: 1.5px solid #cccccc;
+      color: #222222;
+      padding: 0.85rem 1rem;
+      border-radius: 10px;
+    }
+    #lenceria .marketplace-form textarea { min-height: 90px; resize: vertical; }
+    #lenceria .marketplace-product-card .seller-label { color: #666666; font-size: 0.82rem; margin: 0.4rem 0; }
+    #lenceria .marketplace-empty { color: #666666; text-align: center; padding: 1.2rem; grid-column: 1 / -1; }
+    #lenceria .transf-footer {
+      background: #fff2f4;
+      color: #8c1830;
+      border-left-color: #c51f40;
+    }
+
+    /* CASINO Y PÓKER */
+    .poker-wrap { max-width: 1120px; margin: 0 auto; }
+    .poker-title { text-align: center; font-size: clamp(2.1rem, 4.5vw, 2.9rem); margin: .2rem 0; font-family: 'Cinzel', serif; color: var(--neon-cyan); text-shadow: 0 0 15px rgba(0,243,255,0.65); }
+    .poker-lead { text-align: center; color: #e5d3e8; margin-bottom: 1.3rem; font-size: 0.95rem; }
+    .poker-layout { display: grid; grid-template-columns: 330px 1fr; gap: 1.4rem; align-items: start; }
+    @media(max-width: 920px) { .poker-layout { grid-template-columns: 1fr; } }
+    .poker-panel { background: #181a24; border: 1.5px solid var(--neon-purple); border-radius: 18px; padding: 1.2rem; margin-bottom: 1rem; box-shadow: 0 0 22px rgba(188,19,254,0.22); }
+    .poker-row { display: flex; gap: .65rem; flex-wrap: wrap; align-items: center; justify-content: center; }
+    .poker-input { width: min(100%, 280px); padding: .75rem 1rem; border-radius: 12px; border: 1.5px solid var(--neon-cyan); background: #101116; color: white; margin: .3rem; font-size: 0.95rem; }
+    .poker-btn { border: 1.5px solid var(--neon-pink); background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple)); color: white; font-weight: 800; padding: .7rem 1.15rem; border-radius: 12px; cursor: pointer; margin: .2rem; font-size: 0.85rem; transition: all 0.2s; box-shadow: 0 0 14px rgba(255,0,127,0.4); text-transform: uppercase; }
+    .poker-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 0 24px var(--neon-cyan); border-color: var(--neon-cyan); }
+    .poker-btn:disabled { opacity: .4; cursor: not-allowed; transform: none; box-shadow: none; }
+    .poker-btn.secondary { background: rgba(0, 243, 255, 0.14); border-color: var(--neon-cyan); }
+    .poker-btn.danger { background: rgba(255, 50, 80, 0.2); border-color: #ff4d6d; }
     
-    <div id="pokerRegister" class="poker-panel">
-      <h3 style="text-align:center; color:#00f3ff; margin-bottom:0.4rem;">Crea tu cuenta de jugador</h3>
-      <p class="poker-muted">Regístrate para guardar tus fichas virtuales en este dispositivo (Bono inicial: <b>50 fichas</b>).</p>
-      <div class="poker-row" style="margin-top:0.8rem;">
-        <input id="pokerName" class="poker-input" maxlength="20" placeholder="Tu nombre o apodo">
-        <input id="pokerPin" class="poker-input" type="password" maxlength="24" placeholder="Contraseña (mín. 4 dígitos)">
-      </div>
-      <div class="poker-row" style="margin-top:0.5rem;">
-        <button class="poker-btn" onclick="pokerRegister()">♠ CREAR CUENTA Y ENTRAR A LA MESA</button>
-      </div>
-      <p id="pokerRegisterMsg" class="poker-status" role="status"></p>
-    </div>
+    .poker-table { background: radial-gradient(ellipse at center, #146341 0%, #093b25 65%, #042114 100%); border: 10px solid #281938; outline: 2px solid var(--neon-cyan); border-radius: 36px; min-height: 390px; padding: 1.3rem 1rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; box-shadow: inset 0 0 50px rgba(0,0,0,0.85), 0 0 30px rgba(0, 243, 255, 0.25); position: relative; }
+    .poker-cards { display: flex; gap: .55rem; justify-content: center; flex-wrap: wrap; margin: .4rem 0; min-height: 86px; align-items: center; }
+    
+    .poker-card { background: linear-gradient(145deg, #ffffff 0%, #f2f4f8 100%); color: #15161c; border-radius: 10px; width: 60px; height: 86px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 4px 6px; font-weight: 900; box-shadow: 0 6px 16px rgba(0,0,0,0.55); position: relative; border: 1.5px solid #d0d5dd; animation: dealFlipCard 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) both; user-select: none; }
+    @keyframes dealFlipCard { 0% { transform: translateY(-45px) rotateY(90deg) scale(0.4); opacity: 0; } 100% { transform: translateY(0) rotateY(0deg) scale(1); opacity: 1; } }
+    .poker-card.back { background: repeating-linear-gradient(45deg, #ff007f, #ff007f 6px, #6a00f4 6px, #6a00f4 12px); border: 2.5px solid #ffffff; box-shadow: 0 0 14px rgba(255, 0, 127, 0.6); justify-content: center; }
+    .poker-card.back::after { content: '🔥'; font-size: 1.3rem; background: rgba(16, 17, 22, 0.85); width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--neon-cyan); }
+    .poker-card.red { color: #e60023; }
+    .card-corner { align-self: flex-start; font-size: 0.78rem; line-height: 1; }
+    .card-center-suit { font-size: 1.65rem; line-height: 1; }
+    .card-corner-bottom { align-self: flex-end; font-size: 0.78rem; line-height: 1; transform: rotate(180deg); }
+    .poker-card.winner-glow { box-shadow: 0 0 22px #ffd700, 0 0 42px #00f3ff !important; border: 3px solid #ffd700; transform: translateY(-6px) scale(1.1); z-index: 10; animation: winnerPulse 0.9s infinite alternate; }
+    @keyframes winnerPulse { 0% { box-shadow: 0 0 16px #ffd700, 0 0 28px #ff007f; } 100% { box-shadow: 0 0 28px #ffd700, 0 0 50px #00f3ff; } }
 
-    <div id="pokerLobby" class="poker-panel poker-hidden">
-      <div class="poker-row" style="justify-content: space-between; padding: 0 0.5rem;">
-        <span style="color:#f3d5ff">Jugador: <b id="pokerPlayerName" style="color:#00f3ff;"></b></span>
-        <span class="poker-chip">🪙 Saldo: <span id="pokerBalance">50</span> fichas</span>
-        <button class="poker-btn secondary" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;" onclick="pokerLogout()">Salir</button>
-      </div>
-      
-      <div class="poker-layout" style="margin-top:1rem;">
-        <!-- RANKING DE MANOS -->
-        <div class="hands-ranking-panel">
-          <h4>🏆 Jerarquía de Manos (Mín → Máx)</h4>
-          <div class="hand-rank-item"><div class="hand-rank-header"><strong>1. Carta Alta</strong><span>Mínima</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">K♥</span><span class="mini-card-graphic dim">9♠</span><span class="mini-card-graphic dim">7♦</span></div></div>
-          <div class="hand-rank-item"><div class="hand-rank-header"><strong>2. Un Par</strong><span>2 iguales</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">10♥</span><span class="mini-card-graphic red">10♦</span><span class="mini-card-graphic dim">K♠</span></div></div>
-          <div class="hand-rank-item"><div class="hand-rank-header"><strong>3. Doble Par</strong><span>2 pares</span></div><div class="mini-cards-row"><span class="mini-card-graphic">8♠</span><span class="mini-card-graphic">8♣</span><span class="mini-card-graphic red">5♥</span></div></div>
-          <div class="hand-rank-item"><div class="hand-rank-header"><strong>4. Trío</strong><span>3 iguales</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">7♥</span><span class="mini-card-graphic red">7♦</span><span class="mini-card-graphic">7♣</span></div></div>
-          <div class="hand-rank-item"><div class="hand-rank-header"><strong>5. Escalera</strong><span>5 seguidas</span></div><div class="mini-cards-row"><span class="mini-card-graphic">5♠</span><span class="mini-card-graphic red">6♥</span><span class="mini-card-graphic red">7♦</span></div></div>
-          <div class="hand-rank-item"><div class="hand-rank-header"><strong>6. Color</strong><span>Mismo palo</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">2♥</span><span class="mini-card-graphic red">5♥</span><span class="mini-card-graphic red">J♥</span></div></div>
-          <div class="hand-rank-item"><div class="hand-rank-header"><strong>7. Full House</strong><span>Trío + Par</span></div><div class="mini-cards-row"><span class="mini-card-graphic">Q♠</span><span class="mini-card-graphic">Q♣</span><span class="mini-card-graphic red">4♦</span></div></div>
-          <div class="hand-rank-item"><div class="hand-rank-header"><strong>8. Póker</strong><span>4 iguales</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">A♥</span><span class="mini-card-graphic red">A♦</span><span class="mini-card-graphic">A♣</span></div></div>
-          <div class="hand-rank-item"><div class="hand-rank-header"><strong>9. Escalera Color</strong><span>Color seguido</span></div><div class="mini-cards-row"><span class="mini-card-graphic">5♠</span><span class="mini-card-graphic">6♠</span><span class="mini-card-graphic">7♠</span></div></div>
-          <div class="hand-rank-item"><div class="hand-rank-header"><strong>10. Escalera Real</strong><span>Máxima 👑</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">10♥</span><span class="mini-card-graphic red">J♥</span><span class="mini-card-graphic red">Q♥</span></div></div>
+    .pot-area { display: flex; flex-direction: column; align-items: center; gap: 4px; margin: 4px 0; }
+    .table-chips { display: flex; gap: 6px; align-items: center; background: rgba(10, 12, 16, 0.75); padding: 6px 14px; border-radius: 22px; border: 1.5px solid #ffd700; font-size: 0.85rem; color: #ffd700; box-shadow: 0 0 14px rgba(255,215,0,0.35); }
+    .chips-visual-stack { display: flex; align-items: center; gap: 3px; }
+    .chip-token { width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle, #ffe066 35%, #d97706 100%); border: 2px dashed #ffffff; display: inline-block; }
+    .chip-token.pink { background: radial-gradient(circle, #ff4da6 35%, #b30059 100%); }
+    .chip-token.cyan { background: radial-gradient(circle, #66f9ff 35%, #008899 100%); }
+    .phase-badge { background: rgba(0, 243, 255, 0.16); border: 1px solid var(--neon-cyan); color: var(--neon-cyan); font-size: 0.72rem; font-weight: 800; padding: 2px 10px; border-radius: 12px; text-transform: uppercase; letter-spacing: 1px; }
+
+    .poker-status { text-align: center; color: #ffe8b5; min-height: 3.1rem; margin: .75rem 0; font-weight: 700; font-size: 0.98rem; line-height: 1.4; background: rgba(255,255,255,0.04); padding: 0.6rem 0.9rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+    .poker-muted { font-size: .85rem; color: #cbb9ce; text-align: center; line-height: 1.5; }
+    .poker-hidden { display: none !important; }
+    .poker-chip { font-weight: 900; color: #ffd700; font-size: 1.15rem; }
+
+    .hands-ranking-panel { background: #121319; border: 1.5px solid var(--neon-cyan); border-radius: 18px; padding: 1rem; box-shadow: 0 0 22px rgba(0,243,255,0.18); }
+    .hands-ranking-panel h4 { color: var(--neon-cyan); text-align: center; margin-bottom: 0.75rem; font-size: 0.92rem; text-transform: uppercase; }
+    .hand-rank-item { display: flex; flex-direction: column; gap: 4px; padding: 0.45rem 0; border-bottom: 1px dashed rgba(255,255,255,0.14); }
+    .hand-rank-item:last-child { border-bottom: none; }
+    .hand-rank-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+    .hand-rank-header strong { color: #ffffff; }
+    .hand-rank-header span { color: #ffb3c1; font-size: 0.68rem; background: rgba(255,0,127,0.18); padding: 1px 6px; border-radius: 6px; }
+    .mini-cards-row { display: flex; gap: 4px; align-items: center; }
+    .mini-card-graphic { background: #ffffff; color: #15161c; border-radius: 4px; padding: 2px 5px; font-size: 0.72rem; font-weight: 900; display: inline-flex; align-items: center; gap: 1px; border: 1px solid #ccc; }
+    .mini-card-graphic.red { color: #e60023; }
+    .mini-card-graphic.dim { opacity: 0.45; }
+
+    /* ENTRETENIMIENTO */
+    .ent-layout { display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .ent-buttons-container { flex: 1; display: flex; flex-direction: column; gap: 1.2rem; min-width: 220px; }
+    .profile-btn { background: rgba(255, 255, 255, 0.06); color: #ffffff; padding: 1.2rem; border-radius: 16px; font-size: 1.3rem; font-weight: 900; text-transform: uppercase; border: 2px solid var(--neon-pink); cursor: pointer; box-shadow: 0 0 18px rgba(255, 0, 127, 0.35); transition: all 0.3s; text-align: center; }
+    .profile-btn:hover, .profile-btn.active-profile { background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-purple) 100%); border-color: var(--neon-cyan); transform: scale(1.03); box-shadow: 0 0 28px var(--neon-cyan); }
+    .ent-banner-img { width: 100%; max-width: 320px; height: 180px; object-fit: cover; border-radius: 16px; border: 2px solid var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 243, 255, 0.45); margin: 0 auto; }
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    .media-item { background: #1b1d26; border-radius: 14px; overflow: hidden; border: 1.5px solid var(--neon-purple); box-shadow: 0 0 15px rgba(188, 19, 254, 0.25); }
+    .media-item video { width: 100%; height: 300px; object-fit: cover; display: block; }
+    .media-item p { padding: 0.85rem; font-size: 0.95rem; color: #ffffff; text-align: center; font-weight: 600; }
+
+    /* EVENTOS */
+    .custom-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .input-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .input-group label { color: #ffffff; font-weight: 700; font-size: 1rem; }
+    .input-group input { background: #1a1c24; border: 1.5px solid var(--neon-cyan); color: #ffffff; padding: 0.9rem 1.2rem; border-radius: 12px; outline: none; font-size: 1rem; }
+    .tickets-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 0.5rem; }
+    .ticket-option { background: #1b1d26; border: 2px solid rgba(0, 243, 255, 0.35); border-radius: 16px; padding: 1.3rem; text-align: center; cursor: pointer; transition: all 0.3s ease; }
+    .ticket-option.selected { border-color: var(--neon-pink); background: rgba(255, 0, 127, 0.18); box-shadow: 0 0 22px rgba(255, 0, 127, 0.6); }
+    .ticket-option input[type="radio"] { display: none; }
+    .ticket-title { font-size: 1.15rem; font-weight: 800; color: #ffffff; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .ticket-price { font-size: 1.45rem; font-weight: 900; color: var(--neon-cyan); }
+    .yape-box { background: rgba(188, 19, 254, 0.2); border: 2px solid var(--neon-purple); border-radius: 16px; padding: 1.2rem; text-align: center; margin-top: 1rem; }
+    .attendees-box { background: rgba(0, 243, 255, 0.08); border: 1.5px solid var(--neon-cyan); border-radius: 16px; padding: 1.3rem; margin-top: 1.5rem; }
+    .attendees-title { font-size: 1.15rem; font-weight: 800; color: #ffffff; text-transform: uppercase; margin-bottom: 0.8rem; text-align: center; }
+    .attendee-item { background: #1b1d26; border-left: 4px solid #00ff88; padding: 0.85rem 1rem; border-radius: 8px; margin-bottom: 0.6rem; font-size: 1rem; color: #ffffff; display: flex; align-items: center; gap: 0.5rem; }
+
+    /* MODALES */
+    .fullscreen-success, .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10, 11, 15, 0.9); z-index: 5000; justify-content: center; align-items: center; text-align: center; padding: 1.5rem; backdrop-filter: blur(6px); }
+    .fullscreen-success-box, .modal-box { background: #1a1c24; border: 2px solid var(--neon-cyan); box-shadow: 0 0 35px rgba(0, 243, 255, 0.5); border-radius: 22px; padding: 2rem; width: 90%; max-width: 420px; }
+    .modal-box input { width: 100%; padding: 0.8rem; border-radius: 10px; border: 1.5px solid var(--neon-pink); background: #111217; color: #ffffff; font-size: 1.2rem; text-align: center; margin: 1rem 0; letter-spacing: 3px; }
+    .error-msg { color: #ff4d6d; font-size: 0.9rem; margin-bottom: 1rem; display: none; }
+    .modal-actions { display: flex; gap: 0.8rem; justify-content: center; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo" onclick="showSection('home')">
+      GULIANA <span class="logo-fire">🔥</span> SOCIAL
+    </div>
+    <nav>
+      <button class="nav-btn" id="btn-transformacion" onclick="showSection('transformacion')">Transformación</button>
+      <button class="nav-btn" id="btn-lenceria" onclick="showSection('lenceria')">Tienda / Catálogo</button>
+      <button class="nav-btn" id="btn-entretenimiento" onclick="showSection('entretenimiento')">Entretenimiento</button>
+      <button class="nav-btn" id="btn-eventos" onclick="showSection('eventos')">Eventos</button>
+      <button class="nav-btn poker-nav-btn" id="btn-poker" onclick="showSection('poker')">🂡 CASINO PÓKER</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- PORTADA -->
+    <section id="home" class="section active">
+      <div class="hero-container">
+        <h1 class="hero-title-main">GULIANA 🔥 SOCIAL</h1>
+        <p class="hero-subtitle">Tu comunidad exclusiva de entretenimiento, noche neón y entradas a los mejores eventos.</p>
+        
+        <div class="hero-nav-buttons">
+          <button class="btn-pill" onclick="showSection('transformacion')">TRANSFORMACIÓN</button>
+          <button class="btn-pill" onclick="showSection('lenceria')">TIENDA / CATÁLOGO</button>
+          <button class="btn-pill" onclick="showSection('entretenimiento')">ENTRETENIMIENTO</button>
+          <button class="btn-pill" onclick="showSection('eventos')">EVENTOS</button>
+          <button class="btn-pill" onclick="showSection('poker')" style="background: linear-gradient(90deg, #ff007f, #00f3ff); color: #0b0c10;">🂡 CASINO PÓKER</button>
         </div>
 
-        <!-- MESA DE PÓKER -->
-        <div>
-          <div class="poker-table">
-            <div>
-              <div style="color:#ffffff; font-weight:800; font-size:0.85rem; text-align:center; letter-spacing:1px;">🤖 RIVAL (CRUPIER PC)</div>
-              <div id="pokerCpuCards" class="poker-cards">
-                <div class="poker-card back"></div>
-                <div class="poker-card back"></div>
-              </div>
-            </div>
-            
-            <div class="pot-area">
-              <span class="phase-badge" id="pokerPhaseBadge">MESA LISTA</span>
-              <div style="color:#ffe9ae; font-size:0.95rem;">Pozo acumulado: <b id="pokerPot" style="color:#ffd700; font-size:1.15rem;">0</b> fichas</div>
-              <div class="table-chips" id="tableChipsContainer" style="display:none;">
-                <div class="chips-visual-stack" id="chipsVisualStack"></div>
-                <span id="tableChipsText">0 fichas en mesa</span>
-              </div>
-              <div id="pokerCommunity" class="poker-cards" style="min-height:88px; margin-top:6px;"></div>
-            </div>
+        <h2 class="expert-title">NUESTROS SERVICIOS DESTACADOS</h2>
 
-            <div>
-              <div id="pokerMyCards" class="poker-cards">
-                <div class="poker-card back"></div>
-                <div class="poker-card back"></div>
-              </div>
-              <div style="color:#ffffff; font-weight:800; font-size:0.85rem; text-align:center; letter-spacing:1px;">
-                👤 TU MANO (Apostado: <span id="pokerInHand" style="color:#00f3ff;">0</span> fichas)
-              </div>
-            </div>
+        <div class="transformation-grid">
+          <div class="transformation-card" onclick="showSection('transformacion')">
+            <img src="https://www.xpaja.net/views/albums/2024/07/anime-chichonas-xxx/thumb_9.jpg" alt="Servicio de Transformación">
+            <div class="card-banner-btn">SERVICIO DE TRANSFORMACIÓN ⚡</div>
           </div>
 
-          <p id="pokerStatus" class="poker-status" role="status">Presiona <b>REPARTIR CARTAS (-5 fichas)</b> para iniciar la partida.</p>
+          <div class="transformation-card" onclick="showSection('lenceria')">
+            <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Lencería y Catálogo">
+            <div class="card-banner-btn">TIENDA Y LENCERÍA 🔥</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRANSFORMACIÓN FEMENINA -->
+    <section id="transformacion" class="section">
+      <div class="card">
+        <div class="transf-detail-box">
+          <img src="https://imagex1.sx.cdn.live/images/pinporn/2021/11/16/26249016.jpg?width=300" alt="Transformación Femenina" class="transf-detail-img">
           
-          <div class="poker-row" id="pokerControls">
-            <button class="poker-btn" id="pokerDeal" onclick="pokerStartHand()">🃏 REPARTIR CARTAS (-5 fichas)</button>
-            <button class="poker-btn secondary poker-hidden" id="pokerRevealMyBtn" onclick="pokerRevealMyCards()">👁️ VER MIS CARTAS</button>
-            <button class="poker-btn poker-hidden" id="pokerRaise5Btn" onclick="pokerBetMore(5)">SUBIR +5 🪙</button>
-            <button class="poker-btn poker-hidden" id="pokerAllinBtn" onclick="pokerAllIn()">ALL-IN (TODO) 🚀</button>
-            <button class="poker-btn secondary poker-hidden" id="pokerNextBtn" onclick="pokerNextPhase()">PASAR / SIGUIENTE CARTA ▶</button>
-            <button class="poker-btn danger poker-hidden" id="pokerFoldBtn" onclick="pokerFold()">RETIRARSE</button>
+          <div class="transf-detail-content">
+            <h2 class="transf-main-title">💄 SERVICIO DE TRANSFORMACIÓN FEMENINA</h2>
+            <p class="transf-subtitle">¡Descubre una nueva versión de ti! ✨</p>
+            <p>Transformamos tu imagen de principio a fin para que disfrutes una experiencia completa de cambio de look.</p>
+            
+            <p style="margin-top: 1rem; font-weight: 700; color: #00f3ff;">El servicio incluye:</p>
+            <ul class="transf-list">
+              <li>💄 Maquillaje profesional completo</li>
+              <li>👁️ Maquillaje y diseño de ojos</li>
+              <li>👄 Labios y acabado profesional</li>
+              <li>🧔 Corrección y cobertura de barba</li>
+              <li>✨ Contouring e iluminación facial</li>
+              <li>💇‍♀️ Peluca y colocación</li>
+              <li>👗 Elección y colocación del outfit</li>
+              <li>👠 Accesorios y complementos</li>
+              <li>📸 Sesión de fotos del resultado</li>
+              <li>🪞 Asesoría personalizada durante toda la transformación</li>
+            </ul>
+
+            <div class="transf-footer">
+              Experiencia completa: desde el rostro natural hasta el look final.<br>
+              <strong>Reserva tu cita y vive la transformación. 💕</strong>
+            </div>
+
+            <a href="https://wa.me/51930841255?text=Hola,%20deseo%20reservar%20una%20cita%20para%20el%20Servicio%20de%20Transformaci%C3%B3n" target="_blank" style="text-decoration: none;">
+              <button class="btn-pill" style="width: 100%; margin-top: 1.5rem; background: #25d366; box-shadow: 0 0 18px rgba(37, 211, 102, 0.6);">💬 RESERVAR POR WHATSAPP (+51 930841255)</button>
+            </a>
           </div>
         </div>
       </div>
+    </section>
 
-      <div id="pokerRefill" class="poker-panel poker-hidden" style="margin-top:1rem; background:#2b1226; border-color:#ff007f;">
-        <h3 style="color:#00f3ff; text-align:center">¿Te quedaste sin fichas?</h3>
-        <p class="poker-muted">Escríbenos por WhatsApp para solicitar una recarga virtual gratuita.</p>
-        <div class="poker-row" style="margin-top:0.6rem;">
-          <button class="poker-btn secondary" onclick="pokerFreeRefill()">🎁 RECARGA RÁPIDA (+50 FICHAS)</button>
-          <a id="pokerWhatsApp" class="poker-btn" href="https://wa.me/51930841255" target="_blank" rel="noopener" style="background:#25d366; border-color:#25d366; text-decoration:none;">💬 PEDIR POR WHATSAPP</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    <!-- TIENDA / CATÁLOGO EXCLUSIVO -->
+    <section id="lenceria" class="section">
+      <div class="card">
+        <h2 style="text-align: center;">🔥 CATÁLOGO EXCLUSIVO DE LENCERÍA Y PRENDAS 🔥</h2>
+        <p style="text-align: center; margin-bottom: 1.5rem;">
+          Explora nuestros productos disponibles. Escríbenos directamente por WhatsApp para realizar tu pedido con envío discreto.
+        </p>
 
-<!-- EVENTOS -->
-<section id="eventos" class="section">
-  <div class="card">
-    <h2>Entradas y Eventos</h2>
-    <p style="text-align: center; color: #ffffff; margin-bottom: 1.5rem;">
-      Ingresa tu Nombre / Nickname para registrar tu entrada.
-    </p>
-
-    <div class="yape-box">
-      <h3>📱 PAGO CON YAPE</h3>
-      <p>Realiza tu pago por Yape antes de confirmar tu registro.</p>
-    </div>
-
-    <div id="formSection">
-      <form onsubmit="submitCustomForm(event)" class="custom-form" style="margin-top: 1.5rem;">
-        <div class="input-group">
-          <label for="nicknameUsuario">Nombre / Nickname:</label>
-          <input type="text" id="nicknameUsuario" placeholder="Ingresa tu nombre..." required>
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <a href="https://wa.me/51930841255?text=Hola,%20deseo%20consultar%20el%20cat%C3%A1logo%20general" target="_blank" style="text-decoration: none;">
+            <button class="btn-pill" style="background: #25d366; box-shadow: 0 0 15px rgba(37, 211, 102, 0.5);">
+              📲 Escríbenos al WhatsApp: +51 930841255
+            </button>
+          </a>
         </div>
 
-        <div class="input-group">
-          <label>Selecciona tu Entrada:</label>
-          <div class="tickets-container">
-            <label class="ticket-option selected" id="opt-general" onclick="selectTicket('opt-general')">
-              <input type="radio" name="ticketType" value="Entrada General - 10 Soles" checked>
-              <div class="ticket-title">Entrada General</div>
-              <div class="ticket-price">S/ 10.00</div>
-            </label>
+        <div class="lingerie-catalog">
+          <div class="lingerie-item">
+            <img src="https://files.catbox.moe/wlq6a0.jpeg" alt="Mallas Sensuales">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Mallas Sensuales</div>
+              <div class="lingerie-desc">Diseño calado y atrevido, ideal para un estilo seductor.</div>
+              <div class="lingerie-price">S/ 15.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Mallas%20Sensuales%20(S/%2015.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
 
-            <label class="ticket-option" id="opt-vip" onclick="selectTicket('opt-vip')">
-              <input type="radio" name="ticketType" value="Entrada VIP">
-              <div class="ticket-title">Entrada VIP</div>
-              <div class="ticket-price">VIP ⚡</div>
-            </label>
+          <div class="lingerie-item">
+            <img src="https://files.catbox.moe/4n7l6n.jpeg" alt="Pantimedias Abertura al Centro">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Pantimedias Abertura Centro</div>
+              <div class="lingerie-desc">Diseño sexy con abertura frontal para máxima comodidad.</div>
+              <div class="lingerie-price">S/ 10.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Pantimedias%20Abertura%20Centro%20(S/%2010.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://files.catbox.moe/8rtvtj.jpeg" alt="Lencería Enteriza">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Lencería Enteriza</div>
+              <div class="lingerie-desc">Lencería completa ajustada que resalta tus curvas.</div>
+              <div class="lingerie-price">S/ 12.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Lencer%C3%ADa%20Enteriza%20(S/%2012.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://files.catbox.moe/uso0qx.jpeg" alt="Malla Enteriza">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Malla Enteriza Atrevida</div>
+              <div class="lingerie-desc">Estilo enterizo en red fina para un look impactante.</div>
+              <div class="lingerie-price">S/ 12.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Enteriza%20(S/%2012.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://files.catbox.moe/fvfzh0.jpeg" alt="Mallas Finas">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Mallas Finas Clásicas</div>
+              <div class="lingerie-desc">Prenda delicada y femenina para cualquier ocasión.</div>
+              <div class="lingerie-price">S/ 10.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Mallas%20Finas%20Cl%C3%A1sicas%20(S/%2010.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://i.ibb.co/RT2NgNZF/image.jpeg" alt="Malla Fina">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Malla Fina</div>
+              <div class="lingerie-desc">Diseño delicado y cómodo.</div>
+              <div class="lingerie-price">S/ 6.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Fina%20(S/%206.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://i.ibb.co/XvpT4R3/image.jpeg" alt="Malla de Lencería Extra Fina">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Malla Lencería Extra Fina</div>
+              <div class="lingerie-desc">Acabado suave y ajustado.</div>
+              <div class="lingerie-price">S/ 6.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Malla%20Lencer%C3%ADa%20Extra%20Fina%20(S/%206.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://i.ibb.co/BKrpHFg2/image.jpeg" alt="Cabellera de Dama Negro Castaño">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Cabellera Negro Castaño</div>
+              <div class="lingerie-desc">Cabellera de dama en tono negro castaño natural.</div>
+              <div class="lingerie-price">S/ 25.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Negro%20Casta%C3%B1o%20(S/%2025.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://i.ibb.co/zcKSJP5/image.jpeg" alt="Cabellera Fina Rubio Plateado">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Cabellera Rubio Plateado</div>
+              <div class="lingerie-desc">Cabellera de dama fina en tono rubio platinado.</div>
+              <div class="lingerie-price">S/ 30.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Rubio%20Plateado%20(S/%2030.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
+          </div>
+
+          <div class="lingerie-item">
+            <img src="https://i.ibb.co/Fks2CjxX/image.jpeg" alt="Cabellera Rubia">
+            <div class="lingerie-info">
+              <div class="lingerie-title">Cabellera Rubia</div>
+              <div class="lingerie-desc">Cabellera rubia radiante para cambio de look.</div>
+              <div class="lingerie-price">S/ 20.00</div>
+              <a href="https://wa.me/51930841255?text=Hola,%20deseo%20comprar:%20Cabellera%20Rubia%20(S/%2020.00)" target="_blank" style="text-decoration: none;">
+                <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
+              </a>
+            </div>
           </div>
         </div>
 
-        <button type="submit" id="btnSubmitForm" class="btn-pill" style="width: 100%; margin-top: 1rem;">Confirmar y Enviar Registro</button>
-      </form>
-    </div>
+        <!-- MARKETPLACE -->
+        <div class="marketplace-panel">
+          <h3>🛍️ Publica tu producto en Guliana Social</h3>
+          <p class="marketplace-note">Vendedores: publiquen sus productos con foto, precio y contacto.</p>
+          <form id="marketplaceForm" class="marketplace-form">
+            <div class="input-group">
+              <label for="mpTitle">Nombre del producto *</label>
+              <input id="mpTitle" name="title" type="text" maxlength="90" required placeholder="Ej. Vestido negro">
+            </div>
+            <div class="input-group">
+              <label for="mpPrice">Precio en soles (S/) *</label>
+              <input id="mpPrice" name="price" type="number" min="0" max="1000000" step="0.01" required placeholder="25.00">
+            </div>
+            <div class="input-group">
+              <label for="mpSeller">Nombre del vendedor *</label>
+              <input id="mpSeller" name="seller" type="text" maxlength="70" required placeholder="Tu nombre o negocio">
+            </div>
+            <div class="input-group">
+              <label for="mpWhatsapp">WhatsApp con código de país *</label>
+              <input id="mpWhatsapp" name="whatsapp" type="tel" inputmode="numeric" maxlength="15" required placeholder="519XXXXXXXX">
+            </div>
+            <div class="input-group full-width">
+              <label for="mpDescription">Descripción *</label>
+              <textarea id="mpDescription" name="description" maxlength="600" required placeholder="Talla, estado, color, entrega..."></textarea>
+            </div>
+            <div class="input-group full-width">
+              <label for="mpImage">Foto del producto *</label>
+              <input id="mpImage" name="image" type="file" accept="image/jpeg,image/png,image/webp" required>
+            </div>
+            <div class="full-width">
+              <button id="mpSubmit" type="submit" class="btn-pill" style="width:100%">📤 Publicar producto</button>
+              <p id="mpStatus" class="marketplace-status" role="status">Supabase conectado correctamente.</p>
+            </div>
+          </form>
+        </div>
 
-    <div class="attendees-box">
-      <div class="attendees-title">🎉 ASISTENTES CONFIRMADOS AL EVENTO 🎉</div>
-      <div id="attendeesList"></div>
+        <h3 style="text-align:center; margin:1.5rem 0 .5rem;">✨ Productos publicados por la comunidad</h3>
+        <div id="marketplaceCatalog" class="lingerie-catalog" aria-live="polite">
+          <p class="marketplace-empty">Cargando publicaciones...</p>
+        </div>
+
+        <div class="transf-footer" style="text-align: center; margin-top: 2rem;">
+          <strong>📦 Entregas discretas y empaques reservados en todas tus compras. 🔥</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENTRETENIMIENTO Y VIDEOS -->
+    <section id="entretenimiento" class="section">
+      <div class="card">
+        <h2>Galería de Entretenimiento</h2>
+
+        <div class="ent-layout">
+          <div class="ent-buttons-container">
+            <button class="profile-btn" id="btn-profile-guliana" onclick="requestAccess('guliana')">GULIANA 🔥</button>
+            <button class="profile-btn" id="btn-profile-estefany" onclick="requestAccess('estefany')">ESTEFANY ✨</button>
+          </div>
+
+          <img src="https://i.xgroovy.com/contents/videos_screenshots/301000/301867/preview_gif.mp4.jpg" alt="Preview Entretenimiento" class="ent-banner-img">
+        </div>
+
+        <div id="content-guliana" class="media-grid" style="display: none;">
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/z2p1lw.mp4" type="video/mp4"></video><p>Guliana Video 🔥 1</p></div>
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/78l01v.mp4" type="video/mp4"></video><p>Guliana Video 🔥 2</p></div>
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/xlbhaz.mp4" type="video/mp4"></video><p>Guliana Video 🔥 3</p></div>
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/40nnxu.mp4" type="video/mp4"></video><p>Guliana Video 🔥 4</p></div>
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/ad4p2e.mp4" type="video/mp4"></video><p>Guliana Video 🔥 5</p></div>
+        </div>
+
+        <div id="content-estefany" class="media-grid" style="display: none;">
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/kpx6e4.mp4" type="video/mp4"></video><p>Estefany Video ✨ 1</p></div>
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/5nqy44.mp4" type="video/mp4"></video><p>Estefany Video ✨ 2</p></div>
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/o10icr.mp4" type="video/mp4"></video><p>Estefany Video ✨ 3</p></div>
+          <div class="media-item"><video controls playsinline preload="metadata"><source src="https://files.catbox.moe/4u54y0.mp4" type="video/mp4"></video><p>Estefany Video ✨ 4</p></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Publicar Video en Entretenimiento</h2>
+        <form class="custom-form" onsubmit="handleVideoUpload(event, 'content-guliana')">
+          <div class="input-group">
+            <label for="mediaFileEnt">Seleccionar Archivo de Video:</label>
+            <input type="file" id="mediaFileEnt" accept="video/*" required>
+          </div>
+          <div class="input-group">
+            <label for="captionEnt">Descripción del Video:</label>
+            <input type="text" id="captionEnt" placeholder="Escribe un título o descripción..." required>
+          </div>
+          <button type="submit" class="btn-pill" style="width: 100%;">Publicar Video en Guliana</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- CASINO PÓKER TEXAS HOLD'EM PRO -->
+    <section id="poker" class="section">
+      <div class="poker-wrap">
+        <h2 class="poker-title">♠ Guliana Casino Póker ♣</h2>
+        <p class="poker-lead">Texas Hold'em Real · Baraja de 52 cartas · Fichas virtuales y efectos de sonido</p>
+        
+        <div id="pokerRegister" class="poker-panel">
+          <h3 style="text-align:center; color:#00f3ff; margin-bottom:0.4rem;">Crea tu cuenta de jugador</h3>
+          <p class="poker-muted">Regístrate para guardar tus fichas virtuales en este dispositivo (Bono inicial: <b>50 fichas</b>).</p>
+          <div class="poker-row" style="margin-top:0.8rem;">
+            <input id="pokerName" class="poker-input" maxlength="20" placeholder="Tu nombre o apodo">
+            <input id="pokerPin" class="poker-input" type="password" maxlength="24" placeholder="Contraseña (mín. 4 dígitos)">
+          </div>
+          <div class="poker-row" style="margin-top:0.5rem;">
+            <button class="poker-btn" onclick="pokerRegister()">♠ CREAR CUENTA Y ENTRAR A LA MESA</button>
+          </div>
+          <p id="pokerRegisterMsg" class="poker-status" role="status"></p>
+        </div>
+
+        <div id="pokerLobby" class="poker-panel poker-hidden">
+          <div class="poker-row" style="justify-content: space-between; padding: 0 0.5rem;">
+            <span style="color:#f3d5ff">Jugador: <b id="pokerPlayerName" style="color:#00f3ff;"></b></span>
+            <span class="poker-chip">🪙 Saldo: <span id="pokerBalance">50</span> fichas</span>
+            <button class="poker-btn secondary" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;" onclick="pokerLogout()">Salir</button>
+          </div>
+          
+          <div class="poker-layout" style="margin-top:1rem;">
+            <!-- RANKING DE MANOS -->
+            <div class="hands-ranking-panel">
+              <h4>🏆 Jerarquía de Manos (Mín → Máx)</h4>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>1. Carta Alta</strong><span>Mínima</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">K♥</span><span class="mini-card-graphic dim">9♠</span><span class="mini-card-graphic dim">7♦</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>2. Un Par</strong><span>2 iguales</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">10♥</span><span class="mini-card-graphic red">10♦</span><span class="mini-card-graphic dim">K♠</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>3. Doble Par</strong><span>2 pares</span></div><div class="mini-cards-row"><span class="mini-card-graphic">8♠</span><span class="mini-card-graphic">8♣</span><span class="mini-card-graphic red">5♥</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>4. Trío</strong><span>3 iguales</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">7♥</span><span class="mini-card-graphic red">7♦</span><span class="mini-card-graphic">7♣</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>5. Escalera</strong><span>5 seguidas</span></div><div class="mini-cards-row"><span class="mini-card-graphic">5♠</span><span class="mini-card-graphic red">6♥</span><span class="mini-card-graphic red">7♦</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>6. Color</strong><span>Mismo palo</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">2♥</span><span class="mini-card-graphic red">5♥</span><span class="mini-card-graphic red">J♥</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>7. Full House</strong><span>Trío + Par</span></div><div class="mini-cards-row"><span class="mini-card-graphic">Q♠</span><span class="mini-card-graphic">Q♣</span><span class="mini-card-graphic red">4♦</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>8. Póker</strong><span>4 iguales</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">A♥</span><span class="mini-card-graphic red">A♦</span><span class="mini-card-graphic">A♣</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>9. Escalera Color</strong><span>Color seguido</span></div><div class="mini-cards-row"><span class="mini-card-graphic">5♠</span><span class="mini-card-graphic">6♠</span><span class="mini-card-graphic">7♠</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>10. Escalera Real</strong><span>Máxima 👑</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">10♥</span><span class="mini-card-graphic red">J♥</span><span class="mini-card-graphic red">Q♥</span></div></div>
+            </div>
+
+            <!-- MESA DE PÓKER -->
+            <div>
+              <div class="poker-table">
+                <div>
+                  <div style="color:#ffffff; font-weight:800; font-size:0.85rem; text-align:center; letter-spacing:1px;">🤖 RIVAL (CRUPIER PC)</div>
+                  <div id="pokerCpuCards" class="poker-cards">
+                    <div class="poker-card back"></div>
+                    <div class="poker-card back"></div>
+                  </div>
+                </div>
+                
+                <div class="pot-area">
+                  <span class="phase-badge" id="pokerPhaseBadge">MESA LISTA</span>
+                  <div style="color:#ffe9ae; font-size:0.95rem;">Pozo acumulado: <b id="pokerPot" style="color:#ffd700; font-size:1.15rem;">0</b> fichas</div>
+                  <div class="table-chips" id="tableChipsContainer" style="display:none;">
+                    <div class="chips-visual-stack" id="chipsVisualStack"></div>
+                    <span id="tableChipsText">0 fichas en mesa</span>
+                  </div>
+                  <div id="pokerCommunity" class="poker-cards" style="min-height:88px; margin-top:6px;"></div>
+                </div>
+
+                <div>
+                  <div id="pokerMyCards" class="poker-cards">
+                    <div class="poker-card back"></div>
+                    <div class="poker-card back"></div>
+                  </div>
+                  <div style="color:#ffffff; font-weight:800; font-size:0.85rem; text-align:center; letter-spacing:1px;">
+                    👤 TU MANO (Apostado: <span id="pokerInHand" style="color:#00f3ff;">0</span> fichas)
+                  </div>
+                </div>
+              </div>
+
+              <p id="pokerStatus" class="poker-status" role="status">Presiona <b>REPARTIR CARTAS (-5 fichas)</b> para iniciar la partida.</p>
+              
+              <div class="poker-row" id="pokerControls">
+                <button class="poker-btn" id="pokerDeal" onclick="pokerStartHand()">🃏 REPARTIR CARTAS (-5 fichas)</button>
+                <button class="poker-btn secondary poker-hidden" id="pokerCheckCallBtn" onclick="pokerCheckOrCall()">PASAR / IGUALAR 🤝</button>
+                <button class="poker-btn poker-hidden" id="pokerRaise5Btn" onclick="pokerBetMore(5)">APOSTAR / SUBIR +5 🪙</button>
+                <button class="poker-btn poker-hidden" id="pokerAllinBtn" onclick="pokerAllIn()">ALL-IN (TODO) 🚀</button>
+                <button class="poker-btn danger poker-hidden" id="pokerFoldBtn" onclick="pokerFold()">RETIRARSE ❌</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="pokerRefill" class="poker-panel poker-hidden" style="margin-top:1rem; background:#2b1226; border-color:#ff007f;">
+            <h3 style="color:#00f3ff; text-align:center">¿Te quedaste sin fichas?</h3>
+            <p class="poker-muted">Escríbenos por WhatsApp para solicitar una recarga virtual gratuita.</p>
+            <div class="poker-row" style="margin-top:0.6rem;">
+              <button class="poker-btn secondary" onclick="pokerFreeRefill()">🎁 RECARGA RÁPIDA (+50 FICHAS)</button>
+              <a id="pokerWhatsApp" class="poker-btn" href="https://wa.me/51930841255" target="_blank" rel="noopener" style="background:#25d366; border-color:#25d366; text-decoration:none;">💬 PEDIR POR WHATSAPP</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTOS -->
+    <section id="eventos" class="section">
+      <div class="card">
+        <h2>Entradas y Eventos</h2>
+        <p style="text-align: center; color: #ffffff; margin-bottom: 1.5rem;">
+          Ingresa tu Nombre / Nickname para registrar tu entrada.
+        </p>
+
+        <div class="yape-box">
+          <h3>📱 PAGO CON YAPE</h3>
+          <p>Realiza tu pago por Yape antes de confirmar tu registro.</p>
+        </div>
+
+        <div id="formSection">
+          <form onsubmit="submitCustomForm(event)" class="custom-form" style="margin-top: 1.5rem;">
+            <div class="input-group">
+              <label for="nicknameUsuario">Nombre / Nickname:</label>
+              <input type="text" id="nicknameUsuario" placeholder="Ingresa tu nombre..." required>
+            </div>
+
+            <div class="input-group">
+              <label>Selecciona tu Entrada:</label>
+              <div class="tickets-container">
+                <label class="ticket-option selected" id="opt-general" onclick="selectTicket('opt-general')">
+                  <input type="radio" name="ticketType" value="Entrada General - 10 Soles" checked>
+                  <div class="ticket-title">Entrada General</div>
+                  <div class="ticket-price">S/ 10.00</div>
+                </label>
+
+                <label class="ticket-option" id="opt-vip" onclick="selectTicket('opt-vip')">
+                  <input type="radio" name="ticketType" value="Entrada VIP">
+                  <div class="ticket-title">Entrada VIP</div>
+                  <div class="ticket-price">VIP ⚡</div>
+                </label>
+              </div>
+            </div>
+
+            <button type="submit" id="btnSubmitForm" class="btn-pill" style="width: 100%; margin-top: 1rem;">Confirmar y Enviar Registro</button>
+          </form>
+        </div>
+
+        <div class="attendees-box">
+          <div class="attendees-title">🎉 ASISTENTES CONFIRMADOS AL EVENTO 🎉</div>
+          <div id="attendeesList"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="fullscreenSuccess" class="fullscreen-success">
+    <div class="fullscreen-success-box">
+      <h2>¡REGISTRADO! 🎉</h2>
+      <p>Tu registro ha sido enviado correctamente.</p>
+      <button class="btn-pill" style="margin-top: 1.5rem; background: #00ff88; color: #000;" onclick="closeFullscreenSuccess()">Aceptar y Volver</button>
     </div>
   </div>
-</section>
+
+  <div class="modal-overlay" id="passwordModal">
+    <div class="modal-box">
+      <h3 id="modalTitle">Ingrese Contraseña</h3>
+      <input type="password" id="passInput" placeholder="****" maxlength="10">
+      <div class="error-msg" id="passError">Contraseña incorrecta. Inténtelo de nuevo.</div>
+      <div class="modal-actions">
+        <button class="btn-pill" onclick="verifyPassword()">Ingresar</button>
+        <button class="btn-pill" style="background: #444;" onclick="closeModal()">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT GENERAL Y CONEXIÓN SUPABASE -->
+  <script>
+    const SUPABASE_URL = 'https://ddrrcmcjdqdjqlpczytz.supabase.co';
+    const SUPABASE_ANON_KEY = 'sb_publishable_pBLkSv6CJcOMWijsCfsZ3Q_9W3s4DRL';
+    
+    let supabaseClient = null;
+    try {
+      if (window.supabase) {
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      }
+    } catch(e) { console.error("Error al inicializar Supabase", e); }
+
+    var currentTargetProfile = '';
+    var unlockedProfiles = { guliana: false, estefany: false };
+    const PASSWORDS = { guliana: '1999', estefany: '1998' };
+
+    document.addEventListener("DOMContentLoaded", function() {
+      loadAttendees();
+      pokerLoad();
+      initMarketplace();
+    });
+
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) targetSection.classList.add('active');
+
+      const activeBtn = document.getElementById('btn-' + sectionId);
+      if (activeBtn) activeBtn.classList.add('active');
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function requestAccess(profile) {
+      if (unlockedProfiles[profile]) {
+        toggleProfile(profile);
+      } else {
+        currentTargetProfile = profile;
+        document.getElementById('modalTitle').innerText = 'Contraseña para ' + profile.toUpperCase();
+        document.getElementById('passInput').value = '';
+        document.getElementById('passError').style.display = 'none';
+        document.getElementById('passwordModal').style.display = 'flex';
+        document.getElementById('passInput').focus();
+      }
+    }
+
+    function verifyPassword() {
+      const inputVal = document.getElementById('passInput').value;
+      if (inputVal === PASSWORDS[currentTargetProfile]) {
+        unlockedProfiles[currentTargetProfile] = true;
+        closeModal();
+        toggleProfile(currentTargetProfile);
+      } else {
+        document.getElementById('passError').style.display = 'block';
+      }
+    }
+
+    function closeModal() {
+      document.getElementById('passwordModal').style.display = 'none';
+    }
+
+    function toggleProfile(profile) {
+      const gulianaContent = document.getElementById('content-guliana');
+      const estefanyContent = document.getElementById('content-estefany');
+      const btnGuliana = document.getElementById('btn-profile-guliana');
+      const btnEstefany = document.getElementById('btn-profile-estefany');
+
+      if (profile === 'guliana') {
+        gulianaContent.style.display = 'grid';
+        estefanyContent.style.display = 'none';
+        btnGuliana.classList.add('active-profile');
+        btnEstefany.classList.remove('active-profile');
+      } else if (profile === 'estefany') {
+        gulianaContent.style.display = 'none';
+        estefanyContent.style.display = 'grid';
+        btnGuliana.classList.remove('active-profile');
+        btnEstefany.classList.add('active-profile');
+      }
+    }
+
+    function selectTicket(optionId) {
+      document.querySelectorAll('.ticket-option').forEach(opt => opt.classList.remove('selected'));
+      const selected = document.getElementById(optionId);
+      selected.classList.add('selected');
+      selected.querySelector('input[type="radio"]').checked = true;
+    }
+
+    function handleVideoUpload(event, gridId) {
+      event.preventDefault();
+      const form = event.target;
+      const fileInput = form.querySelector('input[type="file"]');
+      const captionInput = form.querySelector('input[type="text"]');
+      const grid = document.getElementById(gridId);
+
+      if (fileInput.files && fileInput.files[0]) {
+        const file = fileInput.files[0];
+        const fileURL = URL.createObjectURL(file);
+        const mediaCard = document.createElement('div');
+        mediaCard.className = 'media-item';
+        mediaCard.innerHTML = `<video src="${fileURL}" controls></video><p>${captionInput.value}</p>`;
+        grid.prepend(mediaCard);
+        fileInput.value = '';
+        captionInput.value = '';
+      }
+    }
+
+    function loadAttendees() {
+      var savedList = JSON.parse(localStorage.getItem("guliana_attendees_list")) || [];
+      var container = document.getElementById("attendeesList");
+      container.innerHTML = "";
+      if (savedList.length === 0) {
+        container.innerHTML = "<p style='text-align: center; color: #cccccc; font-size: 0.9rem;'>Aún no hay registros guardados.</p>";
+        return;
+      }
+      savedList.forEach(function(item) {
+        var div = document.createElement("div");
+        div.className = "attendee-item";
+        div.innerHTML = "<span>✨</span> <strong>" + item + "</strong> asistirá al evento en Guliana Point";
+        container.appendChild(div);
+      });
+    }
+
+    function submitCustomForm(e) {
+      e.preventDefault();
+      var nickname = document.getElementById("nicknameUsuario").value.trim();
+      var entrada = document.querySelector('input[name="ticketType"]:checked').value;
+      if (!nickname) return;
+      var savedList = JSON.parse(localStorage.getItem("guliana_attendees_list")) || [];
+      savedList.push(nickname);
+      localStorage.setItem("guliana_attendees_list", JSON.stringify(savedList));
+      loadAttendees();
+      document.getElementById("fullscreenSuccess").style.display = "flex";
+      document.getElementById("nicknameUsuario").value = "";
+    }
+
+    function closeFullscreenSuccess() {
+      document.getElementById("fullscreenSuccess").style.display = "none";
+    }
+
+    function initMarketplace() {
+      const mpForm = document.getElementById('marketplaceForm');
+      if (mpForm) {
+        mpForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          const title = document.getElementById('mpTitle').value;
+          const price = document.getElementById('mpPrice').value;
+          const seller = document.getElementById('mpSeller').value;
+          const whatsapp = document.getElementById('mpWhatsapp').value;
+          const description = document.getElementById('mpDescription').value;
+          const fileInput = document.getElementById('mpImage');
+          const statusEl = document.getElementById('mpStatus');
+
+          if (!fileInput.files || !fileInput.files[0]) {
+            alert('Selecciona una imagen para el producto.');
+            return;
+          }
+
+          statusEl.textContent = 'Subiendo producto...';
+          const file = fileInput.files[0];
+
+          if (supabaseClient) {
+            try {
+              const fileName = `${Date.now()}_${file.name}`;
+              const { data: uploadData, error: uploadError } = await supabaseClient.storage.from('multimedia').upload(fileName, file);
+              if (uploadError) throw uploadError;
+
+              const { data: publicURLData } = supabaseClient.storage.from('multimedia').getPublicUrl(fileName);
+              const imageUrl = publicURLData.publicUrl;
+
+              const { error: dbError } = await supabaseClient.from('galeria').insert([{
+                url: imageUrl,
+                tipo: 'foto'
+              }]);
+              if (dbError) throw dbError;
+
+              statusEl.textContent = '¡Producto publicado con éxito en Supabase!';
+              mpForm.reset();
+              loadMarketplaceCatalog();
+            } catch (err) {
+              statusEl.textContent = 'Guardado local (modo alternativo).';
+              saveLocalProduct({ title, price, seller, whatsapp, description, image: URL.createObjectURL(file) });
+              mpForm.reset();
+              loadMarketplaceCatalog();
+            }
+          } else {
+            saveLocalProduct({ title, price, seller, whatsapp, description, image: URL.createObjectURL(file) });
+            statusEl.textContent = '¡Producto publicado con éxito!';
+            mpForm.reset();
+            loadMarketplaceCatalog();
+          }
+        });
+      }
+      loadMarketplaceCatalog();
+    }
+
+    function saveLocalProduct(prod) {
+      let list = JSON.parse(localStorage.getItem('guliana_market_products') || '[]');
+      list.unshift(prod);
+      localStorage.setItem('guliana_market_products', JSON.stringify(list));
+    }
+
+    function loadMarketplaceCatalog() {
+      const catalogEl = document.getElementById('marketplaceCatalog');
+      if (!catalogEl) return;
+      let list = JSON.parse(localStorage.getItem('guliana_market_products') || '[]');
+      
+      if (list.length === 0) {
+        catalogEl.innerHTML = '<p class="marketplace-empty">No hay productos publicados aún. ¡Sé el primero en publicar!</p>';
+        return;
+      }
+
+      catalogEl.innerHTML = list.map(p => `
+        <div class="lingerie-item">
+          <img src="${p.image}" alt="${p.title}">
+          <div class="lingerie-info">
+            <div class="lingerie-title">${p.title}</div>
+            <div class="lingerie-desc">${p.description}</div>
+            <div class="seller-label">Vendedor: <b>${p.seller}</b></div>
+            <div class="lingerie-price">S/ ${Number(p.price).toFixed(2)}</div>
+            <a href="https://wa.me/${p.whatsapp}?text=${encodeURIComponent('Hola, deseo comprar tu producto: ' + p.title + ' (S/ ' + p.price + ')')}" target="_blank" style="text-decoration: none;">
+              <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+  </script>
+
+  <!-- MOTOR DE PÓKER PRO -->
+  <script>
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playCardDealSound(count = 4) {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+          const bufferSize = audioCtx.sampleRate * 0.055;
+          const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let j = 0; j < bufferSize; j++) {
+            data[j] = (Math.random() * 2 - 1) * Math.exp(-j / (bufferSize * 0.3));
+          }
+          const noise = audioCtx.createBufferSource();
+          noise.buffer = buffer;
+          const filter = audioCtx.createBiquadFilter();
+          filter.type = 'bandpass';
+          filter.frequency.value = 1800 + Math.random() * 600;
+          const gain = audioCtx.createGain();
+          gain.gain.setValueAtTime(0.28, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.055);
+          noise.connect(filter); filter.connect(gain); gain.connect(audioCtx.destination);
+          noise.start();
+        }, i * 85);
+      }
+    }
+
+    function playChipSound() {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      [2200, 2950].forEach((freq, idx) => {
+        setTimeout(() => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.14, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.07);
+          osc.connect(gain); gain.connect(audioCtx.destination);
+          osc.start(); osc.stop(audioCtx.currentTime + 0.07);
+        }, idx * 35);
+      });
+    }
+
+    function playWinSound() {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      [523.25, 659.25, 783.99, 1046.50, 1318.51].forEach((freq, idx) => {
+        setTimeout(() => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.24, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
+          osc.connect(gain); gain.connect(audioCtx.destination);
+          osc.start(); osc.stop(audioCtx.currentTime + 0.35);
+        }, idx * 105);
+      });
+    }
+
+    function playLoseSound() {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      [330, 277.18, 220].forEach((freq, idx) => {
+        setTimeout(() => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
+          osc.connect(gain); gain.connect(audioCtx.destination);
+          osc.start(); osc.stop(audioCtx.currentTime + 0.25);
+        }, idx * 140);
+      });
+    }
+
+    const POKER_KEY = 'gulianaPokerProfile_v7';
+    let pokerProfile = null;
+    let gameState = { phase: 0, myCards: [], cpuCards: [], community: [], pot: 0, bet: 5 };
+
+    function pokerLoad() {
+      try { pokerProfile = JSON.parse(localStorage.getItem(POKER_KEY) || 'null'); } catch (e) { pokerProfile = null; }
+      if (pokerProfile) {
+        document.getElementById('pokerRegister').classList.add('poker-hidden');
+        document.getElementById('pokerLobby').classList.remove('poker-hidden');
+        document.getElementById('pokerPlayerName').textContent = pokerProfile.name;
+        updateBalanceUI();
+      }
+    }
+
+    function pokerSave() {
+      localStorage.setItem(POKER_KEY, JSON.stringify(pokerProfile));
+      updateBalanceUI();
+    }
+
+    function updateBalanceUI() {
+      if (!pokerProfile) return;
+      document.getElementById('pokerBalance').textContent = pokerProfile.chips;
+      const refillBox = document.getElementById('pokerRefill');
+      if (pokerProfile.chips <= 0 && gameState.phase === 0) {
+        refillBox.classList.remove('poker-hidden');
+        document.getElementById('pokerWhatsApp').href = 'https://wa.me/51930841255?text=' + encodeURIComponent('Hola, soy ' + pokerProfile.name + ' de Guliana Social Casino. Me quedé sin fichas virtuales, ¿podría recargar mi cuenta?');
+      } else {
+        refillBox.classList.add('poker-hidden');
+      }
+    }
+
+    function pokerFreeRefill() {
+      if (!pokerProfile) return;
+      pokerProfile.chips = 50;
+      pokerSave();
+      playChipSound();
+      document.getElementById('pokerStatus').textContent = '¡Recarga gratuita acreditada! Tienes 50 fichas para seguir jugando.';
+    }
+
+    function pokerRegister() {
+      const name = document.getElementById('pokerName').value.trim();
+      const pin = document.getElementById('pokerPin').value;
+      if (name.length < 3 || pin.length < 4) {
+        document.getElementById('pokerRegisterMsg').textContent = 'Ingresa un nombre de al menos 3 letras y una clave de 4 dígitos.';
+        return;
+      }
+      pokerProfile = { name, pin, chips: 50 };
+      pokerSave();
+      pokerLoad();
+    }
+
+    function pokerLogout() {
+      pokerProfile = null;
+      document.getElementById('pokerRegister').classList.remove('poker-hidden');
+      document.getElementById('pokerLobby').classList.add('poker-hidden');
+    }
+
+    function createShuffledDeck() {
+      const ranks = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
+      const suits = ['♠','♥','♦','♣'];
+      const deck = [];
+      let idCounter = 0;
+      for (const s of suits) {
+        for (let i = 0; i < ranks.length; i++) {
+          deck.push({ id: idCounter++, label: ranks[i], suit: s, red: s === '♥' || s === '♦', val: i + 2 });
+        }
+      }
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return deck;
+    }
+
+    function renderCards(elementId, cards, faceUp = true, winningCardIds = new Set()) {
+      const container = document.getElementById(elementId);
+      if (!faceUp) {
+        container.innerHTML = `<div class="poker-card back"></div><div class="poker-card back"></div>`;
+        return;
+      }
+      container.innerHTML = cards.map((c, idx) => {
+        const isWinner = winningCardIds.has(c.id);
+        return `<div class="poker-card ${c.red ? 'red' : ''} ${isWinner ? 'winner-glow' : ''}" style="animation-delay:${idx * 0.08}s">
+                  <span class="card-corner">${c.label}${c.suit}</span>
+                  <span class="card-center-suit">${c.suit}</span>
+                  <span class="card-corner-bottom">${c.label}${c.suit}</span>
+                </div>`;
+      }).join('');
+    }
+
+    function updateTableChips() {
+      const container = document.getElementById('tableChipsContainer');
+      const stack = document.getElementById('chipsVisualStack');
+      const text = document.getElementById('tableChipsText');
+      if (gameState.pot > 0) {
+        container.style.display = 'flex';
+        const chipCount = Math.min(8, Math.max(2, Math.floor(gameState.pot / 5)));
+        let tokensHtml = '';
+        for (let i = 0; i < chipCount; i++) {
+          const colorClass = i % 3 === 1 ? 'pink' : (i % 3 === 2 ? 'cyan' : '');
+          tokensHtml += `<span class="chip-token ${colorClass}"></span>`;
+        }
+        stack.innerHTML = tokensHtml;
+        text.textContent = `${gameState.pot} fichas en la mesa`;
+      } else {
+        container.style.display = 'none';
+      }
+    }
+
+    function pokerStartHand() {
+      if (!pokerProfile || pokerProfile.chips < 5) {
+        alert('No tienes fichas suficientes. Usa la recarga gratuita o pídela por WhatsApp.');
+        updateBalanceUI();
+        return;
+      }
+      pokerProfile.chips -= 5;
+      pokerSave();
+      playCardDealSound(4);
+      playChipSound();
+
+      const deck = createShuffledDeck();
+      gameState = {
+        phase: 1, // 1: Pre-Flop, 2: Flop, 3: Turn, 4: River, 5: Showdown
+        myCards: [deck[0], deck[1]],
+        cpuCards: [deck[2], deck[3]],
+        community: [deck[4], deck[5], deck[6], deck[7], deck[8]],
+        pot: 10,
+        bet: 5
+      };
+
+      document.getElementById('pokerPhaseBadge').textContent = 'FASE 1: PRE-FLOP (APUESTA INICIAL)';
+      document.getElementById('pokerPot').textContent = gameState.pot;
+      document.getElementById('pokerInHand').textContent = gameState.bet;
+      updateTableChips();
+
+      renderCards('pokerMyCards', gameState.myCards, true);
+      renderCards('pokerCpuCards', gameState.cpuCards, false);
+      document.getElementById('pokerCommunity').innerHTML = '';
+
+      document.getElementById('pokerStatus').innerHTML = 'Se te han repartido 2 cartas y se ha cubierto la ciega de 5 fichas. <b>Pasa/Iguala</b> o <b>Aposta/Sube</b> para continuar.';
+
+      document.getElementById('pokerDeal').classList.add('poker-hidden');
+      document.getElementById('pokerCheckCallBtn').classList.remove('poker-hidden');
+      document.getElementById('pokerRaise5Btn').classList.remove('poker-hidden');
+      document.getElementById('pokerAllinBtn').classList.remove('poker-hidden');
+      document.getElementById('pokerFoldBtn').classList.remove('poker-hidden');
+    }
+
+    function pokerCheckOrCall() {
+      playChipSound();
+      advanceGamePhase();
+    }
+
+    function pokerBetMore(amount) {
+      if (pokerProfile.chips < amount) {
+        alert('No tienes suficientes fichas para apostar esa cantidad.');
+        return;
+      }
+      pokerProfile.chips -= amount;
+      gameState.pot += amount * 2;
+      gameState.bet += amount;
+      pokerSave();
+      playChipSound();
+
+      document.getElementById('pokerPot').textContent = gameState.pot;
+      document.getElementById('pokerInHand').textContent = gameState.bet;
+      updateTableChips();
+      
+      advanceGamePhase();
+    }
+
+    function pokerAllIn() {
+      const allInAmount = pokerProfile.chips;
+      if (allInAmount <= 0) { advanceGamePhase(); return; }
+      gameState.pot += allInAmount * 2;
+      gameState.bet += allInAmount;
+      pokerProfile.chips = 0;
+      pokerSave();
+      playChipSound();
+
+      document.getElementById('pokerPot').textContent = gameState.pot;
+      document.getElementById('pokerInHand').textContent = gameState.bet;
+      updateTableChips();
+
+      gameState.phase = 4;
+      advanceGamePhase();
+    }
+
+    function advanceGamePhase() {
+      if (gameState.phase === 1) {
+        gameState.phase = 2;
+        playCardDealSound(3);
+        document.getElementById('pokerPhaseBadge').textContent = 'FASE 2: FLOP (3 CARTAS)';
+        renderCards('pokerCommunity', gameState.community.slice(0, 3), true);
+        document.getElementById('pokerStatus').innerHTML = 'Aparecen las <b>3 primeras cartas comunitarias (Flop)</b>. Decide si pasas, apuestas o te retiras.';
+      } else if (gameState.phase === 2) {
+        gameState.phase = 3;
+        playCardDealSound(1);
+        document.getElementById('pokerPhaseBadge').textContent = 'FASE 3: TURN (4ª CARTA)';
+        renderCards('pokerCommunity', gameState.community.slice(0, 4), true);
+        document.getElementById('pokerStatus').innerHTML = 'Aparece la <b>4ª carta (Turn)</b> en la mesa. Sigue la ronda de apuestas.';
+      } else if (gameState.phase === 3) {
+        gameState.phase = 4;
+        playCardDealSound(1);
+        document.getElementById('pokerPhaseBadge').textContent = 'FASE 4: RIVER (5ª CARTA)';
+        renderCards('pokerCommunity', gameState.community, true);
+        document.getElementById('pokerStatus').innerHTML = 'Aparece la <b>5ª y última carta (River)</b>. Última oportunidad para apostar o pasar.';
+        document.getElementById('pokerCheckCallBtn').textContent = 'VER GANADOR 🏆';
+      } else if (gameState.phase === 4) {
+        evaluateWinnerAndShow();
+      }
+    }
+
+    function pokerFold() {
+      playLoseSound();
+      document.getElementById('pokerPhaseBadge').textContent = 'MANO RETIRADA';
+      document.getElementById('pokerStatus').innerHTML = 'Te retiraste de la mano. El rival se lleva el pozo.';
+      endHandClean();
+    }
+
+    function evaluateBest5From7(cards7) {
+      let bestResult = null;
+      for (let i = 0; i < cards7.length - 4; i++) {
+        for (let j = i + 1; j < cards7.length - 3; j++) {
+          for (let k = j + 1; k < cards7.length - 2; k++) {
+            for (let l = k + 1; l < cards7.length - 1; l++) {
+              for (let m = l + 1; m < cards7.length; m++) {
+                const hand5 = [cards7[i], cards7[j], cards7[k], cards7[l], cards7[m]];
+                const scored = score5Cards(hand5);
+                if (!bestResult || compareScores(scored.score, bestResult.score) > 0) {
+                  bestResult = scored;
+                }
+              }
+            }
+          }
+        }
+      }
+      return bestResult;
+    }
+
+    function compareScores(a, b) {
+      for (let i = 0; i < Math.max(a.length, b.length); i++) {
+        const va = a[i] || 0;
+        const vb = b[i] || 0;
+        if (va !== vb) return va - vb;
+      }
+      return 0;
+    }
+
+    function score5Cards(hand5) {
+      const sorted = [...hand5].sort((a, b) => b.val - a.val);
+      const vals = sorted.map(c => c.val);
+      const isFlush = sorted.every(c => c.suit === sorted[0].suit);
+      let isStraight = false;
+      let straightHigh = 0;
+      const uniqueVals = [...new Set(vals)];
+      if (uniqueVals.length === 5) {
+        if (vals[0] - vals[4] === 4) { isStraight = true; straightHigh = vals[0]; }
+        else if (vals[0] === 14 && vals[1] === 5 && vals[2] === 4 && vals[3] === 3 && vals[4] === 2) {
+          isStraight = true; straightHigh = 5;
+        }
+      }
+
+      const freqMap = {};
+      sorted.forEach(c => { freqMap[c.val] = (freqMap[c.val] || 0) + 1; });
+      const groups = Object.entries(freqMap).map(([v, count]) => ({ val: Number(v), count })).sort((a, b) => b.count - a.count || b.val - a.val);
+
+      if (isFlush && isStraight) {
+        if (straightHigh === 14) return { rank: 10, name: 'Escalera Real 👑', score: [10], highlightCards: sorted };
+        return { rank: 9, name: 'Escalera de Color', score: [9, straightHigh], highlightCards: sorted };
+      }
+      if (groups[0].count === 4) return { rank: 8, name: 'Póker', score: [8, groups[0].val, groups[1].val], highlightCards: sorted.filter(c => c.val === groups[0].val) };
+      if (groups[0].count === 3 && groups[1].count === 2) return { rank: 7, name: 'Full House', score: [7, groups[0].val, groups[1].val], highlightCards: sorted };
+      if (isFlush) return { rank: 6, name: 'Color (Flush)', score: [6, ...vals], highlightCards: sorted };
+      if (isStraight) return { rank: 5, name: 'Escalera', score: [5, straightHigh], highlightCards: sorted };
+      if (groups[0].count === 3) return { rank: 4, name: 'Trío', score: [4, groups[0].val, groups[1].val, groups[2].val], highlightCards: sorted.filter(c => c.val === groups[0].val) };
+      if (groups[0].count === 2 && groups[1].count === 2) return { rank: 3, name: 'Doble Par', score: [3, groups[0].val, groups[1].val, groups[2].val], highlightCards: sorted.filter(c => c.val === groups[0].val || c.val === groups[1].val) };
+      if (groups[0].count === 2) return { rank: 2, name: 'Un Par', score: [2, groups[0].val, groups[1].val, groups[2].val, groups[3].val], highlightCards: sorted.filter(c => c.val === groups[0].val) };
+      return { rank: 1, name: `Carta Alta (${sorted[0].label}${sorted[0].suit})`, score: [1, ...vals], highlightCards: [sorted[0]] };
+    }
+
+    function evaluateWinnerAndShow() {
+      playCardDealSound(2);
+      document.getElementById('pokerPhaseBadge').textContent = 'SHOWDOWN • RESULTADO FINAL';
+
+      const myBest = evaluateBest5From7([...gameState.myCards, ...gameState.community]);
+      const cpuBest = evaluateBest5From7([...gameState.cpuCards, ...gameState.community]);
+      const cmp = compareScores(myBest.score, cpuBest.score);
+
+      if (cmp > 0) {
+        playWinSound();
+        pokerProfile.chips += gameState.pot;
+        pokerSave();
+        const winIds = new Set(myBest.highlightCards.map(c => c.id));
+        renderCards('pokerMyCards', gameState.myCards, true, winIds);
+        renderCards('pokerCommunity', gameState.community, true, winIds);
+        renderCards('pokerCpuCards', gameState.cpuCards, true, new Set());
+        document.getElementById('pokerStatus').innerHTML = `🎉 <b style="color:#ffd700;">¡GANASTE EL POZO DE ${gameState.pot} FICHAS!</b><br>Mano ganadora: <b style="color:#00f3ff; font-size: 1.1rem; text-transform: uppercase;">${myBest.name}</b>`;
+      } else if (cmp < 0) {
+        playLoseSound();
+        const winIds = new Set(cpuBest.highlightCards.map(c => c.id));
+        renderCards('pokerCpuCards', gameState.cpuCards, true, winIds);
+        renderCards('pokerCommunity', gameState.community, true, winIds);
+        renderCards('pokerMyCards', gameState.myCards, true, new Set());
+        document.getElementById('pokerStatus').innerHTML = `❌ <b style="color:#ff6b6b;">El Rival (PC) ganó el pozo.</b><br>Mano ganadora rival: <b style="color:#ffd700; font-size: 1.1rem; text-transform: uppercase;">${cpuBest.name}</b>`;
+      } else {
+        const split = Math.floor(gameState.pot / 2);
+        pokerProfile.chips += split;
+        pokerSave();
+        const winIds = new Set(myBest.highlightCards.map(c => c.id));
+        renderCards('pokerMyCards', gameState.myCards, true, winIds);
+        renderCards('pokerCpuCards', gameState.cpuCards, true, new Set());
+        renderCards('pokerCommunity', gameState.community, true, winIds);
+        document.getElementById('pokerStatus').innerHTML = `🤝 <b style="color:#00f3ff;">¡EMPATE!</b> Ambos tienen la misma combinación: <b style="color:#ffd700; text-transform: uppercase;">${myBest.name}</b>`;
+      }
+      endHandClean();
+    }
+
+    function endHandClean() {
+      document.getElementById('pokerDeal').classList.remove('poker-hidden');
+      document.getElementById('pokerCheckCallBtn').classList.add('poker-hidden');
+      document.getElementById('pokerRaise5Btn').classList.add('poker-hidden');
+      document.getElementById('pokerAllinBtn').classList.add('poker-hidden');
+      document.getElementById('pokerFoldBtn').classList.add('poker-hidden');
+      document.getElementById('pokerCheckCallBtn').textContent = 'PASAR / IGUALAR 🤝';
+      gameState.phase = 0;
+      gameState.pot = 0;
+      updateBalanceUI();
+    }
+  </script>
+
+</body>
+</html>
