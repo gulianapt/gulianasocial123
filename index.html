@@ -9,6 +9,7 @@
   <meta property="og:description" content="Tu comunidad exclusiva de entretenimiento y entradas a los mejores eventos.">
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-dark: #14151a;
@@ -27,7 +28,7 @@
     }
 
     html {
-      font-size: 18px; /* Letras más grandes en toda la web */
+      font-size: 18px;
     }
 
     body {
@@ -69,6 +70,7 @@
       gap: 0.4rem;
       cursor: pointer;
       text-shadow: 0 0 10px var(--neon-pink), 0 0 22px var(--neon-purple);
+      font-family: 'Cinzel', serif;
     }
 
     .logo-fire {
@@ -108,6 +110,12 @@
       box-shadow: 0 0 18px var(--neon-pink), 0 0 30px rgba(188, 19, 254, 0.6);
     }
 
+    /* Estilo especial para el botón de Casino / Póker en el header */
+    .poker-nav-btn {
+      border-color: var(--neon-pink) !important;
+      background: rgba(255, 0, 127, 0.18) !important;
+    }
+
     main {
       flex: 1;
       display: flex;
@@ -119,7 +127,7 @@
     .section {
       display: none;
       width: 100%;
-      max-width: 1000px;
+      max-width: 1120px;
       animation: fadeIn 0.4s ease;
     }
 
@@ -132,7 +140,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* HERO / PORTADA NIGHT CLUB */
+    /* HERO / PORTADA */
     .hero-container {
       background: var(--bg-card);
       border: 2px solid var(--neon-purple);
@@ -150,6 +158,7 @@
       margin-bottom: 0.6rem;
       letter-spacing: 2px;
       text-transform: uppercase;
+      font-family: 'Cinzel', serif;
     }
 
     .hero-subtitle {
@@ -326,7 +335,7 @@
       font-size: 1rem;
     }
 
-    /* CATÁLOGO / TIENDA (MANTENIDO EN FONDO BLANCO COMO PEDISTE) */
+    /* TIENDA / CATÁLOGO (FONDO BLANCO) */
     #lenceria {
       background: #ffffff;
       color: #222222;
@@ -431,548 +440,95 @@
       border-left-color: #c51f40;
     }
 
+    /* =========================================================
+       CASINO Y PÓKER TEXAS HOLD'EM PRO
+       ========================================================= */
+    .poker-wrap { max-width: 1120px; margin: 0 auto; }
+    .poker-title { text-align: center; font-size: clamp(2.1rem, 4.5vw, 2.9rem); margin: .2rem 0; font-family: 'Cinzel', serif; color: var(--neon-cyan); text-shadow: 0 0 15px rgba(0,243,255,0.65); }
+    .poker-lead { text-align: center; color: #e5d3e8; margin-bottom: 1.3rem; font-size: 0.95rem; }
+    .poker-layout { display: grid; grid-template-columns: 330px 1fr; gap: 1.4rem; align-items: start; }
+    @media(max-width: 920px) { .poker-layout { grid-template-columns: 1fr; } }
+    .poker-panel { background: #181a24; border: 1.5px solid var(--neon-purple); border-radius: 18px; padding: 1.2rem; margin-bottom: 1rem; box-shadow: 0 0 22px rgba(188,19,254,0.22); }
+    .poker-row { display: flex; gap: .65rem; flex-wrap: wrap; align-items: center; justify-content: center; }
+    .poker-input { width: min(100%, 280px); padding: .75rem 1rem; border-radius: 12px; border: 1.5px solid var(--neon-cyan); background: #101116; color: white; margin: .3rem; font-size: 0.95rem; }
+    .poker-btn { border: 1.5px solid var(--neon-pink); background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple)); color: white; font-weight: 800; padding: .7rem 1.15rem; border-radius: 12px; cursor: pointer; margin: .2rem; font-size: 0.85rem; transition: all 0.2s; box-shadow: 0 0 14px rgba(255,0,127,0.4); text-transform: uppercase; }
+    .poker-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 0 24px var(--neon-cyan); border-color: var(--neon-cyan); }
+    .poker-btn:disabled { opacity: .4; cursor: not-allowed; transform: none; box-shadow: none; }
+    .poker-btn.secondary { background: rgba(0, 243, 255, 0.14); border-color: var(--neon-cyan); }
+    .poker-btn.danger { background: rgba(255, 50, 80, 0.2); border-color: #ff4d6d; }
+    
+    .poker-table { background: radial-gradient(ellipse at center, #146341 0%, #093b25 65%, #042114 100%); border: 10px solid #281938; outline: 2px solid var(--neon-cyan); border-radius: 36px; min-height: 390px; padding: 1.3rem 1rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; box-shadow: inset 0 0 50px rgba(0,0,0,0.85), 0 0 30px rgba(0, 243, 255, 0.25); position: relative; }
+    .poker-cards { display: flex; gap: .55rem; justify-content: center; flex-wrap: wrap; margin: .4rem 0; min-height: 86px; align-items: center; }
+    
+    .poker-card { background: linear-gradient(145deg, #ffffff 0%, #f2f4f8 100%); color: #15161c; border-radius: 10px; width: 60px; height: 86px; display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 4px 6px; font-weight: 900; box-shadow: 0 6px 16px rgba(0,0,0,0.55); position: relative; border: 1.5px solid #d0d5dd; animation: dealFlipCard 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) both; user-select: none; }
+    @keyframes dealFlipCard { 0% { transform: translateY(-45px) rotateY(90deg) scale(0.4); opacity: 0; } 100% { transform: translateY(0) rotateY(0deg) scale(1); opacity: 1; } }
+    .poker-card.back { background: repeating-linear-gradient(45deg, #ff007f, #ff007f 6px, #6a00f4 6px, #6a00f4 12px); border: 2.5px solid #ffffff; box-shadow: 0 0 14px rgba(255, 0, 127, 0.6); justify-content: center; }
+    .poker-card.back::after { content: '🔥'; font-size: 1.3rem; background: rgba(16, 17, 22, 0.85); width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 1.5px solid var(--neon-cyan); }
+    .poker-card.red { color: #e60023; }
+    .card-corner { align-self: flex-start; font-size: 0.78rem; line-height: 1; }
+    .card-center-suit { font-size: 1.65rem; line-height: 1; }
+    .card-corner-bottom { align-self: flex-end; font-size: 0.78rem; line-height: 1; transform: rotate(180deg); }
+    .poker-card.winner-glow { box-shadow: 0 0 22px #ffd700, 0 0 42px #00f3ff !important; border: 3px solid #ffd700; transform: translateY(-6px) scale(1.1); z-index: 10; animation: winnerPulse 0.9s infinite alternate; }
+    @keyframes winnerPulse { 0% { box-shadow: 0 0 16px #ffd700, 0 0 28px #ff007f; } 100% { box-shadow: 0 0 28px #ffd700, 0 0 50px #00f3ff; } }
+
+    .pot-area { display: flex; flex-direction: column; align-items: center; gap: 4px; margin: 4px 0; }
+    .table-chips { display: flex; gap: 6px; align-items: center; background: rgba(10, 12, 16, 0.75); padding: 6px 14px; border-radius: 22px; border: 1.5px solid #ffd700; font-size: 0.85rem; color: #ffd700; box-shadow: 0 0 14px rgba(255,215,0,0.35); }
+    .chips-visual-stack { display: flex; align-items: center; gap: 3px; }
+    .chip-token { width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle, #ffe066 35%, #d97706 100%); border: 2px dashed #ffffff; display: inline-block; }
+    .chip-token.pink { background: radial-gradient(circle, #ff4da6 35%, #b30059 100%); }
+    .chip-token.cyan { background: radial-gradient(circle, #66f9ff 35%, #008899 100%); }
+    .phase-badge { background: rgba(0, 243, 255, 0.16); border: 1px solid var(--neon-cyan); color: var(--neon-cyan); font-size: 0.72rem; font-weight: 800; padding: 2px 10px; border-radius: 12px; text-transform: uppercase; letter-spacing: 1px; }
+
+    .poker-status { text-align: center; color: #ffe8b5; min-height: 3.1rem; margin: .75rem 0; font-weight: 700; font-size: 0.98rem; line-height: 1.4; background: rgba(255,255,255,0.04); padding: 0.6rem 0.9rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); }
+    .poker-muted { font-size: .85rem; color: #cbb9ce; text-align: center; line-height: 1.5; }
+    .poker-hidden { display: none !important; }
+    .poker-chip { font-weight: 900; color: #ffd700; font-size: 1.15rem; }
+
+    .hands-ranking-panel { background: #121319; border: 1.5px solid var(--neon-cyan); border-radius: 18px; padding: 1rem; box-shadow: 0 0 22px rgba(0,243,255,0.18); }
+    .hands-ranking-panel h4 { color: var(--neon-cyan); text-align: center; margin-bottom: 0.75rem; font-size: 0.92rem; text-transform: uppercase; }
+    .hand-rank-item { display: flex; flex-direction: column; gap: 4px; padding: 0.45rem 0; border-bottom: 1px dashed rgba(255,255,255,0.14); }
+    .hand-rank-item:last-child { border-bottom: none; }
+    .hand-rank-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+    .hand-rank-header strong { color: #ffffff; }
+    .hand-rank-header span { color: #ffb3c1; font-size: 0.68rem; background: rgba(255,0,127,0.18); padding: 1px 6px; border-radius: 6px; }
+    .mini-cards-row { display: flex; gap: 4px; align-items: center; }
+    .mini-card-graphic { background: #ffffff; color: #15161c; border-radius: 4px; padding: 2px 5px; font-size: 0.72rem; font-weight: 900; display: inline-flex; align-items: center; gap: 1px; border: 1px solid #ccc; }
+    .mini-card-graphic.red { color: #e60023; }
+    .mini-card-graphic.dim { opacity: 0.45; }
+
     /* ENTRETENIMIENTO */
-    .ent-layout {
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
-      margin-bottom: 1.5rem;
-      flex-wrap: wrap;
-    }
+    .ent-layout { display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .ent-buttons-container { flex: 1; display: flex; flex-direction: column; gap: 1.2rem; min-width: 220px; }
+    .profile-btn { background: rgba(255, 255, 255, 0.06); color: #ffffff; padding: 1.2rem; border-radius: 16px; font-size: 1.3rem; font-weight: 900; text-transform: uppercase; border: 2px solid var(--neon-pink); cursor: pointer; box-shadow: 0 0 18px rgba(255, 0, 127, 0.35); transition: all 0.3s; text-align: center; }
+    .profile-btn:hover, .profile-btn.active-profile { background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-purple) 100%); border-color: var(--neon-cyan); transform: scale(1.03); box-shadow: 0 0 28px var(--neon-cyan); }
+    .ent-banner-img { width: 100%; max-width: 320px; height: 180px; object-fit: cover; border-radius: 16px; border: 2px solid var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 243, 255, 0.45); margin: 0 auto; }
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; }
+    .media-item { background: #1b1d26; border-radius: 14px; overflow: hidden; border: 1.5px solid var(--neon-purple); box-shadow: 0 0 15px rgba(188, 19, 254, 0.25); }
+    .media-item video { width: 100%; height: 300px; object-fit: cover; display: block; }
+    .media-item p { padding: 0.85rem; font-size: 0.95rem; color: #ffffff; text-align: center; font-weight: 600; }
 
-    .ent-buttons-container {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      min-width: 220px;
-    }
-
-    .profile-btn {
-      background: rgba(255, 255, 255, 0.06);
-      color: #ffffff;
-      padding: 1.2rem;
-      border-radius: 16px;
-      font-size: 1.3rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      border: 2px solid var(--neon-pink);
-      cursor: pointer;
-      box-shadow: 0 0 18px rgba(255, 0, 127, 0.35);
-      transition: all 0.3s;
-      text-align: center;
-    }
-
-    .profile-btn:hover, .profile-btn.active-profile {
-      background: linear-gradient(135deg, var(--neon-pink) 0%, var(--neon-purple) 100%);
-      border-color: var(--neon-cyan);
-      transform: scale(1.03);
-      box-shadow: 0 0 28px var(--neon-cyan);
-    }
-
-    .ent-banner-img {
-      width: 100%;
-      max-width: 320px;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 16px;
-      border: 2px solid var(--neon-cyan);
-      box-shadow: 0 0 20px rgba(0, 243, 255, 0.45);
-      margin: 0 auto;
-    }
-
-    .media-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .media-item {
-      background: #1b1d26;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1.5px solid var(--neon-purple);
-      box-shadow: 0 0 15px rgba(188, 19, 254, 0.25);
-    }
-
-    .media-item video {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .media-item p {
-      padding: 0.85rem;
-      font-size: 0.95rem;
-      color: #ffffff;
-      text-align: center;
-      font-weight: 600;
-    }
-
-    /* FORMULARIOS Y EVENTOS */
-    .custom-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .input-group {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .input-group label {
-      color: #ffffff;
-      font-weight: 700;
-      font-size: 1rem;
-    }
-
-    .input-group input {
-      background: #1a1c24;
-      border: 1.5px solid var(--neon-cyan);
-      color: #ffffff;
-      padding: 0.9rem 1.2rem;
-      border-radius: 12px;
-      outline: none;
-      font-size: 1rem;
-    }
-
-    .tickets-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.2rem;
-      margin-top: 0.5rem;
-    }
-
-    .ticket-option {
-      background: #1b1d26;
-      border: 2px solid rgba(0, 243, 255, 0.35);
-      border-radius: 16px;
-      padding: 1.3rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .ticket-option.selected {
-      border-color: var(--neon-pink);
-      background: rgba(255, 0, 127, 0.18);
-      box-shadow: 0 0 22px rgba(255, 0, 127, 0.6);
-    }
-
-    .ticket-option input[type="radio"] {
-      display: none;
-    }
-
-    .ticket-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #ffffff;
-      text-transform: uppercase;
-      margin-bottom: 0.4rem;
-    }
-
-    .ticket-price {
-      font-size: 1.45rem;
-      font-weight: 900;
-      color: var(--neon-cyan);
-      text-shadow: 0 0 10px rgba(0, 243, 255, 0.6);
-    }
-
-    .yape-box {
-      background: rgba(188, 19, 254, 0.2);
-      border: 2px solid var(--neon-purple);
-      border-radius: 16px;
-      padding: 1.2rem;
-      text-align: center;
-      margin-top: 1rem;
-      box-shadow: 0 0 20px rgba(188, 19, 254, 0.35);
-    }
-
-    .yape-box h3 {
-      color: #ffffff;
-      text-shadow: 0 0 10px var(--neon-purple);
-      font-size: 1.25rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .attendees-box {
-      background: rgba(0, 243, 255, 0.08);
-      border: 1.5px solid var(--neon-cyan);
-      border-radius: 16px;
-      padding: 1.3rem;
-      margin-top: 1.5rem;
-    }
-
-    .attendees-title {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #ffffff;
-      text-shadow: 0 0 10px var(--neon-cyan);
-      text-transform: uppercase;
-      margin-bottom: 0.8rem;
-      text-align: center;
-    }
-
-    .attendee-item {
-      background: #1b1d26;
-      border-left: 4px solid #00ff88;
-      padding: 0.85rem 1rem;
-      border-radius: 8px;
-      margin-bottom: 0.6rem;
-      font-size: 1rem;
-      color: #ffffff;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+    /* EVENTOS */
+    .custom-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .input-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .input-group label { color: #ffffff; font-weight: 700; font-size: 1rem; }
+    .input-group input { background: #1a1c24; border: 1.5px solid var(--neon-cyan); color: #ffffff; padding: 0.9rem 1.2rem; border-radius: 12px; outline: none; font-size: 1rem; }
+    .tickets-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 0.5rem; }
+    .ticket-option { background: #1b1d26; border: 2px solid rgba(0, 243, 255, 0.35); border-radius: 16px; padding: 1.3rem; text-align: center; cursor: pointer; transition: all 0.3s ease; }
+    .ticket-option.selected { border-color: var(--neon-pink); background: rgba(255, 0, 127, 0.18); box-shadow: 0 0 22px rgba(255, 0, 127, 0.6); }
+    .ticket-option input[type="radio"] { display: none; }
+    .ticket-title { font-size: 1.15rem; font-weight: 800; color: #ffffff; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .ticket-price { font-size: 1.45rem; font-weight: 900; color: var(--neon-cyan); }
+    .yape-box { background: rgba(188, 19, 254, 0.2); border: 2px solid var(--neon-purple); border-radius: 16px; padding: 1.2rem; text-align: center; margin-top: 1rem; }
+    .attendees-box { background: rgba(0, 243, 255, 0.08); border: 1.5px solid var(--neon-cyan); border-radius: 16px; padding: 1.3rem; margin-top: 1.5rem; }
+    .attendees-title { font-size: 1.15rem; font-weight: 800; color: #ffffff; text-transform: uppercase; margin-bottom: 0.8rem; text-align: center; }
+    .attendee-item { background: #1b1d26; border-left: 4px solid #00ff88; padding: 0.85rem 1rem; border-radius: 8px; margin-bottom: 0.6rem; font-size: 1rem; color: #ffffff; display: flex; align-items: center; gap: 0.5rem; }
 
     /* MODALES */
-    .fullscreen-success {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(14, 15, 20, 0.96);
-      z-index: 5000;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 2rem;
-    }
-
-    .fullscreen-success-box {
-      background: #1a1c24;
-      border: 3px solid #00ff88;
-      box-shadow: 0 0 40px rgba(0, 255, 136, 0.6);
-      border-radius: 25px;
-      padding: 3rem 2rem;
-      max-width: 500px;
-      width: 90%;
-    }
-
-    .fullscreen-success h2 {
-      font-size: 2.2rem;
-      color: #00ff88;
-      margin-bottom: 1rem;
-    }
-
-    .fullscreen-success p {
-      font-size: 1.1rem;
-      color: #ffffff;
-      margin-bottom: 1.5rem;
-    }
-
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(10, 11, 15, 0.88);
-      z-index: 2000;
-      justify-content: center;
-      align-items: center;
-      backdrop-filter: blur(6px);
-    }
-
-    .modal-box {
-      background: #1a1c24;
-      border: 2px solid var(--neon-cyan);
-      box-shadow: 0 0 35px rgba(0, 243, 255, 0.5);
-      border-radius: 20px;
-      padding: 2rem;
-      width: 90%;
-      max-width: 400px;
-      text-align: center;
-    }
-
-    .modal-box h3 {
-      color: #ffffff;
-      text-shadow: 0 0 10px var(--neon-pink);
-      margin-bottom: 1rem;
-      font-size: 1.4rem;
-    }
-
-    .modal-box input {
-      width: 100%;
-      padding: 0.8rem;
-      border-radius: 10px;
-      border: 1.5px solid var(--neon-pink);
-      background: #111217;
-      color: #ffffff;
-      font-size: 1.2rem;
-      text-align: center;
-      margin-bottom: 1rem;
-      letter-spacing: 3px;
-    }
-
-    .modal-box .error-msg {
-      color: #ff4d6d;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-      display: none;
-    }
-
-    .modal-actions {
-      display: flex;
-      gap: 0.8rem;
-      justify-content: center;
-    }
-
-    /* =========================================================
-       RULETA NIGHT CLUB NEÓN (8 SECCIONES DUPLICADAS)
-       ========================================================= */
-    .roulette-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 6000;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      background: rgba(10, 11, 16, 0.88);
-      backdrop-filter: blur(8px);
-    }
-    .roulette-overlay.open {
-      display: flex;
-    }
-    .roulette-modal {
-      position: relative;
-      width: min(100%, 480px);
-      max-height: 95vh;
-      overflow-y: auto;
-      text-align: center;
-      padding: 1.6rem 1.4rem;
-      border-radius: 28px;
-      color: #ffffff;
-      background: radial-gradient(circle at top, #27173d 0%, #14151c 75%);
-      border: 2.5px solid var(--neon-cyan);
-      box-shadow: 0 0 40px rgba(0, 243, 255, 0.45), 0 0 75px rgba(255, 0, 127, 0.35);
-    }
-    .roulette-close {
-      position: absolute;
-      right: 14px;
-      top: 12px;
-      border: 1.5px solid var(--neon-pink);
-      background: rgba(255, 0, 127, 0.2);
-      color: #ffffff;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      font-size: 1.3rem;
-      cursor: pointer;
-      box-shadow: 0 0 12px rgba(255, 0, 127, 0.5);
-    }
-    .roulette-kicker {
-      color: var(--neon-cyan);
-      font-size: 0.8rem;
-      font-weight: 900;
-      letter-spacing: 2px;
-      text-shadow: 0 0 8px var(--neon-cyan);
-    }
-    .roulette-modal h2 {
-      color: #ffffff;
-      font-size: 1.65rem;
-      margin: 0.3rem 0;
-      text-shadow: 0 0 12px var(--neon-pink), 0 0 24px var(--neon-purple);
-    }
-    .roulette-modal > p {
-      color: #e6e8f0;
-      font-size: 0.92rem;
-    }
-
-    /* Aro exterior con luces estilo Night Club */
-    .roulette-stage {
-      width: min(82vw, 340px);
-      height: min(82vw, 340px);
-      margin: 1.1rem auto;
-      position: relative;
-      border-radius: 50%;
-      padding: 12px;
-      background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink), var(--neon-purple));
-      box-shadow: 0 0 28px var(--neon-pink), 0 0 45px rgba(0, 243, 255, 0.5);
-    }
-
-    .roulette-pointer {
-      position: absolute;
-      z-index: 10;
-      left: 50%;
-      top: -10px;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 18px solid transparent;
-      border-right: 18px solid transparent;
-      border-top: 34px solid #00f3ff;
-      filter: drop-shadow(0 0 10px #00f3ff) drop-shadow(0 3px 4px rgba(0,0,0,0.8));
-    }
-
-    /* 8 secciones iguales de 45 grados cada una */
-    .roulette-wheel {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      border: 4px solid #12131a;
-      background: conic-gradient(
-        from 0deg,
-        #ff007f 0deg 45deg,     /* 1. Lata de Cerveza */
-        #1e2130 45deg 90deg,    /* 2. Será para la próxima */
-        #7b2cbf 90deg 135deg,   /* 3. Lata de Vodka */
-        #161824 135deg 180deg,  /* 4. Gira de nuevo */
-        #e11d74 180deg 225deg,  /* 5. Lata de Cerveza */
-        #1e2130 225deg 270deg,  /* 6. Será para la próxima */
-        #6a00f4 270deg 315deg,  /* 7. Lata de Vodka */
-        #161824 315deg 360deg   /* 8. Gira de nuevo */
-      );
-      transition: transform 4.4s cubic-bezier(0.12, 0.75, 0.08, 1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Líneas divisorias neón entre las 8 secciones */
-    .roulette-wheel::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      background: repeating-conic-gradient(
-        from -1deg,
-        rgba(0, 243, 255, 0.75) 0deg 2deg,
-        transparent 2deg 45deg
-      );
-      pointer-events: none;
-    }
-
-    /* Botón central GIRAR estilo imagen */
-    .roulette-center-btn {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 8;
-      width: 74px;
-      height: 74px;
-      border-radius: 50%;
-      border: 3px solid var(--neon-cyan);
-      background: radial-gradient(circle, #2a1942 0%, #111219 100%);
-      color: #ffffff;
-      font-weight: 900;
-      font-size: 0.78rem;
-      letter-spacing: 1px;
-      cursor: pointer;
-      box-shadow: 0 0 18px var(--neon-cyan), inset 0 0 10px var(--neon-pink);
-      text-shadow: 0 0 8px var(--neon-cyan);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s;
-    }
-    .roulette-center-btn:hover:not(:disabled) {
-      transform: translate(-50%, -50%) scale(1.08);
-    }
-    .roulette-center-btn:disabled {
-      opacity: 0.65;
-      cursor: not-allowed;
-    }
-
-    /* Etiquetas radiales de las 8 secciones */
-    .wheel-slice-label {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 112px;
-      margin-left: -56px;
-      margin-top: -18px;
-      text-align: center;
-      font-size: 0.66rem;
-      line-height: 1.15;
-      font-weight: 900;
-      color: #ffffff;
-      text-shadow: 0 1px 4px #000000, 0 0 8px rgba(0, 243, 255, 0.6);
-      pointer-events: none;
-    }
-    .wheel-slice-label span {
-      display: block;
-      font-size: 1.15rem;
-      margin-bottom: 2px;
-    }
-
-    .s1 { transform: rotate(22.5deg) translateY(-98px); }
-    .s2 { transform: rotate(67.5deg) translateY(-98px); }
-    .s3 { transform: rotate(112.5deg) translateY(-98px); }
-    .s4 { transform: rotate(157.5deg) translateY(-98px); }
-    .s5 { transform: rotate(202.5deg) translateY(-98px); }
-    .s6 { transform: rotate(247.5deg) translateY(-98px); }
-    .s7 { transform: rotate(292.5deg) translateY(-98px); }
-    .s8 { transform: rotate(337.5deg) translateY(-98px); }
-
-    .roulette-result {
-      min-height: 2.5rem;
-      margin: 0.65rem 0;
-      font-weight: 800;
-      font-size: 0.98rem;
-      color: var(--neon-cyan) !important;
-      text-shadow: 0 0 10px rgba(0, 243, 255, 0.4);
-    }
-    .roulette-action {
-      width: 100%;
-      border: 1.5px solid #ffffff;
-      border-radius: 999px;
-      padding: 0.85rem 1rem;
-      background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple));
-      color: #ffffff;
-      font-weight: 900;
-      font-size: 0.95rem;
-      cursor: pointer;
-      box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
-      text-transform: uppercase;
-    }
-    .roulette-action:disabled {
-      opacity: 0.55;
-      cursor: not-allowed;
-    }
-    .roulette-fineprint {
-      margin-top: 0.65rem;
-      font-size: 0.72rem !important;
-      color: #b8bcc8 !important;
-      line-height: 1.35;
-    }
-    .roulette-whatsapp {
-      display: none;
-      margin-top: 0.5rem;
-      text-decoration: none;
-      background: #25d366;
-      box-shadow: 0 0 18px rgba(37, 211, 102, 0.6);
-    }
-    .roulette-whatsapp.show {
-      display: block;
-    }
-
-    @media (max-width: 600px) {
-      html { font-size: 16px; }
-      header { flex-direction: column; gap: 0.8rem; }
-      .hero-title-main { font-size: 2.1rem; }
-      .hero-nav-buttons { flex-direction: column; gap: 0.8rem; }
-      .btn-pill { width: 100%; }
-      .ent-layout { flex-direction: column; }
-      #lenceria .marketplace-form { grid-template-columns: 1fr; }
-      .wheel-slice-label { width: 92px; margin-left: -46px; font-size: 0.58rem; }
-      .s1 { transform: rotate(22.5deg) translateY(-84px); }
-      .s2 { transform: rotate(67.5deg) translateY(-84px); }
-      .s3 { transform: rotate(112.5deg) translateY(-84px); }
-      .s4 { transform: rotate(157.5deg) translateY(-84px); }
-      .s5 { transform: rotate(202.5deg) translateY(-84px); }
-      .s6 { transform: rotate(247.5deg) translateY(-84px); }
-      .s7 { transform: rotate(292.5deg) translateY(-84px); }
-      .s8 { transform: rotate(337.5deg) translateY(-84px); }
-    }
+    .fullscreen-success, .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10, 11, 15, 0.9); z-index: 5000; justify-content: center; align-items: center; text-align: center; padding: 1.5rem; backdrop-filter: blur(6px); }
+    .fullscreen-success-box, .modal-box { background: #1a1c24; border: 2px solid var(--neon-cyan); box-shadow: 0 0 35px rgba(0, 243, 255, 0.5); border-radius: 22px; padding: 2rem; width: 90%; max-width: 420px; }
+    .modal-box input { width: 100%; padding: 0.8rem; border-radius: 10px; border: 1.5px solid var(--neon-pink); background: #111217; color: #ffffff; font-size: 1.2rem; text-align: center; margin: 1rem 0; letter-spacing: 3px; }
+    .error-msg { color: #ff4d6d; font-size: 0.9rem; margin-bottom: 1rem; display: none; }
+    .modal-actions { display: flex; gap: 0.8rem; justify-content: center; }
   </style>
 </head>
 <body>
@@ -986,6 +542,8 @@
       <button class="nav-btn" id="btn-lenceria" onclick="showSection('lenceria')">Tienda / Catálogo</button>
       <button class="nav-btn" id="btn-entretenimiento" onclick="showSection('entretenimiento')">Entretenimiento</button>
       <button class="nav-btn" id="btn-eventos" onclick="showSection('eventos')">Eventos</button>
+      <!-- BOTÓN DE CASINO AGREGADO AL HEADER -->
+      <button class="nav-btn poker-nav-btn" id="btn-poker" onclick="showSection('poker')">🂡 CASINO PÓKER</button>
     </nav>
   </header>
 
@@ -1001,6 +559,7 @@
           <button class="btn-pill" onclick="showSection('lenceria')">TIENDA / CATÁLOGO</button>
           <button class="btn-pill" onclick="showSection('entretenimiento')">ENTRETENIMIENTO</button>
           <button class="btn-pill" onclick="showSection('eventos')">EVENTOS</button>
+          <button class="btn-pill" onclick="showSection('poker')" style="background: linear-gradient(90deg, #ff007f, #00f3ff); color: #0b0c10;">🂡 CASINO PÓKER</button>
         </div>
 
         <h2 class="expert-title">NUESTROS SERVICIOS DESTACADOS</h2>
@@ -1057,7 +616,7 @@
       </div>
     </section>
 
-    <!-- TIENDA / CATÁLOGO EXCLUSIVO (FONDO BLANCO) -->
+    <!-- TIENDA / CATÁLOGO EXCLUSIVO (FONDO BLANCO ORIGINAL) -->
     <section id="lenceria" class="section">
       <div class="card">
         <h2 style="text-align: center;">🔥 CATÁLOGO EXCLUSIVO DE LENCERÍA Y PRENDAS 🔥</h2>
@@ -1198,7 +757,7 @@
         <!-- MARKETPLACE -->
         <div class="marketplace-panel">
           <h3>🛍️ Publica tu producto en Guliana Social</h3>
-          <p class="marketplace-note">Vendedores: publiquen sus productos con foto, precio y contacto. La publicación se guardará en línea y podrá verla cualquier visitante.</p>
+          <p class="marketplace-note">Vendedores: publiquen sus productos con foto, precio y contacto.</p>
           <form id="marketplaceForm" class="marketplace-form">
             <div class="input-group">
               <label for="mpTitle">Nombre del producto *</label>
@@ -1221,12 +780,12 @@
               <textarea id="mpDescription" name="description" maxlength="600" required placeholder="Talla, estado, color, entrega..."></textarea>
             </div>
             <div class="input-group full-width">
-              <label for="mpImage">Foto del producto (JPG, PNG o WebP; máximo 3 MB) *</label>
+              <label for="mpImage">Foto del producto *</label>
               <input id="mpImage" name="image" type="file" accept="image/jpeg,image/png,image/webp" required>
             </div>
             <div class="full-width">
               <button id="mpSubmit" type="submit" class="btn-pill" style="width:100%">📤 Publicar producto</button>
-              <p id="mpStatus" class="marketplace-status" role="status" aria-live="polite">Conecta Supabase siguiendo el archivo INSTRUCCIONES_MARKETPLACE.txt para activar las publicaciones.</p>
+              <p id="mpStatus" class="marketplace-status" role="status">Conecta Supabase siguiendo las instrucciones para activar publicaciones en línea.</p>
             </div>
           </form>
         </div>
@@ -1242,7 +801,7 @@
       </div>
     </section>
 
-    <!-- ENTRETENIMIENTO -->
+    <!-- ENTRETENIMIENTO Y VIDEOS (CON TODOS LOS VIDEOS RESTAURADOS) -->
     <section id="entretenimiento" class="section">
       <div class="card">
         <h2>Galería de Entretenimiento</h2>
@@ -1285,6 +844,105 @@
           </div>
           <button type="submit" class="btn-pill" style="width: 100%;">Publicar Video en Guliana</button>
         </form>
+      </div>
+    </section>
+
+    <!-- CASINO PÓKER TEXAS HOLD'EM PRO -->
+    <section id="poker" class="section">
+      <div class="poker-wrap">
+        <h2 class="poker-title">♠ Guliana Casino Póker ♣</h2>
+        <p class="poker-lead">Texas Hold'em Real · Baraja de 52 cartas · Fichas virtuales y efectos de sonido</p>
+        
+        <div id="pokerRegister" class="poker-panel">
+          <h3 style="text-align:center; color:#00f3ff; margin-bottom:0.4rem;">Crea tu cuenta de jugador</h3>
+          <p class="poker-muted">Regístrate para guardar tus fichas virtuales en este dispositivo (Bono inicial: <b>50 fichas</b>)[cite: 3].</p>
+          <div class="poker-row" style="margin-top:0.8rem;">
+            <input id="pokerName" class="poker-input" maxlength="20" placeholder="Tu nombre o apodo">
+            <input id="pokerPin" class="poker-input" type="password" maxlength="24" placeholder="Contraseña (mín. 4 dígitos)">
+          </div>
+          <div class="poker-row" style="margin-top:0.5rem;">
+            <button class="poker-btn" onclick="pokerRegister()">♠ CREAR CUENTA Y ENTRAR A LA MESA</button>
+          </div>
+          <p id="pokerRegisterMsg" class="poker-status" role="status"></p>
+        </div>
+
+        <div id="pokerLobby" class="poker-panel poker-hidden">
+          <div class="poker-row" style="justify-content: space-between; padding: 0 0.5rem;">
+            <span style="color:#f3d5ff">Jugador: <b id="pokerPlayerName" style="color:#00f3ff;"></b></span>
+            <span class="poker-chip">🪙 Saldo: <span id="pokerBalance">50</span> fichas</span>
+            <button class="poker-btn secondary" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;" onclick="pokerLogout()">Salir</button>
+          </div>
+          
+          <div class="poker-layout" style="margin-top:1rem;">
+            <!-- PANEL IZQUIERDO: RANKING DE MANOS CON DIBUJITOS DE CARTAS -->
+            <div class="hands-ranking-panel">
+              <h4>🏆 Jerarquía de Manos (Mín → Máx)</h4>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>1. Carta Alta</strong><span>Mínima</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">K♥</span><span class="mini-card-graphic dim">9♠</span><span class="mini-card-graphic dim">7♦</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>2. Un Par</strong><span>2 iguales</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">10♥</span><span class="mini-card-graphic red">10♦</span><span class="mini-card-graphic dim">K♠</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>3. Doble Par</strong><span>2 pares</span></div><div class="mini-cards-row"><span class="mini-card-graphic">8♠</span><span class="mini-card-graphic">8♣</span><span class="mini-card-graphic red">5♥</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>4. Trío</strong><span>3 iguales</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">7♥</span><span class="mini-card-graphic red">7♦</span><span class="mini-card-graphic">7♣</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>5. Escalera</strong><span>5 seguidas</span></div><div class="mini-cards-row"><span class="mini-card-graphic">5♠</span><span class="mini-card-graphic red">6♥</span><span class="mini-card-graphic red">7♦</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>6. Color</strong><span>Mismo palo</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">2♥</span><span class="mini-card-graphic red">5♥</span><span class="mini-card-graphic red">J♥</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>7. Full House</strong><span>Trío + Par</span></div><div class="mini-cards-row"><span class="mini-card-graphic">Q♠</span><span class="mini-card-graphic">Q♣</span><span class="mini-card-graphic red">4♦</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>8. Póker</strong><span>4 iguales</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">A♥</span><span class="mini-card-graphic red">A♦</span><span class="mini-card-graphic">A♣</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>9. Escalera Color</strong><span>Color seguido</span></div><div class="mini-cards-row"><span class="mini-card-graphic">5♠</span><span class="mini-card-graphic">6♠</span><span class="mini-card-graphic">7♠</span></div></div>
+              <div class="hand-rank-item"><div class="hand-rank-header"><strong>10. Escalera Real</strong><span>Máxima 👑</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">10♥</span><span class="mini-card-graphic red">J♥</span><span class="mini-card-graphic red">Q♥</span></div></div>
+            </div>
+
+            <!-- MESA DE PÓKER -->
+            <div>
+              <div class="poker-table">
+                <div>
+                  <div style="color:#ffffff; font-weight:800; font-size:0.85rem; text-align:center; letter-spacing:1px;">🤖 RIVAL (CRUPIER PC)</div>
+                  <div id="pokerCpuCards" class="poker-cards">
+                    <div class="poker-card back"></div>
+                    <div class="poker-card back"></div>
+                  </div>
+                </div>
+                
+                <div class="pot-area">
+                  <span class="phase-badge" id="pokerPhaseBadge">MESA LISTA</span>
+                  <div style="color:#ffe9ae; font-size:0.95rem;">Pozo acumulado: <b id="pokerPot" style="color:#ffd700; font-size:1.15rem;">0</b> fichas</div>
+                  <div class="table-chips" id="tableChipsContainer" style="display:none;">
+                    <div class="chips-visual-stack" id="chipsVisualStack"></div>
+                    <span id="tableChipsText">0 fichas en mesa</span>
+                  </div>
+                  <div id="pokerCommunity" class="poker-cards" style="min-height:88px; margin-top:6px;"></div>
+                </div>
+
+                <div>
+                  <div id="pokerMyCards" class="poker-cards">
+                    <div class="poker-card back"></div>
+                    <div class="poker-card back"></div>
+                  </div>
+                  <div style="color:#ffffff; font-weight:800; font-size:0.85rem; text-align:center; letter-spacing:1px;">
+                    👤 TU MANO (Apostado: <span id="pokerInHand" style="color:#00f3ff;">0</span> fichas)
+                  </div>
+                </div>
+              </div>
+
+              <p id="pokerStatus" class="poker-status" role="status">Presiona <b>REPARTIR CARTAS (-5 fichas)</b> para iniciar la partida.</p>
+              
+              <div class="poker-row" id="pokerControls">
+                <button class="poker-btn" id="pokerDeal" onclick="pokerStartHand()">🃏 REPARTIR CARTAS (-5 fichas)</button>
+                <button class="poker-btn secondary poker-hidden" id="pokerRevealMyBtn" onclick="pokerRevealMyCards()">👁️ VER MIS CARTAS</button>
+                <button class="poker-btn poker-hidden" id="pokerRaise5Btn" onclick="pokerBetMore(5)">SUBIR +5 🪙</button>
+                <button class="poker-btn poker-hidden" id="pokerAllinBtn" onclick="pokerAllIn()">ALL-IN (TODO) 🚀</button>
+                <button class="poker-btn secondary poker-hidden" id="pokerNextBtn" onclick="pokerNextPhase()">PASAR / SIGUIENTE CARTA ▶</button>
+                <button class="poker-btn danger poker-hidden" id="pokerFoldBtn" onclick="pokerFold()">RETIRARSE</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="pokerRefill" class="poker-panel poker-hidden" style="margin-top:1rem; background:#2b1226; border-color:#ff007f;">
+            <h3 style="color:#00f3ff; text-align:center">¿Te quedaste sin fichas?</h3>
+            <p class="poker-muted">Escríbenos por WhatsApp para solicitar una recarga virtual gratuita.</p>
+            <div class="poker-row" style="margin-top:0.6rem;">
+              <button class="poker-btn secondary" onclick="pokerFreeRefill()">🎁 RECARGA RÁPIDA (+50 FICHAS)</button>
+              <a id="pokerWhatsApp" class="poker-btn" href="https://wa.me/51930841255" target="_blank" rel="noopener" style="background:#25d366; border-color:#25d366; text-decoration:none;">💬 PEDIR POR WHATSAPP</a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1337,17 +995,14 @@
     </section>
   </main>
 
-  <!-- PANTALLA COMPLETA DE CONFIRMACIÓN -->
   <div id="fullscreenSuccess" class="fullscreen-success">
     <div class="fullscreen-success-box">
       <h2>¡REGISTRADO! 🎉</h2>
       <p>Tu registro ha sido enviado correctamente.</p>
-      <p style="font-size: 0.95rem; color: #00f3ff;">Gracias por ser parte de Guliana Social.</p>
       <button class="btn-pill" style="margin-top: 1.5rem; background: #00ff88; color: #000;" onclick="closeFullscreenSuccess()">Aceptar y Volver</button>
     </div>
   </div>
 
-  <!-- MODAL DE CONTRASEÑA -->
   <div class="modal-overlay" id="passwordModal">
     <div class="modal-box">
       <h3 id="modalTitle">Ingrese Contraseña</h3>
@@ -1360,43 +1015,6 @@
     </div>
   </div>
 
-  <!-- RULETA PROMOCIONAL NIGHT CLUB (8 SECCIONES DUPLICADAS) -->
-  <div class="roulette-overlay" id="rouletteOverlay" role="dialog" aria-modal="true" aria-labelledby="rouletteTitle">
-    <div class="roulette-modal">
-      <button class="roulette-close" id="rouletteClose" type="button" aria-label="Cerrar ruleta">×</button>
-      <div class="roulette-kicker">GULIANA SOCIAL • NIGHT CLUB</div>
-      <h2 id="rouletteTitle">🎡 ¡GIRA Y PRUEBA TU SUERTE!</h2>
-      <p>Gira la ruleta neón al ingresar y descubre tu premio de la noche.</p>
-
-      <div class="roulette-stage">
-        <div class="roulette-pointer"></div>
-        <button class="roulette-center-btn" id="rouletteCenterBtn" type="button" disabled>GIRAR</button>
-        <div class="roulette-wheel" id="rouletteWheel">
-          <div class="wheel-slice-label s1"><span>🍺</span>Lata de<br>Cerveza</div>
-          <div class="wheel-slice-label s2"><span>😅</span>Será para<br>la próxima</div>
-          <div class="wheel-slice-label s3"><span>🍸</span>Lata de<br>Vodka</div>
-          <div class="wheel-slice-label s4"><span>🔄</span>Gira de<br>nuevo</div>
-          <div class="wheel-slice-label s5"><span>🍺</span>Lata de<br>Cerveza</div>
-          <div class="wheel-slice-label s6"><span>😅</span>Será para<br>la próxima</div>
-          <div class="wheel-slice-label s7"><span>🍸</span>Lata de<br>Vodka</div>
-          <div class="wheel-slice-label s8"><span>🔄</span>Gira de<br>nuevo</div>
-        </div>
-      </div>
-
-      <p id="rouletteResult" class="roulette-result" aria-live="polite">Marca la casilla +18 para activar tu giro.</p>
-
-      <label style="display:flex;align-items:center;justify-content:center;gap:.5rem;margin:.4rem 0 .8rem;font-size:.88rem;color:#ffffff;cursor:pointer;">
-        <input id="rouletteAdult" type="checkbox" style="width:19px;height:19px;accent-color:#00f3ff;">
-        Confirmo que tengo 18 años o más
-      </label>
-
-      <button class="roulette-action" id="rouletteSpin" type="button" disabled>🎯 GIRAR RULETA</button>
-      <a id="rouletteWhatsapp" class="roulette-action roulette-whatsapp" href="https://wa.me/51930841255?text=Hola%2C%20gan%C3%A9%20un%20premio%20en%20la%20ruleta%20de%20Guliana%20Social" target="_blank" rel="noopener noreferrer">💬 Reclamar premio por WhatsApp</a>
-
-      <p class="roulette-fineprint">Solo mayores de 18 años. Premios sujetos a disponibilidad y confirmación por WhatsApp. Toma con responsabilidad.</p>
-    </div>
-  </div>
-
   <script>
     var currentTargetProfile = '';
     var unlockedProfiles = { guliana: false, estefany: false };
@@ -1404,6 +1022,7 @@
 
     document.addEventListener("DOMContentLoaded", function() {
       loadAttendees();
+      pokerLoad();
     });
 
     function showSection(sectionId) {
@@ -1483,12 +1102,10 @@
       if (fileInput.files && fileInput.files[0]) {
         const file = fileInput.files[0];
         const fileURL = URL.createObjectURL(file);
-
         const mediaCard = document.createElement('div');
         mediaCard.className = 'media-item';
         mediaCard.innerHTML = `<video src="${fileURL}" controls></video><p>${captionInput.value}</p>`;
         grid.prepend(mediaCard);
-
         fileInput.value = '';
         captionInput.value = '';
       }
@@ -1498,12 +1115,10 @@
       var savedList = JSON.parse(localStorage.getItem("guliana_attendees_list")) || [];
       var container = document.getElementById("attendeesList");
       container.innerHTML = "";
-
       if (savedList.length === 0) {
         container.innerHTML = "<p style='text-align: center; color: #cccccc; font-size: 0.9rem;'>Aún no hay registros guardados.</p>";
         return;
       }
-
       savedList.forEach(function(item) {
         var div = document.createElement("div");
         div.className = "attendee-item";
@@ -1517,27 +1132,12 @@
       var nickname = document.getElementById("nicknameUsuario").value.trim();
       var entrada = document.querySelector('input[name="ticketType"]:checked').value;
       if (!nickname) return;
-
-      var btn = document.getElementById("btnSubmitForm");
-      btn.disabled = true;
-      btn.innerText = "Enviando registro...";
-
-      var formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfqzYy8ufLWXZK0JXm8Z-XLTA7bW8cPqx-VwGLquPXNap6AXQ/formResponse";
-      var formData = new FormData();
-      formData.append("entry.1000001", nickname);
-      formData.append("entry.1000004", entrada);
-
-      fetch(formUrl, { method: "POST", mode: "no-cors", body: formData }).finally(function() {
-        var savedList = JSON.parse(localStorage.getItem("guliana_attendees_list")) || [];
-        savedList.push(nickname);
-        localStorage.setItem("guliana_attendees_list", JSON.stringify(savedList));
-
-        loadAttendees();
-        document.getElementById("fullscreenSuccess").style.display = "flex";
-        document.getElementById("nicknameUsuario").value = "";
-        btn.disabled = false;
-        btn.innerText = "Confirmar y Enviar Registro";
-      });
+      var savedList = JSON.parse(localStorage.getItem("guliana_attendees_list")) || [];
+      savedList.push(nickname);
+      localStorage.setItem("guliana_attendees_list", JSON.stringify(savedList));
+      loadAttendees();
+      document.getElementById("fullscreenSuccess").style.display = "flex";
+      document.getElementById("nicknameUsuario").value = "";
     }
 
     function closeFullscreenSuccess() {
@@ -1545,271 +1145,428 @@
     }
   </script>
 
-  <!-- Marketplace persistente -->
-  <script type="module">
-    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
-
-    const SUPABASE_URL = 'PEGA_AQUI_LA_URL_DE_TU_PROYECTO';
-    const SUPABASE_ANON_KEY = 'PEGA_AQUI_TU_CLAVE_PUBLICA_ANON';
-    const mpForm = document.getElementById('marketplaceForm');
-    const mpStatus = document.getElementById('mpStatus');
-    const mpSubmit = document.getElementById('mpSubmit');
-    const mpCatalog = document.getElementById('marketplaceCatalog');
-    let supabase = null;
-
-    function setMpStatus(message, isError = false) {
-      mpStatus.textContent = message;
-      mpStatus.style.color = isError ? '#b31e39' : '#1b7a3d';
-    }
-
-    function makeWhatsAppLink(number, title) {
-      const clean = String(number || '').replace(/\D/g, '');
-      const text = encodeURIComponent('Hola, vi tu producto "' + title + '" en Guliana Social y deseo consultar.');
-      return 'https://wa.me/' + clean + '?text=' + text;
-    }
-
-    function addMarketplaceCard(item) {
-      const card = document.createElement('article');
-      card.className = 'lingerie-item marketplace-product-card';
-
-      const img = document.createElement('img');
-      img.src = item.image_url;
-      img.alt = item.title || 'Producto publicado';
-      img.loading = 'lazy';
-
-      const info = document.createElement('div');
-      info.className = 'lingerie-info';
-
-      const title = document.createElement('div');
-      title.className = 'lingerie-title';
-      title.textContent = item.title;
-
-      const description = document.createElement('div');
-      description.className = 'lingerie-desc';
-      description.textContent = item.description;
-
-      const price = document.createElement('div');
-      price.className = 'lingerie-price';
-      price.textContent = 'S/ ' + Number(item.price).toFixed(2);
-
-      const seller = document.createElement('div');
-      seller.className = 'seller-label';
-      seller.textContent = 'Vendedor: ' + item.seller_name;
-
-      const contact = document.createElement('a');
-      contact.href = makeWhatsAppLink(item.whatsapp, item.title);
-      contact.target = '_blank';
-      contact.rel = 'noopener noreferrer';
-      contact.style.textDecoration = 'none';
-
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'btn-pill';
-      button.style.cssText = 'width:100%;font-size:.85rem;padding:.55rem;background:#25d366;';
-      button.textContent = 'Consultar por WhatsApp';
-      contact.appendChild(button);
-
-      info.append(title, description, price, seller, contact);
-      card.append(img, info);
-      mpCatalog.appendChild(card);
-    }
-
-    async function loadMarketplaceProducts() {
-      if (!supabase) {
-        mpCatalog.innerHTML = '<p class="marketplace-empty">Para activar las publicaciones, configura Supabase según las instrucciones incluidas.</p>';
-        setMpStatus('Falta configurar la URL y la clave pública de Supabase en este archivo.', true);
-        return;
-      }
-      mpCatalog.innerHTML = '';
-      const { data, error } = await supabase
-        .from('marketplace_products')
-        .select('id,title,description,price,image_url,seller_name,whatsapp,created_at')
-        .order('created_at', { ascending: false })
-        .limit(100);
-
-      if (error || !data || data.length === 0) {
-        mpCatalog.innerHTML = '<p class="marketplace-empty">Todavía no hay productos de la comunidad. ¡Sé el primero en publicar!</p>';
-        return;
-      }
-      data.forEach(addMarketplaceCard);
-    }
-
-    mpForm.addEventListener('submit', async (event) => {
-      event.preventDefault();
-      if (!supabase) {
-        setMpStatus('Aún no está conectado. Primero completa la configuración de Supabase.', true);
-        return;
-      }
-      const title = document.getElementById('mpTitle').value.trim();
-      const price = Number(document.getElementById('mpPrice').value);
-      const seller = document.getElementById('mpSeller').value.trim();
-      const whatsapp = document.getElementById('mpWhatsapp').value.replace(/\D/g, '');
-      const description = document.getElementById('mpDescription').value.trim();
-      const file = document.getElementById('mpImage').files[0];
-
-      if (!title || !seller || !description || !file || !Number.isFinite(price) || price < 0) return;
-
-      mpSubmit.disabled = true;
-      mpSubmit.textContent = 'Subiendo foto y guardando...';
-      try {
-        const extension = file.type === 'image/png' ? 'png' : file.type === 'image/webp' ? 'webp' : 'jpg';
-        const safeName = crypto.randomUUID() + '.' + extension;
-        const { error: uploadError } = await supabase.storage.from('marketplace-photos').upload(safeName, file, { contentType: file.type, upsert: false });
-        if (uploadError) throw uploadError;
-
-        const { data: urlData } = supabase.storage.from('marketplace-photos').getPublicUrl(safeName);
-        const { error: insertError } = await supabase.from('marketplace_products').insert({
-          title, description, price, image_url: urlData.publicUrl, seller_name: seller, whatsapp
-        });
-        if (insertError) throw insertError;
-
-        mpForm.reset();
-        setMpStatus('¡Producto publicado! Ya aparece en el catálogo.');
-        await loadMarketplaceProducts();
-      } catch (error) {
-        setMpStatus('Error al publicar: ' + (error.message || 'error desconocido'), true);
-      } finally {
-        mpSubmit.disabled = false;
-        mpSubmit.textContent = '📤 Publicar producto';
-      }
-    });
-
-    if (SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('PEGA_AQUI') &&
-        SUPABASE_ANON_KEY && !SUPABASE_ANON_KEY.includes('PEGA_AQUI')) {
-      supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-    }
-    loadMarketplaceProducts();
-  </script>
-
-  <!-- LÓGICA DE LA RULETA DE 8 SECCIONES DUPLICADAS -->
+  <!-- MOTOR DE PÓKER PRO -->
   <script>
-    (() => {
-      const overlay = document.getElementById('rouletteOverlay');
-      const close = document.getElementById('rouletteClose');
-      const spin = document.getElementById('rouletteSpin');
-      const centerBtn = document.getElementById('rouletteCenterBtn');
-      const adult = document.getElementById('rouletteAdult');
-      const wheel = document.getElementById('rouletteWheel');
-      const result = document.getElementById('rouletteResult');
-      const whatsapp = document.getElementById('rouletteWhatsapp');
-      if (!overlay || !spin || !wheel || !adult || !result) return;
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-      const COOLDOWN_MS = 24 * 60 * 60 * 1000;
-      const STORAGE_KEY = 'gulianaRouletteLastSpin_v3';
-      let spinning = false;
-      let rotation = 0;
-
-      // 8 secciones (45° cada una). Centro de cada sección: 22.5°, 67.5°, 112.5°, 157.5°, 202.5°, 247.5°, 292.5°, 337.5°
-      const SLICES = [
-        { type: 'cerveza', centerAngle: 22.5,  text: '🎉 ¡GANASTE UNA LATA DE CERVEZA! 🍺 Escríbenos por WhatsApp para reclamarla.', win: true },
-        { type: 'proxima', centerAngle: 67.5,  text: '😅 Será para la próxima. ¡Vuelve mañana por otro giro en Guliana Social!', win: false },
-        { type: 'vodka',   centerAngle: 112.5, text: '🎉 ¡GANASTE UNA LATA DE VODKA! 🍸 Escríbenos por WhatsApp para reclamarla.', win: true },
-        { type: 'nuevo',   centerAngle: 157.5, text: '🔄 ¡GIRA DE NUEVO! Te tocó un tiro extra gratis ahora mismo.', win: false, freeSpin: true },
-        { type: 'cerveza', centerAngle: 202.5, text: '🎉 ¡GANASTE UNA LATA DE CERVEZA! 🍺 Escríbenos por WhatsApp para reclamarla.', win: true },
-        { type: 'proxima', centerAngle: 247.5, text: '😅 Será para la próxima. ¡Vuelve mañana por otro giro en Guliana Social!', win: false },
-        { type: 'vodka',   centerAngle: 292.5, text: '🎉 ¡GANASTE UNA LATA DE VODKA! 🍸 Escríbenos por WhatsApp para reclamarla.', win: true },
-        { type: 'nuevo',   centerAngle: 337.5, text: '🔄 ¡GIRA DE NUEVO! Te tocó un tiro extra gratis ahora mismo.', win: false, freeSpin: true }
-      ];
-
-      function getLastSpin() {
-        try { return Number(localStorage.getItem(STORAGE_KEY) || 0); }
-        catch (_) { return 0; }
+    function playCardDealSound(count = 4) {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => {
+          const bufferSize = audioCtx.sampleRate * 0.055;
+          const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+          const data = buffer.getChannelData(0);
+          for (let j = 0; j < bufferSize; j++) {
+            data[j] = (Math.random() * 2 - 1) * Math.exp(-j / (bufferSize * 0.3));
+          }
+          const noise = audioCtx.createBufferSource();
+          noise.buffer = buffer;
+          const filter = audioCtx.createBiquadFilter();
+          filter.type = 'bandpass';
+          filter.frequency.value = 1800 + Math.random() * 600;
+          const gain = audioCtx.createGain();
+          gain.gain.setValueAtTime(0.28, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.055);
+          noise.connect(filter); filter.connect(gain); gain.connect(audioCtx.destination);
+          noise.start();
+        }, i * 85);
       }
-      function setLastSpin(timestamp) {
-        try { localStorage.setItem(STORAGE_KEY, String(timestamp)); }
-        catch (_) {}
+    }
+
+    function playChipSound() {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      [2200, 2950].forEach((freq, idx) => {
+        setTimeout(() => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.14, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.07);
+          osc.connect(gain); gain.connect(audioCtx.destination);
+          osc.start(); osc.stop(audioCtx.currentTime + 0.07);
+        }, idx * 35);
+      });
+    }
+
+    function playWinSound() {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      [523.25, 659.25, 783.99, 1046.50, 1318.51].forEach((freq, idx) => {
+        setTimeout(() => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.24, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.35);
+          osc.connect(gain); gain.connect(audioCtx.destination);
+          osc.start(); osc.stop(audioCtx.currentTime + 0.35);
+        }, idx * 105);
+      });
+    }
+
+    function playLoseSound() {
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      [330, 277.18, 220].forEach((freq, idx) => {
+        setTimeout(() => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+          gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.25);
+          osc.connect(gain); gain.connect(audioCtx.destination);
+          osc.start(); osc.stop(audioCtx.currentTime + 0.25);
+        }, idx * 140);
+      });
+    }
+
+    const POKER_KEY = 'gulianaPokerProfile_v6';
+    let pokerProfile = null;
+    let gameState = { phase: 0, myCards: [], cpuCards: [], community: [], pot: 0, bet: 5 };
+
+    function pokerLoad() {
+      try { pokerProfile = JSON.parse(localStorage.getItem(POKER_KEY) || 'null'); } catch (e) { pokerProfile = null; }
+      if (pokerProfile) {
+        document.getElementById('pokerRegister').classList.add('poker-hidden');
+        document.getElementById('pokerLobby').classList.remove('poker-hidden');
+        document.getElementById('pokerPlayerName').textContent = pokerProfile.name;
+        updateBalanceUI();
       }
-      function remainingText(ms) {
-        const hours = Math.floor(ms / 3600000);
-        const minutes = Math.ceil((ms % 3600000) / 60000);
-        return hours > 0 ? `${hours} h y ${minutes} min` : `${minutes} min`;
+    }
+
+    function pokerSave() {
+      localStorage.setItem(POKER_KEY, JSON.stringify(pokerProfile));
+      updateBalanceUI();
+    }
+
+    function updateBalanceUI() {
+      if (!pokerProfile) return;
+      document.getElementById('pokerBalance').textContent = pokerProfile.chips;
+      const refillBox = document.getElementById('pokerRefill');
+      if (pokerProfile.chips <= 0 && gameState.phase === 0) {
+        refillBox.classList.remove('poker-hidden');
+        document.getElementById('pokerWhatsApp').href = 'https://wa.me/51930841255?text=' + encodeURIComponent('Hola, soy ' + pokerProfile.name + ' de Guliana Social Casino. Me quedé sin fichas virtuales, ¿podría recargar mi cuenta?');
+      } else {
+        refillBox.classList.add('poker-hidden');
+      }
+    }
+
+    function pokerFreeRefill() {
+      if (!pokerProfile) return;
+      pokerProfile.chips = 50;
+      pokerSave();
+      playChipSound();
+      document.getElementById('pokerStatus').textContent = '¡Recarga gratuita acreditada! Tienes 50 fichas para seguir jugando.';
+    }
+
+    function pokerRegister() {
+      const name = document.getElementById('pokerName').value.trim();
+      const pin = document.getElementById('pokerPin').value;
+      if (name.length < 3 || pin.length < 4) {
+        document.getElementById('pokerRegisterMsg').textContent = 'Ingresa un nombre de al menos 3 letras y una clave de 4 dígitos.';
+        return;
+      }
+      pokerProfile = { name, pin, chips: 50 };
+      pokerSave();
+      pokerLoad();
+    }
+
+    function pokerLogout() {
+      pokerProfile = null;
+      document.getElementById('pokerRegister').classList.remove('poker-hidden');
+      document.getElementById('pokerLobby').classList.add('poker-hidden');
+    }
+
+    function createShuffledDeck() {
+      const ranks = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
+      const suits = ['♠','♥','♦','♣'];
+      const deck = [];
+      let idCounter = 0;
+      for (const s of suits) {
+        for (let i = 0; i < ranks.length; i++) {
+          deck.push({ id: idCounter++, label: ranks[i], suit: s, red: s === '♥' || s === '♦', val: i + 2 });
+        }
+      }
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      return deck;
+    }
+
+    function renderCards(elementId, cards, faceUp = true, winningCardIds = new Set()) {
+      const container = document.getElementById(elementId);
+      if (!faceUp) {
+        container.innerHTML = `<div class="poker-card back"></div><div class="poker-card back"></div>`;
+        return;
+      }
+      container.innerHTML = cards.map((c, idx) => {
+        const isWinner = winningCardIds.has(c.id);
+        return `<div class="poker-card ${c.red ? 'red' : ''} ${isWinner ? 'winner-glow' : ''}" style="animation-delay:${idx * 0.08}s">
+                  <span class="card-corner">${c.label}${c.suit}</span>
+                  <span class="card-center-suit">${c.suit}</span>
+                  <span class="card-corner-bottom">${c.label}${c.suit}</span>
+                </div>`;
+      }).join('');
+    }
+
+    function updateTableChips() {
+      const container = document.getElementById('tableChipsContainer');
+      const stack = document.getElementById('chipsVisualStack');
+      const text = document.getElementById('tableChipsText');
+      if (gameState.pot > 0) {
+        container.style.display = 'flex';
+        const chipCount = Math.min(8, Math.max(2, Math.floor(gameState.pot / 5)));
+        let tokensHtml = '';
+        for (let i = 0; i < chipCount; i++) {
+          const colorClass = i % 3 === 1 ? 'pink' : (i % 3 === 2 ? 'cyan' : '');
+          tokensHtml += `<span class="chip-token ${colorClass}"></span>`;
+        }
+        stack.innerHTML = tokensHtml;
+        text.textContent = `${gameState.pot} fichas en la mesa`;
+      } else {
+        container.style.display = 'none';
+      }
+    }
+
+    function pokerStartHand() {
+      if (!pokerProfile || pokerProfile.chips < 5) {
+        alert('No tienes fichas suficientes. Usa la recarga gratuita o pídela por WhatsApp.');
+        updateBalanceUI();
+        return;
+      }
+      pokerProfile.chips -= 5;
+      pokerSave();
+      playCardDealSound(4);
+      playChipSound();
+
+      const deck = createShuffledDeck();
+      gameState = {
+        phase: 1,
+        myCards: [deck[0], deck[1]],
+        cpuCards: [deck[2], deck[3]],
+        community: [deck[4], deck[5], deck[6], deck[7], deck[8]],
+        pot: 10,
+        bet: 5
+      };
+
+      document.getElementById('pokerPhaseBadge').textContent = 'PRE-FLOP (CARTAS REPARTIDAS)';
+      document.getElementById('pokerPot').textContent = gameState.pot;
+      document.getElementById('pokerInHand').textContent = gameState.bet;
+      updateTableChips();
+
+      renderCards('pokerMyCards', gameState.myCards, false);
+      renderCards('pokerCpuCards', gameState.cpuCards, false);
+      document.getElementById('pokerCommunity').innerHTML = '';
+
+      document.getElementById('pokerStatus').innerHTML = 'Cartas repartidas boca abajo con apuesta base de 5 fichas. Pulsa <b>VER MIS CARTAS</b> o sube tu apuesta de 5 en 5.';
+
+      document.getElementById('pokerDeal').classList.add('poker-hidden');
+      document.getElementById('pokerRevealMyBtn').classList.remove('poker-hidden');
+      document.getElementById('pokerRaise5Btn').classList.remove('poker-hidden');
+      document.getElementById('pokerAllinBtn').classList.remove('poker-hidden');
+      document.getElementById('pokerNextBtn').classList.remove('poker-hidden');
+      document.getElementById('pokerFoldBtn').classList.remove('poker-hidden');
+    }
+
+    function pokerRevealMyCards() {
+      if (gameState.phase === 1) {
+        gameState.phase = 2;
+        playCardDealSound(2);
+        renderCards('pokerMyCards', gameState.myCards, true);
+        document.getElementById('pokerRevealMyBtn').classList.add('poker-hidden');
+        document.getElementById('pokerStatus').innerHTML = 'Tus cartas están descubiertas. Puedes <b>SUBIR +5</b>, ir <b>ALL-IN</b> o pulsar <b>PASAR / SIGUIENTE CARTA</b> para revelar el Flop.';
+      }
+    }
+
+    function pokerBetMore(amount) {
+      if (pokerProfile.chips < amount) {
+        alert('No tienes suficientes fichas para subir más.');
+        return;
+      }
+      pokerProfile.chips -= amount;
+      gameState.pot += amount * 2;
+      gameState.bet += amount;
+      pokerSave();
+      playChipSound();
+
+      if (gameState.phase === 1) {
+        gameState.phase = 2;
+        renderCards('pokerMyCards', gameState.myCards, true);
+        document.getElementById('pokerRevealMyBtn').classList.add('poker-hidden');
       }
 
-      function updateButtonsState(enabled, label) {
-        spin.disabled = !enabled;
-        if (centerBtn) centerBtn.disabled = !enabled;
-        spin.textContent = label;
-      }
+      document.getElementById('pokerPot').textContent = gameState.pot;
+      document.getElementById('pokerInHand').textContent = gameState.bet;
+      updateTableChips();
+      document.getElementById('pokerStatus').innerHTML = `Subiste <b>+${amount} fichas</b>. Pozo total: <b>${gameState.pot} fichas</b>.`;
+    }
 
-      function refreshCooldown() {
-        const remaining = COOLDOWN_MS - (Date.now() - getLastSpin());
-        if (remaining > 0) {
-          updateButtonsState(false, '⏳ VUELVE MÁS TARDE');
-          result.textContent = `Ya usaste tu giro. Podrás volver a girar en ${remainingText(remaining)}.`;
-        } else {
-          updateButtonsState(adult.checked, '🎯 GIRAR RULETA');
-          if (!spinning) {
-            result.textContent = adult.checked ? '¡Listo! Presiona GIRAR para probar tu suerte.' : 'Marca la casilla +18 para activar tu giro.';
+    function pokerAllIn() {
+      const allInAmount = pokerProfile.chips;
+      if (allInAmount <= 0) { pokerNextPhase(); return; }
+      gameState.pot += allInAmount * 2;
+      gameState.bet += allInAmount;
+      pokerProfile.chips = 0;
+      pokerSave();
+      playChipSound();
+
+      renderCards('pokerMyCards', gameState.myCards, true);
+      document.getElementById('pokerRevealMyBtn').classList.add('poker-hidden');
+      document.getElementById('pokerPot').textContent = gameState.pot;
+      document.getElementById('pokerInHand').textContent = gameState.bet;
+      updateTableChips();
+
+      document.getElementById('pokerPhaseBadge').textContent = 'ALL-IN • SHOWDOWN';
+      renderCards('pokerCommunity', gameState.community, true);
+      setTimeout(evaluateWinnerAndShow, 600);
+    }
+
+    function pokerNextPhase() {
+      if (gameState.phase === 1 || gameState.phase === 2) {
+        gameState.phase = 3;
+        playCardDealSound(3);
+        document.getElementById('pokerRevealMyBtn').classList.add('poker-hidden');
+        renderCards('pokerMyCards', gameState.myCards, true);
+        renderCards('pokerCommunity', gameState.community.slice(0, 3), true);
+        document.getElementById('pokerPhaseBadge').textContent = 'FLOP (3 CARTAS EN MESA)';
+        document.getElementById('pokerStatus').innerHTML = '<b>FLOP:</b> Se voltearon las 3 primeras cartas comunitarias.';
+      } else if (gameState.phase === 3) {
+        gameState.phase = 4;
+        playCardDealSound(1);
+        renderCards('pokerCommunity', gameState.community.slice(0, 4), true);
+        document.getElementById('pokerPhaseBadge').textContent = 'TURN (4ª CARTA)';
+        document.getElementById('pokerStatus').innerHTML = '<b>TURN:</b> Sale la 4ª carta en la mesa.';
+      } else if (gameState.phase === 4) {
+        gameState.phase = 5;
+        playCardDealSound(1);
+        renderCards('pokerCommunity', gameState.community, true);
+        document.getElementById('pokerPhaseBadge').textContent = 'RIVER (5ª CARTA FINAL)';
+        document.getElementById('pokerNextBtn').textContent = '🏆 MOSTRAR GANADOR';
+        document.getElementById('pokerStatus').innerHTML = '<b>RIVER:</b> Las 5 cartas están en la mesa.';
+      } else if (gameState.phase === 5) {
+        evaluateWinnerAndShow();
+      }
+    }
+
+    function pokerFold() {
+      playLoseSound();
+      document.getElementById('pokerPhaseBadge').textContent = 'MANO RETIRADA';
+      document.getElementById('pokerStatus').innerHTML = 'Te retiraste de la mano. El rival se lleva el pozo.';
+      endHandClean();
+    }
+
+    function evaluateBest5From7(cards7) {
+      let bestResult = null;
+      for (let i = 0; i < cards7.length - 4; i++) {
+        for (let j = i + 1; j < cards7.length - 3; j++) {
+          for (let k = j + 1; k < cards7.length - 2; k++) {
+            for (let l = k + 1; l < cards7.length - 1; l++) {
+              for (let m = l + 1; m < cards7.length; m++) {
+                const hand5 = [cards7[i], cards7[j], cards7[k], cards7[l], cards7[m]];
+                const scored = score5Cards(hand5);
+                if (!bestResult || compareScores(scored.score, bestResult.score) > 0) {
+                  bestResult = scored;
+                }
+              }
+            }
           }
         }
       }
+      return bestResult;
+    }
 
-      // Mostrar ruleta automáticamente al ingresar
-      setTimeout(() => overlay.classList.add('open'), 500);
+    function compareScores(a, b) {
+      for (let i = 0; i < Math.max(a.length, b.length); i++) {
+        const va = a[i] || 0;
+        const vb = b[i] || 0;
+        if (va !== vb) return va - vb;
+      }
+      return 0;
+    }
 
-      adult.addEventListener('change', refreshCooldown);
-      close.addEventListener('click', () => overlay.classList.remove('open'));
-      overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('open'); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') overlay.classList.remove('open'); });
-      refreshCooldown();
-
-      function triggerSpin() {
-        if (spinning || !adult.checked) return;
-        const remaining = COOLDOWN_MS - (Date.now() - getLastSpin());
-        if (remaining > 0) { refreshCooldown(); return; }
-
-        // Selección aleatoria entre las 8 secciones (ajustable según probabilidad deseada)
-        const roll = Math.random();
-        let chosenIndex;
-        if (roll < 0.05) {
-          chosenIndex = Math.random() < 0.5 ? 0 : 4; // Lata de cerveza (2 secciones)
-        } else if (roll < 0.10) {
-          chosenIndex = Math.random() < 0.5 ? 2 : 6; // Lata de vodka (2 secciones)
-        } else if (roll < 0.45) {
-          chosenIndex = Math.random() < 0.5 ? 3 : 7; // Gira de nuevo (2 secciones)
-        } else {
-          chosenIndex = Math.random() < 0.5 ? 1 : 5; // Será para la próxima (2 secciones)
+    function score5Cards(hand5) {
+      const sorted = [...hand5].sort((a, b) => b.val - a.val);
+      const vals = sorted.map(c => c.val);
+      const isFlush = sorted.every(c => c.suit === sorted[0].suit);
+      let isStraight = false;
+      let straightHigh = 0;
+      const uniqueVals = [...new Set(vals)];
+      if (uniqueVals.length === 5) {
+        if (vals[0] - vals[4] === 4) { isStraight = true; straightHigh = vals[0]; }
+        else if (vals[0] === 14 && vals[1] === 5 && vals[2] === 4 && vals[3] === 3 && vals[4] === 2) {
+          isStraight = true; straightHigh = 5;
         }
-
-        const chosen = SLICES[chosenIndex];
-
-        // Si no es "Gira de nuevo", bloquea hasta las próximas 24 horas
-        if (!chosen.freeSpin) {
-          setLastSpin(Date.now());
-        }
-
-        spinning = true;
-        updateButtonsState(false, '🎡 GIRANDO…');
-        whatsapp.classList.remove('show');
-        result.textContent = 'La ruleta está girando…';
-
-        // Calcular rotación para que el puntero superior (0°) apunte al centro de la sección elegida
-        const targetAngle = (360 - chosen.centerAngle) % 360;
-        const currentMod = rotation % 360;
-        const delta = (targetAngle - currentMod + 360) % 360;
-        rotation += 1800 + delta; // 5 vueltas completas + ángulo exacto
-
-        wheel.style.transform = `rotate(${rotation}deg)`;
-
-        window.setTimeout(() => {
-          spinning = false;
-          if (chosen.win) {
-            const prizeName = chosen.type === 'cerveza' ? 'una Lata de Cerveza' : 'una Lata de Vodka';
-            whatsapp.href = 'https://wa.me/51930841255?text=' + encodeURIComponent('Hola, gané ' + prizeName + ' en la ruleta neón de Guliana Social. ¿Cómo lo reclamo?');
-            whatsapp.classList.add('show');
-            refreshCooldown();
-          } else if (chosen.freeSpin) {
-            updateButtonsState(true, '🔄 GIRAR DE NUEVO');
-          } else {
-            refreshCooldown();
-          }
-          result.textContent = chosen.text;
-        }, 4500);
       }
 
-      spin.addEventListener('click', triggerSpin);
-      if (centerBtn) centerBtn.addEventListener('click', triggerSpin);
-    })();
+      const freqMap = {};
+      sorted.forEach(c => { freqMap[c.val] = (freqMap[c.val] || 0) + 1; });
+      const groups = Object.entries(freqMap).map(([v, count]) => ({ val: Number(v), count })).sort((a, b) => b.count - a.count || b.val - a.val);
+
+      if (isFlush && isStraight) {
+        if (straightHigh === 14) return { rank: 10, name: 'Escalera Real 👑', score: [10], highlightCards: sorted };
+        return { rank: 9, name: 'Escalera de Color', score: [9, straightHigh], highlightCards: sorted };
+      }
+      if (groups[0].count === 4) return { rank: 8, name: 'Póker', score: [8, groups[0].val, groups[1].val], highlightCards: sorted.filter(c => c.val === groups[0].val) };
+      if (groups[0].count === 3 && groups[1].count === 2) return { rank: 7, name: 'Full House', score: [7, groups[0].val, groups[1].val], highlightCards: sorted };
+      if (isFlush) return { rank: 6, name: 'Color (Flush)', score: [6, ...vals], highlightCards: sorted };
+      if (isStraight) return { rank: 5, name: 'Escalera', score: [5, straightHigh], highlightCards: sorted };
+      if (groups[0].count === 3) return { rank: 4, name: 'Trío', score: [4, groups[0].val, groups[1].val, groups[2].val], highlightCards: sorted.filter(c => c.val === groups[0].val) };
+      if (groups[0].count === 2 && groups[1].count === 2) return { rank: 3, name: 'Doble Par', score: [3, groups[0].val, groups[1].val, groups[2].val], highlightCards: sorted.filter(c => c.val === groups[0].val || c.val === groups[1].val) };
+      if (groups[0].count === 2) return { rank: 2, name: 'Un Par', score: [2, groups[0].val, groups[1].val, groups[2].val, groups[3].val], highlightCards: sorted.filter(c => c.val === groups[0].val) };
+      return { rank: 1, name: `Carta Alta (${sorted[0].label}${sorted[0].suit})`, score: [1, ...vals], highlightCards: [sorted[0]] };
+    }
+
+    function evaluateWinnerAndShow() {
+      playCardDealSound(2);
+      document.getElementById('pokerPhaseBadge').textContent = 'SHOWDOWN • RESULTADO FINAL';
+
+      const myBest = evaluateBest5From7([...gameState.myCards, ...gameState.community]);
+      const cpuBest = evaluateBest5From7([...gameState.cpuCards, ...gameState.community]);
+      const cmp = compareScores(myBest.score, cpuBest.score);
+
+      if (cmp > 0) {
+        playWinSound();
+        pokerProfile.chips += gameState.pot;
+        pokerSave();
+        const winIds = new Set(myBest.highlightCards.map(c => c.id));
+        renderCards('pokerMyCards', gameState.myCards, true, winIds);
+        renderCards('pokerCommunity', gameState.community, true, winIds);
+        renderCards('pokerCpuCards', gameState.cpuCards, true, new Set());
+        document.getElementById('pokerStatus').innerHTML = `🎉 <b style="color:#ffd700;">¡GANASTE EL POZO DE ${gameState.pot} FICHAS!</b><br>Ganaste con: <b style="color:#00f3ff;">${myBest.name}</b>`;
+      } else if (cmp < 0) {
+        playLoseSound();
+        const winIds = new Set(cpuBest.highlightCards.map(c => c.id));
+        renderCards('pokerCpuCards', gameState.cpuCards, true, winIds);
+        renderCards('pokerCommunity', gameState.community, true, winIds);
+        renderCards('pokerMyCards', gameState.myCards, true, new Set());
+        document.getElementById('pokerStatus').innerHTML = `❌ <b style="color:#ff6b6b;">El Rival (PC) ganó el pozo.</b><br>Ganó con: <b style="color:#ffd700;">${cpuBest.name}</b>`;
+      } else {
+        const split = Math.floor(gameState.pot / 2);
+        pokerProfile.chips += split;
+        pokerSave();
+        const winIds = new Set(myBest.highlightCards.map(c => c.id));
+        renderCards('pokerMyCards', gameState.myCards, true, winIds);
+        renderCards('pokerCpuCards', gameState.cpuCards, true, new Set());
+        renderCards('pokerCommunity', gameState.community, true, winIds);
+        document.getElementById('pokerStatus').innerHTML = `🤝 <b style="color:#00f3ff;">¡EMPATE!</b> Ambos tienen <b>${myBest.name}</b>.`;
+      }
+      endHandClean();
+    }
+
+    function endHandClean() {
+      document.getElementById('pokerDeal').classList.remove('poker-hidden');
+      document.getElementById('pokerRevealMyBtn').classList.add('poker-hidden');
+      document.getElementById('pokerRaise5Btn').classList.add('poker-hidden');
+      document.getElementById('pokerAllinBtn').classList.add('poker-hidden');
+      document.getElementById('pokerNextBtn').classList.add('poker-hidden');
+      document.getElementById('pokerFoldBtn').classList.add('poker-hidden');
+      document.getElementById('pokerNextBtn').textContent = 'PASAR / SIGUIENTE CARTA ▶';
+      gameState.phase = 0;
+      gameState.pot = 0;
+      updateBalanceUI();
+    }
   </script>
 
 </body>
