@@ -200,6 +200,12 @@
       border-color: var(--neon-cyan);
     }
 
+    .btn-pill:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
     .expert-title {
       font-size: 1.7rem;
       font-weight: 900;
@@ -423,6 +429,9 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
     }
+    @media(max-width: 650px) {
+      #lenceria .marketplace-form { grid-template-columns: 1fr; }
+    }
     #lenceria .marketplace-form .full-width { grid-column: 1 / -1; }
     #lenceria .marketplace-form label { color: #333333; font-weight: 700; }
     #lenceria .marketplace-form .input-group input,
@@ -435,8 +444,9 @@
       border-radius: 10px;
     }
     #lenceria .marketplace-form textarea { min-height: 90px; resize: vertical; }
-    #lenceria .marketplace-product-card .seller-label { color: #666666; font-size: 0.82rem; margin: 0.4rem 0; }
+    #lenceria .seller-label { color: #666666; font-size: 0.82rem; margin: 0.4rem 0; }
     #lenceria .marketplace-empty { color: #666666; text-align: center; padding: 1.2rem; grid-column: 1 / -1; }
+    #lenceria .marketplace-status { margin-top: 0.6rem; font-size: 0.9rem; font-weight: 700; text-align: center; color: #a71932 !important; }
     #lenceria .transf-footer {
       background: #fff2f4;
       color: #8c1830;
@@ -457,6 +467,7 @@
     .poker-btn:disabled { opacity: .4; cursor: not-allowed; transform: none; box-shadow: none; }
     .poker-btn.secondary { background: rgba(0, 243, 255, 0.14); border-color: var(--neon-cyan); }
     .poker-btn.danger { background: rgba(255, 50, 80, 0.2); border-color: #ff4d6d; }
+    .poker-btn.admin { background: linear-gradient(135deg, #f59e0b, #d97706); border-color: #fcd34d; color: #000; }
     
     .poker-table { background: radial-gradient(ellipse at center, #146341 0%, #093b25 65%, #042114 100%); border: 10px solid #281938; outline: 2px solid var(--neon-cyan); border-radius: 36px; min-height: 390px; padding: 1.3rem 1rem; display: flex; flex-direction: column; align-items: center; justify-content: space-between; box-shadow: inset 0 0 50px rgba(0,0,0,0.85), 0 0 30px rgba(0, 243, 255, 0.25); position: relative; }
     .poker-cards { display: flex; gap: .55rem; justify-content: center; flex-wrap: wrap; margin: .4rem 0; min-height: 86px; align-items: center; }
@@ -497,6 +508,14 @@
     .mini-card-graphic.red { color: #e60023; }
     .mini-card-graphic.dim { opacity: 0.45; }
 
+    /* TABLA DE JUGADORES Y PANEL ADMIN */
+    .leaderboard-panel { background: #121319; border: 1.5px solid var(--neon-purple); border-radius: 18px; padding: 1.2rem; margin-top: 1.2rem; }
+    .leaderboard-panel h3 { color: var(--neon-cyan); text-align: center; font-size: 1.15rem; margin-bottom: 0.8rem; text-transform: uppercase; }
+    .player-list-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem; }
+    .player-card-item { background: #1c1f2b; border: 1px solid rgba(0, 243, 255, 0.3); border-radius: 12px; padding: 0.75rem 1rem; display: flex; justify-content: space-between; align-items: center; }
+    .player-card-item.zero-chips { border-color: #ff4d6d; background: rgba(255, 77, 109, 0.1); }
+    .admin-player-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; background: #1c1f2b; padding: 0.75rem 1rem; border-radius: 10px; margin-bottom: 0.6rem; border: 1px solid #ffd700; }
+
     /* ENTRETENIMIENTO */
     .ent-layout { display: flex; gap: 1.5rem; align-items: flex-start; margin-bottom: 1.5rem; flex-wrap: wrap; }
     .ent-buttons-container { flex: 1; display: flex; flex-direction: column; gap: 1.2rem; min-width: 220px; }
@@ -512,7 +531,7 @@
     .custom-form { display: flex; flex-direction: column; gap: 1.2rem; }
     .input-group { display: flex; flex-direction: column; gap: 0.5rem; }
     .input-group label { color: #ffffff; font-weight: 700; font-size: 1rem; }
-    .input-group input { background: #1a1c24; border: 1.5px solid var(--neon-cyan); color: #ffffff; padding: 0.9rem 1.2rem; border-radius: 12px; outline: none; font-size: 1rem; }
+    .input-group input, .input-group select { background: #1a1c24; border: 1.5px solid var(--neon-cyan); color: #ffffff; padding: 0.9rem 1.2rem; border-radius: 12px; outline: none; font-size: 1rem; }
     .tickets-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 0.5rem; }
     .ticket-option { background: #1b1d26; border: 2px solid rgba(0, 243, 255, 0.35); border-radius: 16px; padding: 1.3rem; text-align: center; cursor: pointer; transition: all 0.3s ease; }
     .ticket-option.selected { border-color: var(--neon-pink); background: rgba(255, 0, 127, 0.18); box-shadow: 0 0 22px rgba(255, 0, 127, 0.6); }
@@ -526,7 +545,7 @@
 
     /* MODALES */
     .fullscreen-success, .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10, 11, 15, 0.9); z-index: 5000; justify-content: center; align-items: center; text-align: center; padding: 1.5rem; backdrop-filter: blur(6px); }
-    .fullscreen-success-box, .modal-box { background: #1a1c24; border: 2px solid var(--neon-cyan); box-shadow: 0 0 35px rgba(0, 243, 255, 0.5); border-radius: 22px; padding: 2rem; width: 90%; max-width: 420px; }
+    .fullscreen-success-box, .modal-box { background: #1a1c24; border: 2px solid var(--neon-cyan); box-shadow: 0 0 35px rgba(0, 243, 255, 0.5); border-radius: 22px; padding: 2rem; width: 90%; max-width: 450px; max-height: 85vh; overflow-y: auto; }
     .modal-box input { width: 100%; padding: 0.8rem; border-radius: 10px; border: 1.5px solid var(--neon-pink); background: #111217; color: #ffffff; font-size: 1.2rem; text-align: center; margin: 1rem 0; letter-spacing: 3px; }
     .error-msg { color: #ff4d6d; font-size: 0.9rem; margin-bottom: 1rem; display: none; }
     .modal-actions { display: flex; gap: 0.8rem; justify-content: center; }
@@ -754,10 +773,10 @@
           </div>
         </div>
 
-        <!-- MARKETPLACE -->
+        <!-- MARKETPLACE CONECTADO A SUPABASE -->
         <div class="marketplace-panel">
           <h3>🛍️ Publica tu producto en Guliana Social</h3>
-          <p class="marketplace-note">Vendedores: publiquen sus productos con foto, precio y contacto.</p>
+          <p class="marketplace-note">Vendedores: publiquen sus productos con foto, precio y contacto (se guardan en la nube para todos).</p>
           <form id="marketplaceForm" class="marketplace-form">
             <div class="input-group">
               <label for="mpTitle">Nombre del producto *</label>
@@ -784,8 +803,8 @@
               <input id="mpImage" name="image" type="file" accept="image/jpeg,image/png,image/webp" required>
             </div>
             <div class="full-width">
-              <button id="mpSubmit" type="submit" class="btn-pill" style="width:100%">📤 Publicar producto</button>
-              <p id="mpStatus" class="marketplace-status" role="status">Supabase conectado correctamente.</p>
+              <button id="mpSubmit" type="submit" class="btn-pill" style="width:100%">📤 Publicar producto en la nube</button>
+              <p id="mpStatus" class="marketplace-status" role="status">Listo para publicar.</p>
             </div>
           </form>
         </div>
@@ -832,17 +851,25 @@
       </div>
 
       <div class="card">
-        <h2>Publicar Video en Entretenimiento</h2>
-        <form class="custom-form" onsubmit="handleVideoUpload(event, 'content-guliana')">
+        <h2>Subir Video a la Nube (Entretenimiento)</h2>
+        <form class="custom-form" onsubmit="handleVideoUpload(event)">
           <div class="input-group">
-            <label for="mediaFileEnt">Seleccionar Archivo de Video:</label>
+            <label for="perfilVideoEnt">Galería de destino:</label>
+            <select id="perfilVideoEnt" required>
+              <option value="guliana">GULIANA 🔥</option>
+              <option value="estefany">ESTEFANY ✨</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label for="mediaFileEnt">Seleccionar Archivo de Video (MP4/MOV):</label>
             <input type="file" id="mediaFileEnt" accept="video/*" required>
           </div>
           <div class="input-group">
-            <label for="captionEnt">Descripción del Video:</label>
+            <label for="captionEnt">Título o Descripción del Video:</label>
             <input type="text" id="captionEnt" placeholder="Escribe un título o descripción..." required>
           </div>
-          <button type="submit" class="btn-pill" style="width: 100%;">Publicar Video en Guliana</button>
+          <button type="submit" id="btnUploadVideo" class="btn-pill" style="width: 100%;">📤 Subir y Guardar Video</button>
+          <p id="videoUploadStatus" style="text-align:center; color:#00f3ff; font-weight:700;"></p>
         </form>
       </div>
     </section>
@@ -850,18 +877,21 @@
     <!-- CASINO PÓKER TEXAS HOLD'EM PRO -->
     <section id="poker" class="section">
       <div class="poker-wrap">
-        <h2 class="poker-title">♠ Guliana Casino Póker ♣</h2>
-        <p class="poker-lead">Texas Hold'em Real · Baraja de 52 cartas · Fichas virtuales y efectos de sonido</p>
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.5rem; margin-bottom:0.5rem;">
+          <h2 class="poker-title" style="margin:0;">♠ Guliana Casino Póker ♣</h2>
+          <button class="poker-btn admin" onclick="openAdminModal()">⚙️ ADMIN: RECARGAR FICHAS</button>
+        </div>
+        <p class="poker-lead">Texas Hold'em Real · Registro en la nube · Tabla de jugadores y control de fichas</p>
         
         <div id="pokerRegister" class="poker-panel">
-          <h3 style="text-align:center; color:#00f3ff; margin-bottom:0.4rem;">Crea tu cuenta de jugador</h3>
-          <p class="poker-muted">Regístrate para guardar tus fichas virtuales en este dispositivo (Bono inicial: <b>50 fichas</b>).</p>
+          <h3 style="text-align:center; color:#00f3ff; margin-bottom:0.4rem;">Regístrate o Inicia Sesión</h3>
+          <p class="poker-muted">Si eres nuevo recibes <b>50 fichas</b>. Si ya tienes cuenta, ingresa tu mismo nombre y contraseña para cargar tus fichas guardadas.</p>
           <div class="poker-row" style="margin-top:0.8rem;">
             <input id="pokerName" class="poker-input" maxlength="20" placeholder="Tu nombre o apodo">
             <input id="pokerPin" class="poker-input" type="password" maxlength="24" placeholder="Contraseña (mín. 4 dígitos)">
           </div>
           <div class="poker-row" style="margin-top:0.5rem;">
-            <button class="poker-btn" onclick="pokerRegister()">♠ CREAR CUENTA Y ENTRAR A LA MESA</button>
+            <button id="btnPokerAuth" class="poker-btn" onclick="pokerRegisterOrLogin()">♠ ENTRAR A LA MESA</button>
           </div>
           <p id="pokerRegisterMsg" class="poker-status" role="status"></p>
         </div>
@@ -870,7 +900,10 @@
           <div class="poker-row" style="justify-content: space-between; padding: 0 0.5rem;">
             <span style="color:#f3d5ff">Jugador: <b id="pokerPlayerName" style="color:#00f3ff;"></b></span>
             <span class="poker-chip">🪙 Saldo: <span id="pokerBalance">50</span> fichas</span>
-            <button class="poker-btn secondary" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;" onclick="pokerLogout()">Salir</button>
+            <div>
+              <button class="poker-btn secondary" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;" onclick="syncMyBalanceFromDB()">🔄 Actualizar Saldo</button>
+              <button class="poker-btn secondary" style="padding: 0.4rem 0.9rem; font-size: 0.75rem;" onclick="pokerLogout()">Salir</button>
+            </div>
           </div>
           
           <div class="poker-layout" style="margin-top:1rem;">
@@ -933,13 +966,24 @@
             </div>
           </div>
 
+          <!-- AVISO CUANDO SE ACABAN LAS FICHAS -->
           <div id="pokerRefill" class="poker-panel poker-hidden" style="margin-top:1rem; background:#2b1226; border-color:#ff007f;">
-            <h3 style="color:#00f3ff; text-align:center">¿Te quedaste sin fichas?</h3>
-            <p class="poker-muted">Escríbenos por WhatsApp para solicitar una recarga virtual gratuita.</p>
+            <h3 style="color:#00f3ff; text-align:center">⚠️ ¡Te quedaste sin fichas!</h3>
+            <p class="poker-muted">Solicita tu recarga al administrador por WhatsApp. Una vez recargado, pulsa <b>"Actualizar Saldo"</b> arriba.</p>
             <div class="poker-row" style="margin-top:0.6rem;">
-              <button class="poker-btn secondary" onclick="pokerFreeRefill()">🎁 RECARGA RÁPIDA (+50 FICHAS)</button>
-              <a id="pokerWhatsApp" class="poker-btn" href="https://wa.me/51930841255" target="_blank" rel="noopener" style="background:#25d366; border-color:#25d366; text-decoration:none;">💬 PEDIR POR WHATSAPP</a>
+              <a id="pokerWhatsApp" class="poker-btn" href="https://wa.me/51930841255" target="_blank" rel="noopener" style="background:#25d366; border-color:#25d366; text-decoration:none;">💬 PEDIR RECARGA AL ADMIN POR WHATSAPP</a>
             </div>
+          </div>
+        </div>
+
+        <!-- LISTA PÚBLICA DE TODOS LOS JUGADORES Y SUS FICHAS -->
+        <div class="leaderboard-panel">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
+            <h3 style="margin:0;">🏅 Jugadores Registrados y Fichas</h3>
+            <button class="poker-btn secondary" style="padding:0.35rem 0.8rem; font-size:0.75rem;" onclick="loadPokerLeaderboard()">🔄 Refrescar Lista</button>
+          </div>
+          <div id="pokerLeaderboardList" class="player-list-grid">
+            <p class="poker-muted">Cargando jugadores...</p>
           </div>
         </div>
       </div>
@@ -994,6 +1038,7 @@
     </section>
   </main>
 
+  <!-- MODAL ÉXITO EVENTO -->
   <div id="fullscreenSuccess" class="fullscreen-success">
     <div class="fullscreen-success-box">
       <h2>¡REGISTRADO! 🎉</h2>
@@ -1002,6 +1047,7 @@
     </div>
   </div>
 
+  <!-- MODAL CONTRASEÑA GALERÍA -->
   <div class="modal-overlay" id="passwordModal">
     <div class="modal-box">
       <h3 id="modalTitle">Ingrese Contraseña</h3>
@@ -1014,11 +1060,37 @@
     </div>
   </div>
 
+  <!-- MODAL PANEL DE ADMINISTRADOR (RECARGAR FICHAS) -->
+  <div class="modal-overlay" id="adminModal">
+    <div class="modal-box" style="max-width: 550px;">
+      <h3 style="color:#ffd700;">⚙️ Panel de Recarga de Fichas</h3>
+      
+      <div id="adminLoginBox">
+        <p style="font-size:0.9rem; color:#ccc; margin-top:0.5rem;">Ingresa tu clave de administrador para gestionar fichas:</p>
+        <input type="password" id="adminPassInput" placeholder="Clave Admin" maxlength="15">
+        <div class="error-msg" id="adminPassError">Clave incorrecta.</div>
+        <div class="modal-actions">
+          <button class="btn-pill" onclick="verifyAdminPass()">Entrar</button>
+          <button class="btn-pill" style="background: #444;" onclick="closeAdminModal()">Cerrar</button>
+        </div>
+      </div>
+
+      <div id="adminDashboardBox" style="display:none; text-align:left; margin-top:1rem;">
+        <p style="font-size:0.85rem; color:#00f3ff; margin-bottom:0.8rem;">Selecciona un jugador para sumarle fichas:</p>
+        <div id="adminPlayersList">Cargando jugadores...</div>
+        <div style="text-align:center; margin-top:1rem;">
+          <button class="btn-pill" style="background: #444;" onclick="closeAdminModal()">Cerrar Panel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- SCRIPT GENERAL Y CONEXIÓN SUPABASE -->
   <script>
     const SUPABASE_URL = 'https://ddrrcmcjdqdjqlpczytz.supabase.co';
     const SUPABASE_ANON_KEY = 'sb_publishable_pBLkSv6CJcOMWijsCfsZ3Q_9W3s4DRL';
-    
+    const ADMIN_PASS = '1999'; // Clave para entrar a recargar fichas
+
     let supabaseClient = null;
     try {
       if (window.supabase) {
@@ -1032,8 +1104,10 @@
 
     document.addEventListener("DOMContentLoaded", function() {
       loadAttendees();
-      pokerLoad();
       initMarketplace();
+      loadCloudVideos();
+      pokerLoadSession();
+      loadPokerLeaderboard();
     });
 
     function showSection(sectionId) {
@@ -1046,9 +1120,11 @@
       const activeBtn = document.getElementById('btn-' + sectionId);
       if (activeBtn) activeBtn.classList.add('active');
       
+      if (sectionId === 'poker') loadPokerLeaderboard();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    // --- GALERÍA PRIVADA Y VIDEOS ---
     function requestAccess(profile) {
       if (unlockedProfiles[profile]) {
         toggleProfile(profile);
@@ -1096,30 +1172,171 @@
       }
     }
 
+    async function handleVideoUpload(event) {
+      event.preventDefault();
+      const perfil = document.getElementById('perfilVideoEnt').value;
+      const fileInput = document.getElementById('mediaFileEnt');
+      const caption = document.getElementById('captionEnt').value.trim();
+      const statusEl = document.getElementById('videoUploadStatus');
+      const btn = document.getElementById('btnUploadVideo');
+
+      if (!fileInput.files || !fileInput.files[0]) return;
+      const file = fileInput.files[0];
+
+      btn.disabled = true;
+      statusEl.textContent = 'Subiendo video a Supabase... (puede tardar unos segundos según el peso)';
+
+      try {
+        const cleanName = file.name.replace(/[^a-zA-Z0-9.]/g, '_');
+        const fileName = `videos/${Date.now()}_${cleanName}`;
+
+        const { error: uploadError } = await supabaseClient.storage
+          .from('multimedia')
+          .upload(fileName, file);
+        if (uploadError) throw uploadError;
+
+        const { data: publicURLData } = supabaseClient.storage
+          .from('multimedia')
+          .getPublicUrl(fileName);
+
+        const { error: dbError } = await supabaseClient
+          .from('videos_entretenimiento')
+          .insert([{ perfil: perfil, titulo: caption, video_url: publicURLData.publicUrl }]);
+        if (dbError) throw dbError;
+
+        statusEl.textContent = '✅ ¡Video guardado correctamente en la nube!';
+        event.target.reset();
+        await loadCloudVideos();
+      } catch (err) {
+        console.error(err);
+        statusEl.textContent = '❌ Error al subir video: ' + err.message;
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    async function loadCloudVideos() {
+      if (!supabaseClient) return;
+      const { data, error } = await supabaseClient
+        .from('videos_entretenimiento')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error || !data) return;
+
+      // Limpiar videos cargados previamente desde BD para evitar duplicados
+      document.querySelectorAll('.cloud-video-item').forEach(el => el.remove());
+
+      data.forEach(v => {
+        const grid = document.getElementById('content-' + v.perfil);
+        if (grid) {
+          const mediaCard = document.createElement('div');
+          mediaCard.className = 'media-item cloud-video-item';
+          mediaCard.innerHTML = `<video controls playsinline preload="metadata"><source src="${v.video_url}" type="video/mp4"></video><p>${v.titulo}</p>`;
+          grid.prepend(mediaCard);
+        }
+      });
+    }
+
+    // --- MARKETPLACE / TIENDA ---
+    function initMarketplace() {
+      const mpForm = document.getElementById('marketplaceForm');
+      if (mpForm) {
+        mpForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          const title = document.getElementById('mpTitle').value.trim();
+          const price = parseFloat(document.getElementById('mpPrice').value);
+          const seller = document.getElementById('mpSeller').value.trim();
+          const whatsapp = document.getElementById('mpWhatsapp').value.replace(/\D/g, '');
+          const description = document.getElementById('mpDescription').value.trim();
+          const fileInput = document.getElementById('mpImage');
+          const statusEl = document.getElementById('mpStatus');
+          const submitBtn = document.getElementById('mpSubmit');
+
+          if (!fileInput.files || !fileInput.files[0]) {
+            alert('Selecciona una imagen para el producto.');
+            return;
+          }
+
+          submitBtn.disabled = true;
+          statusEl.textContent = 'Subiendo imagen y publicando producto...';
+          const file = fileInput.files[0];
+
+          try {
+            const cleanName = file.name.replace(/[^a-zA-Z0-9.]/g, '_');
+            const fileName = `productos/${Date.now()}_${cleanName}`;
+
+            const { error: uploadError } = await supabaseClient.storage
+              .from('multimedia')
+              .upload(fileName, file);
+            if (uploadError) throw uploadError;
+
+            const { data: publicURLData } = supabaseClient.storage
+              .from('multimedia')
+              .getPublicUrl(fileName);
+
+            const { error: dbError } = await supabaseClient
+              .from('productos')
+              .insert([{
+                title,
+                price,
+                seller,
+                whatsapp,
+                description,
+                image_url: publicURLData.publicUrl
+              }]);
+            if (dbError) throw dbError;
+
+            statusEl.textContent = '✅ ¡Producto publicado con éxito!';
+            mpForm.reset();
+            await loadMarketplaceCatalog();
+          } catch (err) {
+            console.error(err);
+            statusEl.textContent = '❌ Error al publicar: ' + err.message;
+          } finally {
+            submitBtn.disabled = false;
+          }
+        });
+      }
+      loadMarketplaceCatalog();
+    }
+
+    async function loadMarketplaceCatalog() {
+      const catalogEl = document.getElementById('marketplaceCatalog');
+      if (!catalogEl || !supabaseClient) return;
+
+      const { data, error } = await supabaseClient
+        .from('productos')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error || !data || data.length === 0) {
+        catalogEl.innerHTML = '<p class="marketplace-empty">No hay productos publicados aún. ¡Sé el primero en publicar!</p>';
+        return;
+      }
+
+      catalogEl.innerHTML = data.map(p => `
+        <div class="lingerie-item">
+          <img src="${p.image_url}" alt="${p.title}">
+          <div class="lingerie-info">
+            <div class="lingerie-title">${p.title}</div>
+            <div class="lingerie-desc">${p.description}</div>
+            <div class="seller-label">Vendedor: <b>${p.seller}</b></div>
+            <div class="lingerie-price">S/ ${Number(p.price).toFixed(2)}</div>
+            <a href="https://wa.me/${p.whatsapp}?text=${encodeURIComponent('Hola, deseo comprar tu producto: ' + p.title + ' (S/ ' + p.price + ')')}" target="_blank" style="text-decoration: none;">
+              <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // --- EVENTOS ---
     function selectTicket(optionId) {
       document.querySelectorAll('.ticket-option').forEach(opt => opt.classList.remove('selected'));
       const selected = document.getElementById(optionId);
       selected.classList.add('selected');
       selected.querySelector('input[type="radio"]').checked = true;
-    }
-
-    function handleVideoUpload(event, gridId) {
-      event.preventDefault();
-      const form = event.target;
-      const fileInput = form.querySelector('input[type="file"]');
-      const captionInput = form.querySelector('input[type="text"]');
-      const grid = document.getElementById(gridId);
-
-      if (fileInput.files && fileInput.files[0]) {
-        const file = fileInput.files[0];
-        const fileURL = URL.createObjectURL(file);
-        const mediaCard = document.createElement('div');
-        mediaCard.className = 'media-item';
-        mediaCard.innerHTML = `<video src="${fileURL}" controls></video><p>${captionInput.value}</p>`;
-        grid.prepend(mediaCard);
-        fileInput.value = '';
-        captionInput.value = '';
-      }
     }
 
     function loadAttendees() {
@@ -1141,7 +1358,6 @@
     function submitCustomForm(e) {
       e.preventDefault();
       var nickname = document.getElementById("nicknameUsuario").value.trim();
-      var entrada = document.querySelector('input[name="ticketType"]:checked').value;
       if (!nickname) return;
       var savedList = JSON.parse(localStorage.getItem("guliana_attendees_list")) || [];
       savedList.push(nickname);
@@ -1154,97 +1370,9 @@
     function closeFullscreenSuccess() {
       document.getElementById("fullscreenSuccess").style.display = "none";
     }
-
-    function initMarketplace() {
-      const mpForm = document.getElementById('marketplaceForm');
-      if (mpForm) {
-        mpForm.addEventListener('submit', async function(e) {
-          e.preventDefault();
-          const title = document.getElementById('mpTitle').value;
-          const price = document.getElementById('mpPrice').value;
-          const seller = document.getElementById('mpSeller').value;
-          const whatsapp = document.getElementById('mpWhatsapp').value;
-          const description = document.getElementById('mpDescription').value;
-          const fileInput = document.getElementById('mpImage');
-          const statusEl = document.getElementById('mpStatus');
-
-          if (!fileInput.files || !fileInput.files[0]) {
-            alert('Selecciona una imagen para el producto.');
-            return;
-          }
-
-          statusEl.textContent = 'Subiendo producto...';
-          const file = fileInput.files[0];
-
-          if (supabaseClient) {
-            try {
-              const fileName = `${Date.now()}_${file.name}`;
-              const { data: uploadData, error: uploadError } = await supabaseClient.storage.from('multimedia').upload(fileName, file);
-              if (uploadError) throw uploadError;
-
-              const { data: publicURLData } = supabaseClient.storage.from('multimedia').getPublicUrl(fileName);
-              const imageUrl = publicURLData.publicUrl;
-
-              const { error: dbError } = await supabaseClient.from('galeria').insert([{
-                url: imageUrl,
-                tipo: 'foto'
-              }]);
-              if (dbError) throw dbError;
-
-              statusEl.textContent = '¡Producto publicado con éxito en Supabase!';
-              mpForm.reset();
-              loadMarketplaceCatalog();
-            } catch (err) {
-              statusEl.textContent = 'Guardado local (modo alternativo).';
-              saveLocalProduct({ title, price, seller, whatsapp, description, image: URL.createObjectURL(file) });
-              mpForm.reset();
-              loadMarketplaceCatalog();
-            }
-          } else {
-            saveLocalProduct({ title, price, seller, whatsapp, description, image: URL.createObjectURL(file) });
-            statusEl.textContent = '¡Producto publicado con éxito!';
-            mpForm.reset();
-            loadMarketplaceCatalog();
-          }
-        });
-      }
-      loadMarketplaceCatalog();
-    }
-
-    function saveLocalProduct(prod) {
-      let list = JSON.parse(localStorage.getItem('guliana_market_products') || '[]');
-      list.unshift(prod);
-      localStorage.setItem('guliana_market_products', JSON.stringify(list));
-    }
-
-    function loadMarketplaceCatalog() {
-      const catalogEl = document.getElementById('marketplaceCatalog');
-      if (!catalogEl) return;
-      let list = JSON.parse(localStorage.getItem('guliana_market_products') || '[]');
-      
-      if (list.length === 0) {
-        catalogEl.innerHTML = '<p class="marketplace-empty">No hay productos publicados aún. ¡Sé el primero en publicar!</p>';
-        return;
-      }
-
-      catalogEl.innerHTML = list.map(p => `
-        <div class="lingerie-item">
-          <img src="${p.image}" alt="${p.title}">
-          <div class="lingerie-info">
-            <div class="lingerie-title">${p.title}</div>
-            <div class="lingerie-desc">${p.description}</div>
-            <div class="seller-label">Vendedor: <b>${p.seller}</b></div>
-            <div class="lingerie-price">S/ ${Number(p.price).toFixed(2)}</div>
-            <a href="https://wa.me/${p.whatsapp}?text=${encodeURIComponent('Hola, deseo comprar tu producto: ' + p.title + ' (S/ ' + p.price + ')')}" target="_blank" style="text-decoration: none;">
-              <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
-            </a>
-          </div>
-        </div>
-      `).join('');
-    }
   </script>
 
-  <!-- MOTOR DE PÓKER PRO -->
+  <!-- MOTOR DE PÓKER PRO + SUPABASE + PANEL ADMIN -->
   <script>
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
@@ -1320,63 +1448,241 @@
       });
     }
 
-    const POKER_KEY = 'gulianaPokerProfile_v7';
-    let pokerProfile = null;
+    const POKER_SESSION_KEY = 'gulianaPokerActiveUser';
+    let pokerProfile = null; // { id, nombre, fichas }
     let gameState = { phase: 0, myCards: [], cpuCards: [], community: [], pot: 0, bet: 5 };
 
-    function pokerLoad() {
-      try { pokerProfile = JSON.parse(localStorage.getItem(POKER_KEY) || 'null'); } catch (e) { pokerProfile = null; }
-      if (pokerProfile) {
+    async function pokerLoadSession() {
+      const savedName = localStorage.getItem(POKER_SESSION_KEY);
+      if (!savedName || !supabaseClient) return;
+
+      const { data } = await supabaseClient
+        .from('poker_jugadores')
+        .select('*')
+        .eq('nombre', savedName)
+        .single();
+
+      if (data) {
+        pokerProfile = data;
         document.getElementById('pokerRegister').classList.add('poker-hidden');
         document.getElementById('pokerLobby').classList.remove('poker-hidden');
-        document.getElementById('pokerPlayerName').textContent = pokerProfile.name;
+        document.getElementById('pokerPlayerName').textContent = pokerProfile.nombre;
         updateBalanceUI();
       }
     }
 
-    function pokerSave() {
-      localStorage.setItem(POKER_KEY, JSON.stringify(pokerProfile));
+    async function pokerRegisterOrLogin() {
+      const name = document.getElementById('pokerName').value.trim();
+      const pin = document.getElementById('pokerPin').value.trim();
+      const msgEl = document.getElementById('pokerRegisterMsg');
+      const btn = document.getElementById('btnPokerAuth');
+
+      if (name.length < 3 || pin.length < 4) {
+        msgEl.textContent = 'Ingresa un nombre de al menos 3 letras y una contraseña de 4 dígitos.';
+        return;
+      }
+
+      btn.disabled = true;
+      msgEl.textContent = 'Conectando con la mesa...';
+
+      try {
+        // Verificar si el usuario ya existe
+        const { data: existingUser } = await supabaseClient
+          .from('poker_jugadores')
+          .select('*')
+          .ilike('nombre', name)
+          .maybeSingle();
+
+        if (existingUser) {
+          if (existingUser.pin !== pin) {
+            msgEl.textContent = '❌ Ese nombre ya está registrado. Contraseña incorrecta.';
+            btn.disabled = false;
+            return;
+          }
+          pokerProfile = existingUser;
+        } else {
+          // Crear nuevo usuario con 50 fichas
+          const { data: newUser, error: insertError } = await supabaseClient
+            .from('poker_jugadores')
+            .insert([{ nombre: name, pin: pin, fichas: 50 }])
+            .select()
+            .single();
+
+          if (insertError) throw insertError;
+          pokerProfile = newUser;
+        }
+
+        localStorage.setItem(POKER_SESSION_KEY, pokerProfile.nombre);
+        document.getElementById('pokerRegister').classList.add('poker-hidden');
+        document.getElementById('pokerLobby').classList.remove('poker-hidden');
+        document.getElementById('pokerPlayerName').textContent = pokerProfile.nombre;
+        updateBalanceUI();
+        loadPokerLeaderboard();
+      } catch (err) {
+        console.error(err);
+        msgEl.textContent = 'Error de conexión: ' + err.message;
+      } finally {
+        btn.disabled = false;
+      }
+    }
+
+    async function syncMyBalanceFromDB() {
+      if (!pokerProfile || !supabaseClient) return;
+      const { data } = await supabaseClient
+        .from('poker_jugadores')
+        .select('fichas')
+        .eq('id', pokerProfile.id)
+        .single();
+
+      if (data) {
+        pokerProfile.fichas = data.fichas;
+        updateBalanceUI();
+        loadPokerLeaderboard();
+      }
+    }
+
+    async function saveChipsToDB(newAmount) {
+      if (!pokerProfile || !supabaseClient) return;
+      pokerProfile.fichas = newAmount;
       updateBalanceUI();
+
+      await supabaseClient
+        .from('poker_jugadores')
+        .update({ fichas: newAmount, updated_at: new Date().toISOString() })
+        .eq('id', pokerProfile.id);
+
+      loadPokerLeaderboard();
     }
 
     function updateBalanceUI() {
       if (!pokerProfile) return;
-      document.getElementById('pokerBalance').textContent = pokerProfile.chips;
+      document.getElementById('pokerBalance').textContent = pokerProfile.fichas;
       const refillBox = document.getElementById('pokerRefill');
-      if (pokerProfile.chips <= 0 && gameState.phase === 0) {
+      if (pokerProfile.fichas < 5 && gameState.phase === 0) {
         refillBox.classList.remove('poker-hidden');
-        document.getElementById('pokerWhatsApp').href = 'https://wa.me/51930841255?text=' + encodeURIComponent('Hola, soy ' + pokerProfile.name + ' de Guliana Social Casino. Me quedé sin fichas virtuales, ¿podría recargar mi cuenta?');
+        document.getElementById('pokerWhatsApp').href = 'https://wa.me/51930841255?text=' + encodeURIComponent('Hola Admin, soy el jugador "' + pokerProfile.nombre + '" de Guliana Casino Póker. Me quedé sin fichas, ¿me puedes recargar?');
       } else {
         refillBox.classList.add('poker-hidden');
       }
     }
 
-    function pokerFreeRefill() {
-      if (!pokerProfile) return;
-      pokerProfile.chips = 50;
-      pokerSave();
-      playChipSound();
-      document.getElementById('pokerStatus').textContent = '¡Recarga gratuita acreditada! Tienes 50 fichas para seguir jugando.';
-    }
-
-    function pokerRegister() {
-      const name = document.getElementById('pokerName').value.trim();
-      const pin = document.getElementById('pokerPin').value;
-      if (name.length < 3 || pin.length < 4) {
-        document.getElementById('pokerRegisterMsg').textContent = 'Ingresa un nombre de al menos 3 letras y una clave de 4 dígitos.';
-        return;
-      }
-      pokerProfile = { name, pin, chips: 50 };
-      pokerSave();
-      pokerLoad();
-    }
-
     function pokerLogout() {
       pokerProfile = null;
+      localStorage.removeItem(POKER_SESSION_KEY);
       document.getElementById('pokerRegister').classList.remove('poker-hidden');
       document.getElementById('pokerLobby').classList.add('poker-hidden');
     }
 
+    // --- TABLA DE JUGADORES Y PANEL ADMIN ---
+    async function loadPokerLeaderboard() {
+      const container = document.getElementById('pokerLeaderboardList');
+      if (!container || !supabaseClient) return;
+
+      const { data, error } = await supabaseClient
+        .from('poker_jugadores')
+        .select('id, nombre, fichas')
+        .order('fichas', { ascending: false });
+
+      if (error || !data || data.length === 0) {
+        container.innerHTML = '<p class="poker-muted">Aún no hay jugadores registrados.</p>';
+        return;
+      }
+
+      container.innerHTML = data.map((p, idx) => `
+        <div class="player-card-item ${p.fichas <= 0 ? 'zero-chips' : ''}">
+          <div>
+            <span style="color:#ffd700; font-weight:900;">#${idx + 1}</span>
+            <strong style="color:#ffffff; margin-left:4px;">${p.nombre}</strong>
+          </div>
+          <span style="font-weight:900; color:${p.fichas > 0 ? '#00f3ff' : '#ff4d6d'};">
+            🪙 ${p.fichas}
+          </span>
+        </div>
+      `).join('');
+    }
+
+    function openAdminModal() {
+      document.getElementById('adminPassInput').value = '';
+      document.getElementById('adminPassError').style.display = 'none';
+      document.getElementById('adminLoginBox').style.display = 'block';
+      document.getElementById('adminDashboardBox').style.display = 'none';
+      document.getElementById('adminModal').style.display = 'flex';
+    }
+
+    function closeAdminModal() {
+      document.getElementById('adminModal').style.display = 'none';
+    }
+
+    function verifyAdminPass() {
+      const val = document.getElementById('adminPassInput').value;
+      if (val === ADMIN_PASS) {
+        document.getElementById('adminLoginBox').style.display = 'none';
+        document.getElementById('adminDashboardBox').style.display = 'block';
+        renderAdminPlayersList();
+      } else {
+        document.getElementById('adminPassError').style.display = 'block';
+      }
+    }
+
+    async function renderAdminPlayersList() {
+      const listEl = document.getElementById('adminPlayersList');
+      listEl.innerHTML = '<p style="color:#ccc;">Cargando lista...</p>';
+
+      const { data } = await supabaseClient
+        .from('poker_jugadores')
+        .select('*')
+        .order('nombre', { ascending: true });
+
+      if (!data || data.length === 0) {
+        listEl.innerHTML = '<p style="color:#ccc;">No hay jugadores registrados.</p>';
+        return;
+      }
+
+      listEl.innerHTML = data.map(p => `
+        <div class="admin-player-row">
+          <div>
+            <strong style="color:#fff; font-size:1rem;">${p.nombre}</strong><br>
+            <span style="color:#ffd700; font-size:0.85rem;">Saldo actual: <b>${p.fichas} fichas</b></span>
+          </div>
+          <div style="display:flex; gap:0.4rem; flex-wrap:wrap;">
+            <button class="poker-btn secondary" style="padding:0.4rem 0.7rem; font-size:0.75rem;" onclick="adminAddChips(${p.id}, ${p.fichas}, 50)">+50 🪙</button>
+            <button class="poker-btn" style="padding:0.4rem 0.7rem; font-size:0.75rem;" onclick="adminAddChips(${p.id}, ${p.fichas}, 100)">+100 🪙</button>
+            <button class="poker-btn danger" style="padding:0.4rem 0.7rem; font-size:0.75rem;" onclick="adminSetChipsZero(${p.id})">0</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function adminAddChips(playerId, currentChips, addAmount) {
+      const updated = currentChips + addAmount;
+      await supabaseClient
+        .from('poker_jugadores')
+        .update({ fichas: updated, updated_at: new Date().toISOString() })
+        .eq('id', playerId);
+
+      if (pokerProfile && pokerProfile.id === playerId) {
+        pokerProfile.fichas = updated;
+        updateBalanceUI();
+      }
+      renderAdminPlayersList();
+      loadPokerLeaderboard();
+    }
+
+    async function adminSetChipsZero(playerId) {
+      await supabaseClient
+        .from('poker_jugadores')
+        .update({ fichas: 0, updated_at: new Date().toISOString() })
+        .eq('id', playerId);
+
+      if (pokerProfile && pokerProfile.id === playerId) {
+        pokerProfile.fichas = 0;
+        updateBalanceUI();
+      }
+      renderAdminPlayersList();
+      loadPokerLeaderboard();
+    }
+
+    // --- LÓGICA DEL JUEGO DE PÓKER ---
     function createShuffledDeck() {
       const ranks = ['2','3','4','5','6','7','8','9','10','J','Q','K','A'];
       const suits = ['♠','♥','♦','♣'];
@@ -1429,20 +1735,20 @@
       }
     }
 
-    function pokerStartHand() {
-      if (!pokerProfile || pokerProfile.chips < 5) {
-        alert('No tienes fichas suficientes. Usa la recarga gratuita o pídela por WhatsApp.');
+    async function pokerStartHand() {
+      await syncMyBalanceFromDB();
+      if (!pokerProfile || pokerProfile.fichas < 5) {
+        alert('No tienes fichas suficientes (mínimo 5). Pide una recarga al administrador.');
         updateBalanceUI();
         return;
       }
-      pokerProfile.chips -= 5;
-      pokerSave();
+      await saveChipsToDB(pokerProfile.fichas - 5);
       playCardDealSound(4);
       playChipSound();
 
       const deck = createShuffledDeck();
       gameState = {
-        phase: 1, // 1: Pre-Flop, 2: Flop, 3: Turn, 4: River, 5: Showdown
+        phase: 1,
         myCards: [deck[0], deck[1]],
         cpuCards: [deck[2], deck[3]],
         community: [deck[4], deck[5], deck[6], deck[7], deck[8]],
@@ -1459,7 +1765,7 @@
       renderCards('pokerCpuCards', gameState.cpuCards, false);
       document.getElementById('pokerCommunity').innerHTML = '';
 
-      document.getElementById('pokerStatus').innerHTML = 'Se te han repartido 2 cartas y se ha cubierto la ciega de 5 fichas. <b>Pasa/Iguala</b> o <b>Aposta/Sube</b> para continuar.';
+      document.getElementById('pokerStatus').innerHTML = 'Se repartieron tus 2 cartas (ciega 5 fichas). Elige: <b>Pasar/Igualar</b>, <b>Apostar +5</b>, <b>All-In</b> o <b>Retirarse</b>.';
 
       document.getElementById('pokerDeal').classList.add('poker-hidden');
       document.getElementById('pokerCheckCallBtn').classList.remove('poker-hidden');
@@ -1473,15 +1779,14 @@
       advanceGamePhase();
     }
 
-    function pokerBetMore(amount) {
-      if (pokerProfile.chips < amount) {
+    async function pokerBetMore(amount) {
+      if (pokerProfile.fichas < amount) {
         alert('No tienes suficientes fichas para apostar esa cantidad.');
         return;
       }
-      pokerProfile.chips -= amount;
+      await saveChipsToDB(pokerProfile.fichas - amount);
       gameState.pot += amount * 2;
       gameState.bet += amount;
-      pokerSave();
       playChipSound();
 
       document.getElementById('pokerPot').textContent = gameState.pot;
@@ -1491,13 +1796,12 @@
       advanceGamePhase();
     }
 
-    function pokerAllIn() {
-      const allInAmount = pokerProfile.chips;
+    async function pokerAllIn() {
+      const allInAmount = pokerProfile.fichas;
       if (allInAmount <= 0) { advanceGamePhase(); return; }
       gameState.pot += allInAmount * 2;
       gameState.bet += allInAmount;
-      pokerProfile.chips = 0;
-      pokerSave();
+      await saveChipsToDB(0);
       playChipSound();
 
       document.getElementById('pokerPot').textContent = gameState.pot;
@@ -1601,7 +1905,7 @@
       return { rank: 1, name: `Carta Alta (${sorted[0].label}${sorted[0].suit})`, score: [1, ...vals], highlightCards: [sorted[0]] };
     }
 
-    function evaluateWinnerAndShow() {
+    async function evaluateWinnerAndShow() {
       playCardDealSound(2);
       document.getElementById('pokerPhaseBadge').textContent = 'SHOWDOWN • RESULTADO FINAL';
 
@@ -1611,8 +1915,7 @@
 
       if (cmp > 0) {
         playWinSound();
-        pokerProfile.chips += gameState.pot;
-        pokerSave();
+        await saveChipsToDB(pokerProfile.fichas + gameState.pot);
         const winIds = new Set(myBest.highlightCards.map(c => c.id));
         renderCards('pokerMyCards', gameState.myCards, true, winIds);
         renderCards('pokerCommunity', gameState.community, true, winIds);
@@ -1627,13 +1930,12 @@
         document.getElementById('pokerStatus').innerHTML = `❌ <b style="color:#ff6b6b;">El Rival (PC) ganó el pozo.</b><br>Mano ganadora rival: <b style="color:#ffd700; font-size: 1.1rem; text-transform: uppercase;">${cpuBest.name}</b>`;
       } else {
         const split = Math.floor(gameState.pot / 2);
-        pokerProfile.chips += split;
-        pokerSave();
+        await saveChipsToDB(pokerProfile.fichas + split);
         const winIds = new Set(myBest.highlightCards.map(c => c.id));
         renderCards('pokerMyCards', gameState.myCards, true, winIds);
         renderCards('pokerCpuCards', gameState.cpuCards, true, new Set());
         renderCards('pokerCommunity', gameState.community, true, winIds);
-        document.getElementById('pokerStatus').innerHTML = `🤝 <b style="color:#00f3ff;">¡EMPATE!</b> Ambos tienen la misma combinación: <b style="color:#ffd700; text-transform: uppercase;">${myBest.name}</b>`;
+        document.getElementById('pokerStatus').innerHTML = `🤝 <b style="color:#00f3ff;">¡EMPATE!</b> Ambos tienen: <b style="color:#ffd700; text-transform: uppercase;">${myBest.name}</b>`;
       }
       endHandClean();
     }
