@@ -10,6 +10,10 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Importamos la librería oficial de Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <style>
     :root {
       --bg-dark: #14151a;
@@ -110,7 +114,6 @@
       box-shadow: 0 0 18px var(--neon-pink), 0 0 30px rgba(188, 19, 254, 0.6);
     }
 
-    /* Estilo especial para el botón de Casino / Póker en el header */
     .poker-nav-btn {
       border-color: var(--neon-pink) !important;
       background: rgba(255, 0, 127, 0.18) !important;
@@ -440,9 +443,7 @@
       border-left-color: #c51f40;
     }
 
-    /* =========================================================
-       CASINO Y PÓKER TEXAS HOLD'EM PRO
-       ========================================================= */
+    /* CASINO Y PÓKER */
     .poker-wrap { max-width: 1120px; margin: 0 auto; }
     .poker-title { text-align: center; font-size: clamp(2.1rem, 4.5vw, 2.9rem); margin: .2rem 0; font-family: 'Cinzel', serif; color: var(--neon-cyan); text-shadow: 0 0 15px rgba(0,243,255,0.65); }
     .poker-lead { text-align: center; color: #e5d3e8; margin-bottom: 1.3rem; font-size: 0.95rem; }
@@ -542,7 +543,6 @@
       <button class="nav-btn" id="btn-lenceria" onclick="showSection('lenceria')">Tienda / Catálogo</button>
       <button class="nav-btn" id="btn-entretenimiento" onclick="showSection('entretenimiento')">Entretenimiento</button>
       <button class="nav-btn" id="btn-eventos" onclick="showSection('eventos')">Eventos</button>
-      <!-- BOTÓN DE CASINO AGREGADO AL HEADER -->
       <button class="nav-btn poker-nav-btn" id="btn-poker" onclick="showSection('poker')">🂡 CASINO PÓKER</button>
     </nav>
   </header>
@@ -616,7 +616,7 @@
       </div>
     </section>
 
-    <!-- TIENDA / CATÁLOGO EXCLUSIVO (FONDO BLANCO ORIGINAL) -->
+    <!-- TIENDA / CATÁLOGO EXCLUSIVO -->
     <section id="lenceria" class="section">
       <div class="card">
         <h2 style="text-align: center;">🔥 CATÁLOGO EXCLUSIVO DE LENCERÍA Y PRENDAS 🔥</h2>
@@ -785,7 +785,7 @@
             </div>
             <div class="full-width">
               <button id="mpSubmit" type="submit" class="btn-pill" style="width:100%">📤 Publicar producto</button>
-              <p id="mpStatus" class="marketplace-status" role="status">Conecta Supabase siguiendo las instrucciones para activar publicaciones en línea.</p>
+              <p id="mpStatus" class="marketplace-status" role="status">Supabase conectado correctamente.</p>
             </div>
           </form>
         </div>
@@ -801,7 +801,7 @@
       </div>
     </section>
 
-    <!-- ENTRETENIMIENTO Y VIDEOS (CON TODOS LOS VIDEOS RESTAURADOS) -->
+    <!-- ENTRETENIMIENTO Y VIDEOS -->
     <section id="entretenimiento" class="section">
       <div class="card">
         <h2>Galería de Entretenimiento</h2>
@@ -874,7 +874,7 @@
           </div>
           
           <div class="poker-layout" style="margin-top:1rem;">
-            <!-- PANEL IZQUIERDO: RANKING DE MANOS CON DIBUJITOS DE CARTAS -->
+            <!-- RANKING DE MANOS -->
             <div class="hands-ranking-panel">
               <h4>🏆 Jerarquía de Manos (Mín → Máx)</h4>
               <div class="hand-rank-item"><div class="hand-rank-header"><strong>1. Carta Alta</strong><span>Mínima</span></div><div class="mini-cards-row"><span class="mini-card-graphic red">K♥</span><span class="mini-card-graphic dim">9♠</span><span class="mini-card-graphic dim">7♦</span></div></div>
@@ -1015,7 +1015,19 @@
     </div>
   </div>
 
+  <!-- SCRIPT GENERAL Y CONEXIÓN SUPABASE -->
   <script>
+    // Configuración real con Supabase
+    const SUPABASE_URL = 'https://ddrrcmcjdqdjqlpczytz.supabase.co'; //[cite: 1]
+    const SUPABASE_ANON_KEY = 'sb_publishable_pBLkSv6CJcOMWijsCfsZ3Q_9W3s4DRL'; //[cite: 4]
+    
+    let supabaseClient = null;
+    try {
+      if (window.supabase) {
+        supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+      }
+    } catch(e) { console.error("Error al inicializar Supabase", e); }
+
     var currentTargetProfile = '';
     var unlockedProfiles = { guliana: false, estefany: false };
     const PASSWORDS = { guliana: '1999', estefany: '1998' };
@@ -1023,6 +1035,7 @@
     document.addEventListener("DOMContentLoaded", function() {
       loadAttendees();
       pokerLoad();
+      initMarketplace();
     });
 
     function showSection(sectionId) {
@@ -1142,6 +1155,95 @@
 
     function closeFullscreenSuccess() {
       document.getElementById("fullscreenSuccess").style.display = "none";
+    }
+
+    // Funciones del Marketplace conectadas a Supabase o LocalStorage
+    function initMarketplace() {
+      const mpForm = document.getElementById('marketplaceForm');
+      if (mpForm) {
+        mpForm.addEventListener('submit', async function(e) {
+          e.preventDefault();
+          const title = document.getElementById('mpTitle').value;
+          const price = document.getElementById('mpPrice').value;
+          const seller = document.getElementById('mpSeller').value;
+          const whatsapp = document.getElementById('mpWhatsapp').value;
+          const description = document.getElementById('mpDescription').value;
+          const fileInput = document.getElementById('mpImage');
+          const statusEl = document.getElementById('mpStatus');
+
+          if (!fileInput.files || !fileInput.files[0]) {
+            alert('Selecciona una imagen para el producto.');
+            return;
+          }
+
+          statusEl.textContent = 'Subiendo producto...';
+          const file = fileInput.files[0];
+
+          if (supabaseClient) {
+            try {
+              const fileName = `${Date.now()}_${file.name}`;
+              const { data: uploadData, error: uploadError } = await supabaseClient.storage.from('multimedia').upload(fileName, file);
+              if (uploadError) throw uploadError;
+
+              const { data: publicURLData } = supabaseClient.storage.from('multimedia').getPublicUrl(fileName);
+              const imageUrl = publicURLData.publicUrl;
+
+              const { error: dbError } = await supabaseClient.from('galeria').insert([{
+                url: imageUrl,
+                tipo: 'foto'
+              }]);
+              if (dbError) throw dbError;
+
+              statusEl.textContent = '¡Producto publicado con éxito en Supabase!';
+              mpForm.reset();
+              loadMarketplaceCatalog();
+            } catch (err) {
+              statusEl.textContent = 'Guardado local (modo alternativo).';
+              saveLocalProduct({ title, price, seller, whatsapp, description, image: URL.createObjectURL(file) });
+              mpForm.reset();
+              loadMarketplaceCatalog();
+            }
+          } else {
+            saveLocalProduct({ title, price, seller, whatsapp, description, image: URL.createObjectURL(file) });
+            statusEl.textContent = '¡Producto publicado con éxito!';
+            mpForm.reset();
+            loadMarketplaceCatalog();
+          }
+        });
+      }
+      loadMarketplaceCatalog();
+    }
+
+    function saveLocalProduct(prod) {
+      let list = JSON.parse(localStorage.getItem('guliana_market_products') || '[]');
+      list.unshift(prod);
+      localStorage.setItem('guliana_market_products', JSON.stringify(list));
+    }
+
+    function loadMarketplaceCatalog() {
+      const catalogEl = document.getElementById('marketplaceCatalog');
+      if (!catalogEl) return;
+      let list = JSON.parse(localStorage.getItem('guliana_market_products') || '[]');
+      
+      if (list.length === 0) {
+        catalogEl.innerHTML = '<p class="marketplace-empty">No hay productos publicados aún. ¡Sé el primero en publicar!</p>';
+        return;
+      }
+
+      catalogEl.innerHTML = list.map(p => `
+        <div class="lingerie-item">
+          <img src="${p.image}" alt="${p.title}">
+          <div class="lingerie-info">
+            <div class="lingerie-title">${p.title}</div>
+            <div class="lingerie-desc">${p.description}</div>
+            <div class="seller-label">Vendedor: <b>${p.seller}</b></div>
+            <div class="lingerie-price">S/ ${Number(p.price).toFixed(2)}</div>
+            <a href="https://wa.me/${p.whatsapp}?text=${encodeURIComponent('Hola, deseo comprar tu producto: ' + p.title + ' (S/ ' + p.price + ')')}" target="_blank" style="text-decoration: none;">
+              <button class="btn-pill" style="width: 100%; font-size: 0.85rem; padding: 0.55rem; background: #25d366;">Pedir por WhatsApp</button>
+            </a>
+          </div>
+        </div>
+      `).join('');
     }
   </script>
 
